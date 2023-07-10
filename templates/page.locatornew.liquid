@@ -1,0 +1,194 @@
+<header class="page-header">
+  {% if settings.enable_multilang %}
+    <h2 class="lang1">{{ page.title | split: '|' | first }}
+    </h2>
+    <h2 class="lang2">{{ page.title | split: '|' | last }}
+    </h2>
+  {% else %}
+    {% comment %}
+      <h2>{{ page.title | split: '|' | first }}</h2>
+    {% endcomment %}
+  {% endif %}
+</header>
+<div class="container">
+  {% if settings.enable_multilang %}
+    <div class="rte lang1">{{ page.content | split: '[lang2]' | first }}
+    </div>
+    <div class="rte lang2">{{ page.content | split: '[lang2]' | last }}
+    </div>
+  {% else %}
+    <div class="rte">{{ page.content | split: '[lang2]' | first }}
+    </div>
+  {% endif %}
+
+  {{ 'storelocator.css' | asset_url | stylesheet_tag }}
+
+  <div class="clearfix"></div>
+
+  <div class="rte static-page locatorstore-panel">
+    <h2>locate your nearest store</h2>
+    <p>Kindly enter your location to find the stores closest to you</p>
+
+    <div class="mappp">
+      <div class="address_location">
+        <div id="panel" class="locator_panell"></div>
+        <div id="map-canvas"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCRxQtjXpXHAo67O9i4juuGoOwNYSyegKs" type="text/javascript"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> -->
+{{ 'store-locator-binaryic.js' | asset_url | script_tag }}
+<style>
+  .container {
+    padding: 0;
+  }
+  .locatorstore-panel h2 {
+    padding: 40px 0 0 65px;
+    color: var(--bg_color2);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: fit-content;
+    font-size: 40px;
+  }
+  .locatorstore-panel p {
+    padding: 25px 0 0 65px;
+    font-weight: 500;
+  }
+  .locator_panell .title {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 15px 0 0 60px;
+    color: var(--bg_color2);
+    background-image: url('https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Location_1.png?v=1659420256');
+    background-repeat: no-repeat;
+    background-position: 30px;
+    background-position-y: 15px;
+  }
+  .address_location {
+    width: 90%;
+    margin: 0 auto;
+    padding: 35px 0 70px;
+  }
+  .locator_panell {
+    margin: 0 25px;
+    background-color: transparent;
+    border: none;
+  }
+  .locator_panell .location-search input {
+    border: 1px solid var(--bg_color2);
+    margin: 0;
+    padding: 0 15px 0 30px;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 16px;
+  }
+  .locator_panell .location-search {
+    padding: 0 5px;
+  }
+  .locatorstore-panel {
+    border: 1px solid #eee;
+    overflow: auto;
+    background: url('https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Background_image.jpg?v=1659419341') no-repeat;
+  }
+  .locator_panell .location-search h4 {
+    display: none;
+  }
+  #panel {
+    float: right;
+    margin-right: 0;
+  }
+  .location_search .store-list li.highlighted,
+  .locator_panell .store-list li.highlighted:hover {
+    background: #F6F8FA;
+  }
+  .locatorstore-panel .store-list li.highlighted,
+  .locator_panell .store-list li.highlighted:hover {
+    background: #F6F8FA;
+  }
+  .locator_panell .store-list li.store:hover {
+    cursor: pointer;
+    background: #F6F8FA;
+  }
+  .store .address,
+  .store .phone,
+  .store .web,
+  .store .misc {
+    font-size: 14px;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+    display: block;
+    line-height: 20px;
+    font-weight: 500;
+    padding-left: 60px;
+  }
+  .location-search input {
+    text-transform: none;
+    color: var(--bg_color2);
+  }
+  .layout--main-content {
+    overflow: unset !important;
+  }
+  .storelocator-panel .store-list {
+    margin: 0;
+    padding: 10px 30px 0 0;
+  }
+  .storelocator-panel .store-list li {
+    padding: 5px 0;
+  }
+  .pac-container {
+    border-top: none;
+  }
+  @media only screen and (min-width: 1600px) {
+    .locatorstore-panel p {
+      padding: 25px 0 0 80px;
+    }
+    .locatorstore-panel h2 {
+      padding: 40px 0 0 80px;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .locatorstore-panel h2 {
+      font-size: 23px;
+      padding: 40px 4% 0;
+      width: 100%;
+    }
+    .locatorstore-panel p {
+      padding: 20px 4% 0;
+    }
+    .address_location {
+      padding: 15px 0 70px;
+    }
+    .locator_panell .location-search input {
+      width: 95%;
+    }
+    .locator_panell .location-search {
+      padding: 0;
+    }
+    .locator_panell .title {
+      background-position: 0;
+      padding: 5px 0 0 30px;
+      margin: 0
+    }
+    .store .address,
+    .store .phone,
+    .store .web,
+    .store .misc {
+      padding-left: 30px;
+    }
+    #map-canvas {
+      top: 20px;
+      width: 100% !important;
+    }
+    .rte li,
+    [data-item="rte-content"] li {
+      margin: 0;
+    }
+    .storelocator-panel .store-list {
+      padding: 46px 10px 0 0 !important;
+    }
+  }
+</style>

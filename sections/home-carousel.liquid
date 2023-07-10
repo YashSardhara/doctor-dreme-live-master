@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="column js">    
+	<div class="home-slider">
+       {% for media in product.media %}
+          {% assign img_url_full = media | img_url: 'master' %}
+         <img class="lazyautosizes lazyloaded" src="{{img_url_full}}" data-sizes="auto" data-widths="[295,394,590]" alt="{{media.alt}}" data-srcset="{{img_url_full}}">
+    	{% endfor %}
+     </div>
+  
+  </div>
+</div>
+
+<style>
+ 
+.js .slider-single > div:nth-child(1n+2) { display: none }
+
+.js .slider-single.slick-initialized > div:nth-child(1n+2) { display: block }
+
+.slider-nav .slick-slide { cursor: pointer; }
+
+</style>

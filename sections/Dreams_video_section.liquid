@@ -1,0 +1,53 @@
+{% comment %} <div class="dreams_video_container">
+  <a id="video_cover" href="#">
+    <img class="deskvideo_cover" src="{{ section.settings.deskvideo_cover | img_url: 'master' }}"/>
+    <img class="mobilevideo_cover" src="{{ section.settings.mobilevideo_cover | img_url: 'master' }}"/>
+  </a>
+  <iframe id="dream_video" src="https://www.youtube.com/embed/{{ section.settings.iframe_vd.id }}?enablejsapi=1&showinfo=0&rel=0&mute=1&autohide=1&controls=1&mute=1&loop=0&autopause=0&modestbranding=1" allow="encrypted-media" frameborder="0"></iframe>
+  <button id="play_btn">
+    <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/play_button.svg?v=1665645975" alt="">
+  </button>
+</div> {% endcomment %}
+
+
+{% schema %}
+  {
+    "name": "Dream Video Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "deskvideo_cover",
+        "label": "Desktop Video Cover"
+      }, {
+        "type": "image_picker",
+        "id": "mobilevideo_cover",
+        "label": "Mobile Video Cover"
+      }, {
+        "type": "video_url",
+        "id": "iframe_vd",
+        "label": "First Video link",
+        "accept": [
+          "youtube", "vimeo"
+        ],
+        "info": "Supports Youtube and Vimeo"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Dream Video Section"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script>
+  $(document).ready(function() {
+    $('#play_btn').click(function() {
+      $("#dream_video")[0].src += "?autoplay=1";
+      $('#dream_video').show();
+      $('#video_cover').hide();
+      $('#play_btn').hide();
+    });
+  });
+</script>

@@ -1,0 +1,325 @@
+
+<div class="container">
+  <h1 class="home_introduction_heading">Let’s Make life beautiful with @home</h1>
+  <p class="retail_division_paragraph">Launched in the year 2005, @home is a retail division of Nilkamal Limited. @home’ is spread across 19 cities with 26 large format retail stores offering a perfect one-stop solution for
+home makeover with finest quality furniture, soft furnishings & home accessories that helps make life beautiful. The designs at ‘@home’ are contemporary yet practical, reflecting Indian
+tastes & requirements. @home offers you an unparalleled plethora of services like professional guidance in buying the right products, loan options, convenient home delivery and
+installation are other value added services.</p>
+  <h4 class="launched_the_franchisee">@home launched the Franchisee Program in 2018 and today operates Franchisee Stores across cities like Bengaluru, Thrissur, Madurai, Hassan, Indore, Lucknow, etc.</h4>
+</div>
+{% form 'contact' %}
+        <input type="hidden" value="https://www.valenciaonline.in/pages/about-valencia">
+        {% comment %}
+            Successful message
+            {% endcomment %}
+
+            {% if form.posted_successfully? %}
+         {% comment %}
+            <p class="note form-success" {% if settings.enable_multilang %}data-translate="contact.form.post_success"{% endif %}>
+              {{ 'contact.form.post_success' | t }}
+              {% endcomment %}
+              
+            </p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+   {% endform %}
+<form id='franchise'>
+<div class="home_form_row" id="home-form-row">
+  <div class="container">
+    <div class="row bgcololr-contact-form">
+      <div class="col-md-7" id="Get_in_Touch">
+        <h1 class="Get_in_Touch_heading">Get in Touch</h1>
+        
+        <hr class="home_form_row_hr">
+        <div id="thank_you" class="thank_you_form center">
+              <h3>Thank You</h3>
+              <p>Your submission is received and we will contact you soon.</p>
+            </div>
+        <div id="fran_form">
+        <div class="row">
+          <div class="col-md-6">
+        		<div class="form-group">
+                  <input type="text" name="fullname" id="contactFormFullName" autocorrect="off" autocapitalize="off" placeholder="Full Name" required>
+                	<span id="fullname_error" class="fullname_error err"></span>
+            	</div>
+          </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                  <input type="number" id="address_phone_no" class="address_phone_no" name="phoneno" value="{{form.phone}}" placeholder="Mobile no." pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required>
+            		<span id="phoneno_error" class="phoneno_error err"></span>    
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+        		<div class="form-group">
+                  <input type="email" name="email" id="contactFormEmail" autocorrect="off" autocapitalize="off" placeholder="Email Id" required>
+                	<span id="email_error" class="email_error err"></span>
+            	</div>
+          </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                  <input type="number" id="address_phone_no" class="address_phone_no" name="alter_phoneno" value="{{form.phone}}" placeholder="Alternate Contact no." pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;">
+            	<span id="alter_phoneno_error" class="alter_phoneno_error err"></span>    
+            </div>
+          </div>
+      </div>
+        
+      <div class="row">
+          <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="city" id="contactFormcity_name" autocorrect="off" autocapitalize="off" placeholder="Enter Location Preference" required>
+            	<span id="city_error" class="city_error err"></span>      
+            </div>
+          </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="turnover" id="contactFormcurrent_turnover" autocorrect="off" autocapitalize="off" placeholder="Brief on current turnover" required>
+            	<span id="turnover_error" class="turnover_error err"></span>    
+            </div>
+          </div>
+      </div>
+      
+    <div class="row">
+          <div class="col-md-6">
+                <div class="form-group">
+                   <select name="state_name" id="state_name" >
+                            <option value="">Select State</option>
+                   </select>
+              <span id="state_name_error" class="state_name_error err"></span>    
+               </div>
+          </div>
+          <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="city_name" id="city_name"  maxlength="50" autocorrect="off" autocapitalize="off" placeholder="Enter City Name" required>
+              <span id="city_name_error" class="city_name_error err"></span>    
+            </div>
+          </div>
+     </div>     
+        
+      <div class="row">
+          <div class="col-md-6">
+            <div class="form-radio-label">
+            <p class="any_franchise">Do you own any franchisee</p>
+            
+    			<div class="form-check-inline">
+      			<label class="form-check-label" for="radio1">
+        			<input type="radio" class="form-check-input" id="radio1" name="franchisee" value="Yes" checked>Yes
+      			</label>
+    			</div>
+    			<div class="form-check-inline">
+      			<label class="form-check-label" for="radio2">
+        			<input type="radio" class="form-check-input" id="radio2" name="franchisee" value="No">No
+      			</label>
+    			</div>
+            </div>
+    
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+            <div class="form-radio-label">
+            <p class="any_franchise">Do you own a retail space</p>
+            
+    			<div class="form-check-inline">
+      			<label class="form-check-label" for="radio1">
+        			<input type="radio" class="form-check-input" id="radio3" name="reatil_space" value="Yes" checked>Yes
+      			</label>
+    			</div>
+    			<div class="form-check-inline">
+      			<label class="form-check-label" for="radio2">
+        			<input type="radio" class="form-check-input" id="radio4" name="reatil_space" value="No">No
+      			</label>
+    			</div>
+            </div>
+            </div>
+          </div>
+      </div>
+        
+        <div class="row">
+          <div class="col-md-10">
+        		<div class="form-group">
+                  <textarea type="text" id="Suggestions" name="suggestion" rows="4" value=""  placeholder="Suggestions/ Any other details
+"></textarea>
+                </div>
+          </div>
+          <div class="col-md-2">
+                <div class="form-group">
+                  <input type="submit" class="btn btn-Send" id="franchise_submit" value="Send" required>
+                </div>
+          </div>
+      </div>
+      </div>
+      </div>
+       
+      <div class="col-md-5 Affiliation_Benefits">
+        <h1 class="Affiliation_Benefits_heading">Affiliation Benefits</h1>
+        
+        <hr class="home_form_row_hr">
+        
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form_warehouse_image_desc">
+                  <img class="warehouse_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/Capture.PNG?v=1608033219">
+                  <p class="warehouse_para">27,871 sq. m. (3 lakh sq. ft.) central state-of-the-art warehouse on automation mode</p>
+            </div>
+          </div>
+          <div class="col-md-5">
+                <div class="form_warehouse_image_desc">
+                  <img class="trusted_brand_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/thumb.PNG?v=1608036473">
+                  <p class="warehouse_para">Associate with Nilkamal, India's trusted brand</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form_warehouse_image_desc">
+                  <img class="supply_chain_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/share.PNG?v=1608037088">
+                  <p class="warehouse_para">Supply chain management</p>
+            </div>
+          </div>
+          <div class="col-md-5">
+                <div class="form_warehouse_image_desc">
+                  <img class="zero_stock_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/meter.PNG?v=1608037088">
+                  <p class="warehouse_para">Zero stock risk</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form_warehouse_image_desc">
+                  <img class="business_intelligence_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/business.PNG?v=1608037393">
+                  <p class="warehouse_para">Complete business intelligence support</p>
+            </div>
+          </div>
+          <div class="col-md-5">
+                <div class="form_warehouse_image_desc">
+                  <img class="Margin_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/database.PNG?v=1608037393">
+                  <p class="warehouse_para">25% Margin</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form_warehouse_image_desc">
+                  <img class="Global_standard_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/globe.PNG?v=1608037576">
+                  <p class="warehouse_para">Global standard store experience</p>
+            </div>
+          </div>
+          <div class="col-md-5">
+                <div class="form_warehouse_image_desc">
+                  <img class="customer_base_image" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/people.PNG?v=1608037576">
+                  <p class="warehouse_para">11+ Million customer base</p>
+            </div>
+          </div>
+        </div>
+        
+        <h1 class="Store_Requirements_heading">Store Requirements</h1>
+        
+        <hr class="home_form_row_hr">
+        
+        <p><b>Location Preferred:</b> High Street / Mall</p>
+        <p><b>Space Needed:</b> 232 sq. m. (2500 sq. ft.) to 743 sq. m. (8000 sq. ft.)</p>
+        
+      </div>
+    </div>
+    
+    <img class="franchise_bottom_banner" src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/bottom_banner.PNG?v=1608050978">
+  </div>
+</div>
+</form>
+
+
+<div class="form_franchise_btn">
+<a href="#home-form-row"><button class="franchise_btn_btn-form">Enquire Now</button></a>
+</div>
+
+
+{% schema %}
+  {
+    "name": "franchise form",
+    "settings": []
+  }
+{% endschema %}
+
+{% style %}
+{% endstyle %}
+
+{% javascript %}
+{% endjavascript %}
+
+<script>
+  
+  function getState()
+  {
+      $.ajax({
+        url: "https://middleware.nilkamal.com/api/franchisee/get-state",
+        type: 'get',
+        dataType: 'json',
+        beforeSend:function(){
+          $("#state_name").val('');
+        },
+        success : function(resp)
+        { 
+          $.each(resp.data,function(index,value){
+             $("#state_name").append('<option value='+index+'>'+value+'</option>')   
+          })
+          
+        },
+        error: function (data) {
+         
+        },
+     });
+  }
+  $(document).ready(function() {
+    $('#thank_you').css('display','none');
+  });
+	$('#franchise_submit').click(function(e) {
+      e.preventDefault();
+      $('.err').html('');
+      var form = $('#franchise');
+      $.ajax({
+        url: "https://middleware.nilkamal.com/api/franchisee",
+        type: 'POST',
+        data: form.serialize(),
+        dataType: 'json',
+        beforeSend:function(){
+          $('#franchise_submit').attr('disabled',true);
+          $('#franchise_submit').html('Please wait...');
+        },
+        success : function(resp)
+        { 
+          $('#fran_form').css('display','none');
+          $('#thank_you').css('display','block');
+        },
+        error: function (data) {
+          $('#franchise_submit').attr('disabled',false);
+          $('#franchise_submit').html('Send');
+          var errr = data.responseJSON[0];
+          $.each(errr, function(k,v){
+            $('.'+k+'_error').text(v).css('color','red');
+          });
+        },
+      });
+  	});
+  getState();
+  </script>
+  <!-- Global site tag (gtag.js) - Google Ads: 708051458 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-708051458"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-708051458');
+</script>
+
+<!-- Event snippet for Submit lead form - Franchise conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-708051458/I7aCCJWYqqEDEIKE0NEC'});
+</script>

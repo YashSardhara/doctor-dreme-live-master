@@ -1,0 +1,157 @@
+<div class="image_and_text_container">
+  <div class="image_container">
+    <a href="{{ block.settings.url }}">
+      <img class="desk_img1" src="{{ section.settings.about_us_desk_image | img_url: ' ' }}">
+      <img class="mob_img1" src="{{ section.settings.about_us_mob_image | img_url: ' ' }}">
+    </a>
+  </div>
+  <div class="text_container">
+    <h1 class="head">{{section.settings.about_us_heading}}
+    </h1>
+    <p class="container_sub_heading">{{section.settings.sub_heading}}
+    </p>
+    <div class="text_container_description">{{section.settings.description}}
+    </div>
+  </div>
+</div>
+
+<style>
+  div#shopify-section-template--15684690378928__1657604203bb055f7a {
+    background: #fff;
+  }
+  .image_and_text_container {
+    display: flex;
+    align-items: center;
+    /* margin: 0 100px; */
+    max-width: 100%;
+  }
+  .image_container {
+    width: 100%;
+    flex: 100%;
+  }
+  .container_sub_heading {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  .text_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+    /* margin-left: 50px; */
+    padding: 10px 95px 10px 50px;
+  }
+  .desk_img1 {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .mob_img1 {
+    display: none;
+  }
+  .head {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #1d4782;
+    font-weight: 500;
+    font-family: var(--heading_new_f);
+    text-transform: uppercase;
+  }
+  @media only screen and (max-width:800px) {
+    .image_and_text_container {
+      align-items: center;
+      flex-direction: column-reverse;
+      width: 100%;
+      margin: 0;
+    }
+    .text_container {
+      margin: 30px 0 0;
+      padding: 20px 16px;
+    }
+    .mob_img1 {
+      display: block;
+    }
+    .desk_img1 {
+      display: none;
+    }
+    .head {
+      font-size: 23px;
+    }
+
+  }
+  @media only screen and (min-width:801px) and(max-width:980px) {
+    .image_and_text_container {
+      margin: 0 50px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "image_and_text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "about_us_heading",
+        "default": "Type heading here",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "sub_heading",
+        "label": "Sub Heading"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "about_us_desk_image",
+        "label": "Desktop_Image"
+      }, {
+        "type": "image_picker",
+        "id": "about_us_mob_image",
+        "label": "Mobile_Image"
+      }, {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      }, {
+        "id": "about_us_text-position",
+        "label": "Text Position",
+        "type": "select",
+        "options": [
+          {
+            "label": "Top",
+            "value": "top"
+          },
+          {
+            "label": "Bottom",
+            "value": "bottom"
+          },
+          {
+            "label": "Left",
+            "value": "left"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          }, {
+            "label": "Right",
+            "value": "right"
+          }
+        ],
+        "default": "center"
+      }
+    ],
+    "presets": [
+      {
+        "name": "image_and_text",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}}}

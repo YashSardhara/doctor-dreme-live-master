@@ -1,0 +1,116 @@
+{% comment %} <div class="snooze_zone_container">
+  <div class="bannerdesk_banner">{{ section.settings.bgdesk_img | img_url: 'master' | img_tag }}
+  </div>
+  <div class="bannermobile_banner">{{ section.settings.bgmobile_img | img_url: 'master' | img_tag }}
+  </div>
+  <div class="snooze_wrapper">
+    <h2 class="common_heading snooze_head">snooze zone</h2>
+    <p class="snooze_contents">Relaxing soundscapes help you sleep.</p>
+    <div class="snooze_tabs">
+      <ul class="snooze_tab">
+        <li class="active">Sleep Music</li>
+        <li>Sleep Stories</li>
+        <li>Journal</li>
+        <li>ICEFOAM</li>
+      </ul>
+    </div>
+
+    <div class="snooze_content">
+      <div class="tab_wrap">
+        <div class="snooze_img">
+          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/play_img.jpg?v=1658215686" alt="">
+          <div class="audio-player">
+            <audio class="audio_snooze" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Sleep_1_FINAL.mp3?8290" type="audio/mp3" controls="controls"  controlsList="nodownload" id="audio_snooze"></audio>
+          </div>
+        </div>
+        <div class="snooze_explore">
+          <div class="snooze_desc">
+            <div class="play_snooze">
+              <img class="play_btn" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/play_button_without_stroke.svg?v=1665646876" alt="">
+              <span>
+                <h2>Meraki</h2>
+                <p>Hymnal sounds accompanied by the murmurings of a flowing stream.</p>
+                <a class="explore_btn explore_morebtn" href="https://doctordreams.com/pages/sleep-music">Explore More</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab_wrap">
+        <div class="snooze_img">
+          <a id="snooze_video_cover" href="#">
+            <img class="snooze_video_cover" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/2_1_40078a11-9152-4d58-b4ee-62b99a18c031.jpg?v=1659608342"/>
+          </a>
+<!--           <iframe id="snooze_dream_video" src="https://www.youtube.com/embed/2FzXlOOpzZY?enablejsapi=1&showinfo=0&rel=0&mute=1&autohide=1&controls=1&mute=1&loop=0&autopause=0&modestbranding=1" allow="encrypted-media" frameborder="0"></iframe> -->
+          <button id="snooze_play_btn">
+            <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/03.png?v=1659434342" alt="">
+          </button>
+        </div>
+        <div class="snooze_explore">
+          <a class="play_snooze"></a>
+          <div class="snooze_desc">
+            <h2>Alison in Borneo</h2>
+            <p>Our Second Sleep Story transports you to the Borneo rainforest. So come aboard on an enchanted journey to calm your senses.</p>
+            <a class="explore_btn" href="https://doctordreams.com/pages/sleep-stories-new">Explore More</a>
+          </div>
+        </div>
+      </div>
+      <div class="tab_wrap">
+        <div class="journal_container">
+          <div class="journal_contain">
+            <a class="journal_tab" href="https://doctordreams.com/blogs/blog/reasons-why-better-sleep-is-essential-for-stronger-immunity"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/blog_1_30d1040f-f7a6-4224-a634-89cd9a0fe8e3.jpg?v=1668773130" alt=""></a>
+            <p>Reasons Why Better Sleep is Essential for Stronger Immunity</p>
+          </div>
+          <div class="journal_contain">
+            <a class="journal_tab" href="https://doctordreams.com/blogs/blog/memory-foam-mattress-vs-hybrid-mattresses-which-is-better-and-how-to-choose"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/blog_2_796f61b7-f0cf-4351-bc63-f4b37cce5cd3.jpg?v=1668773130" alt=""></a>
+            <p>Memory Foam vs Spring Mattress. Which is better?</p>
+          </div>
+          <div class="journal_contain">
+            <a class="journal_tab" href="https://doctordreams.com/blogs/blog/japanese-work-napping-ritual-inemuri"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/blog_3.jpg?v=1668773130" alt=""></a>
+            <p>Japanese Work Napping Ritual<br>-Inemuri</p>
+          </div>
+        </div>
+        <a class="explore_btn journal_btn" href="https://doctordreams.com/blogs/blog">Explore More</a>
+      </div>
+      <div class="tab_wrap">
+        <div class="snooze_img">
+          <img class="icefoam_img" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/1_1.jpg?v=1659608342" alt="">
+        </div>
+        <div class="snooze_explore">
+          <a class="play_snooze"></a>
+          <div class="snooze_desc">
+            <h2>Live the ICEFOAM<sup>TM</sup>
+              life</h2>
+            <p>ICEFOAM<sup>TM</sup>
+              is a cutting-edge foam technology that allows maximum breathability by
+                                                                                                                                                                                                                                                                                                      dissipating heat and maisture.</p>
+            <a class="explore_btn" href="https://doctordreams.com/pages/icefoam-new">Explore More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+
+{% schema %}
+  {
+    "name": "Snooze Zone Section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bgdesk_img",
+        "label": "Background Desk Image"
+      }, {
+        "type": "image_picker",
+        "id": "bgmobile_img",
+        "label": "Background Mobile Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Snooze Zone Section"
+      }
+    ]
+  }
+{% endschema %}

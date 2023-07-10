@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "blog",
+      "settings": {
+        "show-title": true,
+        "show-date": false,
+        "show-tag-filter": false,
+        "show-author": false,
+        "show-excerpt": true,
+        "show-rss": false,
+        "columns": 3,
+        "show-featured": false,
+        "tag": "featured",
+        "image-height": "medium",
+        "alt-color": true,
+        "parallax-enabled": false,
+        "apply-overlay": false,
+        "menu-title": "",
+        "menu": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

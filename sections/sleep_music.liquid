@@ -1,0 +1,147 @@
+<section class="music_section_page">
+  <div class="music_deskbg">
+    <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Sleep_Desktop.jpg?v=1665555978" alt="sleep_desktop">
+  </div>
+  <div class="music_mobilebg">
+    <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Sleep_Mobile.jpg?v=1665555977" alt="sleep_mobile">
+  </div>
+  <div class="container sleepplay_container">
+  <div class="sleep_left_play">
+  <h2 class="music_head">Sleep Music</h2>
+          <div class="img-data">
+            <div class="audio-img">
+              <img src="https://cdn.shopify.com/s/files/1/0404/6503/9515/files/play_img.jpg?v=1592482333" alt="play_img">
+              <div class="audio-player">
+                <audio id="audio-player"
+                  src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Sleep_1_FINAL.mp3?8290" alt="sleep_final" type="audio/mp3"
+                  controls="controls" autoplay="yes" controlsList="nodownload"></audio>
+              </div>
+              </div>
+            <div class="audio-current-list">
+              <div class="sleep_left_box">
+                <h2>Meraki</h2>
+                <p>Hymnal sounds accompanied by the murmurings of a flowing stream.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sleep_right_play">
+          <h2 class="playing_next">Playing Next</h2>
+          {% for block in section.blocks %}
+          <div class="player_details" data-id="audio-{{ forloop.index }}" data-audio-url="{{ block.settings.music }}"
+            data-audio-title="{{ block.settings.heading }}" data-audio-sub_heading="{{ block.settings.sub_heading }}">
+            <div class="play-pause-image">
+                <img class="play-icon" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/play_button_without_stroke.svg?v=1665646876" alt="play_icon">
+              <img class="pause-icon"
+                src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/pause.svg?v=1665647200" alt="pause_icon">
+            </div>
+            <div class="audio_details">
+              <h2>{{ block.settings.heading }}</h2>
+              <p>{{ block.settings.sub_heading }}</p>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</section>
+
+{{ 'mediaelement-and-player.min.js' | asset_url | script_tag }}
+
+<script type="text/javascript">
+  $(function () {
+    $('#audio-player').mediaelementplayer({
+      alwaysShowControls: true,
+      features: ['playpause', 'progress'],
+      audioVolume: 'horizontal',
+      audioWidth: 600,
+      audioHeight: 70,
+      iPadUseNativeControls: true,
+      iPhoneUseNativeControls: true,
+      AndroidUseNativeControls: true
+    });
+    $(".player_details").on("click", function () {
+      var audioURL = $(this).attr("data-audio-url");
+      var audioTitle = $(this).attr("data-audio-title");
+      var audiosubdes = $(this).attr("data-audio-sub_heading")
+      var playButton = $(this).find(".play-icon")
+      var plauseButton = $(this).find(".pause-icon")
+      //var audio = document.getElementById(audioId);
+      $(".play-icon").each(function () {
+        $(this).show();
+      });
+      $(".pause-icon").each(function () {
+        $(this).hide();
+      });
+
+      $(".audio-current-list h2").html(audioTitle);
+      $(".audio-current-list p").html(audiosubdes);
+      $(".audio-player audio").attr('src', audioURL);
+      $(".audio-player audio").autoplay = true;
+      //$(".audio-player audio").pause();
+      $(".audio-player audio").load(); //suspends and restores all audio element
+      // $(".audio-player audio").oncanplaythrough = $(".audio-player audio").play();
+      $(this).find(".play-icon").hide();
+      $(this).find(".pause-icon").show();
+    });
+  });
+</script>
+
+{% schema %}
+{
+"name": "Music player",
+"settings": [
+
+],
+"blocks": [
+{
+"type": "music",
+"name": "Music",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label" : "Music Image"
+},
+{
+"type" : "text",
+"id" : "heading",
+"label" : "Heading"
+},
+{
+"type" : "text",
+"id" : "sub_heading",
+"label" : "Sub Heading"
+},
+{
+"type" : "text",
+"id" : "music",
+"label" : "Music url"
+}
+]
+}
+
+],
+"presets": [
+{
+"name": "Custom Block: Spotlight 1",
+"category": "Advanced layout",
+"blocks": [
+{
+"type": "music"
+},
+{
+"type": "music"
+},
+{
+"type": "music"
+}
+]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+

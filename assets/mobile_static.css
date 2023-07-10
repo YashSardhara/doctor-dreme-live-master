@@ -1,0 +1,414 @@
+/* 100 night free trail css start */
+@media screen and (max-width: 767px) {
+    .terms_heading {
+
+        max-width: 98%;
+        padding: 0;
+
+    }
+
+    button.accordion {
+        font-size: 16px;
+        max-width: 90%;
+        line-height: 19px;
+        margin: 0 20px;
+    }
+
+    .terms_heading ul {
+
+        max-width: 100%;
+        padding: 10px 0px 0 35px;
+        margin: 0;
+    }
+
+    .terms_heading li {
+        padding: 10px 10px 0;
+        font-size: 17px;
+    }
+
+    .accordion:after {
+
+        margin: 0 10px 0 0;
+    }
+
+    /* 100 night free trail css end */
+
+
+    /*  start faq new css*/
+
+    .terms_heading1 {
+
+        width: 95%;
+        padding: 0;
+        margin:0 auto;
+
+    }
+
+    button.accordion1 {
+        font-size: 16px !important;
+        width: 100%;
+        padding: 0 10px;
+        border-radius: 5px;
+        line-height: 18px;
+        border-color: #DBDBDB;
+        min-height:fit-content;
+        height:fit-content;
+    }
+
+    .panel p {
+        font-size: 16px;
+        border-bottom: solid 1px;
+        border-right: solid 1px;
+        border-left: solid 1px;
+        border-color: #DBDBDB;
+        padding: 15px 10px;
+        line-height: 22px;
+    }
+
+    .panel {
+        padding: 0 2px;
+    }
+    .accordion1 p{
+        font-size: 16px;
+        text-align: left;
+        width: 83%;
+          padding:10px 20px;
+        
+    }
+
+    .accordion1:after{
+        width: 30px;
+        height: 30px;
+        filter: opacity(0.5) brightness(0.5);
+    }
+
+    .accordion1.active:after{
+        width: 30px;
+        height: 30px;
+    }
+
+    /*  end faq new css*/
+
+    /* start size guide css */
+    span.d_flex.heading_div.size_guide_head {
+        padding: 50px 4% 0;
+        text-align: left;
+    }
+
+    .size_guide_head .subheading_text {
+        padding: 10px 0;
+    }
+
+    .size_guide_head p {
+        padding: 10px 0;
+    }
+
+    .size_guide_blocks_container {
+        flex-direction: column;
+        padding: 0 8% 30px;
+        align-items: center;
+    }
+
+    .size_guide_blocks {
+        margin: 20px;
+    }
+
+    p.card_body_btn.s_g_btn {
+        line-height: 37px;
+    }
+
+    /* end size guide css */
+
+    /*start judge me revies all page css  */
+    .jdgm-histogram .jdgm-star {
+        font-size: 13px !important;
+    }
+
+    .jdgm-histogram__row .jdgm-histogram__bar {
+        width: 175px;
+        margin: 0 5px 0 11px;
+    }
+
+    .jdgm-histogram__percentage,
+    .jdgm-histogram__frequency {
+        font-size: 12px;
+    }
+
+    .jdgm-subtab,
+    .jdgm-all-reviews__body,
+    .jdgm-shop-reviews__body {
+        margin: 0 !important;
+    }
+
+    .jdgm-rev__icon {
+        display: none;
+    }
+
+    .jdgm-all-reviews__header {
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .jdgm-widget-actions-wrapper {
+        width: 45% !important;
+    }
+
+    /* .jdgm-widget-actions-wrapper {
+        position: absolute;
+        bottom: -17px;
+        width: 165px !important;
+        height: 40px;
+        left: 1%;
+        margin: 0 !important;
+    } */
+
+    .jdgm-sort-dropdown-wrapper select.jdgm-sort-dropdown {
+        padding: 3px 20px;
+        height: 38px;
+        width: 171px;
+        font-size: 12px;
+    }
+
+    a.jdgm-write-rev-link {
+        font-size: 12px;
+        margin-bottom: 0 !important;
+        padding: 10px 0;
+    }
+
+    .jdgm-histogram.jdgm-temp-hidden {
+        margin-bottom: 30px;
+    }
+
+    .jdgm-sort-dropdown-wrapper {
+        right: 1%;
+        position: absolute!important;
+        bottom: 0px;
+    }
+
+    .jdgm-histogram .jdgm-histogram__row {
+        height: 18px;
+        line-height: 18px;
+        margin-bottom: 12px;
+    }
+
+    .jdgm-subtab {
+        margin: 35px 0 0 0 !important;
+    }
+
+    b.jdgm-rev__title {
+        font-size: 20px !important;
+    }
+
+    .jdgm-rev__body p {
+        font-size: 18px;
+    }
+
+    span.jdgm-rev__author {
+        font-size: 14px;
+    }
+
+    span.jdgm-rev__author {
+        bottom: 5%;
+    }
+
+    span.jdgm-rev__timestamp {
+        position: absolute;
+        margin: 0 !important;
+        left: 80% !important;
+        font-size: 12px;
+    }
+
+    span.jdgm-star.jdgm--on {
+        font-size: 14px;
+    }
+
+    .jdgm-rev__vids {
+        top: -24px;
+    }
+    .jdgm-star.jdgm--off:before {
+             font-size: 13px !important;
+    }
+    .jdgm-form-wrapper {
+        margin-left: 0 !important;
+    }
+    span.jdgm-form__reviewer-name-format-container {
+        display: none !important;
+    }
+    .jdgm-form__name-fieldset {
+        margin: 10px auto;
+    }
+    .jdgm-widget input:not([type='submit']) {
+        width: 100%;
+        min-height: 2em;
+        margin: 0;
+        border: 0 !important;
+    }
+    .jdgm-widget textarea {
+        width: 100%;
+        border: 0 !important;
+    }
+    input.jdgm-submit-rev.btn.btn_c.button {
+        font-size: 12px;
+    padding: 9px 30px;
+    font-family: League Spartan;
+    font-weight: 400;
+    height: 38px;
+  }
+  .jdgm-form-wrapper {
+    margin: 20px 0 !important;
+}
+form.jdgm-form {
+    padding: 50px 15px;
+}
+
+    /* end judge me revies all page css */
+/* privacy policy and warrenty-returns static pages css start */
+ .static-section_pages{
+          width: 100%;
+        }
+        span.d_flex.heading_div.privacy_policy_head {
+          padding: 30px 0 20px ;
+        }
+        .privacy_p_div{
+          flex-direction: column;
+          margin-bottom: 0px;
+        }
+        .intro{
+          font-size: 25px;
+          padding: 20px 0;
+        }
+        .intro_para p {
+          line-height: 24px !important;
+        }
+      /* privacy policy and warrenty-returns static pages css end */
+
+           
+}
+
+@media screen and (max-width:1200px) and (min-width:768px) {
+
+    span.d_flex.heading_div.size_guide_head {
+        text-align: left;
+    }
+
+    .size_guide_head.heading_text {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .size_guide_head .subheading_text {
+        max-width: 100%;
+    }
+
+    .size_guide_blocks_container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .size_guide_blocks {
+        margin: 15px 10px;
+    }
+
+
+    /* 100 night free trail css start */
+
+    .terms_heading {
+
+        max-width: 98%;
+        padding: 0;
+    }
+
+    button.accordion {
+        font-size: 20px;
+        max-width: 100%;
+        line-height: 19px;
+    }
+
+    .terms_heading ol {
+        max-width: 100%;
+        padding: 20px 0px 0 10px;
+        margin: 0;
+    }
+
+    .terms_heading li {
+        padding: 10px 10px 0;
+        font-size: 17px;
+    }
+
+    .accordion:after {
+
+        margin: 0 10px 0 0;
+    }
+
+    /* 100 night free trail css end */
+
+
+    /*  start faq new css*/
+
+    .terms_heading1 {
+        width: 95%;
+        padding: 0;
+
+    }
+
+    button.accordion1 {
+        font-size: 16px;
+        width: 100%;
+        padding: 0 10px;
+        border-radius: 5px;
+        line-height: 18px;
+    }
+
+    .accordion1 p {
+        line-height: 18px;
+        width: 92%;
+        margin-left: 14px;
+    }
+
+    .panel p {
+        font-size: 16px;
+        border-bottom: solid 1px;
+        border-right: solid 1px;
+        border-left: solid 1px;
+        border-color: #dbdbdb;
+        padding: 15px 10px;
+    }
+
+    .panel {
+        padding: 0 2px;
+    }
+
+    /*  end faq new css*/
+
+    /* start jdme review all pages css */
+    .jdgm-subtab {
+        margin-left: 0% !important;
+        justify-content: center;
+    }
+
+    .jdgm-all-reviews__body,
+    .jdgm-form-wrapper,
+    .jdgm-shop-reviews__body {
+        margin-left: 0% !important;
+        height: 100%;
+    }
+    
+    /* end  jdme review all pages css*/
+/* privacy policy and warrenty-returns static pages css start */
+
+ .static-section_pages{
+        width: 100%;
+      }
+      div#shopify-section-privacy_policy {
+        padding: 0 4%;
+    }
+      .intro {
+        font-size: 35px;
+      }
+      .intro_para {
+        flex: 55%;
+    }
+  /* privacy policy and warrenty-returns static pages css end */
+
+
+}

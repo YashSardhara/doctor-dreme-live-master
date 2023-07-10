@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 1,
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    },
+    "16588332180ff95341": {
+      "type": "icefoam_header_baneer_with_text",
+      "settings": {
+        "about_us_heading": "live the ICEFOAM® life",
+        "sub_heading": "",
+        "about_us_desk_image": "shopify:\/\/shop_images\/main_banner_4c30b98d-974c-4578-82e7-b2b0ce479d04.jpg",
+        "about_us_mob_image": "shopify:\/\/shop_images\/main_banner_d86634f6-efba-44ab-a115-592920c1b542.jpg",
+        "url": "",
+        "overlap": false
+      }
+    },
+    "1658835520c16c5383": {
+      "type": "icefoam_rich_text",
+      "settings": {
+        "ice_foam_heading": "what is an ICEFOAM®?",
+        "para-text": "<p>ICEFOAM® is cutting-edge foam technology that allows maximum breathability by disipating heat and moisture. This Treadmarked technlogy promotes airflow, cools the temprature and improves brathability. it has three-level temprature control system that regulates heat foam your body, mattress, and surroundings. The foam controls temprature to relax you with a cooling sensation that facalitates natural sleep.<\/p>",
+        "overlap": false
+      }
+    },
+    "165884059941bac995": {
+      "type": "icefoam_benifits",
+      "blocks": {
+        "b553043c-84fd-4bd5-a6bb-4843b318c171": {
+          "type": "Brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1_cc44f2e1-225c-4fc6-9199-5e6b6ab92d8b.png",
+            "description": "Consistently restful and unintrrupted sleep throughout the night."
+          }
+        },
+        "07a5a9be-1af0-45b0-b05f-3c677a9fd228": {
+          "type": "Brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2_d3a3c249-60d1-4cff-96a0-59851f813839.png",
+            "description": "Optimised temprature for your body to fall a sleep naturally."
+          }
+        },
+        "283df7f1-985e-4a1d-bfed-6495b59610d7": {
+          "type": "Brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3_91b9cc2f-1831-4bcb-a0dd-94c19f20f514.png",
+            "description": "Perfect softness-to-support ratio for comfort and relaxation."
+          }
+        },
+        "314160d4-3462-4ec1-9d58-01e3cac00b0c": {
+          "type": "Brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4_1f8ea381-3d42-456c-860e-934c11301d38.png",
+            "description": "Relieves body aches, particularly in the neck and lower back."
+          }
+        },
+        "30b16b2e-8508-4a55-8502-9055543de53d": {
+          "type": "Brand",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5_bf27ee0e-61e6-4655-8324-25b2e5f0264d.png",
+            "description": "Improved breathability and airflow allow for a deeper sleep."
+          }
+        }
+      },
+      "block_order": [
+        "b553043c-84fd-4bd5-a6bb-4843b318c171",
+        "07a5a9be-1af0-45b0-b05f-3c677a9fd228",
+        "283df7f1-985e-4a1d-bfed-6495b59610d7",
+        "314160d4-3462-4ec1-9d58-01e3cac00b0c",
+        "30b16b2e-8508-4a55-8502-9055543de53d"
+      ],
+      "settings": {
+        "title": "Benifits",
+        "bg_img": "shopify:\/\/shop_images\/Benefit.jpg",
+        "mob_image": "shopify:\/\/shop_images\/Benefit_323770b7-d553-4fc8-956f-b34755363863.jpg",
+        "padding_top": 20,
+        "padding_bottom": 36,
+        "padding_left": 12,
+        "padding_right": 12
+      }
+    },
+    "165890845992169bec": {
+      "type": "icefoam_differnce_with_image",
+      "blocks": {
+        "035a03ff-7e47-41ae-aa3b-50b6df3866d5": {
+          "type": "difference",
+          "settings": {
+            "description": "Regular foams are thick, trapping heat and keeping the mattress warm.",
+            "image1": "shopify:\/\/shop_images\/1_87cc2a92-af4a-4775-87ec-78adc263c1fd.png",
+            "description1": "ICEFOAM® allows for free air circulation, allowing your mattress to breath freely"
+          }
+        },
+        "fd171529-d596-4126-bf2e-6037a2fd2fc2": {
+          "type": "difference",
+          "settings": {
+            "description": "Ordinary foam have little to no effect on body temperature regulation",
+            "image1": "shopify:\/\/shop_images\/2_f4a871ed-45d8-4496-b330-f4f8ecb26d44.png",
+            "description1": "ICEFOAM® maintains optimal temperature, which improves sleeping comfort"
+          }
+        },
+        "47df8e39-084a-42c6-8400-79c88af698cb": {
+          "type": "difference",
+          "settings": {
+            "description": "Regular foams make you sweaty at night, which causes discomfort",
+            "image1": "shopify:\/\/shop_images\/3_3dad7629-6c6a-459f-9145-02ee0c9bc668.png",
+            "description1": "ICEFOAM® keeps you cools and dry, allowing you to comfortable"
+          }
+        },
+        "a9a95f1a-7996-40da-81eb-387c049dab81": {
+          "type": "difference",
+          "settings": {
+            "description": "Most regular foams are either a soft or firm, but not both, which may not suit everyone.",
+            "image1": "shopify:\/\/shop_images\/4_28442d08-cd0b-4656-8e83-2095044af8aa.png",
+            "description1": "ICEFOAM® provides the ideal balance of softness and support of exentation."
+          }
+        }
+      },
+      "block_order": [
+        "035a03ff-7e47-41ae-aa3b-50b6df3866d5",
+        "fd171529-d596-4126-bf2e-6037a2fd2fc2",
+        "47df8e39-084a-42c6-8400-79c88af698cb",
+        "a9a95f1a-7996-40da-81eb-387c049dab81"
+      ],
+      "settings": {
+        "title": "Regular Foam",
+        "title1": "ICEFOAM®",
+        "bg_img_desk": "shopify:\/\/shop_images\/Compare.jpg",
+        "bg_img_mob": "shopify:\/\/shop_images\/Compare_2d539857-29a0-4976-92b4-d93c5e547246.jpg",
+        "padding_top": 36,
+        "padding_bottom": 84,
+        "padding_left": 8,
+        "padding_right": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16588332180ff95341",
+    "1658835520c16c5383",
+    "165884059941bac995",
+    "165890845992169bec"
+  ]
+}

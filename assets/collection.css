@@ -1,0 +1,154 @@
+.container, .filtwrap_container{
+    padding: 0 80px;
+}
+.breadcrumb_header{
+    display: flex;
+    height: 100px;
+}
+.bread_left{
+    padding-top: 15px;
+}
+.plp_headtitle {
+    width: 80%;
+    background: none !important;
+    left: 0% !important;
+    display: flex;
+    align-items: center;
+}
+.collection_head{
+    text-align: left !important;
+    font-weight: 400 !important;
+    padding-left: 48px;
+}
+.plp_itemimg:hover:disabled{
+    background: none !important;
+}
+.plp_itemvendor, .extend_wrapper{
+    display: none;
+}
+.plp_itemimg a{
+    padding-top: 100% !important;
+}
+.plp_oriprice{
+    color: #000 !important;
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 20px;
+}
+.plp_shop{
+    padding: 5px 20px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    font-weight: 400 !important;
+}
+.plpdesc_container{
+    background: #E2E5F4;
+}
+.custom_desc_container{
+    padding: 60px 0;
+}
+.plpdesc_container .info_heading{
+    font-size: 18px;
+    font-weight: 500;
+}
+.plpdesc_container .info_desc{
+    font-size: 15px;
+    padding: 10px 0 20px 0;
+}
+.info_head1{
+    font-size: 15px;
+    font-weight: 600;
+}
+.take_head li{
+    font-size: 15px;
+    display: flex;
+    padding-bottom: 20px;
+}
+.take_head li::before{
+    content: "•"; 
+    color: #000;
+    padding-right: 9px;
+    font-size: 31px;
+}
+.plp_faqs{
+    font-size: 28px;
+    font-weight: 400;
+}
+.custom_faq_container{
+    padding: 40px 0;
+}
+.plp_pdptitle{
+    font-weight: 400 !important;
+}
+.plpsale_btn {
+    padding: 2px 25px !important;
+}
+.infopad_desc{
+    padding-top: 0 !important;
+}
+.plp_rightfilter{
+    position: relative;
+}
+.collection_head{
+    font-size: 30px !important;
+}
+
+/* optional code */
+.viewas_filter{
+    display: none !important;
+}
+.boost-pfs-filter-default-toolbar{
+    margin: 0 !important;
+    border: 0 !important;
+}
+.boost-pfs-filter-product-item-label .sale{
+    background: #FE2B12 !important;
+}
+.boost-pfs-filter-option-title-text, .boost-pfs-filter-option-title-heading{
+    text-transform: none !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+.plp_sofas{
+    display: none;
+}
+.bread_left{
+    width: 20%;
+}
+@media screen and (max-width:768px){
+    .container{
+        padding: 0 20px;
+    }
+    .custom_desc_container {
+        padding: 25px 0;
+    }
+    .bread_left, .plp_headtitle {
+        width: 100%;
+    }
+    .breadcrumb_header{
+        flex-direction: column-reverse;
+    }
+    .plp_headtitle {
+        justify-content: center;
+        padding: 30px 0 15px 0!important;
+    }
+    .breadcrumb_header{
+        height: auto;
+    }
+    .bread_left {
+        padding: 0 0 5px 0!important;
+        display: block !important;
+    }
+    .collection_head {
+        font-size: 25px!important;
+    }
+    .plpdesc_container .info_heading {
+        font-size: 16px;
+    }
+    .plpdesc_container .info_desc, .take_head li{
+        font-size: 14px;
+    }
+    .plp_faqs{
+        text-align: center;
+    }
+}

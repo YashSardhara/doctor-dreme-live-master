@@ -1,0 +1,999 @@
+{%- liquid
+assign title_t = 'customer.register.page_title' | t
+assign submit_t = 'customer.register.submit' | t
+-%}
+<!doctype html>
+<html class="no-js flexbox-gap" lang="{{ request.locale.iso_code }}" dir="ltr">
+
+<head>
+	<!-- CLEVERTAP INTEGRATION VARIABLES -->
+<!--{% include 'clevertap_variables_generator' %} -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  {%- render 'preload' -%}
+  {%- if canonical_url != blank -%}
+  <link rel="canonical" href="{{ canonical_url }}">{%- endif -%}
+  {% if settings.favicon != nil %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x' }}" type="image/png" />
+  <link rel="apple-touch-icon" href="{{ settings.favicon | img_url: '180x' }}" />
+  <link href="{{ 'responsive-main.css' | asset_url }}" rel="stylesheet" media="all" />
+  {% endif %}
+  {% if request.page_type == 'index' %}
+  <title>{{ page_title }}
+  </title>
+  {% else %}
+  <title>{{ page_title }}
+    |
+    {{ shop.name }}
+  </title>
+  {% endif %}
+  {%- liquid
+        render 'social-meta-tags'
+        render 'css-typography'
+        render 'css-colors'
+        render 'js-variables'
+        render 'swatch-colors'
+        -%}
+
+  {% render 'js-modules' %}
+  {% if request.page_type contains 'customers' %}
+  <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
+  {% endif %}
+
+  <noscript>
+    <link href="{{ 'theme--async.css' | asset_url }}" rel="stylesheet" />
+  </noscript>
+  <link href="{{ 'theme--critical.css' | asset_url }}" rel="stylesheet" media="all" />
+  <link href="{{ 'theme--async.css' | asset_url }}" rel="stylesheet" media="print"
+    onload="this.media='all';this.loaded=true;window.trigger('theme:styleSheet:loaded');" />
+  <link href="{{ 'custom-style.css' | asset_url }}" rel="stylesheet" />
+  <link href="{{ 'custom-style2.css' | asset_url }}" rel="stylesheet" />
+  <link href="{{ 'custom-style3.css' | asset_url }}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+  {{ "desktop.css" | asset_url | stylesheet_tag }}
+  {%- comment -%}
+  {{ "mobile.css" | asset_url | stylesheet_tag }}
+  {%- endcomment -%}
+  {{ 'new_desktop.css' | asset_url | stylesheet_tag }}
+  {{ 'new_mobile.css' | asset_url | stylesheet_tag }}
+  {%- if template == 'collection' -%}
+  {{ 'new_collection.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  {%- unless template == 'collection' -%}
+  <style>
+    .coder-comparable-button {
+      display: none;
+    }
+
+  </style>
+  {%- endunless -%}
+  {%- if template contains 'index' -%}
+  {{ "homepage.css" | asset_url | stylesheet_tag }}
+  {{ "audio_player.css" | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  {%- if template == 'product' -%}
+  {{ 'desktop_product.css' | asset_url | stylesheet_tag }}
+  {{ 'mobile_product.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  {%- if template contains "page" -%}
+  {{ 'desktop_static.css' | asset_url | stylesheet_tag }}
+  {{ 'mobile_static.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  {%- if template contains 'customers' -%}
+  {{ 'desktop_customers.css' | asset_url | stylesheet_tag }}
+  {{ 'mobile_customers.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+  {%- if page.handle == 'track-your-order' -%}
+  <style>
+    .ContentClass {
+      width: 80%;
+      margin: 0 auto;
+      height: fit-content;
+    }
+
+  </style>
+  {%- endif -%}
+  {%- if page.handle == 'contact-us-new' -%}
+  <style>
+    @media only screen and (max-width: 800px) {
+
+      main .shopify-section,
+      main {
+        background-color: #e7f0ff !important;
+      }
+    }
+
+  </style>
+  {%- endif -%}
+  {%- comment -%}
+  <style>
+    {
+      % render 'custom-styles' %
+    }
+
+  </style>
+  {%- endcomment -%}
+
+  {{ content_for_header }}
+
+  {% render 'sca-aff-refer-customer' %}
+  <script>
+    var scaaffCheck = false;
+  </script>
+
+
+  <script>
+    function isIOSDevice() {
+      return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    }
+    if (isIOSDevice()) { // alert("I am an IOS device!");
+
+    }
+  </script>
+  {{ 's_binary.css' | asset_url | stylesheet_tag }}
+  <!-- not change the  place it will not reflect  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <!-- end not change the  place it will not reflect  -->
+  {{ 'new_footer.css' | asset_url | stylesheet_tag }}
+  {{ 'my_account.css' | asset_url | stylesheet_tag }}
+  {%- comment -%}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {%- endcomment -%}
+  <!-- Google Tag Manager -->
+
+
+
+
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer'
+          ? '&l=' + l
+          : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W7WG7XN');
+  </script>
+
+  <!-- End Google Tag Manager -->
+  <script>
+    <img src="https://track.clickonik.com/pixel?adid=63736d31a868915ecf4796d0&sale_amount=AMOUNT&currency=INR"> </script>
+  <script src="https://www.artfut.com/static/tagtag.min.js?campaign_code=133a473397"
+    onerror='var self = this;window.ADMITAD=window.ADMITAD||{},ADMITAD.Helpers=ADMITAD.Helpers||{},ADMITAD.Helpers.generateDomains=function(){for(var e=new Date,n=Math.floor(new Date(2020,e.getMonth(),e.getDate()).setUTCHours(0,0,0,0)/1e3),t=parseInt(1e12*(Math.sin(n)+1)).toString(30),i=["de"],o=[],a=0;a<i.length;++a)o.push({domain:t+"."+i[a],name:t});return o},ADMITAD.Helpers.findTodaysDomain=function(e){function n(){var o=new XMLHttpRequest,a=i[t].domain,D="https://"+a+"/";o.open("HEAD",D,!0),o.onload=function(){setTimeout(e,0,i[t])},o.onerror=function(){++t<i.length?setTimeout(n,0):setTimeout(e,0,void 0)},o.send()}var t=0,i=ADMITAD.Helpers.generateDomains();n()},window.ADMITAD=window.ADMITAD||{},ADMITAD.Helpers.findTodaysDomain(function(e){if(window.ADMITAD.dynamic=e,window.ADMITAD.dynamic){var n=function(){return function(){return self.src?self:""}}(),t=n(),i=(/campaign_code=([^&]+)/.exec(t.src)||[])[1]||"";t.parentNode.removeChild(t);var o=document.getElementsByTagName("head")[0],a=document.createElement("script");a.src="https://www."+window.ADMITAD.dynamic.domain+"/static/"+window.ADMITAD.dynamic.name.slice(1)+window.ADMITAD.dynamic.name.slice(0,1)+".min.js?campaign_code="+i,o.appendChild(a)}});'></script>
+
+  <script type="text/javascript">
+      var cookie_name = 'deduplication_cookie';
+      var days_to_store = 90;
+      var deduplication_cookie_value = 'admitad';
+      var channel_name = 'utm_source';
+      getSourceParamFromUri = function () {
+        var pattern = channel_name + '=([^&]+)';
+      var re = new RegExp(pattern);
+      return (re.exec(document.location.search) || [])[1] || '';
+      };
+      getSourceCookie = function () {
+        var matches = document.cookie.match(new RegExp(
+      '(?:^|; )' + cookie_name.replace(/([\.$?*|{ }\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+      };
+      setSourceCookie = function () {
+        var param = getSourceParamFromUri();
+      var params = (new URL(document.location)).searchParams;
+      if (!params.get(channel_name) && params.get('gclid')) {param = 'google'}
+      else if (!params.get(channel_name) && params.get('fbclid')) {param = 'facebook'}
+      else if (!param) { return; }
+      var period = days_to_store * 60 * 60 * 24 * 1000; // in seconds
+      var expiresDate = new Date((period) + +new Date);
+      var cookieString = cookie_name + '=' + param + '; path=/; expires=' + expiresDate.toGMTString();
+      document.cookie = cookieString;
+      document.cookie = cookieString + '; domain=.' + location.host;
+      };
+      setSourceCookie();
+  </script>
+  <script language="javascript" type="text/javascript">
+
+      var ssSessionId = '';
+      if(ssGetURLParameter( 'utm_source') != null) {
+        ssSessionId = ssGetURLParameter('utm_source');
+      }
+
+      var gclid= '';
+      if(ssGetURLParameter( 'gclid') != null) {
+        gclid = ssGetURLParameter('gclid');
+      }
+
+      if (ssSessionId.toLowerCase() == 'optimisemedia') {
+        ssSetCookie(ssSessionId);
+      }
+      else if (ssSessionId.toLowerCase() != 'optimisemedia' && ssSessionId.toLowerCase() !='' || gclid!='')
+
+      {
+      	if(checkCookie("optimisemedia"))
+      eraseCookie("optimisemedia");
+      }
+
+      function readCookie(name) {
+          var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+      return null;
+      }
+
+
+      function eraseCookie(name) {
+        document.cookie = name + "=" + name + ";expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      }
+
+      function checkCookie(name)
+      {
+          return readCookie(name) != null;
+      }
+
+
+
+      function ssGetURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+      }
+
+      function ssSetCookie(cValue) {
+        document.cookie = cValue + "=" + cValue + ";expires= " + ssCalculateExpireDate(30) + "; path=/";
+      }
+
+      function ssCalculateExpireDate (days) {
+      var d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      d.toUTCString();
+      return d;
+      }
+  </script>
+
+  <script
+    type="text/javascript">OMID=2323658;OPID=52970;ORef=escape(window.parent.location.href);!function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="//track.omguk.com/e/qs/?action=Content&MID=" + OMID + "&PID=" + OPID + "&ref="+ ORef;var b=document.getElementsByTagName("body")[0];if(b)b.appendChild(a,b);else{var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}}();</script>
+
+  {% if template == 'cart' %}
+  {% include "revy-bundle-script" %}{% endif %}
+
+  <!-- DD pixel check -->
+  <!-- Event snippet for DoctorsDream_WebsiteVisitor_LatexMattress on : Please do not remove.
+Place this snippet on pages with events you���������re tracking. Creation date: 04/14/2023 -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=DC-13204513"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'DC-13204513');
+  </script>
+
+  <!-- End of event snippet: Please do not remove -->
+
+</head>
+<script>
+      judgemeOpts = window.judgemeOpts || { };
+      judgemeOpts.carouselNoAutoSlide = true;
+</script>
+
+<body onLoad="aud_play_pause()"
+  class="template--{{ template | split: '.' | first | remove: '_' | replace: '/', '--' }} page--{{ page_title | handle }}{% if customer %} customer-logged-in{% endif %}"
+  data-theme-id="765" data-theme-name="Maker" data-theme-version="7.4.0" data-tabbing="false">
+  <div id="popup_overlay_new" class="popup_overlay_new" style=""></div>
+  <a data-item="a11y-button" href='#main-content'>
+    {{ 'general.a11y.skip_main' | t }}
+  </a>
+  <off-canvas-root class="off-canvas--viewport" data-off-canvas--state="closed">
+    <transition-root class="off-canvas--overlay"></transition-root>
+    <transition-root aria-label="{{ 'general.a11y.close' | t }}" data-off-canvas--close class="close_icon">
+      {% render 'icons', icon: 'cross' %}
+    </transition-root>
+    <div class="off-canvas--main-content">
+      <div class="sticky_header">
+        <!-- <span class="menu_close_btn">X</span> -->
+        {% section 'announcement' %}
+        {% section 'new-header' %}
+      </div>
+      <span class="menu_close_btn">X</span>
+
+      {%- comment -%}
+      {% section 'header' %} {% render 'wrapper-header' %}
+      {%- endcomment -%}
+      {% section 'recent-offer' %}
+
+
+      <main class="layout--main-content" id="main-content">
+        {{ content_for_layout }}
+      </main>
+      {% section 'footer' %}
+      {%- render 'sticky_icons' -%}
+    </div>
+
+    <transition-root class="off-canvas--right-sidebar" data-active="cart">
+      <div class="off-canvas--focus-trigger" tabindex="0"></div>
+
+      {%- liquid
+              if request.page_type == 'product'
+              echo '<div class="off-canvas--container" data-view="pickup"></div>'
+              endif
+
+              if request.page_type == 'collection' or request.page_type == 'search'
+              echo '<div class="off-canvas--container" data-view="filter"></div>'
+              endif
+
+              if settings.product--quick-add-enabled
+              echo '<div class="off-canvas--container" data-view="product-form"></div>'
+              endif
+
+              if settings.cart--type == 'drawer' or settings.product--quick-add-enabled
+              echo '<div class="off-canvas--container" data-view="cart">'
+                render 'cart', view: 'drawer'
+                echo '</div>'
+                endif
+                -%}
+
+      <div class="off-canvas--focus-trigger" tabindex="0"></div>
+    </transition-root>
+
+    <transition-root class="off-canvas--left-sidebar" data-active="menu">
+      <div class="off-canvas--focus-trigger" tabindex="0"></div>
+
+      <div class="off-canvas--container" data-view="menu">
+        {% render 'mobile-nav' %}
+      </div>
+
+      <div class="off-canvas--focus-trigger" tabindex="0"></div>
+    </transition-root>
+  </off-canvas-root>
+
+  {%- liquid
+              if settings.popup--enabled
+              render 'popup', component: 'main'
+              endif
+
+              render 'search', view: 'modal'
+              render 'modal'
+              render 'feedback-bar'
+              -%}
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/sbp0lyb.css">
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/sbp0lyb.css"> -->
+  <!-- jquery include -->
+  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"> </script>
+  <script src="{{ 'utilities.js' | asset_url }}"></script>
+  <script src="{{ 'mediaelement-and-player.min.js' | asset_url }}"></script>
+  <script src="{{ 'custom-script.js' | asset_url }}"></script>
+  <script src="{{ 'binary-pages.js' | asset_url }}"></script>
+  <script src="{{ 'review_sectionslick.js' | asset_url }}"></script>
+  <!-- comment -->
+
+  <script>
+      window.haptikInitSettings = {
+        "business-id": "4032",
+      "client-id": "a6fbf1e38b8778b38ac8fe272ba5da48b5106392",
+      "base-url": "https://api.haptikapi.com/",
+      'custom-button': true
+
+      };
+  </script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://toolassets.haptikapi.com/platform/javascript-xdk/production/loader.js"></script>
+  <script>
+      function openChat() {
+        HaptikSDK.show()
+      }
+  </script>
+  <script>
+
+      $('.showMenu').hover(function() {
+        $('.hideChatMenu').fadeIn();
+      }, function() {
+        $('.hideChatMenu').fadeOut();
+      });
+
+// $('.Mob_showMenu').click(function() {
+// $('.Mob_hideChatMenu').fadeIn(200);
+// $('.chatMenus').fadeIn();
+// }, function() {
+// $('.Mob_hideChatMenu').fadeOut(500);
+// $('.chatMenus').fadeOut();
+// });
+  </script>
+  <!-- page faq slider script start -->
+  <!-- <script>
+    $('.faqs_slider').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+    {
+    breakpoint: 1025,
+    settings: {
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    infinite: true,
+    dots: false
+    }
+    }, {
+    breakpoint: 850,
+    settings: {
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    dots: false
+    }
+    }, {
+    breakpoint: 600,
+    settings: {
+    slidesToShow: 1.5,
+    slidesToScroll: 2,
+    dots: false
+    }
+    }, {
+    breakpoint: 480,
+    settings: {
+    slidesToShow: 1.2,
+    slidesToScroll: 1,
+    dots: false
+    }
+    }
+    ]
+    });
+
+    </script> -->
+  <!-- page faq slider script end -->
+  <!-- end -->
+
+  <style>
+    .jm-read-all {
+      text-align: center;
+      border-radius: 30px;
+      background-color: #023e88;
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: bold;
+
+    }
+
+    .jm-read-all a {
+      color: white !important;
+    }
+
+    @media screen and (min-width: 767px) {
+      .jm-read-all {
+        margin-left: 45%;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .jm-read-all {
+        margin-left: 30%;
+      }
+    }
+
+    .jm-read-all::hover {
+      background-color: var(--bg_color2) !important;
+    }
+
+    .jdgm-carousel-title,
+    .jdgm-carousel-wrapper .jdgm-all-reviews-rating-wrapper {
+      text-align: center !important;
+    }
+
+  </style>
+  {%- if template == 'product' -%}
+  {{ 'new_product.js' | asset_url | script_tag }}
+  {%- endif -%}
+  <script src="https://cdn.razorpay.com/widgets/affordability/affordability.js"> </script>
+
+  <script>
+      const key = "rzp_live_DvhceXidfa4Wvo"; // Add the merchant Key here
+      const amount = parseFloat("{{ product.selected_or_first_available_variant.price }}");
+
+
+      window.onload = function() {
+        const widgetConfig = {
+        "key": key,
+      "amount": amount
+        };
+      const rzpAffordabilitySuite = new RazorpayAffordabilitySuite(widgetConfig);
+      rzpAffordabilitySuite.render();
+      }
+  </script>
+  {% include 'iwish_v2' with 'iwishfooter' %}
+  <script>
+      $('.product-buy-buttons--cta add-to-cart').click(function() {
+        iwishInit();
+      });
+  </script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7WG7XN" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+  {%- if customer -%}
+
+  {%- else -%}
+  <div class="popuponload">
+    <button id="close">&times;</button>
+
+    <div class="popup-body clearfix">
+
+      <div id="reg-modal-left_id" class="reg-modal-left"><img class="lazyload"
+          data-src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/POP_up_324px_x_520px.jpg?v=1681307269"
+          data-sizes="auto" style="margin-top: 20px;"></div>
+      <div id="reg-modal-right_id" class="reg-modal-right">
+        <div class="reg-modal-right-wrap">
+          <div class="reg-modal-right-frm-wrap">
+
+            <div class="register-box animated fadeInUp">
+              <div id="collection_nav_id" class="collection_nav center clearfix">
+                <h1>
+                  Sign Up
+                </h1>
+
+                <div class="signup_coupan">Sign up with your email address to win assured coupons for your first
+                  purchase.
+                </div>
+              </div>
+              <div class="clearfix" id="customer">
+                <!-- Create Customer -->
+                <div id="create_customer">
+
+                  {% form 'create_customer' %}
+
+                  {{ form.errors | default_errors }}
+
+                  <div id="first_name_old" class="input-group clearfix large_form">
+                    <input type="text" value="" name="customer[first_name]" id="first_name" class="large" size="30"
+                      placeholder=" " required />
+                    <label for="first_name">First name(*)</label>
+                  </div>
+
+                  <div id="last_name_old" class="input-group clearfix large_form">
+                    <input type="text" value="" name="customer[last_name]" id="last_name" class="large" size="30"
+                      placeholder=" " required />
+                    <label for="last_name">Last name(*)</label>
+                  </div>
+
+                  <div id="email_old" class="clearfix large_form input-group">
+                    <input type="email" value="" name="customer[email]" id="email" class="large" size="30"
+                      placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required />
+                    <label for="email">Email id(*)</label>
+                  </div>
+
+                  <div id="password_old" class="clearfix large_form input-group">
+                    <input type="password" value="" name="customer[password]" id="password" class="large password"
+                      size="30" placeholder=" " required />
+                    <label for="password">Password(*)</label>
+                  </div>
+
+                  <div class="account--button-container">
+                    <div class="account--create" data-item='button'>
+                      <button id="submitcustom" type="submit" value="{{ submit_t }}">
+                        Sign Up
+                      </button>
+                    </div>
+                  </div>
+                  <p class="reg_danger_msg"></p>
+                  <div class="coupan_firstorder">The coupon is only applicable to your first order. You will receive
+                    the coupon at your registered email address.</div>
+
+
+
+                  {% endform %}
+                </div>
+                <!-- /#create-customer -->
+                <div>
+                  <div id="img_check_success" class="img_check"
+                    style="display: none; width: 100%; text-align: center; margin-left: 180px;">
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_ofuo42yn.json"
+                      background="transparent" speed="0.5" style="width: 350px;" loop autoplay></lottie-player>
+                  </div>
+                  <p id="reg_success_msg_id" class="reg_success_msg"></p>
+                </div>
+              </div>
+              <div class="button_btn_pop">
+                <button class="btn_notnow-pop" id="hide">Not now</button>
+                <button class="btn_register-pop">
+                  <a href="https://doctordreams.com/pages/popup-form" class="reg_btn">Register!</a>
+                </button>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+  {%- endif -%}
+
+  <div class="hover_one">
+    <div class="hover_icon" style="bottom: 16em; padding-top: 8px; padding-bottom: 7px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 30 25">
+        <g>
+          <path fill="none" d="M0 0h24v24H0z" />
+          <path
+            d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455zm-.692-2H20V5H4v13.385L5.763 17zM11 10h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2z" />
+        </g>
+      </svg>
+      <a href="#" onclick="openChat()"> Let's Chat </a>
+    </div>
+  </div>
+  <!--      <div class="hover_two">
+  <div class="hover_icon" style="bottom: 10em;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+      <g id="Group_4128" data-name="Group 4128" transform="translate(20739 -177)">
+        <g id="Group_4127" data-name="Group 4127" transform="translate(-20745.076 170.924)">
+          <g id="black" transform="translate(6.076 6.076)">
+            <g id="whatsapp">
+              <path id="Path_111" data-name="Path 111" d="M17.5,35A17.5,17.5,0,1,0,0,17.5,17.5,17.5,0,0,0,17.5,35Z" fill="#fff" fill-rule="evenodd"></path>
+            </g>
+          </g>
+          <g id="_6764724_location_navigation_pin_shop_shopping_icon" data-name="6764724_location_navigation_pin_shop_shopping_icon" transform="translate(12.783 10.309)">
+            <path id="Path_88" data-name="Path 88" d="M762.031,732.559h-6.057a1.376,1.376,0,0,1-1.374-1.376v-5.709a1.374,1.374,0,0,1,1.374-1.374h6.057a1.374,1.374,0,0,1,1.374,1.374v5.709A1.376,1.376,0,0,1,762.031,732.559Z" transform="translate(-747.911 -715.667)" fill="#fff"></path>
+            <path id="Path_89" data-name="Path 89" d="M763.406,858.258v-1.03a1.58,1.58,0,0,1-.488.077,1.556,1.556,0,0,1-.92-.3,1.426,1.426,0,0,1-.371-.406c-.023.036-.048.072-.075.106a1.567,1.567,0,0,1-.536.436,1.628,1.628,0,0,1-.714.163,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.568,1.568,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.427,1.427,0,0,1-.371.406,1.556,1.556,0,0,1-.92.3,1.58,1.58,0,0,1-.488-.077v1.03a1.57,1.57,0,0,0,1.408-.222,1.427,1.427,0,0,0,.371-.406c.023.036.048.072.075.106a1.568,1.568,0,0,0,.536.436,1.628,1.628,0,0,0,.714.163,1.586,1.586,0,0,0,1.093-.425.206.206,0,1,1,.409,0,1.586,1.586,0,0,0,1.093.425,1.627,1.627,0,0,0,.714-.163,1.567,1.567,0,0,0,.536-.436c.027-.034.052-.07.075-.106a1.426,1.426,0,0,0,.371.406A1.57,1.57,0,0,0,763.406,858.258Z" transform="translate(-747.91 -845.788)" fill="#fff"></path>
+            <path id="Path_90" data-name="Path 90" d="M763.406,858.258v-1.03a1.58,1.58,0,0,1-.488.077,1.556,1.556,0,0,1-.92-.3,1.426,1.426,0,0,1-.371-.406c-.023.036-.048.072-.075.106a1.567,1.567,0,0,1-.536.436,1.628,1.628,0,0,1-.714.163,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.568,1.568,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.427,1.427,0,0,1-.371.406,1.556,1.556,0,0,1-.92.3,1.58,1.58,0,0,1-.488-.077v1.03a1.57,1.57,0,0,0,1.408-.222,1.427,1.427,0,0,0,.371-.406c.023.036.048.072.075.106a1.568,1.568,0,0,0,.536.436,1.628,1.628,0,0,0,.714.163,1.586,1.586,0,0,0,1.093-.425.206.206,0,1,1,.409,0,1.586,1.586,0,0,0,1.093.425,1.627,1.627,0,0,0,.714-.163,1.567,1.567,0,0,0,.536-.436c.027-.034.052-.07.075-.106a1.426,1.426,0,0,0,.371.406A1.57,1.57,0,0,0,763.406,858.258Z" transform="translate(-747.91 -845.788)" fill="#fff"></path>
+            <path id="Path_91" data-name="Path 91" d="M763.406,820.258v-1.03a1.581,1.581,0,0,1-.488.077,1.558,1.558,0,0,1-.92-.3,1.42,1.42,0,0,1-.371-.4c-.023.036-.048.072-.075.106a1.544,1.544,0,0,1-.536.434,1.605,1.605,0,0,1-.714.165,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.569,1.569,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.42,1.42,0,0,1-.371.4,1.558,1.558,0,0,1-.92.3,1.581,1.581,0,0,1-.488-.077v1.03a1.58,1.58,0,0,0,.488.077,1.558,1.558,0,0,0,.92-.3,1.443,1.443,0,0,0,.371-.4c.023.036.048.072.075.106a1.544,1.544,0,0,0,.536.434,1.62,1.62,0,0,0,1.807-.26.206.206,0,1,1,.409,0,1.62,1.62,0,0,0,1.807.26,1.543,1.543,0,0,0,.536-.434c.027-.034.052-.07.075-.106a1.443,1.443,0,0,0,.371.4,1.558,1.558,0,0,0,.92.3A1.58,1.58,0,0,0,763.406,820.258Z" transform="translate(-747.91 -808.467)" fill="#fff"></path>
+            <path id="Path_92" data-name="Path 92" d="M763.406,820.258v-1.03a1.581,1.581,0,0,1-.488.077,1.558,1.558,0,0,1-.92-.3,1.42,1.42,0,0,1-.371-.4c-.023.036-.048.072-.075.106a1.544,1.544,0,0,1-.536.434,1.605,1.605,0,0,1-.714.165,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.569,1.569,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.42,1.42,0,0,1-.371.4,1.558,1.558,0,0,1-.92.3,1.581,1.581,0,0,1-.488-.077v1.03a1.58,1.58,0,0,0,.488.077,1.558,1.558,0,0,0,.92-.3,1.443,1.443,0,0,0,.371-.4c.023.036.048.072.075.106a1.544,1.544,0,0,0,.536.434,1.62,1.62,0,0,0,1.807-.26.206.206,0,1,1,.409,0,1.62,1.62,0,0,0,1.807.26,1.543,1.543,0,0,0,.536-.434c.027-.034.052-.07.075-.106a1.443,1.443,0,0,0,.371.4,1.558,1.558,0,0,0,.92.3A1.58,1.58,0,0,0,763.406,820.258Z" transform="translate(-747.91 -808.467)" fill="#fff"></path>
+            <path id="Path_93" data-name="Path 93" d="M699.874,539.063a1.566,1.566,0,0,1-.763-.2,1.476,1.476,0,0,1-.531-.51,1.371,1.371,0,0,1-.2-.635,1.344,1.344,0,0,1,.145-.689l1.787-3.522a1.808,1.808,0,0,1,.7-.739,1.956,1.956,0,0,1,1-.273h.375a.256.256,0,0,1,.249.321l-1.308,5.156a1.419,1.419,0,0,1-.533.786A1.555,1.555,0,0,1,699.874,539.063Z" transform="translate(-692.697 -527.488)" fill="#fff"></path>
+            <path id="Path_94" data-name="Path 94" d="M842.677,539.063a1.629,1.629,0,0,1-.714-.163,1.547,1.547,0,0,1-.536-.436,1.4,1.4,0,0,1-.26-1.215l1.155-4.555a.257.257,0,0,1,.249-.194h1.4a.257.257,0,0,1,.257.258v4.833a1.42,1.42,0,0,1-.461,1.046A1.587,1.587,0,0,1,842.677,539.063Z" transform="translate(-832.882 -527.489)" fill="#fff"></path>
+            <path id="Path_95" data-name="Path 95" d="M987.253,539.063a1.587,1.587,0,0,1-1.093-.425,1.42,1.42,0,0,1-.461-1.046v-4.833a.256.256,0,0,1,.257-.258h1.4a.256.256,0,0,1,.249.194l1.155,4.555a1.4,1.4,0,0,1-.26,1.215,1.548,1.548,0,0,1-.536.436A1.629,1.629,0,0,1,987.253,539.063Z" transform="translate(-974.864 -527.489)" fill="#fff"></path>
+            <path id="Path_96" data-name="Path 96" d="M1066.609,539.063a1.555,1.555,0,0,1-.92-.3,1.418,1.418,0,0,1-.533-.786l-1.308-5.156a.257.257,0,0,1,.249-.321h.375a1.957,1.957,0,0,1,1,.273,1.809,1.809,0,0,1,.7.739l1.787,3.522a1.344,1.344,0,0,1,.145.689,1.372,1.372,0,0,1-.2.635,1.476,1.476,0,0,1-.531.51A1.566,1.566,0,0,1,1066.609,539.063Z" transform="translate(-1051.602 -527.488)" fill="#fff"></path>
+            <path id="Path_97" data-name="Path 97" d="M923.2,998.6h0a1.4,1.4,0,0,1,1.4,1.4v1.873H921.8V1000A1.4,1.4,0,0,1,923.2,998.6Z" transform="translate(-912.111 -985.25)" fill="#fff"></path>
+            <path id="Path_98" data-name="Path 98" d="M916.673,984.3a1.871,1.871,0,0,0-1.873,1.871v1.92h3.421a.323.323,0,0,0,.323-.325v-1.595a1.868,1.868,0,0,0-1.871-1.871Z" transform="translate(-905.236 -971.207)" fill="#fff"></path>
+            <path id="Path_99" data-name="Path 99" d="M910.464,987.993h-2.806a.26.26,0,0,1-.258-.258v-1.873a1.661,1.661,0,0,1,3.323,0v1.873A.26.26,0,0,1,910.464,987.993Z" transform="translate(-897.969 -971.109)" fill="#fff"></path>
+            <path id="Path_101" data-name="Path 101" d="M709.091,537.23a1.469,1.469,0,0,1-.1.2,1.488,1.488,0,0,1-.531.508,1.574,1.574,0,0,1-1.683-.1h0a.778.778,0,0,1-.289-.438l-.976-3.863a.465.465,0,0,1,.418-.576,1.8,1.8,0,0,1,1.1.309,1.854,1.854,0,0,0-.467-.391,1.955,1.955,0,0,0-1-.273H702a1.956,1.956,0,0,0-1,.273,1.808,1.808,0,0,0-.7.739l-1.787,3.52a1.433,1.433,0,0,0-.083.2.007.007,0,0,0,0,.005.12.12,0,0,0-.007.023.027.027,0,0,0,0,.013s0,.007,0,.011h0a1.309,1.309,0,0,0-.047.432,1.373,1.373,0,0,0,.2.635,1.477,1.477,0,0,0,.531.509,1.573,1.573,0,0,0,1.683-.1,1.445,1.445,0,0,0,.371-.4c.023.036.048.07.075.1a1.546,1.546,0,0,0,.536.436,1.627,1.627,0,0,0,.714.163.805.805,0,0,1,1.5-.425,1.587,1.587,0,0,0,1.093.425,1.626,1.626,0,0,0,.714-.163,1.545,1.545,0,0,0,.536-.436c.027-.034.052-.068.075-.1a1.444,1.444,0,0,0,.371.4,1.573,1.573,0,0,0,1.683.1,1.477,1.477,0,0,0,.531-.509,1.37,1.37,0,0,0,.2-.635A1.339,1.339,0,0,0,709.091,537.23Zm-8.117.117-.011.032a1.1,1.1,0,0,1-.847.743.834.834,0,0,1-.249.009,1.566,1.566,0,0,1-.763-.2,1.341,1.341,0,0,1-.145-.093.368.368,0,0,1-.115-.459h0l1.787-3.524a1.819,1.819,0,0,1,.7-.739l.007,0a.4.4,0,0,1,.6.449Zm1.769.764a1.533,1.533,0,0,1-.258.02,1.6,1.6,0,0,1-.714-.163h-.005a.691.691,0,0,1-.361-.786l.913-3.662a.888.888,0,0,1,.861-.673h0a.346.346,0,0,1,.346.345v4A.929.929,0,0,1,702.744,538.111Zm2.336.02a1.587,1.587,0,0,1-1.093-.425h0a.421.421,0,0,1-.133-.309v-3.526a.827.827,0,0,1,.754-.976.361.361,0,0,1,.393.271l1.068,4.211a.515.515,0,0,1-.269.589h0A1.6,1.6,0,0,1,705.08,538.131Z" transform="translate(-692.69 -527.587)" fill="#fff"></path>
+            <path id="Path_105" data-name="Path 105" d="M400.688,255.389h0a11.117,11.117,0,0,0-15.688,0h0a11.04,11.04,0,0,0-.623,14.968l6.653,7.84a2.381,2.381,0,0,0,3.628,0l6.653-7.84A11.04,11.04,0,0,0,400.688,255.389Zm-7.844,16.133a8.777,8.777,0,1,1,8.8-8.777A8.79,8.79,0,0,1,392.843,271.522Z" transform="translate(-381.751 -252.15)" fill="#fff"></path>
+            <path id="Path_106" data-name="Path 106" d="M695.222,255.424h0a11.1,11.1,0,0,0-13.289-1.823l-.034.041a.964.964,0,0,0,1.211,1.459,8.8,8.8,0,0,1,12.974,9,1.2,1.2,0,0,0,2.248.754c.011-.022.023-.041.034-.061A11.092,11.092,0,0,0,695.222,255.424Z" transform="translate(-676.286 -252.176)" fill="#fff"></path>
+            <path id="Path_107" data-name="Path 107" d="M392.985,662.131l-7.553-8.926a12.565,12.565,0,0,1-2.906-9.505,11.093,11.093,0,0,0,1.855,11.233l6.653,7.862a2.377,2.377,0,0,0,3.411.224A2.677,2.677,0,0,1,392.985,662.131Z" transform="translate(-381.755 -636.75)" fill="#fff"></path>
+          </g>
+        </g>
+        <g id="_843786_whatsapp_icon" data-name="843786_whatsapp_icon" transform="translate(-20732 183)">
+          <path id="Path_3" data-name="Path 3" d="M22.577,6.63A10.742,10.742,0,0,0,5.639,19.554L4.112,25.1l5.705-1.489a10.794,10.794,0,0,0,5.143,1.3h0A10.752,10.752,0,0,0,25.727,14.208,10.621,10.621,0,0,0,22.577,6.63ZM14.964,23.109Z" transform="translate(-4.112 -3.489)" fill="#25d366" fill-rule="evenodd"></path>
+          <path id="Path_4" data-name="Path 4" d="M26.86,23.935c-.27-.134-1.6-.781-1.846-.871s-.428-.134-.608.134-.7.871-.855,1.049-.315.2-.585.067a7.394,7.394,0,0,1-2.173-1.328,8.078,8.078,0,0,1-1.5-1.854c-.158-.268-.017-.413.119-.546s.27-.313.405-.469a1.824,1.824,0,0,0,.27-.446.489.489,0,0,0-.023-.469c-.068-.134-.608-1.451-.833-1.987s-.442-.451-.608-.459-.338-.009-.518-.009a1,1,0,0,0-.72.335,2.99,2.99,0,0,0-.946,2.233,5.18,5.18,0,0,0,1.1,2.768,12,12,0,0,0,4.615,4.041,15.607,15.607,0,0,0,1.54.564,3.737,3.737,0,0,0,1.7.106A2.782,2.782,0,0,0,27.22,25.52a2.217,2.217,0,0,0,.158-1.273C27.31,24.136,27.13,24.069,26.86,23.935Z" transform="translate(-11.078 -10.982)" fill="#fff" fill-rule="evenodd"></path>
+        </g>
+      </g>
+    </svg>
+    <a href="https://api.whatsapp.com/send/?phone=918976706316&text=Hi!+I+agree+to+receive+notifications+via+Whatsapp.&app_absent=0"> WhatsApp Us </a>
+  </div>
+</div> -->
+  <div class="hover_two">
+    <a href="https://api.whatsapp.com/send/?phone=918976706316&text=Hi" class="hover_icon"
+      style="bottom: 22em;display: flex;gap: 3px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+        <g id="Group_4128" data-name="Group 4128" transform="translate(20739 -177)">
+          <g id="Group_4127" data-name="Group 4127" transform="translate(-20745.076 170.924)">
+            <g id="black" transform="translate(6.076 6.076)">
+              <g id="whatsapp">
+                <path id="Path_111" data-name="Path 111" d="M17.5,35A17.5,17.5,0,1,0,0,17.5,17.5,17.5,0,0,0,17.5,35Z"
+                  fill="#fff" fill-rule="evenodd"></path>
+              </g>
+            </g>
+            <g id="_6764724_location_navigation_pin_shop_shopping_icon"
+              data-name="6764724_location_navigation_pin_shop_shopping_icon" transform="translate(12.783 10.309)">
+              <path id="Path_88" data-name="Path 88"
+                d="M762.031,732.559h-6.057a1.376,1.376,0,0,1-1.374-1.376v-5.709a1.374,1.374,0,0,1,1.374-1.374h6.057a1.374,1.374,0,0,1,1.374,1.374v5.709A1.376,1.376,0,0,1,762.031,732.559Z"
+                transform="translate(-747.911 -715.667)" fill="#fff"></path>
+              <path id="Path_89" data-name="Path 89"
+                d="M763.406,858.258v-1.03a1.58,1.58,0,0,1-.488.077,1.556,1.556,0,0,1-.92-.3,1.426,1.426,0,0,1-.371-.406c-.023.036-.048.072-.075.106a1.567,1.567,0,0,1-.536.436,1.628,1.628,0,0,1-.714.163,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.568,1.568,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.427,1.427,0,0,1-.371.406,1.556,1.556,0,0,1-.92.3,1.58,1.58,0,0,1-.488-.077v1.03a1.57,1.57,0,0,0,1.408-.222,1.427,1.427,0,0,0,.371-.406c.023.036.048.072.075.106a1.568,1.568,0,0,0,.536.436,1.628,1.628,0,0,0,.714.163,1.586,1.586,0,0,0,1.093-.425.206.206,0,1,1,.409,0,1.586,1.586,0,0,0,1.093.425,1.627,1.627,0,0,0,.714-.163,1.567,1.567,0,0,0,.536-.436c.027-.034.052-.07.075-.106a1.426,1.426,0,0,0,.371.406A1.57,1.57,0,0,0,763.406,858.258Z"
+                transform="translate(-747.91 -845.788)" fill="#fff"></path>
+              <path id="Path_90" data-name="Path 90"
+                d="M763.406,858.258v-1.03a1.58,1.58,0,0,1-.488.077,1.556,1.556,0,0,1-.92-.3,1.426,1.426,0,0,1-.371-.406c-.023.036-.048.072-.075.106a1.567,1.567,0,0,1-.536.436,1.628,1.628,0,0,1-.714.163,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.568,1.568,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.427,1.427,0,0,1-.371.406,1.556,1.556,0,0,1-.92.3,1.58,1.58,0,0,1-.488-.077v1.03a1.57,1.57,0,0,0,1.408-.222,1.427,1.427,0,0,0,.371-.406c.023.036.048.072.075.106a1.568,1.568,0,0,0,.536.436,1.628,1.628,0,0,0,.714.163,1.586,1.586,0,0,0,1.093-.425.206.206,0,1,1,.409,0,1.586,1.586,0,0,0,1.093.425,1.627,1.627,0,0,0,.714-.163,1.567,1.567,0,0,0,.536-.436c.027-.034.052-.07.075-.106a1.426,1.426,0,0,0,.371.406A1.57,1.57,0,0,0,763.406,858.258Z"
+                transform="translate(-747.91 -845.788)" fill="#fff"></path>
+              <path id="Path_91" data-name="Path 91"
+                d="M763.406,820.258v-1.03a1.581,1.581,0,0,1-.488.077,1.558,1.558,0,0,1-.92-.3,1.42,1.42,0,0,1-.371-.4c-.023.036-.048.072-.075.106a1.544,1.544,0,0,1-.536.434,1.605,1.605,0,0,1-.714.165,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.569,1.569,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.42,1.42,0,0,1-.371.4,1.558,1.558,0,0,1-.92.3,1.581,1.581,0,0,1-.488-.077v1.03a1.58,1.58,0,0,0,.488.077,1.558,1.558,0,0,0,.92-.3,1.443,1.443,0,0,0,.371-.4c.023.036.048.072.075.106a1.544,1.544,0,0,0,.536.434,1.62,1.62,0,0,0,1.807-.26.206.206,0,1,1,.409,0,1.62,1.62,0,0,0,1.807.26,1.543,1.543,0,0,0,.536-.434c.027-.034.052-.07.075-.106a1.443,1.443,0,0,0,.371.4,1.558,1.558,0,0,0,.92.3A1.58,1.58,0,0,0,763.406,820.258Z"
+                transform="translate(-747.91 -808.467)" fill="#fff"></path>
+              <path id="Path_92" data-name="Path 92"
+                d="M763.406,820.258v-1.03a1.581,1.581,0,0,1-.488.077,1.558,1.558,0,0,1-.92-.3,1.42,1.42,0,0,1-.371-.4c-.023.036-.048.072-.075.106a1.544,1.544,0,0,1-.536.434,1.605,1.605,0,0,1-.714.165,1.586,1.586,0,0,1-1.093-.425.206.206,0,1,0-.409,0,1.586,1.586,0,0,1-1.093.425,1.628,1.628,0,0,1-.714-.163,1.569,1.569,0,0,1-.536-.436c-.027-.034-.052-.07-.075-.106a1.42,1.42,0,0,1-.371.4,1.558,1.558,0,0,1-.92.3,1.581,1.581,0,0,1-.488-.077v1.03a1.58,1.58,0,0,0,.488.077,1.558,1.558,0,0,0,.92-.3,1.443,1.443,0,0,0,.371-.4c.023.036.048.072.075.106a1.544,1.544,0,0,0,.536.434,1.62,1.62,0,0,0,1.807-.26.206.206,0,1,1,.409,0,1.62,1.62,0,0,0,1.807.26,1.543,1.543,0,0,0,.536-.434c.027-.034.052-.07.075-.106a1.443,1.443,0,0,0,.371.4,1.558,1.558,0,0,0,.92.3A1.58,1.58,0,0,0,763.406,820.258Z"
+                transform="translate(-747.91 -808.467)" fill="#fff"></path>
+              <path id="Path_93" data-name="Path 93"
+                d="M699.874,539.063a1.566,1.566,0,0,1-.763-.2,1.476,1.476,0,0,1-.531-.51,1.371,1.371,0,0,1-.2-.635,1.344,1.344,0,0,1,.145-.689l1.787-3.522a1.808,1.808,0,0,1,.7-.739,1.956,1.956,0,0,1,1-.273h.375a.256.256,0,0,1,.249.321l-1.308,5.156a1.419,1.419,0,0,1-.533.786A1.555,1.555,0,0,1,699.874,539.063Z"
+                transform="translate(-692.697 -527.488)" fill="#fff"></path>
+              <path id="Path_94" data-name="Path 94"
+                d="M842.677,539.063a1.629,1.629,0,0,1-.714-.163,1.547,1.547,0,0,1-.536-.436,1.4,1.4,0,0,1-.26-1.215l1.155-4.555a.257.257,0,0,1,.249-.194h1.4a.257.257,0,0,1,.257.258v4.833a1.42,1.42,0,0,1-.461,1.046A1.587,1.587,0,0,1,842.677,539.063Z"
+                transform="translate(-832.882 -527.489)" fill="#fff"></path>
+              <path id="Path_95" data-name="Path 95"
+                d="M987.253,539.063a1.587,1.587,0,0,1-1.093-.425,1.42,1.42,0,0,1-.461-1.046v-4.833a.256.256,0,0,1,.257-.258h1.4a.256.256,0,0,1,.249.194l1.155,4.555a1.4,1.4,0,0,1-.26,1.215,1.548,1.548,0,0,1-.536.436A1.629,1.629,0,0,1,987.253,539.063Z"
+                transform="translate(-974.864 -527.489)" fill="#fff"></path>
+              <path id="Path_96" data-name="Path 96"
+                d="M1066.609,539.063a1.555,1.555,0,0,1-.92-.3,1.418,1.418,0,0,1-.533-.786l-1.308-5.156a.257.257,0,0,1,.249-.321h.375a1.957,1.957,0,0,1,1,.273,1.809,1.809,0,0,1,.7.739l1.787,3.522a1.344,1.344,0,0,1,.145.689,1.372,1.372,0,0,1-.2.635,1.476,1.476,0,0,1-.531.51A1.566,1.566,0,0,1,1066.609,539.063Z"
+                transform="translate(-1051.602 -527.488)" fill="#fff"></path>
+              <path id="Path_97" data-name="Path 97"
+                d="M923.2,998.6h0a1.4,1.4,0,0,1,1.4,1.4v1.873H921.8V1000A1.4,1.4,0,0,1,923.2,998.6Z"
+                transform="translate(-912.111 -985.25)" fill="#fff"></path>
+              <path id="Path_98" data-name="Path 98"
+                d="M916.673,984.3a1.871,1.871,0,0,0-1.873,1.871v1.92h3.421a.323.323,0,0,0,.323-.325v-1.595a1.868,1.868,0,0,0-1.871-1.871Z"
+                transform="translate(-905.236 -971.207)" fill="#fff"></path>
+              <path id="Path_99" data-name="Path 99"
+                d="M910.464,987.993h-2.806a.26.26,0,0,1-.258-.258v-1.873a1.661,1.661,0,0,1,3.323,0v1.873A.26.26,0,0,1,910.464,987.993Z"
+                transform="translate(-897.969 -971.109)" fill="#fff"></path>
+              <path id="Path_101" data-name="Path 101"
+                d="M709.091,537.23a1.469,1.469,0,0,1-.1.2,1.488,1.488,0,0,1-.531.508,1.574,1.574,0,0,1-1.683-.1h0a.778.778,0,0,1-.289-.438l-.976-3.863a.465.465,0,0,1,.418-.576,1.8,1.8,0,0,1,1.1.309,1.854,1.854,0,0,0-.467-.391,1.955,1.955,0,0,0-1-.273H702a1.956,1.956,0,0,0-1,.273,1.808,1.808,0,0,0-.7.739l-1.787,3.52a1.433,1.433,0,0,0-.083.2.007.007,0,0,0,0,.005.12.12,0,0,0-.007.023.027.027,0,0,0,0,.013s0,.007,0,.011h0a1.309,1.309,0,0,0-.047.432,1.373,1.373,0,0,0,.2.635,1.477,1.477,0,0,0,.531.509,1.573,1.573,0,0,0,1.683-.1,1.445,1.445,0,0,0,.371-.4c.023.036.048.07.075.1a1.546,1.546,0,0,0,.536.436,1.627,1.627,0,0,0,.714.163.805.805,0,0,1,1.5-.425,1.587,1.587,0,0,0,1.093.425,1.626,1.626,0,0,0,.714-.163,1.545,1.545,0,0,0,.536-.436c.027-.034.052-.068.075-.1a1.444,1.444,0,0,0,.371.4,1.573,1.573,0,0,0,1.683.1,1.477,1.477,0,0,0,.531-.509,1.37,1.37,0,0,0,.2-.635A1.339,1.339,0,0,0,709.091,537.23Zm-8.117.117-.011.032a1.1,1.1,0,0,1-.847.743.834.834,0,0,1-.249.009,1.566,1.566,0,0,1-.763-.2,1.341,1.341,0,0,1-.145-.093.368.368,0,0,1-.115-.459h0l1.787-3.524a1.819,1.819,0,0,1,.7-.739l.007,0a.4.4,0,0,1,.6.449Zm1.769.764a1.533,1.533,0,0,1-.258.02,1.6,1.6,0,0,1-.714-.163h-.005a.691.691,0,0,1-.361-.786l.913-3.662a.888.888,0,0,1,.861-.673h0a.346.346,0,0,1,.346.345v4A.929.929,0,0,1,702.744,538.111Zm2.336.02a1.587,1.587,0,0,1-1.093-.425h0a.421.421,0,0,1-.133-.309v-3.526a.827.827,0,0,1,.754-.976.361.361,0,0,1,.393.271l1.068,4.211a.515.515,0,0,1-.269.589h0A1.6,1.6,0,0,1,705.08,538.131Z"
+                transform="translate(-692.69 -527.587)" fill="#fff"></path>
+              <path id="Path_105" data-name="Path 105"
+                d="M400.688,255.389h0a11.117,11.117,0,0,0-15.688,0h0a11.04,11.04,0,0,0-.623,14.968l6.653,7.84a2.381,2.381,0,0,0,3.628,0l6.653-7.84A11.04,11.04,0,0,0,400.688,255.389Zm-7.844,16.133a8.777,8.777,0,1,1,8.8-8.777A8.79,8.79,0,0,1,392.843,271.522Z"
+                transform="translate(-381.751 -252.15)" fill="#fff"></path>
+              <path id="Path_106" data-name="Path 106"
+                d="M695.222,255.424h0a11.1,11.1,0,0,0-13.289-1.823l-.034.041a.964.964,0,0,0,1.211,1.459,8.8,8.8,0,0,1,12.974,9,1.2,1.2,0,0,0,2.248.754c.011-.022.023-.041.034-.061A11.092,11.092,0,0,0,695.222,255.424Z"
+                transform="translate(-676.286 -252.176)" fill="#fff"></path>
+              <path id="Path_107" data-name="Path 107"
+                d="M392.985,662.131l-7.553-8.926a12.565,12.565,0,0,1-2.906-9.505,11.093,11.093,0,0,0,1.855,11.233l6.653,7.862a2.377,2.377,0,0,0,3.411.224A2.677,2.677,0,0,1,392.985,662.131Z"
+                transform="translate(-381.755 -636.75)" fill="#fff"></path>
+            </g>
+          </g>
+          <g id="_843786_whatsapp_icon" data-name="843786_whatsapp_icon" transform="translate(-20732 183)">
+            <path id="Path_3" data-name="Path 3"
+              d="M22.577,6.63A10.742,10.742,0,0,0,5.639,19.554L4.112,25.1l5.705-1.489a10.794,10.794,0,0,0,5.143,1.3h0A10.752,10.752,0,0,0,25.727,14.208,10.621,10.621,0,0,0,22.577,6.63ZM14.964,23.109Z"
+              transform="translate(-4.112 -3.489)" fill="#25d366" fill-rule="evenodd"></path>
+            <path id="Path_4" data-name="Path 4"
+              d="M26.86,23.935c-.27-.134-1.6-.781-1.846-.871s-.428-.134-.608.134-.7.871-.855,1.049-.315.2-.585.067a7.394,7.394,0,0,1-2.173-1.328,8.078,8.078,0,0,1-1.5-1.854c-.158-.268-.017-.413.119-.546s.27-.313.405-.469a1.824,1.824,0,0,0,.27-.446.489.489,0,0,0-.023-.469c-.068-.134-.608-1.451-.833-1.987s-.442-.451-.608-.459-.338-.009-.518-.009a1,1,0,0,0-.72.335,2.99,2.99,0,0,0-.946,2.233,5.18,5.18,0,0,0,1.1,2.768,12,12,0,0,0,4.615,4.041,15.607,15.607,0,0,0,1.54.564,3.737,3.737,0,0,0,1.7.106A2.782,2.782,0,0,0,27.22,25.52a2.217,2.217,0,0,0,.158-1.273C27.31,24.136,27.13,24.069,26.86,23.935Z"
+              transform="translate(-11.078 -10.982)" fill="#fff" fill-rule="evenodd"></path>
+          </g>
+        </g>
+      </svg>
+      <span class="primary_text_color fw_500 secondary_font">WhatsApp Us</span>
+    </a>
+  </div>
+  <style>
+    .hover_one:hover a {
+      margin: 0 10px;
+    }
+
+    .hover_one .hover_icon {
+      padding: 5px 10px;
+      padding-right: 9px;
+    }
+
+    /*    .hover_two .hover_icon { */
+    /*      padding: 5px 10px; */
+    /*       padding-right: 38px;  */
+    /*     } */
+
+
+    .hover_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom-left-radius: 25px;
+      border-top-left-radius: 25px;
+      background-color: #fff !important;
+      font-size: 12px;
+      line-height: normal;
+      position: fixed;
+      z-index: 2;
+      right: 0;
+      width: fit-content;
+      letter-spacing: 0;
+      /*gap: 10px; */
+/*       box-shadow: 1px 1px 3px 1.5px #e7e7e7; */
+      box-shadow: 0px 0px 8px 1px #969696;
+    }
+
+    .hover_one a {
+      transition: 0.5s cubic-bezier(0.4, 0, 1, 1);
+      margin-right: -63px;
+      /* margin-left: 6px; */
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      color: #424242;
+    }
+
+
+    .hover_one:hover .hover_icon {
+      padding-right: 10px;
+    }
+
+    .hover_two:hover span {
+      margin: 0 0px;
+    }
+
+    .hover_two .hover_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom-left-radius: 25px;
+      border-top-left-radius: 25px;
+      background-color: #fff;
+      padding: 5px 17px 5px 7px;
+      font-size: 12px;
+      line-height: normal;
+      position: fixed;
+      z-index: 2;
+      right: 0;
+      width: fit-content;
+      letter-spacing: 0;
+    }
+
+    .hover_two span {
+      transition: 0.5s ease-out;
+      margin-right: -95px;
+      margin-left: 6px;
+      display: flex;
+      align-items: center;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+      if (window.location.href === "https://doctordreams.com/") {
+
+
+        window.addEventListener("load", function () {
+          setTimeout(
+            function open(event) {
+              document.querySelector(".popuponload").style.display = "block";
+              document.querySelector(".popup_overlay_new").style.display = "block";
+            },
+            10000
+          )
+        });
+
+      document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popuponload").style.display = "none";
+      $('body').removeClass('register_popup');
+      $("#popup_overlay_new").hide();
+      });
+      $(".popuponload").click(function(e){
+        e.stopPropagation();
+      });
+       //$(document).ready(function(){
+        //$('body').addClass('register_popup');
+        //});
+
+        window.addEventListener("load", function () {
+          setTimeout(
+            function open(event) {
+              $('body').addClass('register_popup');
+            },
+            10000
+          )
+        });
+
+      $(document).click(function(){
+        $(".popuponload").hide();
+      $('body').removeClass('register_popup');
+      $("#popup_overlay_new").hide();
+      });
+
+
+          }
+
+            });
+
+
+
+      $(".customer-box").mouseover(function() {
+        $(".account_popup").css("display", "block");
+        });
+      $(".customer-box").mouseout(function() {
+        $(".account_popup").css("display", "none");
+        });
+  </script>
+
+  <script type="text/javascript">
+
+      $(document).ready(function(){
+        $("#submitcustom").click(function (event) {
+
+
+          var first_name = $("#first_name").val();
+          var last_name = $("#last_name").val();
+          var email = $("#email").val();
+          var password = $("#password").val();
+          if (first_name === '' || last_name === '' || email === '' || password === '') {
+            $(".reg_danger_msg").text("Please fill out all this fields.");
+            $(".reg_danger_msg").css("color", "red");
+            const myTimeout = setTimeout(myGreeting, 5000);
+            function myGreeting() {
+              $(".reg_danger_msg").text("");
+            }
+            event.preventDefault();
+          }
+          else if (isEmail(email) == false) {
+            $(".reg_danger_msg").text("Email is Invanlid.");
+            $(".reg_danger_msg").css("color", "red");
+            const myTimeout = setTimeout(myGreeting, 5000);
+            function myGreeting() {
+              $(".reg_danger_msg").text("");
+            }
+            event.preventDefault();
+          }
+          else if (password.length < 5) {
+
+            $(".reg_danger_msg").text("Password should be 5 letters.");
+            $(".reg_danger_msg").css("color", "red");
+            const myTimeout = setTimeout(myGreeting, 5000);
+            function myGreeting() {
+              $(".reg_danger_msg").text("");
+            }
+            event.preventDefault();
+          } else {
+            var email = $("#email").val();
+            document.getElementById("reg_success_msg_id").innerHTML = `Thank You, your account has been successfully registered.<br> We have sent an email to ${email}, please click the link to verify your������email������address.`;
+            document.getElementById("reg_success_msg_id").style.cssText = "color: #204584";
+            document.getElementById("img_check_success").style.display = "block";
+            document.getElementById("create_customer").style.display = "none";
+            document.getElementById("collection_nav_id").style.display = "none";
+            document.getElementById("reg-modal-left_id").style.display = "none";
+            document.getElementById("reg-modal-right_id").style.cssText = "width: 700px; height: 512px; display: grid; align-items: center";
+            document.getElementById("reg-modal-right-wrap_id").style.cssText = "min-height: 0px";
+          }
+
+        });
+
+      function isEmail(email) {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2, 4})+$/;
+      return regex.test(email);
+              }
+            });
+
+  </script>
+
+  {% render 'ha-bundle-app' %} {% include 'revy-bundle-script' %}
+  <script>
+      function up_count() {
+        setTimeout(function () {
+          $.ajax({
+            type: "GET",
+            url: "https://doctordreams.com/cart.json",
+            dataType: "json",
+            success: function (t) {
+              var c = t.item_count;
+              $(".cart-link__bubble").text(c)
+            }
+          })
+        }, 3e3)
+      }
+  </script>
+
+  {% render 'axio' %}
+  {% render 'MagicCheckoutScript' %}
+</body>
+
+
+<!-- Date: 14-04-23 Global site tag (gtag.js) - Google Ads: 683569280 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-683569280"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-683569280');
+</script>
+
+
+</html>

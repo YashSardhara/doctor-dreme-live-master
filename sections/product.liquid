@@ -1,0 +1,1460 @@
+<style>
+  .pro-option-2 .disclosure--option-link[data-empty="true"],.pro-option-2 .disclosure--option-link[data-unavailable="true"]{
+    display: none !important;
+  }
+  .dummy_btn_add {
+    line-height: 0 !important;
+    height: 38px;
+    text-transform: capitalize !important;
+    font-weight: normal !important;
+    cursor: pointer;
+    padding: 0 35px;
+    /*     width: 140px; */
+  }
+  @media only screen and (max-width: 1200px) {
+    .about_section {
+      background-image: url('{{product.metafields['product']['pdp_about_mobile_img'] }}') !important;
+      padding-top: 70%;
+      background-position: top;
+      background-size: cover !important;
+      min-height: 690px;
+    }
+  }
+
+  span.share_btn {
+    display: block;
+  }
+  span.share_btn_mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+  span.share_btn_mobile img {
+    width: 15px;
+  }
+  span.share_btn_mobile {
+    width: 28px !important;
+    height: 28px !important;
+    background: #fff;
+    border-top: 2px solid #1be !important;
+    border-right: 3px solid #1be !important;
+    border-radius: 50%;
+    padding: 0px 5px 5px;
+  }
+  span.share_btn {
+    display: none;
+  }
+  span.share_btn_mobile {
+    display: block;
+  }
+  span.share_box.d_flex {
+    display: none;
+  }
+}
+
+span.variant_weight.primary_color {
+    display: none;
+}
+
+span.variant_weight.primary_color.lookNowWeight {
+    display: block;
+    font-weight: 400;
+    color: #000;
+}
+.dim_weight_flex {
+    display: flex;
+}
+p.primary_color.pdp_b_space.dimension_div.lookNow {
+    display: grid;
+    padding-top: 0;
+    color: #000;
+    font-weight: 600 !important;
+    font-size: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 2px !important;
+}
+span.variant_dimension.primary_color.lookNow {
+    font-weight: 400;
+    color: #000;
+}
+p.primary_color.pdp_b_space.dimension_div_weight.lookNowWeight {
+    color: #000;
+    font-weight: 600;
+    padding-bottom: 12px;
+    margin-bottom: 2px !important;
+}
+span.onclik_dimention {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+p.primary_color.pdp_b_space.dimension_div_weight {
+    display: none;
+}
+p.primary_color.pdp_b_space.dimension_div_weight.lookNowWeight {
+    display: block;
+}
+.main__flex {
+    display: flex;
+    align-items: center;
+  justify-content: space-evenly;
+  }
+  div#tab-3 p {
+    margin-bottom: 10px;
+}
+  .container__flex_weight {
+    margin-left: 3px;
+}
+@media only screen and (max-width: 600px) {
+  .dim_weight_flex {
+    display: block;
+  }
+  .main__flex {
+    display: block;
+  }
+  p.primary_color.pdp_b_space.dimension_div.lookNow {
+    margin-bottom: 0px;
+    padding: 0;
+    font-weight: 600 !important;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 20px !important;
+  }
+  .lookNowWeight {
+    color: #000;
+    font-weight: 600;
+  }
+  span.variant_weight.primary_color.lookNowWeight {
+    font-weight: 400;
+  }
+}
+</style>
+
+{%- liquid
+  assign product_media_t = 'products.product_media' | t
+  assign image_modal_t = 'products.image_modal' | t
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+  assign hide_variant_media = section.settings.hide-variant-media
+  assign load_model = false
+  assign load_video = false
+  assign modal_enabled = section.settings.modal-enabled
+  assign move_to_next_container = false
+  assign featured_blocks = false
+  assign product_id = product.id | append: '-' | append: section.id
+  assign video_looping_enabled = section.settings.loop-enabled
+
+  capture variant_media_ids
+  for variant in product.variants
+  echo '"' | append: variant.featured_media.id | append: '",'
+  endfor
+  endcapture
+  assign variant_media_ids = variant_media_ids | split: ','
+  -%}
+
+  {% for media in product.media %}
+  {%- liquid
+    if media.media_type == "model"
+    assign load_model = true
+    elsif media.media_type == "video" or media.media_type == "external_video"
+    assign load_video = true
+    endif
+    -%}
+
+    {% if modal_enabled %}
+    {%- capture modal_media -%}
+    {{ modal_media }}
+
+    {% if media.media_type == "image" %}
+    <div class="modal--content">
+      <div class="product-page--modal-image" data-id="{{ media.id }}">
+        {% render 'image', image: media %}
+      </div>
+    </div>
+    {% endif %}
+    {%- endcapture -%}
+    {% endif %}
+
+    {%- capture variant_media -%}
+    {%- liquid
+      echo variant_media
+
+      if media == featured_media
+      continue
+      endif
+
+      capture media_id
+      echo '"' | append: media.id | append: '"'
+      endcapture
+      -%}
+
+      {% if hide_variant_media and variant_media_ids contains media_id %}
+      <a class="product-page--hidden-variant" aria-label="{{ product_media_t }}" data-mq="none">
+        {%
+          render "product--media",
+          media_view: "featured",
+          product_media: media,
+          inside_carousel: false,
+          video_looping_enabled: video_looping_enabled
+          %}
+        </a>
+        {% continue %}
+        {% endif %}
+
+        <div class="product-page--media-variant">
+
+          {% if modal_enabled and media.media_type == 'image' %}
+          <a class="modal--link" tabindex="0" aria-label="{{ product_media_t }}">
+            {% endif %}
+            {%
+              render "product--media",
+              media_view: "featured",
+              product_media: media,
+              inside_carousel: false,
+              video_looping_enabled: video_looping_enabled
+              %}
+              {% if modal_enabled and media.media_type == 'image' %}
+            </a>
+            {% endif %}
+          </div>
+          {%- endcapture -%}
+          {% endfor %}
+
+          {%- for block in section.blocks -%}
+          {%- liquid
+            if block.type == 'divider'
+            assign move_to_next_container = true
+            continue
+            endif
+            -%}
+
+            {%- capture block_html -%}
+            {%- comment -%}title{%- endcomment -%}
+            <div class="product-page--block" data-product-block data-block-type="{{ block.type }}" {{ block.shopify_attributes }}>
+              {%- case block.type -%}
+              {%- when 'overline' -%}
+              <div class="product-page--overline" data-item="overline">{{ block.settings.text }}
+              </div>
+              {%- when 'heading' -%}
+              <div class="pdp_heading_div">
+                <span class="d_flex">
+                  <h1 class="pdp_title primary_color">
+                    {{ product.title | upcase }}
+                  </h1>
+                  <div class="wishlist-icon">{% include 'iwish_v2' with 'iwishproduct' %}
+                  </div>
+                </span>
+                <span class="d_flex review_top">
+                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+                  <div class="hover_social_media">
+                    <span class="share_btn"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Share_Icon.svg?v=1667381366" alt="share_icon" title=""/></span>
+
+                    <span class="share_box d_flex">
+                      <span class="top_border pdp_border"></span>
+                      <span class="share_content d_flex">
+                        <a href="https://www.instagram.com/doctordreamsindia/" target="_blank" rel="noopener">
+                          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Instagram.jpg?v=1662367477" alt="insta">
+                        </a>
+
+                        <a class="social-share--item-facebook" href="https://www.facebook.com/doctordreamsindia/?ref=bookmarks" data-item="accent-text" target="_blank">
+                          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Facebook_4349ca98-d75b-415b-8f6f-daee7e8a21d3.jpg?v=1662367477" alt="FB">
+                        </a>
+                        <a href="https://wa.me/?text={{shop.url }}{{ product.url }}">
+                          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Whatsapp_2.jpg?v=1662367477" alt="Whatsapp">
+                        </a>
+                        <a class="social-share--item-twitter" href="https://twitter.com/drdreamsindia" data-item="accent-text" target="_blank">
+                          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Twitter.jpg?v=1662367477" alt="twitter">
+                        </a>
+                        <span class="copy_clip" href="#" data-link="{{ shop.url }}{{ product.url | strip_html | escape | replace: ' ', '%20' }}" target="_blank">
+                          <span id="pwd_spn">{{shop.url }}
+                            {{ product.url}}
+                          </span>
+                          <img id="cp_btn" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Paste.jpg?v=1662367478" alt="paste">
+                        </span>
+                      </span>
+                      <span class="bottom_border pdp_border"></span>
+                    </span>
+
+                    <span class="share_btn_mobile" id="shareBtn"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Share_Icon.svg?v=1667381366" alt="share_icon" title=""/></span>
+                  </div>
+                </span>
+                <span class="pdp_subtitle">{{ product.metafields['product']['secondline']}}
+                </span>
+                {%- if product.metafields.custom.highlights != blank %}
+                <ul class=highlights_ul>
+                  {% assign Highlights = product.metafields.custom.highlights | split: '||' %}
+                  {% for item in Highlights %}
+                  {%- assign Highlights = item | split: '+' -%}
+                  <li class="highlights">{{Highlights[0]}}</li>
+                  {% endfor %}
+                </ul>
+                {%- endif -%}
+              </div>
+              {%- comment -%}end title{%- endcomment -%}
+              {%- when 'price' -%}
+              {%- render 'product-price', product: product, id: product_id -%}
+              {%- comment -%}
+              {%- render 'offers-avail', product: product, id: product_id -%}
+              {% include "pincodechecker-mobile" %}
+              {%- endcomment -%}
+
+              {%- when 'low-stock' -%}
+              {%
+                render 'product-low-stock',
+                id: product_id,
+                current_variant: current_variant,
+                threshold: block.settings.threshold
+                %}
+
+                {%- when 'options' -%}
+                {%- for tag in product.tags -%}
+                {% if tag == 'Foam mattress' %}
+                <span class="d_flex size_guide_div primary_color  pdp_b_space">
+                  <span class="mattress_option">Mattress Options</span>
+                  <a class="size_guid_toggle" target="_blank" href="https://doctordreams.com/pages/size-guide">Size Guide</a>
+                </span>
+                {% endif %}
+                {%- endfor -%}
+                {%-
+                  render "product-options",
+                  id: product_id,
+                  product: product,
+                  block_settings: block.settings
+                  -%}
+                {% comment %}
+                   <p class="primary_color pdp_b_space dimension_div">Dimension :
+                    {% for variant in product.variants %}
+                    {%- if variant.metafields['variant']['variant_dimension'] != blank -%}
+                    <span class="variant_dimension primary_color"data-id={{variant.id}}>{{ variant.metafields['variant']['variant_dimension']}}</span>
+                    {%- endif -%}
+                    {% endfor %}
+                  </p>
+                
+                  <p class="primary_color pdp_b_space dimension_div_weight">Weight :
+                    {% for variant in product.variants %}
+                    {%- if variant.metafields['variant']['variant_weight'] != blank -%}
+                    <span class="variant_weight primary_color" data-id={{variant.id}}>{{
+                      variant.metafields['variant']['variant_weight']}}</span>
+                    {%- endif -%}
+                    {% endfor %}
+                  </p> {% endcomment %}
+                  {% render 'pincodechecker' %}
+                </span>
+
+                {%- when 'quantity-input' -%}
+                 <div class="emi-box">
+               <p style="font-weight: 400;"><span class="emi-text" style="font-weight: 700;"></span>  Monsoon Sale Price is Including of 20% off</p>
+                </div>
+                {%- if product.tags contains 'Mattress' -%}
+                <div class="emi-box">
+               <p style="font-weight: 400;"><a href="https://doctordreams.com/pages/100-days-nights-free-trial" target="_blank" style="color: #1D4782; text-decoration: underline;"> Return & Refund Policy Under 100 Nights Trial Offer</a></p>
+                </div>
+                  {%- endif -%}
+                <div id="razorpay-affordability-widget"> </div>
+                <div id="w369-widget-control"></div>
+               <p class="offer">{% comment %}Cashback of 10% upto Rs.1000 on Axio pay later{% endcomment %}</p>
+
+                {%- when 'buy-buttons' -%}
+                <span class="d_flex pdp_payment_btn" style="border-width: 0px; margin:0px;">
+                  {%- render 'product-quantity', id: product_id -%}
+                  {%-
+                    render 'product-buy-buttons',
+                    id: product_id,
+                    product: product,
+                    smart_payment_enabled: block.settings.smart-payment-enabled
+                    -%}
+                  </span>
+                 <!--  Magic Checkout 1CC Begins -->
+                    {%- if shop.metafields.magic_checkout.buyNowEnabled == false -%}
+                    {%- else -%}
+                       <div style="margin-top:10px; ">
+                          <magic-checkout-btn page-type="product" onclick="onBuyNowClickMagic(event)" border-radius="30px" width="" >
+                          </magic-checkout-btn>
+                       </div>
+                    {%- endif -%}
+                  <!--  Magic Checkout 1CC ends -->
+                  {%- comment -%}EMI
+                  {% if product.variants[0].price > 499999 and  product.tags contains 'Combo-offer' %}
+                  <div class="emi-box">
+                    <p class="emi-text">No cost EMI As low as
+                      <span>{{ product.variants[0].price | divided_by: 6 | money_without_currency | split: '.' | first }}
+                      </span>
+                      Per Month.
+                      <span id="more-details">More Details</span>
+                    </p>
+                    {% render 'emi-chart-novairaint' %}
+                  </div>
+                  {% else %}
+                  <div class="emi-box">
+                    <p class="emi-text">No cost EMI As low as
+                      <span>{{ product.variants[0].price | divided_by: 6 | money_without_currency | split: '.' | first }}
+                      </span>
+                      Per Month.
+                      <span id="more-details">More Details</span>
+                    </p>
+                    {% render 'emi-chart' %}
+                  </div>
+                  {% endif %}
+{%- endcomment -%}
+                  {%- comment -%}
+
+                  <span class="d_flex second_emibox">
+                    <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Untitled-1_1_8afaa207-13d1-4e03-a631-734f2a1b9204.jpg?v=1662101139">
+                    <span class="info_emi">
+                      <span>Instant Cardless EMI For as low as ₹360/mo</span>
+                      <span>Available across multiple banks <span> Check Eligibility</span></span>
+                    </span>
+                  </span>
+                  {%- endcomment -%}
+
+                  {%- comment -%}End EMI{%- endcomment -%}
+                  {% include 'Descripation-Tab'%}
+                  {%- comment -%}BOUGHT TOGETHER{%- endcomment -%}
+                  {%- render 'bought_together' -%}
+                  <h4 class="review_title second_font primary_color">REVIEWS & RATINGS</h4>
+
+                  {% comment %}{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}{% endcomment %}
+                  {%- comment -%}ENDBOUGHT TOGETHER{%- endcomment -%}
+                  {%- when 'unava{%- render 'product-quantity', id: product_id -%}ilable-form' -%}
+                  {%- render 'product-unavailable-form', product: product, id: product_id -%}
+
+                  {%- when 'pickup' -%}
+                  {%- render 'product-pickup', product: product, id: product_id -%}
+
+                  {%- when 'description' -%}
+                  {%- unless product.description == blank -%}
+                  <div class="product-page--description" data-item="rte-content" itemprop="description">
+                    {{ product.description }}
+                  </div>
+                  {%- endunless -%}
+
+                  {%- when 'collapsible-tab' -%}
+                  {%- render 'collapsible-tab', block: block -%}
+
+                  {%- when 'rating' -%}
+                  {%- render 'product-rating' -%}
+
+
+                  {%- when 'liquid' -%}
+                  {{- block.settings.custom-liquid -}}
+
+                  {%- when '@app' -%}
+                  {%- render block -%}
+
+                  <!-- <div class="patra mobile1"><img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/i1.png?v=1655985233" alt=""> <span><p class="bottom-para" >The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings. Please expect an unevenness of up to 5-10 mm in the
+                    product due to differences in surfaces and floor levels.</span>{% comment %}{{ section.settings.product-detail-excerpt }}{% endcomment %}</p>
+                  </div>
+                  <div class="customer-services pdp-customer-services col-sm-12 mobile1" >
+                    <div class="product-services-slider">
+                      <div><img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/Shape_1.png"><h3>1 Year Warranty</h3></div>
+                      <div><img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/Shape_2.png"><h3>*Free Shipping</h3></div>
+                      <div><img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/Shape_3.png"><h3>Free Assembly</h3></div>
+                    </div>
+                  </div> -->
+
+                  {%- endcase -%}
+                </div>
+                {%- endcapture -%}
+
+                {%- liquid
+                  unless move_to_next_container
+                  assign featured_blocks = true
+                  capture featured_blocks_html
+                  echo featured_blocks_html
+                  echo block_html
+                  endcapture
+                  else
+                  capture content_blocks
+                  echo content_blocks
+                  echo block_html
+                  endcapture
+                  endunless
+                  -%}
+                  {%- endfor -%}
+
+                  <product-root class="product-page--root" data-featured-blocks="{{ featured_blocks }}" data-section-id="{{ section.id }}" data-section-type="product_page" data-spacing="none" data-product-id="{{ product_id }}" data-handle="{{ product.handle }}">
+                    {%- render 'breadcrumbs' -%}
+                    {% if modal_enabled %}
+                    <modal-root class="modal--root" data-modal-view="product-media">
+                      {% endif %}
+                      <div class="product-page--top-panel">
+                        {%- if featured_blocks -%}
+                        <div class="product-page--panel-wrapper">
+                          <div class="product-page--featured-media">
+                            {%- comment -%}off price{%- endcomment -%}
+                            <span class="offer_price">{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}% OFF</span>
+                            {%- comment -%}end off price{%- endcomment -%}
+                            {%- comment -%}
+                            =================product slider===========
+                            {% render 'product-slider'%}
+                            {%- endcomment -%}
+
+                            {%- comment -%}
+                            =========== new =========== slider
+                            {%- endcomment -%}
+                            <div class="row">
+                              <div class="column js">
+                                <div class="slider-single">
+                                  {% for media in product.media %}
+                                  {% assign img_url_full = media | img_url: 'master' %}
+                                  <img class="lazyautosizes lazyloaded" src="{{img_url_full}}" data-sizes="auto" data-widths="[295,394,590]" alt="{{media.alt}}" data-srcset="{{img_url_full}}">
+                                  {% endfor %}
+                                </div>
+
+                                <div class="slider-nav">
+                                  {% for media in product.media %}
+                                  {% assign img_url_full = media | img_url: 'master' %}
+                                  <img class="lazyautosizes lazyloaded" src="{{img_url_full}}" data-sizes="auto" data-widths="[295,394,590]" alt="{{media.alt}}" data-srcset="{{img_url_full}}">
+                                  {% endfor %}
+                                </div>
+                              </div>
+                            </div>
+                            {%- comment -%}new slider end{%- endcomment -%}
+
+                            {%comment%}
+                            {% if modal_enabled and featured_media.media_type == 'image' %}
+                            <a class="modal--link" href="#" aria-label="{{ image_modal_t }}">
+                              {% endif %}
+
+                              {%- liquid
+                                if featured_media
+                                render "product--media", media_view: "featured", inside_carousel: false, product_media: featured_media, video_looping_enabled: video_looping_enabled
+                                else
+                                render 'placeholder', type: 'product', aspect_ratio: 1, placeholder_index: 1
+                                endif
+                                %}
+
+                                {% if modal_enabled and featured_media.media_type == 'image' %}
+                              </a>
+                              {% endif %}
+                              {%endcomment%}
+
+                              <div class="d_flex services_details">
+                                {%- comment -%} <div class="d_flex top_services">
+
+                                  <span class="d_flex feature_info">
+                                    <span>
+                                      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/cool_gel_foam_icon_68b2a486-180a-4cac-8a3a-9da1fba848a8.png" alt=""></span>
+                                      <p class="primary_text_color">Triple Layer</p>
+                                    </span>
+                                    <span class="d_flex feature_info">
+                                      <span>
+                                        <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/cool_gel_foam_icon_68b2a486-180a-4cac-8a3a-9da1fba848a8.png" alt=""></span>
+                                        <p class="primary_text_color">Cool Gel Foam</p>
+                                      </span>
+                                      <span class="d_flex feature_info">
+                                        <span>
+                                          <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/cool_gel_foam_icon_68b2a486-180a-4cac-8a3a-9da1fba848a8.png" alt=""></span>
+                                          <p class="primary_text_color">Pure PU Foam
+                                          </p>
+                                        </span>
+                                        <span class="d_flex feature_info">
+                                          <span>
+                                            <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/cool_gel_foam_icon_68b2a486-180a-4cac-8a3a-9da1fba848a8.png" alt=""></span>
+                                            <p class="primary_text_color">Memory Foam</p>
+                                          </span>
+
+                                        </div> {%- endcomment -%}
+                                        {%- if product.metafields.custom.pdp_usp_feature!= blank -%}
+                                        {% assign features_data = product.metafields.custom.pdp_usp_feature | split: '||' %}
+                                        <div class="d_flex top_services">
+                                          {% for item in features_data %}
+                                          {%- assign features_data = item | split: '+' -%}
+                                          <span class="d_flex feature_info">
+                                            <span><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/{{features_data[0]}}" alt=""></span>
+                                            <p class="primary_text_color">{{features_data[1]}}</p></br>{{features_data[2]}}
+                                          </span>
+                                          {% endfor %}
+                                        </div>
+                                        {%- endif -%}
+
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-ecoair-latex-mattress' or product.handle contains 'doctor-dreams-by-nilkamal-grid-mattress' or product.handle contains 'doctor-dreams-max-icefoam-orthopaedic-mattress' or product.handle contains 'doctor-dreams-hybrid-pocket-spring-mattress' or product.handle contains 'doctor-dream-lite-dual-comfort-mattress' or product.handle contains 'doctor-dreams-plus-orthopaedic-mattress' %}
+                                        <div class="d_flex">
+                                          <span class="d_flex feature_info">
+                                            <span><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/free_shipping.svg?v=1665642859" alt=""></span>
+                                            <p class="primary_text_color">Free  Shipping</p>
+                                          </span>
+
+                                          <span class="d_flex feature_info">
+                                            <span>
+                                              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/100_nights.svg?v=1665642859" alt=""></span>
+                                              <p class="primary_text_color">100 Nights Free Trial</p>
+                                            </span>
+
+                                            <span class="d_flex feature_info">
+                                              <span><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/easy_emi_1.svg?v=1667216547" alt=""></span>
+                                              <p class="primary_text_color">Easy Emi</p>
+                                            </span>
+
+                                            <span class="d_flex feature_info">
+                                              <span>
+                                                <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/nilkaml_assurance.svg?v=1666854972" alt=""></span>
+                                                <p class="primary_text_color">Nilkamal Assurance</p>
+                                              </span>
+                                            </div>
+                                          </div>
+                                          {% else %}
+                                          <div class="d_flex">
+                                          <span class="d_flex feature_info">
+                                            <span><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/free_shipping.svg?v=1665642859" alt=""></span>
+                                            <p class="primary_text_color">Free  Shipping</p>
+                                          </span>
+
+                                            <span class="d_flex feature_info">
+                                              <span><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/easy_emi_1.svg?v=1667216547" alt=""></span>
+                                              <p class="primary_text_color">Easy Emi</p>
+                                            </span>
+
+                                            <span class="d_flex feature_info">
+                                              <span>
+                                                <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/nilkaml_assurance.svg?v=1666854972" alt=""></span>
+                                                <p class="primary_text_color">Nilkamal Assurance</p>
+                                              </span>
+                                            </div>
+                                          </div>
+                                          {% endif %}
+                                          {%- comment -%}
+                                          {%- render 'bought_together' -%}
+                                          {%- endcomment -%}
+                                        </div>
+                                        <div>
+                                          {%- if featured_blocks -%}
+                                          <div class="product-page--featured-blocks product_info_right">
+                                            {{ featured_blocks_html }}
+                                          </div>
+                                          {%- endif -%}
+                                        </div>
+                                      </div>
+                                      {%- endif -%}
+                                    </div>
+                                    {%- comment -%}Full width content{%- endcomment -%}
+                                    {%- for block in section.blocks -%}
+                                    {%- case block.type -%}
+                                    {%- when 'features' -%}
+                                    {%- if product.metafields.Product['pdp_features'] != blank -%}
+                                    {% assign features_data = product.metafields.Product['pdp_features'] | split: '||' %}
+                                    <section class="know_more" style="background-image: url({{block.settings.features_image | img_url: 'master'}});">
+                                      <h2 class="title">{{ product.metafields['products']['pdp_features_title'] }}</h2>
+                                      <div class="know_more_icons icons d_flex">
+                                        {% for item in features_data %}
+                                        {%- assign features_data = item | split: '+' -%}
+                                        <div class="benifits_box">
+                                          <img class="icon_benifit" src="{{features_data[0]}}"/>
+                                          <span class="d_flex benifits_info">
+                                            <span id="description">{{features_data[1]}}
+                                            </span>
+                                            <span class="sub_desc">{{features_data[2]}}
+                                            </span>
+                                          </span>
+                                        </div>
+                                        {% endfor %}
+                                      </div>
+                                    </section>
+                                    {%- endif -%}
+                                    {%- when 'about' -%}
+                                    {%- if product.metafields.Product['pdp_about'] != blank -%}
+                                    {% assign features_data = product.metafields.Product['pdp_about'] | split: '||' %}
+                                    <section>
+                                      <div class="about_section" style="background-image: url({{features_data[2]}});">
+                                        {%- assign about_tt = features_data[0]  | replace: '<br>', '' -%}
+                                        <h2 class="text_over_head desktop_title">{{features_data[0] | upcase}}
+                                        </h2>
+                                        <h2 class="text_over_head mobile_title">{{about_tt}}
+                                        </h2>
+                                        <p class="sub_heading">{{features_data[1]}}
+                                        </p>
+                                      </div>
+                                    </section>
+                                    {%- endif -%}
+                                    {%- comment -%} {%- if product.metafields.Product['pdp_feature_heading'] != blank -%}
+                                    {% assign features_data = product.metafields.Product['pdp_feature_heading'] %}
+                                    <h2 class="title primary_color second_font">{{features_data | upcase}}</h2>
+                                    {%- endif -%} {%- endcomment -%}
+                                    {%- if product.metafields.Product['pdp_features2'] != blank -%}
+                                    {% assign features_data = product.metafields.Product['pdp_features2'] | split: '||' %}
+                                      {% if product.handle contains "doctor-dreams-by-nilkamal-grid-mattress" %}
+        <style>
+          .details_section {
+              display: none;
+          }
+          .details_section.luxe_matt {
+              display: block !important;
+          }
+      @media only screen and (max-width: 600px) {
+          video {
+              max-width: -webkit-fill-available;
+          }
+          .details_section_luxematt {
+              flex-direction: column !important;
+          }
+        }
+        </style>
+        <div class="details_section luxe_matt">
+        <h2 class="title primary_color second_font">WHY LUXE TRUGRID® MATTRESS?</h2>
+        <div class="details_section_luxematt" style="display: flex;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Pain-relieving_TruGrid_technology.svg?v=1666855079">
+              <span class="primary_color second_font">Advanced temperature control</span>
+              <span class="description">Nobody wants to sleep on a hot mattress. The innovative airflow channels in the Luxe TRUGRID® mattress allow for easy air circulation, preventing heat from trapping and resulting in cool, sweat-free sleeping all night.</span>
+          </span>
+      <video width="583" height="369" controls loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/c1be497b36a14ed2a495a35ba28c1fb8.mp4" type="video/mp4">
+      </video>
+        </div>
+      <div class="details_section_luxematt" style="display: flex; flex-direction: row-reverse;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Comfortable_dual-foam_support.svg?v=1666855197">
+              <span class="primary_color second_font">Optimal softness-to-support ratio</span>
+              <span class="description">Softness and support are critical to mattress comfort. The Luxe TRUGRID® mattress contours to your body shape, distributing your weight evenly across the mattress and balancing the softness-to-support ratio.</span>
+          </span>
+      <video width="583" height="369" controls loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/1b874b77084d4f33866b0ddeeeb38789.mp4" type="video/mp4">
+      </video>
+        </div>
+      <div class="details_section_luxematt" style="display: flex;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Smooth_plush_GSM_designer_cover.svg?v=1666855276">
+              <span class="primary_color second_font">Super-elastic, hypo-polymer grid</span>
+              <span class="description">Sleep on a mattress that provides personalised support. The high elasticity of the hypo-polymer grid allows for flexible stretching and contracting of the Luxe TRUGRID® mattress for unrivalled comfort and support.</span>
+          </span>
+      <video width="583" height="369" controls loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/c63cbcadc3ad49efa95895463d97416a.mp4" type="video/mp4">
+      </video>
+        </div>
+      </div>
+      {%- endif -%}
+       {% if product.handle contains "sleeping-bag" %}
+        <style>
+          .details_section {
+              display: none;
+          }
+          .details_section.luxe_matt {
+              display: block !important;
+          }
+      @media only screen and (max-width: 600px) {
+          video {
+              max-width: -webkit-fill-available;
+          }
+          .details_section_luxematt {
+              flex-direction: column !important;
+          }
+        }
+        </style>
+        <div class="details_section luxe_matt">
+        <h2 class="title primary_color second_font">WHY SLEEP SNUG?</h2>
+        <div class="details_section_luxematt" style="display: flex;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Feel_pampered_in_360_Deep_Pressure_Therapy.svg?v=1676457965">
+              <span class="primary_color second_font">Feel pampered in 360° Deep Pressure Therapy</span>
+              <span class="description">Stop fiddling with weighted blankets to achieve deep pressure, and let our Sleep Snug wearable blanket work its magic. Its 360° deep pressure therapy cuddles you in a warm embrace that feels like a tight hug from your loved one, instantly putting you in a relaxed and happier state.</span>
+          </span>
+      <video width="583" height="369" loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/0a2fa8071f694d3f89343c97313b09c1.mp4" type="video/mp4">
+      </video>
+        </div>
+      <div class="details_section_luxematt" style="display: flex; flex-direction: row-reverse;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Stretch_freely_with_the_4-Way_Flexible_Design.svg?v=1676458246">
+              <span class="primary_color second_font">Stretch freely with the 4-Way Flexible Design</span>
+              <span class="description">The Sleep Snug Sleeping Pod does not limit your movements. Instead, its 4-way flexible microfiber fabric allows for a full range of motion where you can freely stretch, move, and stick out your feet without compromising the snug feel of a hug. So you get the best of both worlds.</span>
+          </span>
+      <video width="500" height="369" loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/44c1d4712ad441beb1bf16ffd54361a3.mp4" type="video/mp4">
+      </video>
+        </div>
+      <div class="details_section_luxematt" style="display: flex;">
+          <span class="info d_flex">
+              <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Advanced_cooling_for_chill_sweat-free_nights.svg?v=1676458347">
+              <span class="primary_color second_font">Advanced cooling for chill, sweat-free nights</span>
+              <span class="description">Deep-pressure wrapping does not mean you have to sacrifice breathability. With its advanced cooling and breathable design, the Sleep Snug comforter blanket strikes the perfect balance between keeping you snug and chilled so you can sleep sweat-free and wake up feeling refreshed.</span>
+          </span>
+      <video width="583" height="369" loop autoplay muted>
+        <source src="https://cdn.shopify.com/videos/c/o/v/488f3b1c1efc4ce6bb823c63ad72fba9.mp4" type="video/mp4">
+      </video>
+        </div>
+      </div>
+      {%- endif -%}
+                                    <div class="details_section">
+
+                                      <h2 class="title primary_color second_font">{{ product.metafields['products']['pdp_features2title'] }}</h2>
+                                      {% for item in features_data %}
+                                      {%- assign features_data = item | split: '+' -%}
+                                      <div class="d_flex">
+                                        <span class="info d_flex">
+                                          <img  src="{{features_data[0]}}" />
+                                          <span class="primary_color second_font">{{features_data[1]}}</span>
+                                          <span class="description" >{{features_data[2]}}</span>
+                                        </span>
+                                        <img  src="{{features_data[3]}}" />
+                                    </div>
+                                      {% endfor %}
+                                    </div>
+                                    {%- endif -%}
+
+                                    {%- endcase -%}
+                                    {%- endfor -%}
+                                    {% if product.handle == 'doctor-dreams-max-icefoam-orthopaedic-mattress' %}
+                                    {%- if product.metafields.Product['pdp_banner'] != blank -%}
+                                    <div class="banner_click d_flex" >
+                                      {%- comment -%} <h4 class="bn_heading">KNOW YOUR MATTRESS</h4> {%- endcomment -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- assign data_count = features_data.size -%}
+                                      <span class="bn_left_main yash">
+                                        <h4 class="bn_heading">KNOW YOUR MATTRESS</h4>
+                                        {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- for item in features_data -%}
+                                        {%- assign features_data = item | split: '+' -%}
+                                        <span class="d_flex bn_main akee" style="margin-bottom:2px;">
+                                          <span class="click_main d_flex shikha" style="height: 64px;">
+                                            <img src="{{features_data[0]}}" alt="">
+                                            <h4 class="banner_title">{{features_data[1]}}</h4>
+                                          </span>
+                                          <span class="click_text">{{features_data[2]}}</span>
+                                        </span>
+                                        {%- endfor -%}
+                                      </span>
+                                      {%- if product.metafields.Product['konw_your_mattress_image'] != blank -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress_image'] | split: '+' -%}
+                                      <img class="desk_vis" src={{features_data[0]}}>
+                                      {%- if features_data[1] != blank -%}
+                                      <img class="mob_vis" src={{features_data[1]}}>
+                                      {%- else -%}
+                                      <img class="mob_vis" src={{features_data[0]}}>
+                                      {%- endif -%}
+                                      {%- endif -%}
+                                      {%- comment -%} <div class="dot_view">
+                                        <p>1</p>
+                                      </div> {%- endcomment -%}
+                                    </div>
+                                    {%- endif -%}
+                                      {%- elsif product.handle == 'doctor-dreams-by-nilkamal-grid-mattress' -%}
+                                    {%- if product.metafields.Product['pdp_banner'] != blank -%}
+                                    <div class="banner_click d_flex" >
+                                      {%- comment -%} <h4 class="bn_heading">KNOW YOUR MATTRESS</h4> {%- endcomment -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- assign data_count = features_data.size -%}
+                                      <span class="bn_left_main yash">
+                                        <h4 class="bn_heading">KNOW YOUR MATTRESS</h4>
+                                        {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- for item in features_data -%}
+                                        {%- assign features_data = item | split: '+' -%}
+                                        <span class="d_flex bn_main akee" style="margin-bottom:2px;">
+                                          <span class="click_main d_flex shikha" style="height: 64px;">
+                                            <img src="{{features_data[0]}}" alt="">
+                                            <h4 class="banner_title">{{features_data[1]}}</h4>
+                                          </span>
+                                          <span class="click_text">{{features_data[2]}}</span>
+                                        </span>
+                                        {%- endfor -%}
+                                      </span>
+                                      {%- if product.metafields.Product['konw_your_mattress_image'] != blank -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress_image'] | split: '+' -%}
+                                      <img class="desk_vis" src={{features_data[0]}}>
+                                      {%- if features_data[1] != blank -%}
+                                      <img class="mob_vis" src={{features_data[1]}}>
+                                      {%- else -%}
+                                      <img class="mob_vis" src={{features_data[0]}}>
+                                      {%- endif -%}
+                                      {%- endif -%}
+                                      {%- comment -%} <div class="dot_view">
+                                        <p>1</p>
+                                      </div> {%- endcomment -%}
+                                    </div>
+                                    {%- endif -%}
+                                       {%- else -%}
+                                      {%- comment -%}First banner click{%- endcomment -%}
+                                    {%- if product.metafields.Product['pdp_banner'] != blank -%}
+                                    <div class="banner_click d_flex" >
+                                      {%- comment -%} <h4 class="bn_heading">KNOW YOUR MATTRESS</h4> {%- endcomment -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- assign data_count = features_data.size -%}
+                                      <span class="bn_left_main data="" {% if data_count == 2 %}layers2{% elsif data_count == 3  %}layers3{% elsif  data_count == 4 %}layers4{% elsif  data_count == 5%}layers5{% endif %}">
+                                        <h4 class="bn_heading">KNOW YOUR MATTRESS</h4>
+                                        {%- assign features_data = product.metafields.Product['konw_your_mattress'] | split: '||' -%}
+                                        {%- for item in features_data -%}
+                                        {%- assign features_data = item | split: '+' -%}
+                                        <span class="d_flex bn_main">
+                                          <span class="click_main d_flex">
+                                            <img src="{{features_data[0]}}" alt="">
+                                            <h4 class="banner_title">{{features_data[1]}}</h4>
+                                          </span>
+                                          <span class="click_text">{{features_data[2]}}</span>
+                                        </span>
+                                        {%- endfor -%}
+                                      </span>
+                                      {%- if product.metafields.Product['konw_your_mattress_image'] != blank -%}
+                                      {%- assign features_data = product.metafields.Product['konw_your_mattress_image'] | split: '+' -%}
+                                      <img class="desk_vis" src={{features_data[0]}}>
+                                      {%- if features_data[1] != blank -%}
+                                      <img class="mob_vis" src={{features_data[1]}}>
+                                      {%- else -%}
+                                      <img class="mob_vis" src={{features_data[0]}}>
+                                      {%- endif -%}
+                                      {%- endif -%}
+                                      {%- comment -%} <div class="dot_view">
+                                        <p>1</p>
+                                      </div> {%- endcomment -%}
+                                    </div>
+                                    {%- endif -%}
+                                       {%- endif -%}
+                                    {%- comment -%}End First banner clLICK{%- endcomment -%}
+                                    {%- comment -%}Review Slider{%- endcomment -%}
+                                      <span class="d_flex heading_div">
+                                      <h2 class="heading_text">CUSTOMER REVIEWS
+                                      </h2>
+                                      <p class="subheading_text">Read what our customers wake up to with Doctor Dreams</p>
+
+                                    </span>
+                                    {% render 'judgeme_widgets', widget_type: 'judgeme_featured_carousel', concierge_install: false %}
+                                    <a class="pdp_btn review_btn d_flex" href="https://doctordreams.com/pages/review-pages" target="_blank">Read All Reviews</a>
+                                    {%- comment -%}End Review Slider{%- endcomment -%}
+                                    {%- comment -%}Second banner{%- endcomment -%}
+                                    {%- if product.metafields.Product['pdp_desktop_banner2_url'] != blank -%}
+                                    {% assign pdp_banner_data2 = product.metafields.Product['pdp_desktop_banner2_url'] | split: '||' %}
+                                    <div class="measure_img">
+                                      <h2 class="primary_color second_font measure_title desk_vis">Measure the firmness of your mattress <br> for a Good Night Sleep</h2>
+                                      <h2 class=" primary_color second_font measure_title mob_vis">Measure the firmness of your <br> mattress for a Good Night Sleep</h2>
+                                      {%- if pdp_banner_data2 != blank -%}<a href="{{pdp_banner_data2[1]}}" class="d_flex">{%- endif -%}
+                                        <img src="{{product.metafields.Product['pdp_desktop_banner2_url']}}" alt="" class="desk_vis">
+
+                                        {%- if product.metafields.Product['pdp_mobile_banner2_url'] != blank -%}
+                                        <img src="{{product.metafields.Product['pdp_mobile_banner2_url']}}" alt="" class="mob_vis">
+                                        {%- else -%}
+                                        <img src="{{product.metafields.Product['pdp_desktop_banner2_url']}}" alt="" class="mob_vis">
+                                        {%- endif -%}
+                                        {%- if pdp_banner_data2 != blank -%}</a>{%- endif -%}
+                                      </div>
+                                      {%- endif -%}
+                                      {%- comment -%}End Second banner{%- endcomment -%}
+                                      {%- for tag in product.tags -%}
+                                      {%- if tag == 'Foam mattress' or  tag == 'Furniture Metal Bed' or tag == 'Pillows' or tag == 'Bedding' or tag == 'Essentials faq' or tag =='Essentials' -%}
+                                      {%- assign faq_active = true -%}
+                                      {%- endif -%}
+                                      {%- endfor -%}
+
+                                      {%- if  faq_active == true -%}
+                                      <div class="faq_container">
+                                        <span class="d_flex heading_div">
+                                          <h2 class="heading_text">FAQ’s</h2>
+                                          <p class="subheading_text">All Issues, FAQs & Support</p>
+                                        </span>
+
+
+                                        {% if product.handle contains 'doctor-dreams-max-icefoam-orthopaedic-mattress' %}
+                                        {{pages['icefoam-mattress-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-ecoair-latex-mattress' %}
+                                        {{pages['latex-mattress-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-grid-mattress' %}
+                                        {{pages['tugrid-mattress'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-hybrid-pocket-spring-mattress' %}
+                                        {{pages['hybrid-pocket-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dream-lite-dual-comfort-mattress' %}
+                                        {{pages['lite-dual-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-plus-orthopaedic-mattress' %}
+                                        {{pages['plus-memory-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-grace-upside-down-reversible-comforter' %}
+                                        {{pages['grace-upside-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-premium-pure-cotton-fitted-bedsheet' %}
+                                        {{pages['premium-pure-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-pcm-white-double-duvet' %}
+                                        {{pages['cloud-comforter'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-bluetooth-enabled-aroma-diffuser-with-humidifier-mdodrarhudfrwht' %}
+                                        {{pages['smart-aroma-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'essential-oil-pillow-spray' %}
+                                        {{pages['essential-oil-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-aroma-diffuser-oil' %}
+                                        {{pages['aroma-diffuser-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-sleep-eye-mask' %}
+                                        {{pages['sleep-eye-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'velvette-bed-without-storage' %}
+                                        {{pages['velvette-upholstered-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-striker-metal-black-bed' %}
+                                        {{pages['striker-metal-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-grande-wood-metal-structure-bed' %}
+                                        {{pages['grande-wood-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-matrix-smart-recliner-bed' %}
+                                        {{pages['matrix-smart-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-acacia-solid-wooden-bed' %}
+                                        {{pages['acacia-solid-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-soft-adjustable-snuggle-pillow' %}
+                                        {{pages['snuggle-pillow-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-cool-and-adjustable-gel-infused-memory-foam-luxe-pillow' %}
+                                        {{pages['luxe-memory-foam-pillow-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-microfiber-filling-comfort-cloud-pillow-set-of-2' %}
+                                        {{pages['cloud-pillow-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-breathable-and-bouncy-cuddle-pillow' %}
+                                        {{pages['cuddle-pillow-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'dr-dreams-gel-infsd-mem-foam-pillow-rgl-mdodrglmfplwrgl-1' %}
+                                        {{pages['gel-infused-memory-faq'].content}}
+                                        {% endif %}
+                                        {% if product.handle contains 'doctor-dreams-by-nilkamal-cool-and-bouncy-adjustable-bread-pillow' %}
+                                        {{pages['bread-pillow-faq'].content}}
+                                        {% endif %}
+                                        <a class="btn_see_all last_btn_s" target="_blank" href="https://doctordreams.com/pages/faq-new">Show More</a>
+                                      </div>
+                                      {%- endif -%}
+
+
+                                      {%- comment -%}End Full width content{%- endcomment -%}
+                                      {% if modal_enabled %}
+                                      <div class="product-page--modal-wrapper">
+                                        {{ modal_media }}
+                                      </div>
+                                    </modal-root>
+                                    {% endif %}
+                                  </product-root>
+
+                                  {%- comment -%}Sticky bottom{%- endcomment -%}
+                                  <div class="d_flex   product_sticky_container ">
+                                   <div class="sticky_con_var">
+                                     <span class="sticky_img_section d_flex">
+                                      <img src="{{ product.featured_image | img_url: '100x100' }}" class="lazyload">
+                                      <h2 class="pdp_title m-hide primary_color">
+                                        {{ product.title | upcase }}
+                                      </h2>
+                                      <h2 class="pdp_title d-hide primary_color">
+                                        {{ product.title | upcase | truncatewords: 3 }}
+                                      </h2>
+                                    </span>
+                                    {%- comment -%} varaint selection{%- endcomment -%}
+                                    <span class="d_flex d-hide varaint_selection {% unless product.has_only_default_variant -%}trueVar{%- endunless -%}">
+                                      <span class="primary_color d-hide-desk selected_var">
+                                        <span class="variant-01"></span>
+                                      <span class="variant-02"></span>
+                                      <span class="variant-03"></span>
+                                      </span>
+                                      {%- comment -%} <span class="primary_color   deskVPrice"></span> {%- endcomment -%}
+                                    </span>
+                                   </div>
+                                    <span class="d_flex m-hide varaint_selection {% unless product.has_only_default_variant -%}trueVar{%- endunless -%}">
+                                      <span class="primary_color m-hide-desk selected_var">
+                                        <span class="variant-01"></span>
+                                        <span class="variant-02"></span>
+                                        <span class="variant-03"></span>
+                                        <span class="Variant-price-update"></span>
+                                      </span>
+                                      <span class="primary_color  deskVPrice"></span>
+                                    </span>
+                                    <span class="d_flex" style="flex-direction: column;">
+                                      <span class="primary_color  mobileVPrice"></span>
+                                      <button class="dummy_btn_add custom_addtocart__button" onclick="return addTOcartDisable()">
+                                        <span class="product-buy-buttons--cta-text primary_color">
+                                          Add To Cart</span>
+                                        </button>
+                                        <button class="new_add_btn">
+                                          <span class="product-buy-buttons--cta-text primary_color">Add To Cart</span>
+                                        </button>
+                                      </span>
+                                    </div>
+                                    {%- comment -%}end sticky bottom{%- endcomment -%}
+
+                                    {%
+                                      render "product--scripts",
+                                      product: product,
+                                      id: product_id,
+                                      load_model: load_model,
+                                      load_video: load_video
+                                      %}
+                                      {% comment %}{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}{% endcomment %}
+                                      {% render 'product-schema', product: product %}
+                                      
+
+                                      {% schema %}
+                                      {
+                                        "name": "Product page",
+                                        "settings": [
+                                        {
+                                          "type": "header",
+                                          "content": "Media"
+                                        },
+                                        {
+                                          "type": "paragraph",
+                                          "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)."
+                                        },
+                                        {
+                                          "type": "checkbox",
+                                          "id": "modal-enabled",
+                                          "label": "Enable modal popup",
+                                          "default": true,
+                                          "info": "Opens when clicking a product image"
+                                        },
+                                        {
+                                          "type": "checkbox",
+                                          "id": "hide-variant-media",
+                                          "label": "Hide variant media",
+                                          "default": false
+                                        },
+                                        {
+                                          "type": "checkbox",
+                                          "id": "loop-enabled",
+                                          "label": "Enable video looping",
+                                          "default": false
+                                        }
+                                        ],
+                                        "blocks": [
+                                        {
+                                          "type": "overline",
+                                          "name": "Overline text",
+                                          "limit": 1,
+                                          "settings": [
+                                          {
+                                            "label": "Overline text",
+                                            "id": "text",
+                                            "type": "text",
+                                            "default": "Overline text"
+                                          }
+                                          ]
+                                        },
+                                        {
+                                          "type": "heading",
+                                          "name": "Heading",
+                                          "limit": 1,
+                                          "settings": []
+                                        },
+                                        {
+                                          "type": "features",
+                                          "name": "Features",
+                                          "limit": 1,
+                                          "settings": [
+                                          {
+                                            "label": "Title",
+                                            "id": "features_title",
+                                            "type": "text",
+                                            "default": "KNOW YOUR MATTRESS"
+                                          }, {
+                                            "label": "Background image",
+                                            "id": "features_image",
+                                            "type": "image_picker"
+                                          }
+                                          ]
+                                        },
+                                        {
+                                          "type": "about",
+                                          "name": "About",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "vendor",
+                                          "name": "Vendor",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "price",
+                                          "name": "Price",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "quantity-input",
+                                          "name": "Quantity input",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "low-stock",
+                                          "name": "Low stock notice",
+                                          "limit": 1,
+                                          "settings": [
+                                          {
+                                            "label": "Show low in stock notice when quantity is",
+                                            "id": "threshold",
+                                            "type": "range",
+                                            "min": 0,
+                                            "max": 10,
+                                            "step": 1,
+                                            "default": 5,
+                                            "info": "Set to 0 to disable this feature. Updated for each variant."
+                                          }
+                                          ]
+                                        }, {
+                                          "type": "options",
+                                          "name": "Variant picker",
+                                          "limit": 1,
+                                          "settings": [
+                                          {
+                                            "type": "select",
+                                            "id": "variant-style",
+                                            "label": "Product variant style",
+                                            "options": [
+                                            {
+                                              "label": "Dropdowns",
+                                              "value": "dropdowns"
+                                            }, {
+                                              "label": "Buttons",
+                                              "value": "buttons"
+                                            }
+                                            ],
+                                            "default": "buttons"
+                                          },
+                                          {
+                                            "type": "checkbox",
+                                            "id": "swatches-enabled",
+                                            "label": "Enable color swatches",
+                                            "default": true,
+                                            "info": "Automatically turn color options into swatches. [Learn more](https://support.troopthemes.com/guide/color-swatch-guide)"
+                                          },
+                                          {
+                                            "type": "header",
+                                            "content": "Size chart"
+                                          },
+                                          {
+                                            "type": "checkbox",
+                                            "id": "size-chart-enabled",
+                                            "label": "Enable",
+                                            "default": true
+                                          }, {
+                                            "type": "text",
+                                            "id": "size-chart-option",
+                                            "label": "Link from option",
+                                            "default": "size"
+                                          }, {
+                                            "type": "page",
+                                            "id": "size-chart-content",
+                                            "label": "Page content"
+                                          }
+                                          ]
+                                        }, {
+                                          "type": "buy-buttons",
+                                          "name": "Buy buttons",
+                                          "limit": 1,
+                                          "settings": [
+                                          {
+                                            "type": "checkbox",
+                                            "id": "smart-payment-enabled",
+                                            "label": "Show dynamic checkout button",
+                                            "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                                            "default": true
+                                          }
+                                          ]
+                                        }, {
+                                          "type": "unavailable-form",
+                                          "name": "Unavailable form",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "pickup",
+                                          "name": "Pickup availability",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "divider",
+                                          "name": "Featured content divider",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "description",
+                                          "name": "Description",
+                                          "limit": 1,
+                                          "settings": []
+                                        }, {
+                                          "type": "collapsible-tab",
+                                          "name": "Collapsible tab",
+                                          "settings": [
+                                          {
+                                            "id": "heading",
+                                            "label": "Heading",
+                                            "type": "text",
+                                            "default": "Collapsible tab"
+                                          }, {
+                                            "type": "richtext",
+                                            "id": "description",
+                                            "label": "Text",
+                                            "default": "<p>Use tabs to highlight unique features, <br/>sizing information, <br/>or other sales information.</p>",
+                                            "info": "You can use product metafields to assign content to this tab that is unique to an individual product. Learn more about [metafields](https://help.shopify.com/en/manual/metafields/displaying-metafields-on-your-online-store)."
+                                          }, {
+                                            "type": "page",
+                                            "id": "page-content",
+                                            "label": "Tab content from page"
+                                          }
+                                          ]
+                                        }, {
+                                          "type": "rating",
+                                          "name": "Product rating",
+                                          "limit": 1
+                                        }, {
+                                          "type": "liquid",
+                                          "name": "Custom liquid",
+                                          "settings": [
+                                          {
+                                            "type": "liquid",
+                                            "id": "custom-liquid",
+                                            "label": "Custom Liquid",
+                                            "info": "Add app snippets or other Liquid code to create advanced customizations."
+                                          }
+                                          ]
+                                        }, {
+                                          "type": "@app"
+                                        }
+                                        ]
+                                      }
+                                      {% endschema %}
+
+{% assign variantCount = product.variants | size %}
+
+                                      {% javascript %}
+                                      var loadProductRecommendationsIntoSection = function() {
+
+                                        // Look for an element with class 'product-recommendations'
+                                        var productRecommendationsSection = document.querySelector(".product-recommendations");
+                                        if (productRecommendationsSection === null) {
+                                          return;
+                                        }
+
+                                        // Read product id from data attribute
+                                        var productId = productRecommendationsSection.dataset.productId;
+
+                                        // Read limit from data attribute
+                                        var limit = productRecommendationsSection.dataset.limit;
+
+                                        // Build request URL
+                                        var requestUrl = "/recommendations/products?section_id=product-recommendations&limit=" + limit + "&product_id=" + productId;
+
+                                        // Create request and submit it using Ajax
+                                        var request = new XMLHttpRequest();
+                                        request.open("GET", requestUrl);
+                                        request.onload = function() {
+                                          if (request.status >= 200 && request.status < 300) {
+                                            var container = document.createElement("div");
+                                            container.innerHTML = request.response;
+                                            productRecommendationsSection.parentElement.innerHTML = container.querySelector(".product-recommendations").innerHTML;
+                                          }
+                                        };
+                                        request.send();
+                                      };
+
+                                      // If your section has theme settings, the theme editor
+                                      // reloads the section as you edit those settings. When that happens, the
+                                      // recommendations need to be fetched again.
+                                      // See https://help.shopify.com/en/themes/development/sections/integration-with-theme-editor
+                                      document.addEventListener("shopify:section:load", function(event) {
+                                        if (event.detail.sectionId === "product-recommendations") {
+                                          loadProductRecommendationsIntoSection();
+                                        }
+                                      });
+
+                                      // Fetching the recommendations on page load
+                                      loadProductRecommendationsIntoSection();
+                                      {% endjavascript %}
+                                      <script>
+                                        let variant1  = $(".variant-01");
+                                        let variant2  = $(".variant-02");
+                                        let variant3  = $(".variant-03");
+                                        let variantPrice = $(".Variant-price-update");
+                                        let variantPriceMobile = $(".mobileVPrice")
+                                        let myOgPrice = $(".product-price--original");
+                                       let optionVal0 = $('.product_info_right .pro-option-0 .disclosure--input').val();
+                                        //console.log("optionVal0", optionVal0)
+                                        let optionVal1 = $('.product_info_right .pro-option-1 .disclosure--input').val();
+                                        //console.log("optionVal1", optionVal1)
+                                        let optionVal2 = $('.product_info_right .pro-option-2 .disclosure--input').val();
+                                        //console.log("optionVal2", optionVal2)
+                                        $(function() {
+                                          if(optionVal0 !== undefined){
+                                          variant1.text(optionVal0)
+                                          }
+                                          if(optionVal1 !== undefined){
+                                          variant2.text(" / " + optionVal1)
+                                          }
+                                          if(optionVal2 !== undefined){
+                                          variant3.text(" / " + optionVal2)
+                                          }
+                                          let myogpricechange = myOgPrice.html();
+                                            variantPrice.text(" - " + myogpricechange);
+                                            variantPriceMobile.text(myogpricechange)
+                                        });
+
+                                        $('.product_info_right .pro-option-0 ul li').each(function() {
+                                          $(this).click(function (){
+                                            let myHtml = $(this).find(".disclosure--option-link").text();
+                                            myHtml = myHtml.replace(/"/g, '')
+                                           // variant1.css("display","inline-block")
+                                            variant1.text(myHtml);
+                                            let myogpricechange = myOgPrice.html();
+                                            variantPrice.text(" - " + myogpricechange);
+                                            variantPriceMobile.text(myogpricechange)
+                                          });
+                                        });
+                                        $('.product_info_right .pro-option-1 ul li').each(function() {
+                                          $(this).click(function (){
+                                            let myHtml = $(this).find(".disclosure--option-link").text();
+                                            myHtml = myHtml.replace(/"/g, '')
+                                           // variant2.css("display","inline-block")
+                                            variant2.text(" / " + myHtml);
+                                            let myogpricechange = myOgPrice.html();
+                                            variantPrice.text(" - " + myogpricechange);
+                                            variantPriceMobile.text(myogpricechange)
+                                          });
+                                        });
+                                        $('.product_info_right .pro-option-2 ul li').each(function() {
+                                          $(this).click(function (){
+                                            let myHtml = $(this).find(".disclosure--option-link").text();
+                                            myHtml = myHtml.replace(/"/g, '')
+                                           // variant3.css("display","inline-block")
+                                            variant3.text(" / " + myHtml);
+                                            let myogpricechange = myOgPrice.html();
+                                            variantPrice.text(" - " + myogpricechange);
+                                            variantPriceMobile.text(myogpricechange)
+                                          });
+                                        });
+
+                                        var from_id =  $('.product_info_right .product-buy-buttons--form').attr('id');
+                                          from_id = '#' + from_id ;
+                                          $('.new_add_btn').click(function(){
+                                            $(from_id).find('.product-buy-buttons--cta').trigger('click');
+                                          });
+                                        </script>
+
+                                      
+
+        <script>
+          document.querySelector('#shareBtn')
+          .addEventListener('click', event => {
+
+              // Fallback, Tries to use API only
+              // if navigator.share function is
+              // available
+              if (navigator.share) {
+                  navigator.share({
+
+                      // Title that occurs over
+                      // web share dialog
+                      title: '{{ product.title }}',
+
+                      // URL to share
+                      url: '#'
+                  }).then(() => {
+                      console.log('Thanks for sharing!');
+                  }).catch(err => {
+
+                      // Handle errors, if occured
+                      console.log(
+                      "Error while using Web share API:");
+                      console.log(err);
+                  });
+              } else {
+
+                  // Alerts user if API not available
+                  alert("Browser doesn't support this API !");
+              }
+          })
+          </script>

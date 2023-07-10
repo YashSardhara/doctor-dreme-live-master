@@ -1,0 +1,272 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.padding_left | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.padding_right | times: 0.75 | round: 0 }}px;
+    background: url('{{ section.settings.bg_img_desk | img_url: '' }}') no-repeat center;
+  }
+
+  @media screen and (max-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+      background: url('{{ section.settings.bg_img_mob | img_url: '' }}') no-repeat center;
+      background-size: cover;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .main_head {
+    display: flex;
+
+  }
+
+  .ice_head {
+    width: 50%;
+    text-align: center;
+
+  }
+
+  .ice_head1 {
+    width: 50%;
+    text-align: center;
+
+  }
+
+  h1.regular_foam {
+    font-size: 36px;
+    color: var(--bg_color2);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 60px 0 0;
+  }
+
+  .description {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px 70px;
+  }
+
+  span#description1 {
+    font-size: 20px;
+    width: 31%;
+    text-align: center;
+  }
+  img.icon_foam {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #5b85b9;
+    border-radius: 50px;
+    padding: 6px;
+  }
+
+  @media screen and (max-width:800px) {
+    /* .main_head{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            align-items: unset;
+        } */
+
+    .icon_foam {
+      display: none;
+    }
+
+    .ice_head {
+      padding: 0 0 0 15px;
+    }
+    .ice_head1 {
+      padding: 0 0 0 32px;
+
+    }
+
+
+
+    h1.regular_foam {
+      font-size: 20px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px 0;
+      align-items: unset;
+      border-bottom: dashed 1px;
+      margin: 0 20px;
+
+    }
+
+    span#description1 {
+      font-size: 14px;
+      text-align: left;
+      line-height: 18px;
+      width: 40%;
+      padding: 0;
+
+    }
+
+  }
+</style>
+{%- comment -%}
+  <div class="section-{{ section.id }}-padding page-width">
+  <div class="main_head">
+  <div class="ice_head">
+  <h1 class="regular_foam">{{section.settings.title}}</h1>
+  </div>
+  <div class="ice_head1">
+  <h1 class="regular_foam">{{section.settings.title1}}</h1>
+  </div>
+  </div>
+
+  {%- for block in section.blocks -%}
+  <div class="description">
+  <span id="description1">{{block.settings.description}}</span>
+  <img class="icon_foam" src="{{ block.settings.image1 | img_url: '' }}">
+  <span id="description1">{{block.settings.description1}}</span>
+  </div>
+
+  {%- endfor -%}
+
+
+  </div>
+{%- endcomment -%}
+<div class="section-template--15731135545520__165890845992169bec-padding page-width">
+  <div class="main_head">
+    <div class="ice_head">
+      <h1 class="regular_foam">Regular Foam</h1>
+    </div>
+    <div class="ice_head1">
+      <h1 class="regular_foam">ICEFOAM®</h1>
+    </div>
+  </div>
+  <div class="description">
+    <span id="description1">Regular foams are thick, trapping heat and keeping the mattress warm.</span>
+    <img class="icon_foam" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/allows_for_free_air_circulation_8dbf5b17-37d5-43c0-b7f3-162199cbee57.svg?v=1667651623">
+    <span id="description1">ICEFOAM® allows for free air circulation, allowing your mattress to breath freely.</span>
+  </div>
+  <div class="description">
+    <span id="description1">Ordinary foam have little to no effect on body temperature regulation</span>
+    <img class="icon_foam" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/maintains_optimal_temperature_24c64d36-8911-4980-bf34-56aef5b772fd.svg?v=1667651623">
+    <span id="description1">ICEFOAM® maintains optimal temperature, which improves sleeping comfort.</span>
+  </div>
+  <div class="description">
+    <span id="description1">Regular foams cause night-time sweating, which is uncomfortable.</span>
+    <img class="icon_foam" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/keeps_you_cool_and_dry_fc7e0f41-4569-4c91-bc24-692443f84895.svg?v=1667651624">
+    <span id="description1">ICEFOAM® maintains your comfort by keeping you cool and dry.</span>
+  </div>
+  <div class="description">
+    <span id="description1">Most regular foams are soft or firm, but not both, which may not suit everyone.</span>
+    <img class="icon_foam" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/provides_the_ideal_balance_7337ef3d-6481-4cfe-b621-52e68ac5a66c.svg?v=1667651623">
+    <span id="description1">ICEFOAM® provides the ideal balance of softness and support.</span>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "text_image_text",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+
+      {
+        "type": "text",
+        "id": "title1",
+        "label": "Title"
+      },
+
+      {
+        "type": "header",
+        "content": "Padding"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_img_desk",
+        "label": "Background image"
+      }, {
+        "type": "image_picker",
+        "id": "bg_img_mob",
+        "label": "Mobile_Image"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_left",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding left",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_right",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding right",
+        "default": 36
+      }
+
+    ],
+    "blocks": [
+      {
+        "type": "difference",
+        "name": "text_image_text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          }, {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "description1",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "text_image_text"
+      }
+    ]
+  }
+{% endschema %}

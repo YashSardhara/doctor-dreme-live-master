@@ -1,0 +1,528 @@
+<link rel="stylesheet" href="https://use.typekit.net/sbp0lyb.css">
+<style>
+  .emi-chart table {
+    width: 100%;
+  }
+
+  .emi-chart .emi-block table th {
+    font-weight: 700;
+  }
+
+  .emi-chart {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 1024;
+  }
+
+  .emi-chart .emi-block {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-content: center;
+    right: 0;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+
+  .emi-chart .emi-block h1 {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-weight: 600 !important;
+    font-size: 20px;
+    font-family: congenial-light, sans-serif !important;
+  }
+
+  .emi-chart,
+  .emi-chart table {
+    color: #000 !important;
+  }
+
+  .emi-chart .action_button {
+    float: right;
+    width: fit-content;
+    line-height: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .emi-chart .emi-block table td,
+  .emi-chart .emi-block table th:first-child {
+    border-left: 1px solid #dcdcdc;
+  }
+
+  .emi-chart .emi-block table td,
+  .emi-chart .emi-block table th {
+    border-right: 1px solid #dcdcdc;
+  }
+
+  .emi-chart .emi-block table td,
+  .emi-chart .emi-block table th {
+    border-right: 1px solid #dcdcdc;
+  }
+
+  .emi-chart .emi-block table td,
+  .emi-chart .emi-block table th {
+    padding: 9px;
+    border-bottom: 1px solid #dcdcdc;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .emi-chart .emi-block table tbody tr {
+    text-align: left;
+    font-size: 12px;
+    border: 1px solid #ddd;
+  }
+
+  .emi-chart .emi-bloc table th {
+    font-weight: 600;
+    background: #f9f9f9;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .emi-chart .emi-block table tbody tr:first-child {
+    background: #f9f9f9;
+  }
+
+</style>
+
+<div class="offers-avail">
+  <h5>Available offers</h5>
+  <div class="emi-box">
+    <ul>
+      <li class="emi-text">No cost EMI As
+        <span>&nbsp;{{ item.price | times: 100  | divided_by: 100 | divided_by: 6 | money_without_currency | split: '.' | first }}
+          &nbsp;</span>
+        Per Month.
+        <span id="more-details">More Details</span>
+      </li>
+      {% comment %}{% render 'emi-chart' %}{% endcomment %}
+      <!-- <li>Get Rs. 500 off on your first order worth minimum Rs 5000! <span>Use code:<span id="copyTarget"> BEAUTIFUL</span> <a href="#" id="copyUsingJquery" >Copy Code</a></span></li> -->
+      <li>Or 3 interest-free payments of 2886 with
+        <img
+          src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/logo_92859c51-17ba-4733-906b-70a8867a63c1.png?v=1660302112"><img
+          src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/i_1e2ec11a-5a3d-4d43-81bb-e22d7351672e.png?v=1660714612">
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div class="emi-chart" style="display: none;">
+  <div class="emi-block">
+    <h1>EMI Options<span type="button" class="action_button" data-dismiss="modal">X</span>
+    </h1>
+
+    <table>
+      <tr>
+        <th>Bank Name</th>
+        <th>Minimum Amt.</th>
+        <th class="center">3 EMI</th>
+        <th class="center">6 EMI</th>
+        <th class="center">9 EMI</th>
+        <th class="center">12 EMI</th>
+        <th class="center">18 EMI</th>
+        <th class="center">24 EMI</th>
+      </tr>
+      {% for item in checkout.line_items %}
+      <tr class="citi">
+        <td>CITI EMI</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 115   | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      <tr class="amex">
+        <td>AMEX EMI</td>
+        <td>&#8377; 5300</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;{{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;{{ item.price | times: 114  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;{{ item.price | times: 114  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+      </tr>
+      <tr class="hdfc">
+        <td>HDFC CC</td>
+        <td>&#8377; 5300</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      <tr class="axis">
+        <td>Axis EMI</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      <tr class="kotak">
+        <td>Kotak EMI</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+
+      </tr>
+      <tr class="icici">
+        <td>ICICI EMI</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(13.99%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(13.99%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(14.99%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(14.99%)
+        </td>
+      </tr>
+      <tr class="indusind">
+        <td>INDUSIND EMI</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(13%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(12%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(12%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(12%)
+        </td>
+      </tr>
+      <tr class="rbl">
+        <td>RBL</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      <tr class="stanc">
+        <td>Standard Chartered</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr class="yes">
+        <td>YES Bank</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 112  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 114  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(14%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      <tr class="bob">
+        <td>BOB</td>
+        <td>&#8377; 5000</td>
+        <td class="3-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 3 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="6-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 6 | money_without_currency }}
+          </span>&ensp;(0%)
+        </td>
+        <td class="9-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 9 | money_without_currency }}
+          </span>&ensp;(13%)
+        </td>
+        <td class="12-emi">
+          <span>&#8377;
+            {{ item.price | times: 113  | divided_by: 100 | divided_by: 12 | money_without_currency }}
+          </span>&ensp;(13%)
+        </td>
+        <td class="18-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 18 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+        <td class="24-emi">
+          <span>&#8377;
+            {{ item.price | times: 115  | divided_by: 100 | divided_by: 24 | money_without_currency }}
+          </span>&ensp;(15%)
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <br><br>
+    <p>
+      <b>NOTE: The EMI table above is indicative for just this item. Actual amount payable will depend on your cart and
+        will be shown at checkout.</b>
+    </p>
+  </div>
+</div>
+<script>
+  $("#more-details").click(function () {
+    $(".emi-chart").show();
+  });
+  $(".emi-chart span.action_button").click(function () {
+    $(".emi-chart").hide();
+  });
+// emi popup
+</script>

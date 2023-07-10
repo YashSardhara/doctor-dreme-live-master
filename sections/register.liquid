@@ -1,0 +1,96 @@
+{%- liquid
+assign title_t = 'customer.register.page_title' | t
+assign first_name_t = 'customer.register.first_name' | t
+assign last_name_t = 'customer.register.last_name' | t
+assign email_t = 'customer.register.email' | t
+assign password_t = 'customer.register.password' | t
+assign submit_t = 'customer.register.submit' | t
+assign login_t = 'customer.register.login' | t
+-%}
+<div class="register_full customer--root" data-section-id="{{ section.id }}">
+  {% render 'breadcrumbs' %}
+  <div class="customer--wrapper">
+    <div class="register_wrap_inner">
+      <div class="register_left">
+        <div id="customer-register" class="customer--register">
+          <h1 data-item="section-heading">
+            Sign Up
+          </h1>
+
+          {% form 'create_customer' %}
+
+          {{ form.errors | default_errors }}
+
+          <div class="regis_frm_inner">
+
+            <div class="Left_regist_frm">
+              <div id="first_name">
+                <input placeholder="First Name" class="text" type="text" value="" name="customer[first_name]"
+                  id="first_name" size="30" required />
+              </div>
+              <!-- <div id="phone_number" class="clearfix large_form">
+        	              <input type="phone_number" class="form-control" placeholder="Phone*"  name="customer[phone_number]" 
+                         id="phone_number" class="large" size="30" required />
+                        </div> -->
+            </div>
+
+            <div class="right_regis_frm">
+              <div id="last_name">
+                <input placeholder="Last Name" class="text" type="text" value="" name="customer[last_name]"
+                  id="last_name" size="30" required />
+              </div>
+              <!-- <div id="password_confirm_container">
+                                <input type="password" value="" name="customer[password_confirmation]" placeholder="Confirm Password*"
+                               id="password_confirm" size="30" required />
+                            </div> -->
+            </div>
+          </div>
+          <div id="email">
+            <input placeholder="Your Email Address" class="text" type="email" value="" name="customer[email]" id="email"
+              size="30" required />
+          </div>
+          <div id="password">
+            <input placeholder="Your Password" class="password text {% if form.errors contains " password" %} error{%
+              endif %}" id="create_password" type="password" value="" name="customer[password]" id="password" size="30"
+              required />
+          </div>
+          <div class="account--button-container">
+            <div class="account--create" data-item='button'>
+              <button type="submit" value="{{ submit_t }}">
+                Sign Up
+              </button>
+            </div>
+            </div>
+            <span class="title_c">or Sign in with</span>
+            <div class="signup_sec">
+              <span class="not_regis">Already have an account?</span>
+              <a class="account--register" href="{{ routes.account_login_url }}" data-item="secondary-button">
+              Login
+                  </a>
+            </div> 
+        </div>
+        
+        {% endform %}
+        </div>
+    </div>
+    <div class="register_right">
+      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/sign_up_img.jpg?v=1659437053" />
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $('form#create_customer').submit(function (e) {
+
+    if ($('#create_password').val() === $('#password_confirm').val()) {
+      //alert('Password Good!!');
+
+    } else {
+      $('.password-match').fadeIn("slow");
+      e.preventDefault(); // stops our form from submitting
+    }
+  });
+</script>

@@ -1,0 +1,225 @@
+<style>
+  .product-pincode-info {
+    position:relative;
+  }
+  
+  .preloader {
+    position:absolute;
+   	width: 31%;
+    height: 25%;
+    z-index:2;
+    display:block;
+    background: #023e88;
+/*     padding: 44px 176px 21px; */
+    display:none;
+    
+  }
+    .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+</style>
+
+<div class="pincode-check-page">
+  <div id="variant-inventory" class="zip-input-show pincode-infoss">
+    <label class="no-bold no-caps"><img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/Layer-18.png?v=1654515526" alt=" " title=""> Enter Your Delivery Pincode To Know Delivery Details</label>
+    
+      <input type="text" id="pincode_checker_service" class="input-pincode pincode_ckecker_value number_only"  name="pincode_val" placeholder="Enter Your Pincode" value="{{cart.attributes.pincode}}" maxlength="6" minlength="6">
+      <input type="hidden" name="product_type" id="product_type" value="{{ products_type_value }}" >
+      <button id="zip-check"  class="zip-check button zip-btn pincode_check_service"  name="btnIndianZipCode" type="button"><span>GO</span></button>
+  </div>   
+</div>
+<p class="product_order_text"></p>
+<div class="pd-deliver-info">
+
+</div>
+
+<script>
+ 
+  $(".number_only").keypress(function(h){if(8!=h.which&&0!=h.which&& 32!=h.which&&(h.which<48||h.which>57))return!1});
+  
+  function addTOcartDisable(){
+    $('.product_order_text').html('');
+    var pincode_val = $(".pincode_ckecker_value").val();
+    if(pincode_val == '')
+    {
+      $('.product_order_text').html('Please enter pincode').css("color","red");
+      $(".test_add_to_cart").attr('disabled',true);
+    }
+  }
+  
+  $(".pincode_check_service").click(function(e) {
+   		 $(".purchase-details__buttons .ErrDiv ").remove();
+		$('.preloader').css('display','block');
+      	var url = apiURL + 'api/get-pincodecheckerdata';     
+        var pincode = $('.pincode_ckecker_value').val();
+    	console.log("kishu",pincode)
+        var product_type = $('#product_type').val();
+        var numericReg = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;  // Number Validation
+        var num6charReg = /^((?!(0))[0-9]{6})$/;  // Number and only ^ Chart
+        var page_type = 'product_detail';
+        var sku = '{{ variant.sku }}';
+        var variant_id = '{{ variant.id }}';
+      	var pincode_length = pincode.length;
+      	var qty = parseInt($('#quantity').val());	       
+		var sku_qty = 0;
+        var sku_available = '';
+    
+    	window._VARIANTS = {};
+        {% for variant in product.variants %}
+        window._VARIANTS[{{ variant.id }}] = [{{ variant.inventory_quantity }}, {{ variant.available }}],
+          {% endfor %}
+
+          $.each(window._VARIANTS, function(j,variantQty){
+          // console.log("BI01", variantQty);
+          if(j == variant_id){
+            sku_qty = variantQty[0];
+
+            sku_available = variantQty[1];
+
+            return false;
+          }
+        });
+      
+      	if(pincode == '')
+        {
+			$('.preloader').css('display','none');
+			$('.product_order_text').html('Please enter pincode').css("color","red");
+        }else if(pincode_length != 6)
+        {
+          	$('.preloader').css('display','none');
+        	$('.product_order_text').html('Please enter pincode only 6 digit').css("color","red");
+        }else{
+          e.preventDefault();
+        	 console.log("krishna1");
+         	$('.product_order_text').html('');
+            $.ajax({          
+        	url: url,
+        	type: 'POST',
+        	dataType: "json",
+        	data: { pincode : pincode, product_type : product_type,'page_type' : page_type,qty:qty,sku:sku,sku_qty:sku_qty,sku_available:sku_available },
+        	success: function(res){
+              console.log(res,"krishna")
+              	$('.preloader').css('display','none');
+              	var response_data = res.data;
+              
+              	if(response_data.indexOf('Your Pincode is not Servicable.') != -1){
+				}
+              	
+              	$('.product_order_text').html('');
+              	$('.pd-deliver-info').css('display','block');
+              	$('.pincode-infoss').hide();
+              	$('.pd-deliver-info').html(res.data);
+              	
+              	if(res.success==false)
+                {
+                  $('.pd-deliver-info').html(res.data)
+                  return false;
+                }else
+                {
+                  $('.product_order_text').html('');
+                  $('.pd-deliver-info').html(res.data)
+                  $("input.input-pincode.pincode_ckecker_value").val(pincode);
+                  $(".custom_static_action_button").hide();
+                  $(".test_add_to_cart").show();
+                  $(".custom_payment_button").hide();
+                  $('.shopify-payment-button').css('display','inline-block');
+                  $('.shopify-payment-button').show();
+                  $('.test_add_to_cart').attr('disabled',false);
+                  addPincodeCart(pincode);
+                }
+        	},
+        	error:function(){
+          		console.log('error');
+        	}
+      		});
+        }
+    });
+  
+    $(document).ready(function(){
+      var pincode_val = $('.pincode_ckecker_value').val();
+      if(pincode_val != '')
+      {
+        $('.pincode_ckecker_value').val();
+        setTimeout(function(){  $(".pincode_check_service").trigger('click') }, 1000);
+      }
+
+    });
+  
+  function changetopincode(){
+
+    $(".test_add_to_cart").hide();
+    $(".custom_static_action_button").show();
+    $('.product_order_text').html('');
+    $('.pd-deliver-info').html('');
+    $('.pincode-infoss').show();
+  }
+  
+  	  function addPincodeCart(pincode){
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        async:false,
+        url: '/cart/update.js',
+        data: {
+          attributes: {
+            'pincode':pincode
+          }
+        },
+        success: function(){
+        }
+      });
+    }
+
+</script>

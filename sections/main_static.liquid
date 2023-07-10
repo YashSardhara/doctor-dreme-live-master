@@ -1,0 +1,24 @@
+<span class="d_flex heading_div">
+  <h2 class="featured-collections--heading heading_text" data-item="section-heading">{{page.title}}</h2>
+</span>
+<div class="ContentClass">
+  {{ page.content }}
+  </div>
+{%- if page.handle == 'new-website-100-night-free-trial' -%}
+ {% render 'new_our_services' %}
+{%- endif -%}  
+{%- if page.handle == 'track-your-order' -%}
+  <iframe src='https://doctordreams.clickpost.in/' name='iframecallout' scrolling='no' frameborder='0' marginheight='0' marginwidth='0' height='300px' width='100%' allowfullscreen></iframe>
+{%- endif -%}  
+{% schema %}
+{
+"name": "Static section",
+"tag": "section",
+"class": "static_section",
+"presets": [
+{
+"name":"Static section main"
+}
+]
+}
+{% endschema %}

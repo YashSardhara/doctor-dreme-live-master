@@ -1,0 +1,104 @@
+
+<div class="main_container">
+    {% render 'breadcrumbs' %}
+   <span class="d_flex heading_div compare_head">
+        <h2 class="heading_text">{{collection.title}}</h2>
+        {%- if  collection.metafields['collection']['collection_subheading'] != blank -%} <p class="subheading_text">{{ collection.metafields['collection']['collection_subheading'] }}</p>
+        {% endif %}
+    </span>
+    <div class="d_flex plp_main">
+        {%- for product in collection.products -%}
+         
+        <div class="cpl_container iwishAddWrapColl" data-handle="{{ product.handle }}" data-iwish_variant="{{ product.variants.first.id }}" data-iwish_product="{{ product.id }}" data-iwish_pTitle="{{ product.title | escape }}">
+           {% include 'iwish_v2' with 'iwishCollection' %}
+            <a class="plp_container new_card_body wishlist_right" href="/products/{{ product.handle }}"
+                id="compare_div">
+                {%- if product.featured_image != blank -%}
+<!--                 <img class="wishlist_right_icon"
+                    src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/whishlist.png?v=1659956781"> -->
+                    <div class="plp_container_img">
+                <img src="{{product.featured_image | img_url :'master' }}" alt="">
+            </div>
+                <div class="card_body_info">
+                    <p>{{ product.title | escape | truncate: 35, '...' }}</p>
+                    <span class="sub_heading">{{ product.metafields['product']['secondline']| escape | truncate: 80,
+                        '...' }}</span>
+                    <div class="my_feature_container">
+                        {%- if product.metafields.custom.my_features != blank -%}
+                        {% assign features_data = product.metafields.custom.my_features | split: '||' %}
+                        {%- comment -%} <span>{{ product.metafields['product']['features'] }}</span> {%- endcomment -%}
+                        {% for item in features_data %}
+                        {%- assign features_data = item | split: '+' -%}
+                        <span class="my_feature_content">
+                            <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/{{features_data[0]}}"
+                                alt="">
+                            <span>{{features_data[1]}}</span></br>
+                            {{features_data[2]}}
+                        </span>
+                        {% endfor %}
+                        {%- endif -%}
+                    </div>
+                
+  {%- comment -%} {% if product.price_varies and template == 'collection' %}
+    <p>From {{ product.price_min | money }} </p>
+  
+   <p>From {{ product.price_min | money }} to {{ product.price_max | money }}</p>
+  {% endif %} {%- endcomment -%}
+                    {%- if product.compare_at_price > product.price -%}
+                    <span class="stirke_price">MRP.{{ product.compare_at_price | money }}</span>
+                    <div class="d_flex card_body_price_container">
+                        <div class="special_price">
+                            <span class="special_price_text">Special price</span>
+                            <span>{{ product.price | money }}</span>{%- else -%}
+                            <span>{{ product.price}}</span>
+                            {%- endif -%}
+                        </div>
+                        <span class="card_body_btn ">Shop Now</span>
+                    </div>
+                </div>
+                {%- endif -%}
+            </a>
+        </div>
+        {%- endfor -%}
+    </div>
+    {%- comment -%} FAQ CALL FOR SPECIFIC COLLECTION {%- endcomment -%}
+    {% capture currant_product_type %}collection-{{ collection.title | downcase }}-faq{% endcapture %}
+   {% assign currant_product_type = currant_product_type  | replace: " ", "-" %}
+    {%- if pages[currant_product_type].content != blank -%}
+        <div class="faq_section">
+            {{pages[currant_product_type].content}}
+        </div>
+        {%- endif -%}
+    {%- comment -%} END FAQ CALL FOR SPECIFIC COLLECTION {%- endcomment -%}
+</div>
+{% schema %}
+{
+"name": "PLP Products",
+"settings": [
+{
+"type": "header",
+"content": "Content"
+},
+{
+"type": "text",
+"id": "heading",
+"label": "Heading"
+},
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection"
+}
+],
+   "blocks": [
+      {
+        "type": "@app"
+      }
+    ],
+"presets": [
+{
+"name": "PLP Products"
+}
+]
+}
+{% endschema %}

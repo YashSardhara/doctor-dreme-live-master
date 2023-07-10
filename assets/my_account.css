@@ -1,0 +1,529 @@
+body{
+    font-family: 'League Spartan', sans-serif;
+}
+.customer__wrapper h1, .customer__wrapper h2,.customer__wrapper h3, .customer__wrapper h4
+,.customer__wrapper h5,.customer__wrapper h6,.customer__wrapper a,.customer__wrapper button,.customer__wrapper li,.customer__wrapper span{
+    font-family: 'League Spartan', sans-serif !important;
+}
+/* account page */
+.prsnl_info, .address_icon, .address__actions a, .add-new-address, .add_address, .cancel_address, .inputField span,
+.address_checkbox_container, #address_country_new, #address_province_new, .address_checkbox_contain, .address_edit_table label{
+    font-size: calc(14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))) !important;
+}
+.customer__root {
+    background: url('https://cdn.shopify.com/s/files/1/0248/7766/2271/files/account_bg.jpg?v=1660123175');
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+.customer__wrapper{
+    padding: 1% 4% !important;
+    max-width: 100% !important;
+}
+.order_custom_wrapper{
+    max-width: 100%  !important;
+}
+.customer__wrapper .acc-70{
+    display: flex;
+    width: 100%;
+    margin: 50px 0;
+}
+.customer__wrapper #Manage{
+    padding: 0 0 0 25px !important;
+    background: none !important;
+} 
+.customer__wrapper .customer--wrapper{
+    box-shadow: none !important;
+}
+.customer__wrapper .account_heading{
+    color: #023E88;
+    font-size: calc(16px + (20 - 16) * ((100vw - 280px) / (1600 - 280)));
+}
+.customer__wrapper, .account_heading{
+    padding-bottom: 20px !important;
+}
+.prsnl_info{
+    padding-bottom: 28px !important;
+}
+.prsnl_info, .address_icon, .prsnl_info span, .address_icon span{
+    display: flex;
+    align-items: center;
+}
+.address_icon{
+    font-weight: 400 !important;
+    padding-bottom: 15px;
+}
+.prsnl_info svg, .address_icon svg{
+    margin-right: 15px;
+    width: 20px;
+    height: auto;
+}
+.account_address{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#Manage .address--container .address--table{
+    box-shadow: -2px 0px 50px #00000014;
+    border-radius: 10px;
+}
+.address__actions a{
+    text-transform: capitalize !important;
+    color: #023e88 !important;
+    text-decoration: underline;
+}
+.address__actions a::after{
+    border: 0 !important;
+}
+.customer__wrapper .address__actions{
+    padding: 0 !important;
+    margin-left: 36px;
+}
+.add-new-address, .add_address, .cancel_address{
+    color: #fff !important;
+    background: #023E88 !important;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    font-weight: 400;
+    height: 50px;
+}
+.add-new-address{
+    width: 220px;
+    margin-top: 40px;
+}
+.add_address{
+    width: 165px;
+}
+.cancel_address{
+    color: #023E88 !important;
+    background: #fff !important;
+    border: 1px solid #023E88;
+    width: 140px;
+}
+.add-new-address::after, .cancel_address::after{
+    border: 0 !important;
+    width: auto !important;
+}
+#add_address{
+    margin-top: 60px;
+}
+#add_address .add_new_address{
+    font-size: calc(20px + (30 - 20) * ((100vw - 280px) / (1600 - 280))) !important;
+    text-transform: uppercase;
+    color: #023E88 !important;
+    font-weight: 500;
+    padding-bottom: 20px;
+    line-height: normal;
+}
+#address_form_new input:focus, .inputField select:focus-visible, .address_edit_table input:focus{
+    border: 1px solid #023E88 !important;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.inputField {
+    position: relative;
+    padding: 0 !important;
+}
+.input_field_space{
+    margin-right: 20px;
+}
+.inputField span {
+    pointer-events: none;
+    opacity: 0.5;
+    position: absolute;
+    padding-left: 5px;
+    left: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: text;
+}
+.inputField input:focus+span,
+.inputField input:not(:placeholder-shown)+span {
+  top: 4px;
+  left: 15px;
+  transform: scale(0.7) translateY(-10%) translateX(-8.5px);
+}
+.inputField input,
+.inputField span {
+  user-select: none;
+  transition: all 0.2s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity: unset;
+}
+.inputField input{
+    padding: 28px 22px !important;
+}
+.inputfield_block{
+    display: flex !important;
+}
+.address_input{
+    width: 100% !important;
+}
+.address_input span{
+    left: 2%;
+}
+.input_city, .input_state, .input_zip{
+    width: 33.33%;
+}
+.input_city, .input_state{
+    margin-right: 20px;
+}
+.first_last_input{
+    display: flex !important;
+}
+.first_last_input td{
+    width: 50%;
+}
+.input_city span{
+    left: 6%;
+}
+.address_checkbox_container{
+    padding: 15px 0 !important;
+}
+.address_checkbox_container input{
+    width: 15px;
+    height: 15px;
+}
+#address_country_new, #address_province_new {
+    color: #000;
+}
+#address_country_new:focus, #address_province_new:focus, .edit_country:focus, .edit_state:focus{
+    outline: none !important;
+    border-color: #023E88;
+    box-shadow: #0000000d 0 6px 24px, #00000014 0 0 0 1px;
+}
+.customer__wrapper .address_customer_table tr{
+    display: inline-block;
+}
+.edit_country, .edit_state{
+    height: 45px;
+    color: #000;
+}
+.m_addres{
+    background: #fff;
+}
+.prsnl_info_head{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+.customers_breadcrumb{
+    background: #F2F6FF;
+    padding: 2% 4% 0 4% !important;
+}
+.input_cap{
+    display: flex !important;
+}
+/* order page */
+.all_orders a{
+    font-size: calc(12px + (16 - 12) * ((100vw - 280px) / (1600 - 280))) !important;
+    text-decoration: underline;
+}
+.order_custom_wrapper .orderid_head, .account--orders .order_heading{
+    font-size: calc(16px + (40 - 16) * ((100vw - 280px) / (1600 - 280)));
+}
+.account--orders .order_heading{
+    padding-bottom: 10px;
+}
+.account--orders .order_heading, .ac_order_heading{
+    color: var(--bg_color2);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.ac_order_heading{
+    font-size: calc(15px + (30 - 15) * ((100vw - 280px) / (1600 - 280)));
+}
+#order_details{
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+}
+.order_img_item{
+    display: flex;
+    align-items: flex-start;
+    padding: 6px 0 0 0 !important;
+}
+.order_item{
+    width: 40%;
+}
+.order_sku{
+    width: 20%;
+    text-align: center !important;
+}
+.order_price, .order_quantity, .order_total{
+    width: 13.33%;
+    text-align: center !important;
+}
+.order_sku, .order_price, .order_quantity, .order_total, .order_info{
+    vertical-align: top;
+}
+.order_sku div, .order_price div, .order_quantity div, .order_total div{
+    font-size: calc(14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))) !important;
+    font-weight: 500 !important;
+}
+.order_item, .order_sku, .order_price, .order_quantity, .order_total, .order__table_details th{
+    font-size: calc(16px + (20 - 16) * ((100vw - 280px) / (1600 - 280))) !important;
+    padding: 16px 8px!important;
+}
+.order-image img{
+    border-radius: 5px;
+}
+.order--item--title a{
+    color: #023E88;
+    font-size: calc(14px + (18 - 14) * ((100vw - 280px) / (1600 - 280)));
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.order_price .money::before, .order_total .money::before, .line_subtotal_price::before, .order_total_am p::before{
+    content: "\20B9";
+}
+.order__table{
+    padding: 0 15px !important;
+}
+.order__table_details th{
+    width: 33.33%;
+}
+.order_paid{
+    display: flex;
+    align-items: flex-start;
+}
+.shipping_order_name{
+    font-size: calc(16px + (20 - 16) * ((100vw - 280px) / (1600 - 280))) !important;
+}
+.shipping_order_address, .subtotal_item span, .order_total_money span{
+    font-size: calc(14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))) !important;
+}
+#order_details a,p{
+    line-height: 1.4 !important;
+}
+.line_subtotal_price{
+    font-weight: 500;
+}
+.line_subtotal_price::before, .order_total_money .order--item--total::before {
+    content: "\20b9";
+}
+.line_subtotal_price::before{
+    margin-right: 5px;
+}
+.order_item_count, .shipping_charge, .customer_total_order, .line_subtotal_price, .order--item--total, .order--item--total{
+    width: 50%;
+}
+.subtotal_item, .order_total_money, .customer_total_currency{
+    display: flex;
+}
+.order--item--total {
+    margin: 0 !important;
+    text-align: left;
+    font-weight: 500 !important;
+}
+.order__table_details{
+    margin-bottom: 35px !important;
+}
+.order__table_details {
+    padding: 0 35px!important;
+}
+.personal_order_info .account--orders{
+    float: left;   
+    width: 70%;
+}
+.personal_order_info .address__order_info{
+    float: right;   
+    width: 30%;
+    padding-left: 35px;
+}
+.personal_order_info{
+    clear: both;
+}
+.payment_status, .fulfillment_status{
+    display: block;
+}
+.order_status span, .order_status a, .order_status time, .payment_trans_status span, .fulfill_trans_status span, .order_total_am p{
+    font-size: calc(14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))) !important;
+}
+.order_status time, .payment_trans_status .payment_status, .fulfill_trans_status .fulfillment_status{
+    font-weight: 600;
+}
+.order_status time{
+    display: block;
+}
+.order_status a:focus{
+    text-decoration: underline !important;
+}
+@media screen and (max-width: 1199px){
+    /* account page */
+    .customer__wrapper{
+        padding: 1% 4% !important;
+    }
+    .customer__wrapper #Manage{
+        padding: 0 !important;
+    }
+    .customer__root .customer__wrapper{
+        box-shadow: unset !important;
+    }
+    .page--account.customer-logged-in .customer--root .customer--wrapper .acc-30 .tab ul li button.tablinks{
+        border-radius: unset !important;
+        width: 70px;
+        height: 35px;
+        padding: 0 !important;
+        justify-content: flex-start;
+    }
+    .page--account.customer-logged-in .customer--root .customer--wrapper .acc-30 .tab ul li button.tablinks:active,
+    .page--account.customer-logged-in .customer--root .customer--wrapper .acc-30 .tab ul li button.tablinks.active{
+        border-bottom: 1px solid #023E88;
+    }
+    .customer__wrapper .acc-70{
+        display: block;
+    }
+    .address--info, .customer__wrapper #Manage, #Manage .address--container .address--table {
+        width: 100% !important;
+    }
+    .prsnl_info_head, #add_address{
+        margin: 0;
+    }
+    .customer__wrapper .acc-70{
+        margin: 20px 0;
+    }
+    .customers_breadcrumb {
+        background: #F2F6FF;
+        padding: 5% 4% 0!important;
+    }
+    .address__info{
+        margin: 5px 0 0 12px;
+    }
+    .customer__wrapper .account_heading{
+        padding-bottom: 15px!important;
+    }
+    .prsnl_info {
+        padding-bottom: 15px!important;
+    }    
+    .prsnl_info svg, .address_icon svg{
+        width: 16px;
+        height: 16px;
+    }
+    #Manage .address--container .address--table{
+        padding: 20px 15px 10px 15px !important;
+    }
+    .address__view_icon, .address_icon{
+        padding-bottom: 10px !important;
+    }
+    .add-new-address{
+        width: 190px;
+        height: 45px;
+        margin: 25px auto 30px auto;
+    }
+    #add_address .add_new_address{
+        text-align: center;
+        padding-bottom: 11px;
+    }
+    .input_field_space, .input_city, .input_state{
+        margin-right: 12px;
+    }
+    .inputField input{
+        padding: 20px 22px!important;
+    }
+    #address_country_new, #address_province_new{
+        height: 45px;
+    }
+    .inputfield_block, .first_last_input, .input_cap{
+        padding-bottom: 10px !important;
+    }
+    .address_checkbox_container {
+        padding: 10px 0!important;
+    }
+    .add_address, .cancel_address{
+        width: 155px;
+        height: 38px;
+    }
+    .all_orders img{
+        width: 16px;
+    }
+    /* order page */
+    .template--customers--order .customer--root .customer--wrapper p{
+        margin-bottom: 15px;
+    }
+    .orderid_head{
+        padding-bottom: 15px !important;
+    }
+    table#order_details.responsive tr{
+        width: 100%;
+    }
+    #order_details tr{
+        padding: 0 !important;
+    }
+    #order_details .order_item, .order_img_item, .order_sku, .order_price, .order_quantity, .order_total, .order_info{
+        padding: 16px 0px 16px 8px!important;
+    }
+    .order_img_item{
+        width: 100% !important;
+    }
+    .order__table{
+        margin-bottom: 15px !important;
+    }
+    .order__table_details {
+        padding: 0 5px!important;
+    }
+    .order__table_details  th, .order_info{
+        width: 50% !important;
+    }
+    .order_sku, .order_price, .order_quantity, .order_total{
+        text-align: left !important;
+    }
+    .subtotal_item, .order_total_money, .customer_total_currency{
+        display: block !important;
+    }
+    .order_info{
+        padding: 16px 8px !important;
+    }
+    .order__item_title{
+        margin-left: 15px !important;
+    }
+    .order-image{
+        width: 30% !important;
+    }
+    .order__item_title{
+        width: 70% !important;
+    }
+    .personal_order_info .account--orders, .personal_order_info .address__order_info{
+        float: none;
+        width: 100%;
+    }
+    .order__table .order_item{
+        width: 98% !important;
+    }
+    .order_price, .order_quantity, .order_total{
+        width: 45% !important;
+    }
+    .order_status time, .payment_trans_status span:nth-of-type(2), .fulfill_trans_status span:nth-of-type(2), .order_total_am p{
+        margin-top: 7px;
+    }
+    .order_item_count, .shipping_charge{
+        margin-right: 10px;
+    }
+    .customer__wrapper .address__actions{
+        margin-left: 31px;
+    }
+    .tablink_orders{
+        margin-left: 10px !important;
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1199px){
+    .tablink_orders{
+        margin-left: 20px;
+    }
+    .order__table_details th, .order_info{
+        width: 33.33% !important;
+    }
+    .order_item, .order_sku, .order_price, .order_quantity, .order_total, .order__table_details th{
+        padding: 16px 8px!important;
+    }
+    /* .order_item{
+        width: 40% !important;
+    }
+    .order_sku{
+        width: 20% !important;
+    }
+    .order_price, .order_quantity, .order_total{
+        width: 13.33% !important;
+    } */
+}

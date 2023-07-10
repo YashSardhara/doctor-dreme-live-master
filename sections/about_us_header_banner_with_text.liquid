@@ -1,0 +1,141 @@
+<div class="text_overlay_image">
+  <div class="text_overly">
+    <h1 class="text_overlay_head">{{section.settings.about_us_heading}}</h1>
+    <p class="sub_heading">{{section.settings.sub_heading}}</p>
+  </div>
+  <div class="image-with-text--root {{section.settings.classname}}" data-section-id="{{ section.id }}">
+    {% render 'featured-content',
+    text_position: section.settings.text-position,
+    %}
+  </div>
+      <img class="desk_banner" src="{{ section.settings.about_us_desk_image | img_url: ' ' }}">
+    <img class="mob_banner" src="{{ section.settings.about_us_mob_image | img_url: ' ' }}">
+ </div>
+
+<style>
+  .text_overlay_image {
+  position: relative;
+  width: 100%;
+  margin: 0px auto;
+   }
+   .text_overlay_image h1.text_overlay_head {
+    font-weight: 600;
+}
+
+  .text_overly {
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1d4782;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: justify;
+    left: 10%;
+  }
+  .text_overlay_head {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: #1d4782;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  p.sub_heading{
+    font-family: var(--heading_new_f);
+    word-spacing: 2px;
+    font-size:25px;
+    font-weight:500;
+  }
+  .desk_banner {
+    display: block;
+    margin: 0 auto;
+width: 100%;
+/* min-height: 450px; */
+  }
+
+  .mob_banner {
+    display: none;
+  }
+
+  @media screen and (max-width:800px) {
+    .text_overlay_image {
+      margin: 0;
+    }
+    p.sub_heading{
+      font-size:16px;
+    }
+    .text_overly {
+      width: 100%;
+      top: 15%;
+      text-align: center;
+      margin: 20px auto;
+      left: 0;
+      position: absolute;
+    }
+
+    .text_overlay_head {
+      font-size: 23px;
+    }
+   .desk_banner {
+      display: none;
+    }
+
+    .mob_banner {
+      display: block;
+      width: 100%;
+    }
+  }
+ 
+  </style>
+{% schema %}
+{
+"name": "image_with_text_overlay",
+"settings": [
+{
+"type": "text",
+"id": "about_us_heading",
+"default": "Type heading here",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "sub_heading",
+"label": "Sub Heading"
+},
+{
+"type": "image_picker",
+"id": "about_us_desk_image",
+"label": "Desktop_Image"
+},
+{
+"type": "image_picker",
+"id": "about_us_mob_image",
+"label": "Mobile_Image"
+},
+{
+"type": "url",
+"id": "url",
+"label": "URL"
+},
+{
+"id": "overlap",
+"label": "Overlap text",
+"type": "checkbox",
+"default": false,
+"info": "Not applicable for centered or bottom left text"
+}
+],
+"presets" : [
+{
+"name": "image_with_text_overlay",
+"settings": {}
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

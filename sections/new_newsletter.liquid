@@ -1,0 +1,60 @@
+
+<span class="d_flex comman_space new_newsletter_container">
+    <span class="newsletter_content_div">
+        {% if section.settings.heading != blank or section.settings.subheading != blank %}
+        <span class="d_flex heading_div news_letter_head">
+            {%- if section.settings.heading  != blank -%}
+            <h2 class="featured-collections--heading heading_text " data-item="section-heading">
+                {{ section.settings.heading  }}
+            </h2>
+            {%- endif -%}
+            {%- if section.settings.subheading != blank -%}
+            <p class="subheading_text">{{section.settings.subheading }}</p>
+            {%- endif -%}
+        </span>
+        {% endif %}
+       
+            <a href="https://doctordreams.com/pages/storelocator_new" class="card_body_btn card_comman_btn">
+                Experience Our Stores
+            </a>
+        
+    </span>
+    <span class="newsletter_image_div">
+        {%-  if section.settings.image  != blank  -%}
+        <img class="lazyload" data-sizes="auto" data-src="{{section.settings.image  | img_url: 'master'}}" alt="">
+        {%-  endif  -%}
+    </span>
+</span>
+{% schema %}
+{
+    "name": "New newsletter",
+    "settings": [
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Collection list"
+    },
+    {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    }
+    ],
+    "presets": [
+    {
+        "name":"New newsletter"
+    }
+    ]
+}
+{% endschema %}

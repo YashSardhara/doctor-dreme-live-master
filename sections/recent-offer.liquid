@@ -1,0 +1,120 @@
+
+{%- liquid
+  assign bg_color = section.settings.background-color
+  assign enabled = section.settings.enabled
+  assign icon = section.settings.icon
+  assign light_text = section.settings.light-text
+  assign link = section.settings.link
+  assign text = section.settings.text
+
+  assign show_on_page = true
+  if section.settings.home-page-only and template != 'index'
+    assign show_on_page = false
+  endif
+
+  capture link_settings
+    echo settings.color--alternative
+    echo settings.color--accent
+  endcapture
+-%}
+
+{% if enabled and show_on_page %}
+  <div
+    class="recent-offer--root"
+    data-section-id="{{ section.id }}"
+    data-section-type="recent-offer"
+    data-background-color="{{ bg_color }}"
+    data-light-text="{{ light_text }}"
+    data-spacing="none"
+  >
+    {% if link != blank %}
+      <a class="recent-offer--link" href="{{ link }}">
+    {% endif %}
+
+    <div class="recent-offer--wrapper">
+      {% if icon %}
+        <div class="recent-offer--icon">
+          {{ icon | img_url: '50x50' | img_tag: icon.alt }}
+        </div>
+      {% endif %}
+
+      {% if text != blank %}
+        <div class="recent-offer--text" data-item="accent-text">
+          {{ text | escape }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if link != blank %}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Recent Offer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Show recent-offer",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "home-page-only",
+      "label": "Home page only",
+      "default": true
+    },
+    {
+      "id": "background-color",
+      "label": "Background color",
+      "type": "select",
+      "options": [
+        { "label": "None", "value": "none" },
+        { "label": "Light", "value": "light" },
+        { "label": "Dark", "value": "dark" },
+        { "label": "Accent", "value": "accent" }
+      ],
+      "default": "dark"
+    },
+    {
+      "id": "light-text",
+      "label": "Use light text color",
+      "type": "checkbox",
+      "default": false
+    }
+  ],
+	"blocks": [
+    {
+      "type": "image",
+      "name": "Column",
+      "settings": [
+        {
+          "id": "show-image",
+          "label": "Show image",
+          "type": "checkbox",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Add a title or tagline"
+        },
+        {
+          "type": "url",
+          "id": "link-url",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

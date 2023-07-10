@@ -1,0 +1,261 @@
+{%- liquid
+    assign bg_color = section.settings.background-color
+    assign collection_title_t = 'sections.onboarding.collection_title' | t
+    
+    assign heading = section.settings.heading | escape
+    assign light_text = section.settings.light-text
+    assign spacing_above = section.settings.spacing-above
+    assign spacing_below = section.settings.spacing-below
+    -%}
+
+{% comment %}
+  View
+{% endcomment %}
+<featured-collections-root class="featured-collections--root comman_maincontainer_spacing" data-section-id="{{ section.id }}" data-background-color="{{ bg_color }}" data-mobile-width="{{ section.settings.mobile-width }}" data-light-text="{{ light_text }}" data-spacing-above="{{ spacing_above }}" data-spacing-below="{{ spacing_below }}" style="display:block;">
+  <div class="featured-collections--wrapper" data-container="section">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <span class="d_flex heading_div">
+        {%- if heading != blank -%}
+             {%- if template.name == "index" -%}
+              <h1 class="featured-collections--heading heading_text one_stop" data-item="section-heading">{{ heading }} </h1>
+          {%- else -%}
+              <h2 class="featured-collections--heading heading_text" data-item="section-heading">{{ heading }}</h2>
+            {%- endif -%}
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="subheading_text">{{section.settings.subheading }}
+          </p>
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+    <div class="featured-collections--body " data-container="panel" data-columns="{{ section.settings.width }}" data-mobile-columns="{{ section.settings.mobile-width }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+        assign collection = collections[block.settings.collection]
+        
+        if collection == blank
+        assign title = collection_title_t
+        
+        capture image
+        render "placeholder", type: "collection", aspect_ratio: 1, placeholder_index: forloop.index
+        endcapture
+        
+        else
+        assign title = collection.title
+        
+        if collection.image
+        capture image
+        render "image", image: collection.image, full_width: true
+        endcapture
+        
+        elsif collection.products.first.featured_media.preview_image
+        capture image
+        render "image", image: collection.products.first.featured_media.preview_image, full_width: true
+        endcapture
+        
+        else
+        capture image
+        render "placeholder", type: "collection", aspect_ratio: 1, placeholder_index: forloop.index
+        endcapture
+        
+        endif
+        
+        endif
+        -%}
+
+        {% comment %}
+          View
+        {% endcomment %}
+        {%- if collection != blank -%}
+          <a href="{{ collection.url }}" class="new_card_body new_collection_grid">
+          {%- endif -%}
+          <div class="featured-collections--item collection_data" {{ block.shopify_attributes }} data-container="block">
+            <div class="featured-collections--image collection_image" data-item="image">
+              {%- if  block.settings.collection_image  != blank -%}
+                <img class="lazyload" data-src=" {{block.settings.collection_image | img_url : 'master'}}" data-sizes="auto">
+              {%- else -%}
+                {{image}}
+              {%- endif -%}
+            </div>
+            <span class="card_body_info">
+              <!-- <h3 class="featured-collections--title test card_body_title" data-item="block-heading">{{ title }} </h3> -->
+              <span class="featured-collections--title test card_body_title" data-item="block-heading">{{ title }}
+              </span>
+              {%- if block.settings.content != blank -%}
+                <p class="content_text card_body_content">{{block.settings.content}}
+                </p>
+                <span class="d_flex card_body_price_container">
+                  {%- if block.settings.price_text != blank or block.settings.price_value -%}
+                    <span class="price_text card_body_price_text">
+                      {{block.settings.price_text  | truncate: 55, '...'}}
+                      {%- if block.settings.price_value != blank -%}
+                        <b>Rs.
+                          {{block.settings.price_value}}
+                        </b>
+                      {%- endif -%}
+                    </span>
+                  {%- endif -%}
+                  <span class="card_body_btn">Explore</span>
+                {%- endif -%}
+              </span>
+            </span>
+          </div>
+          {% if collection.url %}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  <!-- <p class="last_btn_s btn_mob"><a class="btn_see_all" href="{{ block.settings.explore_btn_url }}">{{section.settings.btn-text}}</a></p> -->
+  <button class="show_more">Show More</button>
+  <button class="show_less">Show Less</button>
+</featured-collections-root>
+
+<script type="module">
+  import "{{ 'featured-collections.js' | asset_url }}";
+</script>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout and color"
+      },
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          {
+            "label": "None",
+            "value": "none"
+          }, {
+            "label": "Light",
+            "value": "light"
+          }, {
+            "label": "Dark",
+            "value": "dark"
+          }, {
+            "label": "Accent",
+            "value": "accent"
+          }
+        ],
+        "default": "none"
+      },
+      {
+        "id": "light-text",
+        "label": "Use light text color",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      }, {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      }, {
+        "id": "width",
+        "label": "Blocks per row",
+        "type": "range",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 3
+      }, {
+        "id": "mobile-width",
+        "label": "Blocks per row for small devices",
+        "type": "radio",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          }, {
+            "value": "2",
+            "label": "2"
+          }
+        ],
+        "default": "2"
+      }, {
+        "type": "header",
+        "content": "Content"
+      }, {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Collection list"
+      }, {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+      }, {
+        "type": "text",
+        "id": "btn-text",
+        "label": "Button text",
+        "default": "button"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "content",
+            "label": "Content",
+            "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+          },
+          {
+            "type": "text",
+            "id": "price_text",
+            "label": "Content",
+            "default": "Start from"
+          },
+          {
+            "type": "text",
+            "id": "price_value",
+            "label": "Content",
+            "default": "10,999"
+          }, {
+            "type": "text",
+            "id": "explore_btn_url",
+            "label": "Explore button url",
+            "info": "Add url to shown up explore button"
+          }, {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Collection image",
+            "info": "Add image for collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "blocks": [
+          {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

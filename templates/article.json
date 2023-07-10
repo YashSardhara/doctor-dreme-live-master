@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "main": {
+      "type": "article",
+      "settings": {
+        "show-featured": true,
+        "title-position": "above",
+        "show-date": true,
+        "show-author": true,
+        "show-share": true,
+        "menu-title": "",
+        "menu": "product-catagories"
+      }
+    },
+    "comments": {
+      "type": "article-comments",
+      "settings": {
+        "show-comments": true,
+        "disqus-enabled": false,
+        "disqus-shortname": ""
+      }
+    },
+    "navigation": {
+      "type": "article-navigation",
+      "settings": {
+        "enable": false,
+        "show-share": false,
+        "show-tags": false
+      }
+    },
+    "recents": {
+      "type": "article-recents",
+      "settings": {
+        "enable": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "comments",
+    "navigation",
+    "recents"
+  ]
+}

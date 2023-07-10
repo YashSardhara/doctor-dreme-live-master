@@ -1,0 +1,134 @@
+<div class="images_slider">
+  {%-  for block in section.blocks  -%}
+    <div>
+      {%-  if block.settings.desktop_img  != blank  -%}
+        <a href="{{block.settings.img_url }}" class="desktop_img">
+          <img class="lazyload" data-sizes="auto" src="{{block.settings.desktop_img  |  image_url: width: 1550}}" alt="">
+        </a>
+      {%-  endif  -%}
+
+      {%-  if block.settings.moblie_img == blank  -%}
+        <a href="{{block.settings.img_url }}" class="mobile_img">
+          <img class="lazyload" data-sizes="auto" src="{{block.settings.desktop_img  | image_url: width: 750 }}" alt="">
+        </a>
+      {%-  else  -%}
+        <a href="{{block.settings.img_url }}" class="mobile_img">
+          <img class="lazyload" data-sizes="auto" src="{{block.settings.moblie_img | image_url: width: 750}}" alt="" class="mobile_img">
+        </a>
+      {%-  endif  -%}
+    </div>
+  {%-  endfor  -%}
+</div>
+
+<!-- Axio start -->
+<style>
+  .mobile_axio_bnnr {
+    display: none;
+  }
+  @media only screen and (max-width: 600px) {
+  .mobile_axio_bnnr {
+    display: block !important;
+  }
+  .desktop_axio_bnnr {
+    display: none !important;
+  }
+}
+</style>
+{%- if section.settings.axios_banner == true -%}
+
+{%- comment -%} Axio {%- endcomment -%}
+<!-- Axio end -->
+<img class="desktop_axio_bnnr lazyload" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/desktop-100.jpg?v=1678367368">
+<img class="mobile_axio_bnnr lazyload" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/mobile-100.jpg?v=1678367368">
+<!-- Axio end -->
+{%- endif -%}
+
+{%- comment -%}
+  Services
+{%- endcomment -%}
+{%- if section.settings.reverse_services == true -%}
+  <div class="d_flex services_details">
+    <div class="d_flex feature_info">
+      <span>
+        <img src="//cdn.shopify.com/s/files/1/0248/7766/2271/files/free_shipping.svg?v=1665642859" alt="free_shipping"></span>
+      <p class="primary_text_color">Free  Shipping</p>
+    </div>
+    <div class="d_flex feature_info">
+      <span>
+        <img src="//cdn.shopify.com/s/files/1/0248/7766/2271/files/100_nights.svg?v=1665642859" alt="Nights_Free_Trial"></span>
+      <p class="primary_text_color">100 Nights  Free Trial*</p>
+    </div>
+    <div class="d_flex feature_info">
+      <span>
+        <img src="//cdn.shopify.com/s/files/1/0248/7766/2271/files/easy_emi_1.svg?v=1667216547" alt="Easy_EMI"></span>
+      <p class="primary_text_color">Easy EMI</p>
+    </div>
+    <div class="d_flex feature_info">
+      <span>
+        <img src="//cdn.shopify.com/s/files/1/0248/7766/2271/files/nilkaml_assurance.svg?v=1666854972" alt="Nilkamal_Assurance"></span>
+      <p class="primary_text_color">Nilkamal Assurance</p>
+    </div>
+  </div>
+{%- endif -%}
+
+{%- comment -%}
+  end
+{%- endcomment -%}
+{%  schema  %}
+  {
+    "name": "New image slider",
+    "settings": [
+
+      {
+        "type": "checkbox",
+        "id": "reverse_services",
+        "label": "Click to add services",
+        "default": false
+      },
+      {
+      "type": "checkbox",
+      "id": "axios_banner",
+      "label": "Click to add Axios Banner",
+      "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "name": "image",
+        "type": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "desktop_img",
+            "label": "Desktop Image"
+          }, {
+            "type": "image_picker",
+            "id": "moblie_img",
+            "label": "Mobile Image"
+          }, {
+            "id": "img_url",
+            "type": "url",
+            "label": "Image url"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "New Image Slider"
+      }
+    ]
+  }
+{%  endschema  %}
+<script>
+  $('.images_slider').slick({
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+</script>

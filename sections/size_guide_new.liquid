@@ -1,0 +1,140 @@
+<section class="size_guide_new_container">
+  {% if section.settings.heading != blank or section.settings.subheading1 != blank or section.settings.subheading2 != blank%}
+    <span class="d_flex heading_div size_guide_head">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="featured-collections--heading heading_text" data-item="section-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subheading1 != blank or section.settings.subheading2 != blank -%}
+        <div class="subheading_text">
+          <p>{{section.settings.subheading1 }}</p>
+          <p>{{section.settings.subheading2 }}</p>
+        </div>
+      {%- endif -%}
+    </span>
+  {% endif %}
+  {%- comment -%}
+    <div class="size_guide_blocks_container">
+    {%- for block in section.blocks -%}
+    <div class="size_guide_blocks">
+    <img src="{{ block.settings.size_image | img_url: '' }}">
+    <div class="guide_detail">
+    <h4>{{ block.settings.block_heading}}</h4>
+    <p>{{ block.settings.block_subheading}}</p>
+    </div>
+    <!-- <div class="guide_price">
+    <span>Avilable sizes</span>
+    <p>{{ block.settings.size}}</p>
+    </div> -->
+    <a class="card_body_btn s_g_btn" href="{{ block.settings.url}}">Buy Now</a>
+    </div>
+    {%- endfor -%}
+    </div>
+  {%- endcomment -%}
+  <div class="size_guide_blocks_container">
+    <div class="size_guide_blocks">
+      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/single_size.svg?v=1667310645">
+      <div class="guide_detail">
+        <h4>Single Size</h4>
+        <p>Best suited for: 1 adult</p>
+      </div>
+      <a class="card_body_btn s_g_btn" href="https://doctordreams.com/collections/single-size-mattress">Buy Now</a>
+    </div>
+    <div class="size_guide_blocks">
+      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Diwan_Size.svg?v=1667310645">
+      <div class="guide_detail">
+        <h4>Diwan Size</h4>
+        <p>Best suited for: 1 adult + 1 kid</p>
+      </div>
+      <a class="card_body_btn s_g_btn" href="https://doctordreams.com/collections/double-size-mattress">Buy Now</a>
+    </div>
+    <div class="size_guide_blocks">
+      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/queen_size.svg?v=1667310645">
+      <div class="guide_detail">
+        <h4>Queen Size</h4>
+        <p>Best suited for: 2 adult</p>
+      </div>
+      <a class="card_body_btn s_g_btn" href="https://doctordreams.com/collections/queen-size-mattress">Buy Now</a>
+    </div>
+    <div class="size_guide_blocks">
+      <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/king_size.svg?v=1667310645">
+      <div class="guide_detail">
+        <h4>King Size</h4>
+        <p>Best suited for: 2 adults + 1 kid</p>
+      </div>
+      <a class="card_body_btn s_g_btn" href="https://doctordreams.com/collections/king-size-mattress">Buy Now</a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%}
+  {% schema %}
+  {
+  "name": "size guide section",
+  "settings": [
+  {
+  "type": "header",
+  "content": "Content"
+  },
+  {
+  "type": "text",
+  "id": "heading",
+  "label": "Heading",
+  "default": "Heading"
+  },
+  {
+  "type": "text",
+  "id": "subheading1",
+  "label": "Sub Heading1",
+  "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+  },
+  {
+  "type": "text",
+  "id": "subheading2",
+  "label": "Sub Heading2",
+  "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+  }
+  ],
+  "blocks": [
+  {
+  "type": "SingaleBanner",
+  "name": "Add Size Guide",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id": "size_image",
+  "label": "Image"
+  },
+  {
+  "type": "text",
+  "id": "block_heading",
+  "default": "Type heading here",
+  "label": "Heading"
+  },
+  {
+  "type": "text",
+  "id": "block_subheading",
+  "label": "Sub Heading"
+  },
+  {
+  "type": "text",
+  "id": "size",
+  "label": "Avilable sizes"
+  },
+  {
+  "type": "url",
+  "id": "url",
+  "label": "URL"
+  }
+  ]
+  }
+  ],
+  "presets": [
+  {
+  "name": "size guide section"
+  }
+  ]
+  }
+  {% endschema %}
+{%- endcomment -%}

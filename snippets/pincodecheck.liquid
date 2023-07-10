@@ -1,0 +1,47 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+  <span class="d_flex  pincode_checker_div ">
+    <input type="text" name="" id='PostalCode' name='PostalCode' class="input-pincode pincode_ckecker_service number_only pincode_value" value="{{cart.attributes.pincode}}"placeholder='Enter delivery pincode' style='' onkeypress='return event.keyCode != 13;' maxlength="6" />
+    <input type="button" id="check_pin"  value="Check" class='action_button reverse check_pincode pincode_check'>
+    <!-- <input type='text' id='PostalCode' name='PostalCode' class="input-pincode pincode_ckecker_service number_only pincode_value" value="{{cart.attributes.pincode}}" placeholder='Pincode' style='' onkeypress='return event.keyCode != 13;' maxlength="6" /> -->
+    <!-- <button type='button' class='action_button reverse check_pincode pincode_check' id="pincode_checker_validation">Check</button> -->
+  </span>
+   <p class="error_message" style="font-size: 14px;margin: 0;padding: 0;"></p>
+
+<script>
+$(document).on('click','#check_pin',function(){
+  var pincodecsv_url = "https://doctordreams.com"; // apply shop link
+  var pincode_val_cart = $(".pincode_value").val();
+  $("#pdp_add_to_cart").attr("disabled",true);
+  console.log("BI01 - check_pin Clicked", pincode_val_cart);
+  if (pincode_val_cart == ""){
+    $(".error_message").text("Pincode is blank");
+    $(".error_message").css("color","red");
+    return false;
+  }
+  if(pincode_val_cart > 100000 && pincode_val_cart < 999999){
+    console.log("BI01 - Valid Pincode", pincodecsv_url);
+    $.ajax({
+        type: "GET",
+        url: pincodecsv_url,
+        dataType: "text",
+        async: false,
+        success: function (data) {
+          if (data.indexOf(pincode_val_cart) >= 0){
+            $(".error_message").text("Pincode is serviceable");
+            $(".error_message").css("color","green");
+            $(".product-buy-buttons--cta.add-to-cart").attr("disabled",false);    // apply pdp add to cart id of gievn btn
+          } else {
+            $(".error_message").text("Pincode is not serviceable");
+            $(".error_message").css("color","red");
+          }        },
+        error: function (data) {
+          console.log("BI01 - Error");
+        }
+      });
+  } else {
+    $(".error_message").text("Invalid Pincode");
+    $(".error_message").css("color","red");
+  }
+});
+</script>

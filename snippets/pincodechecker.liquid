@@ -1,0 +1,313 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<style>
+  .product-pincode-info {
+    position: relative;
+  }
+
+  .preloader {
+    display:none;
+    position: absolute;
+    border-radius: 25px;
+    height: 45px !important;
+    right: 0;
+    min-width: 110px;
+    width: 30%;
+    top: 0;
+    background: #023e88;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .product_order_text {
+    padding-left: 5%
+  }
+  .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+</style>
+<span class="pincode_div d_flex ">
+ 
+  <span class="pincode_lable primary_color">Check Availability</span>
+  <span class="pincode_checker_div ">
+    <span class="d_flex">
+      <input type="text" name="pincode_val" id="p_data" placeholder="Enter delivery pincode" class="input_div primary_color" value="{{cart.attributes.pincode}}">
+      <input type="button" id="check_pin" value="Check" class="pdp_btn">
+      <div class="preloader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+    </span>
+    <span class="product_order_text"></span>
+  </span>
+</span>
+<br>
+
+<div class="pd-deliver-info"></div>
+<script>
+  $('.goback_pincode ').click(function() {
+    $('html, body').animate({
+      scrollTop: $(".pincode_div").offset().top - 215
+    }, 1000)
+    var pincode_val = $(".pin_aval").val();
+    if (pincode_val == '') {
+      $('.product_order_text').html('Please enter pincode').css("color", "red");
+      $('.add_to_cartfb').attr('disabled', true);
+    }
+  })
+
+
+  function addPincodeCart(pincode) {
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      async: false,
+      url: '/cart/update.js',
+      data: {
+        attributes: {
+          'pincode': pincode
+        }
+      },
+      success: function() {}
+    });
+  }
+
+  $(".number_only").keypress(function(h) {
+    if (8 != h.which && 0 != h.which && 32 != h.which && (h.which < 48 || h.which > 57)) 
+      return !1
+
+
+
+    
+
+
+
+  });
+
+  function addTOcartDisable() {
+    
+    $("html, body").animate({
+      scrollTop: $(".pincode_div").offset().top - 425
+    }, 500);
+    
+    $('.product_order_text').html('');
+    var pincode_val = $("#p_data").val();
+    if (pincode_val == '') {
+      $('.product_order_text').html('Please enter pincode').css("color", "red");
+      $(".test_add_to_cart").attr('disabled', true);
+    }
+  }
+
+  $("#check_pin").click(function() {
+    $('.preloader').css('display', 'flex');
+    $('.preloader').css({'align-items': 'center','justify-content':'center'});
+    var sku = '{{ current_variant.sku }}';
+    console.log("current", sku)
+    var sku_qty = 0;
+    var sku_available = '';
+    var pincode_val = $('#p_data').val();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var variant_id = urlParams.get('variant');
+    if (variant_id == null) {
+      variant_id = {{ current_variant.id }};
+    }
+
+    console.log('variant_id', variant_id);
+    const pro_url = window.location.href + '.json';
+    window._VARIANTS = {};{% for variant in product.variants %}window._VARIANTS[{{ variant.id }}] = [
+        {{ variant.inventory_quantity }}, {{ variant.available }}
+      ],{% endfor %}$.getJSON(pro_url, function(result) {
+      $.each(result, function(j, product) {
+        $.each(product.variants, function(j, varrr) {
+          if (varrr.id == variant_id) {
+            sku = varrr.sku;
+            console.log("krishna", sku)
+            return false;
+          }
+        });
+        $.each(window._VARIANTS, function(j, variantQty) {
+          console.log("BI01", variantQty);
+          if (j == variant_id) {
+            sku_qty = variantQty[0];
+
+            sku_available = variantQty[1];
+
+            return false;
+          }
+        });
+      });
+    });
+    var pincode_length = pincode_val.length;
+    var qty = parseInt($('.quantity-selector').val());
+    console.log("kishupratik", qty)
+    var date = new Date();
+    date.setDate(date.getDate() + 7);
+
+    var delivery_date = date.toLocaleDateString('en-us', {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    });
+
+    if (pincode_val == '') {
+      $('.preloader').css('display', 'none');
+      $('.product_order_text').html('Please enter pincode').css("color", "red");
+
+      $(".custom_addtocart__mobile").css("display", "block");
+    } else if (pincode_length != 6) {
+      $('.preloader').css('display', 'none');
+      $('.product_order_text').html('Please enter pincode only 6 digit').css("color", "red");
+    } else {
+      $("#show_error").hide();
+      $(".custom_addtocart__mobile").css("display", "none");
+
+      setTimeout(function() {
+        $.ajax({
+          url: 'https://middleware.doctordreams.com/api/get-pincodecheckerdata-test',
+          type: 'POST',
+          dataType: "json",
+          data: {
+            pincode: pincode_val,
+            variant_id: variant_id,
+            sku: sku,
+            qty: qty,
+            sku_qty: sku_qty,
+            sku_available: sku_available
+          },
+          success: function(res) {
+            $('.preloader').css('display', 'none');
+            var response_data = res.data;
+            if (response_data.indexOf('Your Pincode is not Servicable.') != -1) {
+              return false;
+            }
+
+            $('.product_order_text').html('');
+            $('.pd-deliver-info').css('display', 'block');
+            $('.pincode_div').hide();
+            $('.pd-deliver-info').html(res.data);
+            console.log("BI01 SKU QTY", sku_qty, sku_available, sku)
+
+            if (res.success == false) {
+              return false;
+            } else { // console.log("BI01 - sku_continue_selling",sku_continue_selling, "001", sku_inventory, "SKU", sku,"Price",sku_price);
+              $(".custom_addtocart__button").hide();
+              $('.dummyClassBox').hide();
+              $(".but_it_with").show();
+              $('.new_add_btn').show();
+
+// $('.add_to_cartfb').css('display', 'inline-block');
+              $(".custom_payment__button").hide();
+              $('.product-buy-buttons--form').css('display', ' inline-flex');
+              $(".product-buy-buttons--primary").css("display", 'block');
+              $(".bottom_but_it_with").css("display", 'block');
+              $(".product-buy-buttons--smart").css("display", 'block');
+
+// $('.shopify-payment-button').css('display', 'inline-block');
+// $('.shopify-payment-button').show();
+              addPincodeCart(pincode_val);
+            }
+          },
+          error: function() {
+            console.log('error');
+          }
+        });
+      }, 1000);
+    }
+  });
+
+
+  function changetopincode() {
+    $(".custom_addtocart__button").show();
+    $('.dummyClassBox').show();
+    $(".but_it_with").hide();
+    $('.new_add_btn').hide();
+    // $('.add_to_cartfb').css('display', 'inline-block');
+    $(".custom_payment__button").show();
+    $('.product-buy-buttons--form').css('display', ' none');
+    $(".product-buy-buttons--primary").css("display", 'none');
+    $(".bottom_but_it_with").css("display", 'none');
+    $(".product-buy-buttons--smart").css("display", 'none');
+    $('.pd-deliver-info').css("display", "none");
+    $('.product_order_text').css("display", "none");
+    $('.pincode_div').show();
+  }
+
+  $('.product-form__variants').change(function() {});
+
+  $(document).ready(function(e) {
+    var pincode_val = $('#p_data').val();
+    if (pincode_val != '') {
+      console.log("BI01 - Document Get Ready");
+      setTimeout(function() {
+        $('#check_pin').trigger('click');
+      }, 2000);
+    }
+    $("#p_data").keypress(function(e) {
+      var key = e.which;
+      if (key == 13) {
+        $("#zip-check").click();
+        return false;
+      }
+    });
+
+    $('.disclosure--form ').click(function() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var variant_id = urlParams.get('variant');
+      if (variant_id != null) {
+        $('#check_pin').trigger('click');
+      }
+    });
+  });
+</script>

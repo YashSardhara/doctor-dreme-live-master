@@ -1,0 +1,100 @@
+{{ 'snooze_zone.js' | asset_url | script_tag }}
+<section class="review_section">
+  <div class="reviews_container container">
+    <div class="reviews_text">
+      <h2 class="common_heading">{{ section.settings.top_heading }}
+      </h2>
+      <p>{{ section.settings.description }}
+      </p>
+      <div class="reviewbtn_text">
+        <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}
+        </a>
+      </div>
+    </div>
+    <div class="reviews_images">
+      {% for block in section.blocks %}
+        <div class="social_logos">
+          <a href="">{{ block.settings.image | img_url: '2048x' | img_tag }}
+          </a>
+          <div class="social_details">
+            <h2>{{ block.settings.review_rated }}
+            </h2>
+            <a class="rated_star">{{ block.settings.rated_star | img_url: '2048x' | img_tag }}
+            </a>
+            <p>{{ block.settings.total_review }}
+            </p>
+            <a class="social_img" href="">{{ block.settings.social_logo | img_url: '2048x' | img_tag }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  section.review_section {
+    background: #fff;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "reviews section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "top_heading",
+        "label": "Enter Title"
+      }, {
+        "type": "text",
+        "id": "description",
+        "label": "Enter Description"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      }, {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button url"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "images",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Select Background Image"
+          },
+          {
+            "type": "text",
+            "id": "review_rated",
+            "label": "Review-rate Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "rated_star",
+            "label": "Rated Star Image"
+          },
+          {
+            "type": "text",
+            "id": "total_review",
+            "label": "Total-Review Description"
+          }, {
+            "type": "image_picker",
+            "id": "social_logo",
+            "label": "Select Social Logo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "reviews section"
+      }
+    ]
+  }
+{% endschema %}

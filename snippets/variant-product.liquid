@@ -1,0 +1,21 @@
+<script>
+    $(document).on('load click','body .disclosure--form li',function (event){
+      console.log('Varaint-product file called')
+      {% for variant in product.variants %}
+      var variant_dimension = "{{ variant.metafields.variant.variant_dimension | strip }}";
+      var varid = "{{variant.id}}";
+      
+      if(varid != "" && variant_dimension != ''){
+        if (document.location.href.indexOf(varid) === -1){
+        }else{
+          $('.variant_dimension').html(variant_dimension);
+          if(variant_dimension != ""){
+            $(".product-dimension-style").show();
+          }else{
+            $(".product-dimension-style").hide();
+          }
+        }
+      }
+      {% endfor %}
+    });
+  </script>

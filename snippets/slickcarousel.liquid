@@ -1,0 +1,81 @@
+{% liquid
+  if onboarding and view == 'product'
+    assign num_placeholder_items = 8
+    assign total_blocks = num_placeholder_items
+    assign total_slides = 2
+  elsif onboarding and view == 'product-page'
+    assign num_placeholder_items = 4
+    assign total_blocks = num_placeholder_items
+    assign total_slides = 4
+  endif
+
+  assign blocks_per_slide_mobile = blocks_per_slide_mobile | plus: 0
+  assign blocks_per_slide_float = blocks_per_slide | append: ".00"
+  assign blocks_per_slide_float_mobile = blocks_per_slide_mobile | append: ".00"
+  assign total_slides = total_blocks | divided_by: blocks_per_slide_float | ceil
+  assign total_slides_mobile = total_blocks | divided_by: blocks_per_slide_float_mobile | ceil
+  assign total_spaces = blocks_per_slide | times: total_slides
+  assign total_spaces_mobile = blocks_per_slide_mobile | times: total_slides_mobile
+  assign unique_handle = 'carousel--' | append: section_id
+
+  assign offset = 0
+  assign offset_mobile = 0
+  assign container_offset = 0
+  assign container_offset_mobile = 0
+
+  if spacing_around_blocks
+    assign offset = 48
+    assign offset_mobile = 32
+    assign container_offset = offset | times: total_slides | times: 2
+    assign container_offset_mobile = offset_mobile | times: total_slides_mobile | times: 2
+  endif
+%}
+<div class="featured-blog--wrapper">
+<div class="carousel-slick">
+{% for block in blocks%}
+{%
+                  render 'product--item',
+                  product: block,
+                  view: "slider",
+                  unique_handle: unique_handle,
+                  section_id: section_id
+                %}
+{% endfor %}
+  </div></div>
+<script type="text/javascript">
+ jQuery(document).ready(function(){
+	jQuery('.carousel-slick').not('.slick-initialized').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    
+  ]
+});
+  });
+</script>

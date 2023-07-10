@@ -1,0 +1,101 @@
+<script>
+   $( document ).ready(function() { 
+       cartDeliveryDate();
+   });
+  
+  function cartDeliveryDate(){
+     var pincode = {{cart.attributes.pincode}};
+     var cartSku = {};
+        $.ajax({
+        type: 'GET',
+        url: '/cart.js',
+        cache: false,
+        dataType: 'json',
+        success: function(cart) {
+          $.each(cart.items, function (ci, item) {
+             cartSku[item.sku] = item.quantity;
+          });
+        }
+    });
+    console.log("pincode",cartSku);
+    var url = "https://middleware.doctordreams.com/api/cart-deliverydate";
+        setTimeout(function(){
+          $.ajax({          
+          url: url,
+          type: 'POST',
+          dataType: "json",
+          data: {cartSku,pincode},
+          success: function(response){
+            console.log("response",response);
+            if(response)
+            {
+              $.each(response.data, function (k, v) {
+                if(v != "not_available")
+                {
+                  $('#'+ k +'_date').html('Delivery Date '+ v).css('color','black');
+                }else{
+                  $('#'+k+"_date").text('');    
+                }
+              });
+
+            }
+          },
+            error:function(){
+            console.log('error');
+          }
+        });
+      }, 3000);
+  };
+ 
+  
+$('#cart-checkout').on('click',function(){
+	
+    var pincode = {{cart.attributes.pincode}};
+   	var myObj = {};
+
+    $.ajax({
+        type: 'GET',
+        url: '/cart.js',
+        cache: false,
+        dataType: 'json',
+        success: function(cart) {
+          $.each(cart.items, function (ci, item) {
+             myObj[item.sku] = item.quantity;
+          });
+        }
+    });
+  
+  console.log("pincode",myObj);
+  
+     setTimeout(function(){
+      $.ajax({
+          type: "POST",
+          url: "https://middleware.doctordreams.com/api/cart-validation",
+          dataType: 'json',
+          async: true,
+          data:{myObj,pincode},
+          success: function(response){
+		  
+            if(response.success != true)
+            {
+              console.log("krishna",response.data)
+              $.each(response.data, function (k, v) {
+                console.log("kishu",k);
+                if(v != "available")
+                {
+                  $('#'+k).html('This product Available quantity is '+v).css('color','red');
+                }else{
+                  $('#'+k).text('');    
+                }
+              });
+
+            }else{
+              $("#checkout").trigger("click");
+            }
+          },
+      });
+     }, 3000);
+  
+});     
+</script>
+

@@ -1,0 +1,143 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 3,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "165719691017dcc119": {
+      "type": "about_us_header_banner_with_text",
+      "settings": {
+        "about_us_heading": "About us",
+        "sub_heading": "Perfect Ingredient's for Good Night's Sleep",
+        "about_us_desk_image": "shopify:\/\/shop_images\/Main_Banner.jpg",
+        "about_us_mob_image": "shopify:\/\/shop_images\/Main_Banner_79984c1b-8117-47d7-b978-826a034f2976.jpg",
+        "url": "",
+        "overlap": false
+      }
+    },
+    "1657604203bb055f7a": {
+      "type": "image_and_text",
+      "settings": {
+        "about_us_heading": "How many hours of sleep did you get last night?",
+        "sub_heading": "Don’t bother counting, we know it wasn’t enough",
+        "description": "Actually, the whole world knows it. That’s because Indians are one of the youngest and most sleep deprived people in the world. So, the next time you get into a morning argument with a co-passenger, don’t blame it on a lack of sense but a lack of sleep.",
+        "about_us_desk_image": "shopify:\/\/shop_images\/call_img_2a784914-1b23-4dda-9008-872c06dc0a9f.jpg",
+        "about_us_mob_image": "shopify:\/\/shop_images\/call_img_2a784914-1b23-4dda-9008-872c06dc0a9f.jpg",
+        "url": "",
+        "about_us_text-position": "center"
+      }
+    },
+    "165769500286181e24": {
+      "type": "image_left_text",
+      "settings": {
+        "heading": "Happy Sleep, Delivered!",
+        "text_area": "<p>You must be wondering, ‘so what’s the big deal?’ Well, if you find yourself losing focus, feeling anxious or generally unhappy, you know you have your answer. But don’t worry be happy, because Doctor Dreams is here to save the day!<\/p>\n<br><p>This new brand has been developed with a singular focus, to bring happiness back into your life by helping you sleep better. And for that purpose, we bring you our first offering, a specially designed mattress that is as cool (thanks to a layer of cool gel) as it is comfortable (and a layer of memory foam). What’s more, it’s delivered to your doorstep in a convenient box, at the click of a button.<\/p>",
+        "desk_image": "shopify:\/\/shop_images\/happy_sleep_img_d.jpg",
+        "mob_image": "shopify:\/\/shop_images\/happy_sleep_img_m_16e9c9d2-ce89-4612-9802-ab1d6509e871.jpg",
+        "url": "",
+        "button-text": "button",
+        "button-url": ""
+      }
+    },
+    "1632473398c42b6136": {
+      "type": "featured-video",
+      "settings": {
+        "video-url": "https:\/\/www.youtube.com\/watch?v=U3YvwKok0M4",
+        "image": "shopify:\/\/shop_images\/Video_Banner.jpg",
+        "full-width": true,
+        "background-color": "none",
+        "section-height": "regular",
+        "light-text": true,
+        "darken-video": true,
+        "heading": "",
+        "sub-heading": "",
+        "button-text": "",
+        "button-url": ""
+      }
+    },
+    "16572017620affa928": {
+      "type": "icons_with_text",
+      "blocks": {
+        "56665e95-ad46-4e04-bde1-3eed6ed6a1d2": {
+          "type": "SingaleBanner",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/10_Years_warranty_icon_4387bd4d-5696-4102-a8a3-a568185ac63a.jpg",
+            "url": "",
+            "about_us_icon_block_heading": "10 Years Warranty",
+            "about_us_icon_text_area": "Stay protected from any manufacturing defect for a decade.",
+            "image": "shopify:\/\/shop_images\/10_Years_warranty_Half_moon.jpg"
+          }
+        },
+        "1c28aa43-3e6a-45f3-821e-9da99d25e05a": {
+          "type": "SingaleBanner",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/Free_shipping_icon_1.jpg",
+            "url": "",
+            "about_us_icon_block_heading": "Free Shipping",
+            "about_us_icon_text_area": "Get free doorstep delivery of any of our products anywhere in India.",
+            "image": "shopify:\/\/shop_images\/100_Night_Free_Half_moon.jpg"
+          }
+        },
+        "c7781857-cc1a-479b-b16f-8c2dbe366e54": {
+          "type": "SingaleBanner",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/Easy_unboxing_icon_f3da5463-c929-4c63-9aa0-34d2c4a86ba9.jpg",
+            "url": "",
+            "about_us_icon_block_heading": "Easy Unboxing",
+            "about_us_icon_text_area": "Turn a box into a bed mattress and then into the best sleep in less than a minute.",
+            "image": "shopify:\/\/shop_images\/10_Years_warranty_Half_moon.jpg"
+          }
+        },
+        "b189b9ac-b8d8-4c09-b772-f34029ac1cde": {
+          "type": "SingaleBanner",
+          "settings": {
+            "image1": "shopify:\/\/shop_images\/100_Night_Free_Trial_icon_1.jpg",
+            "url": "",
+            "about_us_icon_block_heading": "100 Night Free Trial",
+            "about_us_icon_text_area": "Take your time, give it a good go. And if you still aren’t happy, we’ll give you your money back.",
+            "image": "shopify:\/\/shop_images\/100_Night_Free_Half_moon.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "56665e95-ad46-4e04-bde1-3eed6ed6a1d2",
+        "1c28aa43-3e6a-45f3-821e-9da99d25e05a",
+        "c7781857-cc1a-479b-b16f-8c2dbe366e54",
+        "b189b9ac-b8d8-4c09-b772-f34029ac1cde"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1657619576345d4fef": {
+      "type": "banner_text_overlay",
+      "settings": {
+        "banner_logo": "shopify:\/\/shop_images\/Nilkamal_66cfb9eb-a28a-466b-ad99-8d6556f08552.png",
+        "about_us_heading": "From India's Most Trusted Brand",
+        "about_us_text_area": "<p>Doctor Dreams is a part of Nilkamal Group, we are not just a complete home solutions company, but also a household name and a part of a millions of families across India.<br\/><\/p>",
+        "about_us_desk_image": "shopify:\/\/shop_images\/1_e942b878-2c2d-4380-99b8-f478561e1f53.jpg",
+        "about_us_mob_image": "shopify:\/\/shop_images\/Read_More_Banner_90a25834-aac8-4678-8b6c-b1153a477f23.jpg",
+        "url": "",
+        "overlap": false,
+        "button-text": "read more",
+        "button-url": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165719691017dcc119",
+    "1657604203bb055f7a",
+    "165769500286181e24",
+    "1632473398c42b6136",
+    "16572017620affa928",
+    "1657619576345d4fef"
+  ]
+}

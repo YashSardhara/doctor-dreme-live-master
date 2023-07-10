@@ -1,0 +1,80 @@
+<div class="section-{{ section.id }}-padding">
+  <div class="section_icons_text">
+    {% unless section.settings.title == blank %}
+    <div
+      class="center {% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %} title-wrapper--no-top-margin">
+      <h2 class="center title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{
+        section.settings.title | escape }}</h2>
+    </div>
+    {% endunless %}
+
+    {%- for block in section.blocks -%}
+    <div class="icons_with_text_container">
+      
+      <!-- <a href="{{ block.settings.url }}"> -->
+        <span>
+               <img class="icons_text" src="{{ block.settings.image1 | img_url: '' }}">
+              </span>
+            <!-- </a> -->
+         <span class="icons_with_text_content">
+        <header class="box_head">{{ block.settings.about_us_icon_block_heading}}</header>
+        <p class="box_para">{{ block.settings.about_us_icon_text_area}}</p>
+      </span>
+      <img class="bottom-moon" src="{{ block.settings.image | img_url: '' }}">
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+"name": "Singale Banner",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+}
+],
+"blocks": [
+{
+"type": "SingaleBanner",
+"name": "Singale Banner",
+"settings": [
+{
+"type": "image_picker",
+"id": "image1",
+"label": "Desktop Image"
+},
+{
+"type": "url",
+"id": "url",
+"label": "URL"
+},
+{
+"type": "text",
+"id": "about_us_icon_block_heading",
+"default": "Type heading here",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "about_us_icon_text_area",
+"label": "Description"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Desktop Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Singale Banner"
+
+}
+]
+}
+{% endschema %}
+

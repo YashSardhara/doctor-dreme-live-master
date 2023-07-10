@@ -1,0 +1,397 @@
+<style>
+  .succes_message {
+    position: fixed;
+    z-index: 999999999;
+    right: 50px;
+    background: var(--bg_color2);
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 8px;
+    animation: mymove 0.5s forwards;
+
+  }
+  @keyframes mymove {
+    from {
+      top: 0;
+    }
+    to {
+      top: 40vh;
+    }
+  }
+  .added_product {
+    flex-direction: column;
+    display: flex !important;
+  }
+  .bought_together_container .title_container {
+    align-items: flex-start
+  }
+  .image_add_symbol,
+  .image_check,
+  .image_check_div {
+    align-items: center
+  }
+  .bought_together_container .image_container,
+  .bought_together_main > span {
+    align-items: flex-start
+  }
+  .bought_together_container .image_container > span {
+    width: 48%
+  }
+  .bought_together_container .add_symbol {
+    width: 150px;
+    font-size: xxx-large;
+    text-align: center;
+    margin: 0 auto
+  }
+  .bought_together_container .image_container .custom_title {
+    line-height: 15px
+  }
+  .bought_together_container .price_container {
+    margin: 0
+  }
+  .bought_together_container .price_container .custom_title {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 5px
+  }
+  .bought_together_container .price__regular,
+  .bought_together_container .price__sale .price-item--sale,
+  .bought_together_container .sale_price_div > span {
+    font-size: calc(13px +(16 - 13) *((100vw - 280px) /(1600 - 280))) !important;
+    font-weight: 600 !important
+  }
+  .bought_together_container h4.bought_together_container h4 {
+    letter-spacing: 3.4px
+  }
+  .bought_together_container .right-box-bottom {
+    letter-spacing: 0
+  }
+  .bought_together_container .right-box-bottom > p {
+    margin-right: 15px;
+    bottom: 14px;
+    margin-top: 0;
+    margin-bottom: 0
+  }
+  .bought_together_container .right-box-bottom {
+    margin: 10px 0;
+    align-items: center
+  }
+  .bought_together_container .right-box-bottom p:last-child {
+    margin-right: 0
+  }
+  .bought_together_container hr {
+    margin: 0 !important
+  }
+  .bought_together_container .desktop_hide {
+    display: none !important
+  }
+  @media only screen and (max-width:1200px) {
+    .bought_together_container .button_secondary {
+      max-width: 414px;
+      text-align: center
+    }
+    .bought_together_container .right-box-bottom {
+      flex-wrap: wrap
+    }
+    .bought_together_container .right-box-bottom > p {
+      margin-right: 4%;
+      margin-top: 15px;
+      margin-bottom: 0
+    }
+  }
+  @media only screen and (min-width:900px) {
+    .no-js-hidden.mobile_hide {
+      margin-bottom: 20px
+    }
+    .bought_together_container .right-box-bottom > p {
+      margin-right: 4%
+    }
+  }
+  @media only screen and (max-width:900px) {
+    .bought_together_container {
+      padding-top: 0;
+      padding-bottom: 10px
+    }
+    .bought_together_container .price__sale {
+      width: 100%;
+      display: flex !important;
+      align-items: center
+    }
+    .bought_together_container .pdp_price {
+      width: 100%
+    }
+    .bought_together_container .add_symbol {
+      height: 40px;
+      line-height: 40px;
+      width: 0
+    }
+    .bought_together_container .add_symbol {
+      margin: 10px 0
+    }
+    span.inclusive_text.pdp_only {
+      line-height: 1.2;
+      margin-left: 5px
+    }
+    .bought_together_container .mobile_hide {
+      display: none !important
+    }
+    .bought_together_container .desktop_hide {
+      display: block !important
+    }
+    .bought_main_price .pdp_only,
+    .bought_together_container .image_container > span {
+      display: flex
+    }
+    .bought_together_container .image_container {
+      align-items: flex-start !important;
+      margin-bottom: 0
+    }
+    .image_check_div > .d_flex {
+      align-items: center
+    }
+    .bought_together_container .price__sale > * {
+      margin-right: 10px
+    }
+    .mrp_div {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap
+    }
+    .re_featured_slider .mrp_div {
+      display: inline-block
+    }
+  }
+  @media only screen and (max-width:600px) {
+    .bought_together_container .button_secondary {
+      width: 100%;
+      max-width: 100%;
+      font-size: 14px
+    }
+    .bought_together_container .right-box-bottom {
+      justify-content: space-between
+    }
+  }
+  .bought_together_container .chk_container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+  }
+  .bought_together_container .chk_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0
+  }
+  .bought_together_container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 5px
+  }
+  .bought_together_container .chk_container input,
+  .bought_together_container .chk_container:hover input~.checkmark {
+    background-color: #fff
+  }
+  .bought_together_container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none
+  }
+  .bought_together_container .chk_container input:after {
+    display: block
+  }
+  .bought_together_container .chk_container .checkmark:after {
+    left: 8px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #707070;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+  }
+</style>
+{% if product.metafields['product']['buy_it_with'] != blank %}
+  {%- assign buy_now = product.metafields['product']['buy_it_with'] -%}
+  {%- assign buy_now = buy_now | split:"," -%}
+  {% for product_handle in buy_now %}
+    {% assign productNew = all_products[product_handle] %}
+    {%- if productNew.first_available_variant -%}
+      {%- assign showdata = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if product.first_available_variant and showdata == true -%}
+    <div class="bought_together_container buy-it-now">
+      <h4 class="primary_color second_font">FREQUENTLY BOUGHT TOGETHER</h4>
+      <span class="bought_together_main bought_main_price comman_price_format">
+        <span class="d_flex image_container">
+          {% for product_handle in buy_now %}
+            {% assign productNew = all_products[product_handle] %}
+            <span class="added_product d_flex">
+              {%- assign product_id = productNew.id -%}
+              <span class="d_flex image_check">
+                <a href="{{productNew.url}}">
+                  <img src="{{productNew.images[0].src | product_img_url: '200x'}}" data-src="{{productNew.images[0].src | product_img_url: '200x'}}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ productNew.featured_image.aspect_ratio }}" data-sizes="auto" tabindex="-1" alt="product-1" class="lazyload">
+                </a>
+              </span>
+
+              <span>
+                <p class="custom_title primary_color  des_vis">{{productNew.title | capitalize | truncate: 45, '...'}}
+                </p>
+                <p class="custom_title primary_color  mob_vis">{{productNew.title | capitalize | truncate: 20, '...'}}
+                </p>
+                {%- comment -%}
+                  varaint selection
+                {%- endcomment -%}
+                {%- unless productNew.has_only_default_variant -%}
+                  <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js custom_selection">
+
+                    {% for variant in productNew.variants %}
+                      <option value="{{ variant.id }}" {%- if variant == current_variant %} selected="selected"{%- endif -%} data-id={{ variant.id}} data-price="{{variant.price | money_without_trailing_zeros}}" data-compar-price="{{ variant.compare_at_price | money_without_trailing_zeros }}">
+                        {{ variant.title}}
+                        {%- if variant.available == false %}sold_out{% endif %}
+                      </option>
+                    {% endfor %}
+                  </select>
+                  <span class="v_id" style="display:none ;"></span>
+                {%- endunless -%}
+                {%- comment -%}
+                  end variant selection
+                {%- endcomment -%}
+                <div class="  details_div" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                  {%- render 'product-price', product: productNew, id: product_id -%}
+                </div>
+                <button class="but_it_with pdp_btn" style="display: none;" onclick="up_count()">Add To Cart</button>
+                <button class="pdp_btn dummy_btn2 custom_addtocart__button" onclick="return addTOcartDisable()">Add To Cart</button>
+              </span>
+            </span>
+          {% endfor %}
+        </span>
+
+      </span>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+<script>
+  var s_price,
+    c_price,
+    save_price,
+    price_int,
+    compare_int,
+    off_int;
+  $(".custom_selection").change(function() {
+    $(".custom_selection option").removeAttr('selected');
+    $(".custom_selection option:selected").attr("selected", "selected");
+    variantIdChnage();
+    s_price = $(this[this.selectedIndex]).attr('data-price');
+    c_price = $(this[this.selectedIndex]).attr('data-compar-price');
+    console.log(s_price, '==== Selling price ====');
+    console.log(c_price, '==== Compare at price ====');
+
+// calucation
+    price_int = s_price.replace("Rs. ", "");
+    price_int = price_int.replace(",", "");
+    compare_int = c_price.replace("Rs. ", "");
+    compare_int = compare_int.replace(",", "");
+    compare_int = parseInt(compare_int);
+    price_int = parseInt(price_int);
+    save_price = compare_int - price_int;
+    off_int = save_price * 100 / compare_int;
+    off_int = parseInt(off_int);
+    save_price = new Intl.NumberFormat('en-IN', {currency: 'INR'}).format(save_price);
+    console.log(compare_int, '==== compare_int ====');
+    console.log(price_int, '==== price_int ====');
+    console.log(save_price, '==== save_price ====');
+    console.log(off_int, '==== off_int ====');
+
+// console.log(typeof compare_int);
+// console.log(typeof price_int);
+// end calculation
+
+    if (c_price == 'undefined') {
+      console.log('Empty');
+    } else {
+      console.log('Not Empty');
+      $('.details_div').removeClass('currently_active');
+      $(this).parents('.added_product').find('.details_div').addClass('currently_active');
+      $('.currently_active .regular-price b').empty();
+      $('.currently_active .you_save b').empty();
+      $(' .currently_active .product-price--compare').empty();
+      $('.currently_active .regular-price b').text('Regular Price - ' + c_price);
+      $('.currently_active .special-price').text(s_price);
+      $(' .currently_active .product-price--compare').text('MRP. ' + c_price);
+      $('.currently_active .you_save b').text("Rs. " + save_price);
+    }
+  }).trigger("change");
+  console.log($(".custom_selection option:selected").val());
+  $(".custom_selection option:selected").attr("selected", "selected");
+  variantIdChnage();
+  function variantIdChnage() {
+    $(".custom_selection option:selected").each(function(i) {
+      console.log($(this).val(), 'this.val');
+      $(this)
+        .parent()
+        .parent()
+        .find('.v_id')
+        .text($(this).val());
+    });
+  }
+  $('.but_it_with').click(function() {
+    var current_url = window.location.href;
+    var url_string = current_url;
+    var url = new URL(url_string);
+    var current_v_id = url.searchParams.get("variant");
+    console.log(current_v_id, 'url value');
+    console.log($(this).parent().find('.v_id').text());
+    var o = $(this).parent().find('.v_id').text();
+    var data_id1 = + o;
+    var data_id2 = current_v_id;
+    if (data_id2 == null) {
+      data_id2 = $('.product-options--root .v_id').first().text();
+    }
+    var data = {
+      items: [
+        {
+          quantity: 1,
+          id: data_id1
+        }, {
+          quantity: 1,
+          id: data_id2
+        }
+      ]
+    };
+    $.ajax({
+      type: 'POST',
+      url: '/cart/add.js',
+      dataType: 'json',
+      data: data,
+      async: false,
+      cache: false,
+      success: function(res) {
+        $('body').append('<div class="succes_message">Added To Cart</div>');
+        setTimeout(function() {
+          $('.succes_message').remove()
+        }, 3000);
+      },
+      error: function(res) {
+        console.log("res::", res.description);
+      }
+    });
+  });
+</script>

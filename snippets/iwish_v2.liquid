@@ -1,0 +1,128 @@
+
+{% assign heart = '<svg version="1.1" style="height:18px;width:18px;" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="21px" height="21px" viewBox="0 0 378.94 378.94" style="enable-background:new 0 0 378.94 378.94;"xml:space="preserve"><g><path d="M348.151,54.514c-19.883-19.884-46.315-30.826-74.435-30.826c-28.124,0-54.559,10.942-74.449,30.826l-9.798,9.8l-9.798-9.8c-19.884-19.884-46.325-30.826-74.443-30.826c-28.117,0-54.56,10.942-74.442,30.826c-41.049,41.053-41.049,107.848,0,148.885l147.09,147.091c2.405,2.414,5.399,3.892,8.527,4.461c1.049,0.207,2.104,0.303,3.161,0.303c4.161,0,8.329-1.587,11.498-4.764l147.09-147.091C389.203,162.362,389.203,95.567,348.151,54.514z M325.155,180.404L189.47,316.091L53.782,180.404c-28.368-28.364-28.368-74.514,0-102.893c13.741-13.739,32.017-21.296,51.446-21.296c19.431,0,37.702,7.557,51.438,21.296l21.305,21.312c6.107,6.098,16.897,6.098,23.003,0l21.297-21.312c13.737-13.739,32.009-21.296,51.446-21.296c19.431,0,37.701,7.557,51.438,21.296C353.526,105.89,353.526,152.039,325.155,180.404z"/></g></svg>' %}
+{% assign fheart = '<svg version="1.1"  style="height:18px;width:18px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16"><path fill="#000000" style="fill:#023e88!important" d="M11.8 1c-1.682 0-3.129 1.368-3.799 2.797-0.671-1.429-2.118-2.797-3.8-2.797-2.318 0-4.2 1.882-4.2 4.2 0 4.716 4.758 5.953 8 10.616 3.065-4.634 8-6.050 8-10.616 0-2.319-1.882-4.2-4.2-4.2z"></path></svg>' %}
+{% if iwish_v2 == 'iwishlink' %}	
+  <a title="Wishlist" class="iWishView" href="/apps/iwish"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/wishlist.svg?v=1669203816" alt="wishlist">
+                <span class="iWishCount iwish-counter">0</span>
+                <span class="label_mob">Wishlist</span>
+  </a>
+{% elsif iwish_v2 == 'iwishproduct' %}
+<div class="iwishAddWrap">
+	<a class="iWishAdd" href="#" data-product="{{ product.id }}" data-pTitle="{{ product.title | escape }}">{{ heart }}</a>
+</div>
+{% elsif iwish_v2 == 'iwishCollection' %}
+	<a class="iWishAddColl iwishcheck" style="position: absolute;z-index: 2;right: 0px;" href="#" data-variant="{{ product.variants.first.id }}" data-product="{{ product.id }}" data-pTitle="{{ product.title | escape }}">{{ heart }}</a>
+{% elsif iwish_v2 == 'iwishfooter' %}
+<script type="text/javascript">
+var iwish_shop = "{{ shop.permanent_domain }}";
+var iwish_pro_template = {% if template contains 'product' %}true{% else %}false{% endif %};
+var iwish_cid = "{{ customer.id }}";
+//Add to Wishlist - Product Page Text
+var iwish_added_txt = '{{ fheart }}';
+var iwish_add_txt = '{{ heart }}';
+//Add to Wishlist - Collection Page Text
+var iwish_added_txt_col = '{{ fheart }}';
+var iwish_add_txt_col = '{{ heart }}';
+//Quick View - Classes
+//var iwish_qvButton = '.quick_view';
+//var iwish_qvWrapper = '.reveal-modal';
+var iwishWrapperClass = '.product-page--featured-blocks';
+//var iWishVarSelector = '.product-options--container';
+</script>
+<script type="text/javascript">
+(function(){
+function iWishLoadScript(e,t){for(var a=0;a<e.length;a++){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=e[a],document.getElementsByTagName("head")[0].appendChild(n),0==a&&(n.readyState?n.onreadystatechange=function(){"loaded"!==n.readyState&&"complete"!==n.readyState||(n.onreadystatechange=null,t())}:n.onload=function(){t()})}}
+function asyncLoadshopapps(){
+	var iWishUrls=["https://cdn.myshopapps.com/iwish/iwishlist_v2.js"];
+	iWishLoadScript(iWishUrls, function() {
+		jQuery("a[href='/apps/iwish']").click(function(e) {
+		if(typeof(Storage) !== "undefined") {
+			e.preventDefault();
+			iWishPost('/apps/iwish',{iwishlist:JSON.stringify(iWishlistmain),cId:iwish_cid});
+		}
+		});
+		jQuery(".iWishAdd").click(function() {
+			var iWishvId = jQuery(this).parents(iwishWrapperClass).find(iWishVarSelector).val();
+			iwish_add(jQuery(this), iWishvId);
+			return false;
+		});
+		jQuery("body").on("click",".iWishAddColl",function() {
+			var iWishvId = jQuery(this).attr("data-variant");
+			iwish_addCollection(jQuery(this),iWishvId);
+			return false;
+		});
+        jQuery("body").on("click","product-options-root .disclosure--form  li",function(){
+          if(typeof checkIwish !== "undefined" && typeof checkIwish === "function") {
+            var iwishFrmObj = jQuery(iwishWrapperClass);
+            var iWishvId = iwishFrmObj.find("[name=id]").val();
+            checkIwish(iwishFrmObj, iWishvId);
+          }
+        });  
+  
+	});
+}
+if (window.addEventListener){ window.addEventListener("load", asyncLoadshopapps, true); }
+else if (window.attachEvent){ window.attachEvent("onload", asyncLoadshopapps); }
+else { window.onload = asyncLoadshopapps; }
+})();
+</script>
+<style>
+  .iWishAdd svg {
+    position: relative;
+    top: 5px;
+    right: 3px;
+}
+@media screen and (max-width: 767px){
+  .iWishAddColl svg {
+    position: relative;
+    right: 3px;
+ }
+}
+@media screen and (max-width: 1200px) and (min-width: 768px){
+  .iwishProducts.product-collection.products-grid.row {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    padding-top: 35px!important;
+}
+}
+
+</style>
+{% endif %}
+
+<script>
+  $('.iWishAdd').on('click', function(){
+    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+dataLayer.push({
+  event: "add_to_wishlist",
+  ecommerce: {
+    currency: "INR",
+    value: "{{ product.price | money_without_currency | remove: '.00'  }}",
+    items: [
+    {
+      item_id: "{{ product.id }}", // product id 
+      item_name: "{{ product.title }}", //product name
+      affiliation: "", //A product affiliation to designate a supplying company or brick and mortar store location.
+      coupon: "", //The coupon name/code associated with the item if applied
+      currency: "INR",
+       //  discount: {{ discount.amount | money }}, //if any discount is applied
+      // index: 0, //The index/position of the item in a list
+      // item_brand: "", //The brand of the item
+      // item_category: "Living Room", //The category of the item
+      // item_category2: "Sofa",
+      // item_category3: "1 Seater Sofas",
+      // item_category4: "",
+      // item_category5: "",
+      // item_list_id: "related_products", //The ID of the list in which the item was presented to the user
+      // item_list_name: "Related Products", //The name of the list in which the item was presented to the user.
+      // item_variant: "Velvet", //The item variant or unique code or description for additional item details/options.
+      // location_id: "", //Dynamically pass the location_id  if available
+      // price: "{{ product.price | money_without_currency | remove: '.00'  }}", //The monetary price of the item, in units of the specified currency parameter
+     // quantity: 1, //Item quantity
+      user_id: "{{ customer.id }}"//user id of logged in user   
+    }
+    ]
+  }
+});
+  });
+</script>
+
+

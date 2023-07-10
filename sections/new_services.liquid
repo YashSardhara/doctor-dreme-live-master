@@ -1,0 +1,48 @@
+<div class="d_flex services_details">
+    {%-  for block in section.blocks  -%}
+    <div class="d_flex feature_info">
+        {%-  if block.settings.image != blank  -%}
+        <span> <img src="{{block.settings.image  | img_url: 'master'}}" alt=""></span>
+        {%-  endif  -%}
+        {%-  if block.settings.title != blank   -%}
+        <p class="primary_text_color">{{block.settings.title}}</p> 
+        {%-  endif  -%}
+    </div>
+    {%-  endfor  -%}
+</div>
+{% schema  %}
+{
+    "name": "Created - Sertvices",
+    
+    "blocks": [
+    {
+        "name": "image",
+        "type":"image",
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "sub_title",
+            "label": "Sub Title"
+        }
+        
+        ]
+    }
+    ],
+    "presets": [
+    {
+        "name":"New Sertvices"
+    }
+    ]
+}
+{%  endschema  %}

@@ -1,0 +1,98 @@
+{{ section.settings.Text_with_icons }}
+<div class="Text_with_icons">
+  {% unless section.settings.title == blank %}
+    <div class="center {% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %} title-wrapper--no-top-margin">
+      <h2 class="center title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{
+   section.settings.title | escape }}</h2>
+    </div>
+  {% endunless %}
+  {%- for block in section.blocks -%}
+    <div class="text_with_icons_box">
+      <a href="{{ block.settings.url }}">
+        {% if block.settings.svg != blank %}
+          <img
+            class="contact_icons"
+            src="{{ block.settings.svg }}"
+            alt="">
+        {% else %}
+          {% if block.settings.contact_icon != blank %}
+            <img class="contact_icons" src="{{ block.settings.contact_icon | img_url: '' }}">
+          {%- endif -%}
+        {%- endif -%}
+      </a>
+      <div class="box_text_content">
+        <header class="icon_box_head">{{ block.settings.title }}</header>
+        <p>
+          <span class="link-text-p">{{ block.settings.link-text-p }}</span>
+          <a class="link-text-btm clr" href="{{ block.settings.url }}">
+            {{ block.settings.link-text }}</a>
+        </p>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+{% schema %}
+  {
+    "name": "Text with icons",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "SingaleBanner",
+        "name": "Singale Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "contact_icon",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "svg",
+            "label": "Svg Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "url",
+            "id": "link-url",
+            "label": "Link"
+          }, {
+            "id": "link-text",
+            "label": "Link text",
+            "type": "text",
+            "default": "View more"
+          }, {
+            "id": "link-text-p",
+            "label": "Link text",
+            "type": "text",
+            "default": "View more"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text with icons",
+        "blocks": [
+          {
+            "type": "SingaleBanner"
+          }, {
+            "type": "SingaleBanner"
+          }, {
+            "type": "SingaleBanner"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

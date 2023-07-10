@@ -1,0 +1,377 @@
+ .static_pages {
+    padding: 1em 0 0 0;
+}
+  .static_pages ul {
+    list-style: disc;
+    padding-left: 18px;
+}
+  .static_pages h2 {
+    text-align: left;
+    font-size: 22px;
+    color: #222222;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+  
+  #map-canvas, #panel { height: 600px; }
+  #panel { width: 300px; float: left; margin-right: 0px; }
+  #panel .feature-filter label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    width: 100%;
+  }
+  p.attribution, p.attribution a { color: #666; }
+  .store-list .title {
+    font-size: 13px;
+    margin: 0;
+  }
+  .store-list li {
+    border-bottom: 1px solid #e2e2e2;
+    list-style: outside none none;
+  }
+@media (min-width: 100px) and (max-width: 600px) {
+  #panel{
+    width: 90%;
+    margin: auto;
+    float: none;
+  }
+  #map-canvas{
+    clear: both;
+    width: 90%;
+    margin: auto;
+    margin-top:15px;
+  }
+}
+.storelocator-panel {
+    border: 1px solid #eee;
+    /* margin-top: 25px; */
+    overflow: auto;
+    background-color: #f9f9f9;
+}
+.storelocator-panel .store-list {
+  margin: 0;
+  padding: 0;
+}
+.location-search {
+    position: absolute;
+    width: 26%;
+}
+.storelocator-panel .store-list {
+    margin: 0;
+    padding: 46px 30px 0 0 !important;
+}
+.storelocator-panel .store-list li,
+.storelocator-panel .directions-panel {
+  padding: 5px;
+}
+.storelocator-panel .directions-panel {
+  font-size: 0.8em;
+}
+
+.storelocator-panel .store-list li.store:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.storelocator-panel .store-list li.highlighted,
+.storelocator-panel .store-list li.highlighted:hover {
+  background: #ccf;
+}
+
+.storelocator-panel .directions {
+ /*  display: none; */
+}
+.store-time{
+	float:left;
+  	padding-right: 5px;
+    height: 48px;
+}
+.storelocator-panel .location-search {
+  padding: 5px;
+}
+
+.storelocator-panel .location-search input {
+    border: 1px solid #d2d2d2;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.storelocator-panel .location-search h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0 0;
+  padding: 0;
+  text-transform: none;
+}
+
+.storelocator-panel .store-list .no-stores {
+    background: #fff none repeat scroll 0 0;
+    /* border-top: 1px solid #e2e2e2; */
+    color: #ec1a3b;
+    padding: 20px 5px;
+    text-align: center;
+}
+
+.storelocator-panel .store .features {
+  display: none;
+}
+
+.storelocator-panel .feature-filter {
+  overflow: hidden;
+}
+
+.storelocator-panel .feature-filter label {
+  display: block;
+  font-size: 0.8em;
+  margin: 0 0.4em;
+  float: left;
+}
+
+.store .title {
+  font-weight: bold;
+}
+.storelocator-panel .title {
+    font-size: 22px;
+    letter-spacing: 0.09em;
+    margin: 0;
+    padding: 5px 0;
+  	color: #d50874;
+}
+.store-list .title {
+    font-size: 13px;
+    margin: 0;
+}
+
+.store .address,
+.store .phone,
+.store .web,
+.store .misc {
+  font-size: 14px; 
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  display: block;
+  line-height: 1.8;
+}
+
+.store .features {
+  overflow: hidden;
+  color: grey;
+  margin: 0;
+  padding: 0;
+  font-size: 70%;
+  max-width: 250px;
+}
+
+.store .features li {
+  display: inline;
+  float: left;
+  padding-right: 0.8em;
+}
+
+.store .web a {
+  color: green
+}
+
+.store .action {
+  font-size: 0.8em;
+  color: green;
+  margin-right: 0.5em;
+}
+form.storelocator-filter {
+  margin-bottom: 1px;
+}
+
+
+
+
+hr{display:none;}
+
+
+  
+  div.content{
+  background-color:#FFFFFF;
+    margin:30px 0 0px 0;
+  }
+  
+
+
+
+  
+  .location_store {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 39px;
+    letter-spacing: 0px;
+    padding-bottom: 60px;
+    padding-top: 40px;
+   
+    line-height: 36px;
+    color: #212121;
+}
+
+
+.location_address{
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 0px 70px 0px;
+  
+}
+  
+
+  .mapp{
+        background-color: #E3E5F5;
+        padding-bottom:15px;
+        padding-top: 15px;
+  }
+  
+
+  
+  #panel{
+  margin-right: 50px;
+    width:400px;
+  }
+  
+  
+  .locator_panel{
+  border: 1px solid #eee;
+    overflow: auto;
+ 
+  }
+  
+  
+  .location_search{
+    background-color:#F2F2FA;
+    border:none;
+  }
+  
+  .location_search .location-search h4 {
+    font-size: 19px;
+    font-weight: inherit;
+    margin: 0;
+    line-height: 25px;
+    width: 79%;
+    font-family: 'Gotham';
+    letter-spacing: 1px;
+    color: #212121;
+}
+  
+  .location_search .title{
+    color: #212121;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding-left: 64px;
+    background-size: 30px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0099/2867/1291/files/location.png?v=1654774762);
+    background-repeat: no-repeat;
+    background-position:30px;
+    font-family:'Gotham';
+
+  }
+  
+  .location_search .location-search {
+    background-color: #E3E6F5;
+    border:none;
+}
+  .location_search .location-search input {
+    text-transform: none;
+    color: inherit;
+  }
+  
+.location_search .store-list li.highlighted{
+    border-radius: 5px;
+    margin: 0px 10px 10px 0px;
+    border-left-color: #CD1A0E;
+    border-left-style: solid;
+}
+  
+  
+  .location_search .store-list li.highlighted, .storelocator-panel .store-list li.highlighted:hover{
+  
+  background:#ffff;
+  
+  }
+  
+  
+  .location_search .store-list {
+    margin: 0;
+    padding: 0;
+    background-color: #e3e5f5;
+  }
+  
+  .location_search .store-list li {
+    border-radius: 5px;
+    margin: 0px 10px 10px 0px;
+    border-left-color: #f2f2fa;
+    border-left-style: solid;
+    background-color: #f2f2fa;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+  
+  form.storelocator-filter {
+    margin-bottom: 0px;
+}
+ 
+  .location_search .store-list li.store:hover {
+    cursor: pointer;
+    background: #ffff;
+}
+  
+  .location_search .store .address {
+    
+   font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+  
+    color: #212121;
+}
+
+  
+  .mapping {
+    border: 4px solid #fff;
+}
+ 
+ 
+
+ 
+  @media only screen and (max-width: 600px){
+    #panel{
+      width:100%;
+    }
+    
+    .location_address {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0px 0 0 0;
+}
+    
+    .location_search .location-search h4{
+    font-size: 12px;
+    line-height: 20px;
+      
+    }
+    
+    .location_store{
+      font-size:20px;
+      padding-top:30px;
+    }   
+    
+    .location_search .title{
+      font-size:14px;
+    }
+    
+    .location_search .store .address{
+      font-size:12px;
+    }
+    .location-search {
+    width: 95% !important;
+}
+}

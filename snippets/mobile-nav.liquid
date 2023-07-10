@@ -1,0 +1,231 @@
+{% liquid 
+   assign megamenu = section.settings.main_linklist 
+  %}
+  {{megamenu}},kavita
+
+  <div class="mobile-nav" data-js-class="MobileNav">
+    <div class="mobile-nav--header">
+      {% if settings.search--show-in-header %}
+        <div class="mobile-nav--search" data-item="accent-text">
+          <a href="{{ routes.search_url }}">{{ 'general.search.search' | t }}</a>
+        </div>
+      {% endif %}
+  
+      <div class="mobile-nav--login" data-item="accent-text">
+        {% render 'login' %}
+      </div>
+    </div>
+     <div class="" data-item="accent-text">
+      {% comment %} Copied from header {% endcomment %}
+      {{section.settings.main_linklist}},kavita
+      <ul class="site-nav list--inline {{ nav_alignment }}" id="">
+        
+        {% for link in linklists[section.settings.main_linklist].links %}
+        
+        {% comment %}
+        Check if third-level nav exists on each parent link.
+        {% endcomment %}
+        {%- assign three_level_nav = false -%}
+        {%- assign child_list_handle = link.title | handleize -%}
+        
+        {% if linklists[child_list_handle].links != blank %}
+        {% for childlink in linklists[child_list_handle].links %}
+        {% assign grand_child_list_handle = childlink.title | handleize %}
+        {% if linklists[grand_child_list_handle].links != blank %}
+        {%- assign three_level_nav = true -%}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        
+        {% if linklists[child_list_handle].links != blank %}
+        {% assign show_arrow = true %}
+        <li
+        class=" top_menu_list site-nav--has-dropdown{% if three_level_nav %} site-nav--has-centered-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}"
+        aria-has-popup="true" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+        <a href="{{link.url}}" class="site-nav__link site-nav__link--main">
+          {{ link.title }}
+          
+          <svg aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8">
+            <g fill="currentColor" fill-rule="evenodd" transform="translate(0 -.5)">
+              <polygon class="icon-chevron-down-left" points="7 8.466 13.655 1.81 12.38 .533 7 5.913"></polygon>
+              <polygon class="icon-chevron-down-right" points="7 5.913 1.621 .533 .344 1.81 7 8.466"></polygon>
+            </g>
+          </svg>
+          
+          <!-- <span class="visually-hidden">{{ 'layout.navigation.expand' | t }}</span> -->
+        </a>
+        <!-- <div class="arrow-up {% if show_arrow %}show_aarow_up{% endif %} "></div> -->
+        
+        
+        <div class="site-nav__dropdown" id="SiteNavLabel-{{ child_list_handle }}" aria-expanded="false">
+          <div class="sub-menu-inner-page">
+            
+            {% assign image_block = false %}
+            {% assign linktitle = link.title | downcase %}
+            {% for block in section.blocks %}
+            {%- assign val = block.settings.mega_link | downcase -%}
+            {% if val == linktitle %}
+            {% if block.settings.menu_enable %}
+            {% assign image_block = true %}
+            {% endif %}
+            {% if block.settings.img_box_title %}
+            {% assign image_title = block.settings.img_box_title %}
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            
+            
+            <div style="display: flex;width:100%;padding-right:3em;"
+            class="{% if image_block == false %}menu-full{% endif %}">
+            
+            {% for childlink in linklists[child_list_handle].links %}
+            {% if childlink.links != blank %}
+            {% assign div_val = true %}
+            {% endif %}
+            {% endfor %}
+            <div class="middle-menu {% if image_block == false %}middle-menu-full{% endif %} {% if div_val == true %}visible_div {% else %}hide_div
+            {% endif %}">
+            
+            {% for childlink in linklists[child_list_handle].links %}
+            {% if childlink.links != blank %}
+            
+            
+            
+            {% for grandlink in childlink.links %}
+            {% assign valitem = forloop.length %}
+            {% endfor %}
+            <ul class="middle-menu-list {% if valitem >= 15 %}col-2{%endif%}">
+              <p class="" data-id="mega-parent-{{ childlink.handle }}">
+                <span class="site-nav__link main-bold-title">
+                  {{ childlink.title | escape }}
+                </span>
+              </p>
+              {% assign item_count = 1 %}
+              {% for grandlink in childlink.links %}
+              {% assign menu_title = grandlink.title | upcase %}
+              <li class="site-nav__childlist-item  {% if menu_title  == 'VIEW ALL' %} 
+              bold_text
+              {% endif %}">
+              <a href="{{ grandlink.url }}" class="site-nav__child-link">
+                {{ grandlink.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endfor %}
+          
+        </div>
+        
+        
+        <div class="side-bar-menu">
+          <ul class="sidebar-menu-list">
+            {% for childlink in linklists[child_list_handle].links %}
+            {% if childlink.links == blank %}
+            <li class="{% if childlink.active %}site-nav--active{% endif %}"
+            data-id="mega-parent-{{ childlink.handle }}">
+            <a href="{{ childlink.url }}" class="site-nav__link main-bold-title">
+              {{ childlink.title | escape }}
+            </a>
+            <span></span>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      </div>
+      {%- comment -%}
+      <!-- <div class="middle-menu {% if image_block == false %}middle-menu-full{% endif %}">
+      
+      {% for childlink in linklists[child_list_handle].links %}
+      {% if childlink.links != blank %}
+      {% for grandlink in childlink.links %}
+      {% assign valitem = forloop.length %}
+      {% endfor %}
+      <ul class="middle-menu-list {% if valitem >= 15 %}col-2{%endif%}">
+        <p class="" data-id="mega-parent-{{ childlink.handle }}">
+          <span class="site-nav__link main-bold-title">
+            {{ childlink.title | escape }}
+          </span>
+        </p>
+        {% assign item_count = 1 %}
+        {% for grandlink in childlink.links %}
+        <li class="site-nav__childlist-item">
+          <a href="{{ grandlink.url }}" class="site-nav__child-link">
+            {{ grandlink.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endfor %}
+      
+      </div>
+      
+      
+      <div class="side-bar-menu">
+      <ul class="sidebar-menu-list">
+        {% for childlink in linklists[child_list_handle].links %}
+        {% if childlink.links == blank %}
+        <li class="{% if childlink.active %}site-nav--active{% endif %}"
+        data-id="mega-parent-{{ childlink.handle }}">
+        <a href="{{ childlink.url }}" class="site-nav__link main-bold-title">
+          {{ childlink.title | escape }}
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+      </ul>
+      </div> -->
+      {%- endcomment -%}
+      
+      {% if image_block == true %}
+      <div class="image-section mega-list mega-list-logo">
+      
+      {% for block in section.blocks %}
+      {%- assign val = block.settings.mega_link | handleize -%}
+      {% if val == child_list_handle %}
+      {% if block.settings.menu_enable %}
+      {% unless block.settings.link == blank %}<a href="{{ block.settings.link }}">{% endunless %}
+      <div class="img-box">
+        <a href="{{block.settings.img_box_url}}">
+          <img class="megamenu_img_section" src="{{ block.settings.image | img_url: 'master' }}">
+          {% if block.settings.img_title != blank %}
+          <div class="image_text">{{block.settings.img_title  | upcase}}</div>
+          {% endif %}
+          
+        </a>
+      </div>
+      {% unless block.settings.link == blank %}
+      </a>{% endunless %}
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      </div>
+      
+      {% endif %}
+      </div>
+      </div>
+      </li>
+      {% else %}
+      <li {% if link.active %}class="site-nav--active top_menu_list" {% endif %}>
+      <a href="{{ link.url }}" class="site-nav__link site-nav__link--main">{{ link.title }}</a>
+      </li>
+      {% endif %}
+      
+      {% endfor %}
+      </ul>
+    </div>
+    {% if settings.popup--enabled %}
+      {% if settings.popup--newsletter--enabled %}
+        <div class="mobile-nav--newsletter">
+          {% render 'mailing-list' %}
+        </div>
+      {% endif %}
+      {% if settings.popup--social-icons--enabled %}
+        <div class="mobile-nav--social">
+          {% render 'social-share', view: 'modal' %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>

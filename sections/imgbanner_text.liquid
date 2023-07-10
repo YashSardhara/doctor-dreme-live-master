@@ -1,0 +1,65 @@
+<div class="imgbg_container">
+  <div class="bannerdesk_banner">{{ section.settings.bgdesk_img | img_url: 'master' | img_tag }}
+  </div>
+  <div class="bannermobile_banner">{{ section.settings.bgmobile_img | img_url: 'master' | img_tag }}
+  </div>
+  {% if section.settings.img_logo != blank or section.settings.top_heading != blank or section.settings.description != blank %}
+    <div class="banner_details">
+      <a class="bannerimg_logo">{{ section.settings.img_logo | img_url: 'master' | img_tag }}
+      </a>
+      <h2 class="top_heading common_heading">{{ section.settings.top_heading }}
+      </h2>
+      <div class="banner_desc">{{ section.settings.description }}
+      </div>
+      {%- comment -%}
+        <a class="bannerbtn_link" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+      {%- endcomment -%}
+    </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "ImgBanner With Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bgdesk_img",
+        "label": "Background Desk Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "bgmobile_img",
+        "label": "Background Mobile Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_logo",
+        "label": "Image Logo"
+      },
+      {
+        "type": "text",
+        "id": "top_heading",
+        "label": "Enter Text"
+      }, {
+        "type": "richtext",
+        "id": "description",
+        "label": "Enter Description"
+      }, {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      }, {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "ImgBanner With Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,185 @@
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "options": {
+          "type": "options",
+          "settings": {
+            "variant-style": "dropdowns",
+            "swatches-enabled": false,
+            "size-chart-enabled": true,
+            "size-chart-option": "size",
+            "size-chart-content": ""
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "dfd9d54c-58e5-4ca8-bba1-bc640e314f3e": {
+          "type": "quantity-input",
+          "settings": {}
+        },
+        "f3cd32b3-3f9c-49bc-a53f-6a8081399ea6": {
+          "type": "low-stock",
+          "disabled": true,
+          "settings": {
+            "threshold": 5
+          }
+        },
+        "36222891-6931-4015-95ae-a2f86bcdcb50": {
+          "type": "unavailable-form",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "smart-payment-enabled": true
+          }
+        },
+        "26a86ebe-23b9-4c53-a76c-547b0751ae43": {
+          "type": "shopify:\/\/apps\/iwish-wishlist\/blocks\/app-block\/7f9269b0-1b45-4d0c-8479-faf04f05d8ac",
+          "disabled": true,
+          "settings": {
+            "is_collection": true,
+            "is_text_only_col": false,
+            "iwish_add_txt": "",
+            "iwish_added_txt": "",
+            "outline_icon": "default_outline",
+            "filled_icon": "default_filled",
+            "iwish_add_icon_outline": "https:\/\/cdn.shopify.com\/s\/files\/1\/0099\/2867\/1291\/t\/197\/assets\/wishlist.svg",
+            "iwish_added_icon_filled": "",
+            "iwish_theme_class": "",
+            "txt_font_size": 14,
+            "iwish_text_clr": "#000000",
+            "iwish_text_hover_clr": "#000000",
+            "variant_change_wrapper": ".product-options--option",
+            "variant_name_id_selector": "[name=id]",
+            "iwish_qvWrapper": "",
+            "iwish_qvBtn_click": "",
+            "iwish_custom_filters": "",
+            "filter_timeout": 1500
+          }
+        },
+        "e87506a1-3b5e-47ac-be07-2a59878e5880": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "7ebfb7c3-11c0-4586-86ea-9b6432357c88": {
+          "type": "features",
+          "settings": {
+            "features_title": "KNOW YOUR MATRESS",
+            "features_image": "shopify:\/\/shop_images\/fetures_bg.jpg"
+          }
+        },
+        "262d65ba-e9bb-41db-8483-2b840062a6a1": {
+          "type": "about",
+          "settings": {}
+        },
+        "76d154a9-261b-45b7-96a4-d9717fc96997": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "maxwidth": 1080
+          }
+        },
+        "pickup": {
+          "type": "pickup",
+          "disabled": true,
+          "settings": {}
+        },
+        "divider": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "fc2592ab-5de7-41f5-9709-2317a8c85b1c": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "custom-liquid": "olkbljkbl"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "vendor",
+        "options",
+        "price",
+        "dfd9d54c-58e5-4ca8-bba1-bc640e314f3e",
+        "f3cd32b3-3f9c-49bc-a53f-6a8081399ea6",
+        "36222891-6931-4015-95ae-a2f86bcdcb50",
+        "buy-buttons",
+        "26a86ebe-23b9-4c53-a76c-547b0751ae43",
+        "e87506a1-3b5e-47ac-be07-2a59878e5880",
+        "7ebfb7c3-11c0-4586-86ea-9b6432357c88",
+        "262d65ba-e9bb-41db-8483-2b840062a6a1",
+        "76d154a9-261b-45b7-96a4-d9717fc96997",
+        "pickup",
+        "divider",
+        "description",
+        "fc2592ab-5de7-41f5-9709-2317a8c85b1c"
+      ],
+      "settings": {
+        "modal-enabled": true,
+        "hide-variant-media": false,
+        "loop-enabled": false
+      }
+    },
+    "social-sharing": {
+      "type": "product-social",
+      "disabled": true,
+      "settings": {
+        "enable-social": true,
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "show": true,
+        "title": "Similar Products",
+        "container-width": 4,
+        "spacing-above": false,
+        "spacing-below": true,
+        "btn_col": "View All Bed Range",
+        "btn_url": "#"
+      }
+    },
+    "16615020497896ba0c": {
+      "type": "recent-products",
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "heading": "Recently viewed",
+        "title-alignment": "left",
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "social-sharing",
+    "recommendations",
+    "16615020497896ba0c"
+  ]
+}

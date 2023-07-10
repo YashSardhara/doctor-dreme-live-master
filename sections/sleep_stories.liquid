@@ -1,0 +1,175 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+background:url({{ section.settings.bg_img | img_url: ''}}) no-repeat center;
+}
+
+@media screen and (max-width: 750px) {
+.section-{{ section.id }}-padding {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+background:url({{ section.settings.mob_image | img_url: ''}}) no-repeat center;
+}
+}
+{%- endstyle -%}
+
+<style>
+  .happy-customer .slick-dots {
+    bottom: -20px;
+  }
+
+  .main-template--15731448348848__165883818079fe93e2-padding {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 4%;
+    flex-wrap: wrap;
+  }
+
+  .video {
+    width: 49.3%;
+    padding-bottom: 20px;
+  }
+
+  iframe#dream_video {
+    width: 100%;
+    height: 300px;
+  }
+
+  .sleep_header {
+    padding: 0px;
+    flex-direction: unset;
+    text-align: left;
+    margin: 30px 0px 25px 55px;
+  }
+
+  @media screen and (max-width: 750px) {
+
+    .sleep_header {
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .main-template--15731448348848__165883818079fe93e2-padding {
+      display: block;
+      padding: 10px 4%;
+    }
+
+    .video {
+      padding-bottom: 10px;
+      width: 100%;
+    }
+
+    iframe#dream_video {
+      width: 100%;
+      height: 150px;
+    }
+
+  }
+</style>
+<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="section-{{ section.id }}-padding page-width">
+    <!-- {% unless section.settings.title == blank %}
+    <div
+      class="center {% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} title-wrapper--self-padded-tablet-down{% endif %} title-wrapper--no-top-margin">
+      <h2 class="center title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{
+        section.settings.title | escape }}</h2>
+
+
+    </div>
+    {% endunless %} -->
+    {% if section.settings.title != blank %}
+    <span class="d_flex heading_div slider_head sleep_header">
+      {%- if section.settings.title != blank -%}
+      <h2 class="featured-collections--heading heading_text" data-item="section-heading">
+        {{ section.settings.title }}
+      </h2>
+      <!-- {%- endif -%}
+        {%- if section.settings.iframe_vd != blank -%}
+        <p class="subheading_text">{{section.settings.iframe_vd }}</p>
+        {%- endif -%} -->
+    </span>
+    {% endif %}
+
+    <div class="main-{{ section.id }}-padding">
+
+      {%- for block in section.blocks -%}
+
+      <div class="video">
+        {% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}
+        <iframe id="dream_video"
+          src="https://www.youtube.com/embed/{{ block.settings.iframe_vd.id }}?enablejsapi=1&showinfo=0&rel=0&mute=1&autohide=1&controls=1&mute=1&loop=0&autopause=0&modestbranding=1"
+          allow="encrypted-media" frameborder="0"></iframe>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Video Section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "image_picker",
+"id": "bg_img",
+"label": "Background image"
+},
+
+{
+"type": "image_picker",
+"id": "mob_image",
+"label": "Mobile_Image"
+},
+{
+"type": "header",
+"content": "Padding"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding top",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Padding bottom",
+"default": 36
+}
+],
+"blocks": [
+{
+"type": "VideoBlog",
+"name": "Video Blog",
+"settings": [
+{
+"type": "video_url",
+"id": "iframe_vd",
+"label": "First Video link",
+"accept": ["youtube", "vimeo"],
+"info": "Supports Youtube and Vimeo"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Video Blog"
+}
+]
+}
+{% endschema %}

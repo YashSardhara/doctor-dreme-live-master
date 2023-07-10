@@ -1,0 +1,19 @@
+
+<!-- {% for product in collections.frontpage.products %}
+  {{ product.title }}
+{% endfor %} -->
+{%- for product in collections.frontpage.products -%}
+{%- assign product = doctor-dreams-max-icefoam-orthopaedic-mattress -%}
+
+{{ product.metafields['product']['oneline'] }}<br>
+ICEFOAM™ | Memory Foam Mattress | Pure PU Foam | Triple Layer
+
+{%- endfor -%}
+
+
+{% assign product = all_products['test-product-1'] %}
+{% if product == blank %}
+    <h1>No product found</h1>
+{% else %}
+    <h1>{{ product.title }}</h1>
+{% endif %}

@@ -1,0 +1,107 @@
+{%- liquid
+  assign add_to_cart_t = 'Add To Cart'
+  assign out_of_stock_t = 'products.out_of_stock' | t
+
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+<product-buy-buttons-root class="product-buy-buttons--root" data-id="{{ id }}" style="display:block;">
+  <span class="dummyClassBox">
+    <button class="dummy_btn_add custom_addtocart__button" onclick="return addTOcartDisable()">
+      <span class="product-buy-buttons--cta-text primary_color">
+        Add To Cart</span>
+    </button>
+<button class="dummy_btn_add dummy_btn_buy custom_payment__button" onclick="return addTOcartDisable()">
+      <span class="product-buy-buttons--cta-text">
+        Buy it now</span>
+    </button>
+  </span>
+  {% form 'product', product, class: 'product-buy-buttons--form', id: id %}
+    {{- form | payment_terms -}}
+
+    {% if request.page_type != "password" %}
+      <div class="product-buy-buttons--primary" data-enabled="true" style="display: none;"
+        {% if smart_payment_enabled and product.selling_plan_groups == empty %}
+        data-item='secondary-button'
+        {% else %}
+        data-item='button'
+        {% endif %}>
+        <button class="product-buy-buttons--cta add-to-cart" onClick="up_count()"
+          {%- unless current_variant.available -%}
+          disabled
+          {%- endunless -%}>
+          <span class="product-buy-buttons--cta-text primary_color">
+            {%- liquid
+              if current_variant.available
+                echo add_to_cart_t
+              else
+                echo out_of_stock_t
+              endif
+            -%}
+          </span>
+          <span class="product-buy-buttons--spinner">
+            {% render 'loading-spinner', size: '41px' %}
+          </span>
+        </button>
+      </div>
+
+      {% if smart_payment_enabled and product.available and product.selling_plan_groups == empty %}
+        <div class="product-buy-buttons--smart buy-now" style="display: none;"
+          {%- unless current_variant.available -%}
+          style="display:none;"
+          {%- endunless -%}>
+          {{- form | payment_button -}}
+        {% comment %}
+          <!--  Magic Checkout 1CC Begins -->
+{%- if shop.metafields.magic_checkout.buyNowEnabled == false -%}
+
+ {{- form | payment_button -}}
+
+                    {%- else -%}
+
+                 <div class="shopify-payment-button" >
+<button type="button"   onclick="onBuyNowClickMagic(event)" class="shopify-payment-button__button shopify-payment-button__button--unbranded"
+ {% unless product.selected_or_first_available_variant.available %} disabled="disabled"
+{% endunless %} data-testid="Checkout-button">BUY IT NOW</button>
+</div>
+
+                    {%- endif -%}
+
+<!--  Magic Checkout 1CC ends -->
+          {% endcomment %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <select class="product-buy-buttons--select" name="id" data-mq="none">
+      {%- for variant in product.variants -%}
+        <option value="{{ variant.id }}" data-sku="{{ variant.sku }}" data-inventory-management="{{ variant.inventory_management }}" data-inventory-policy="{{ variant.inventory_policy }}" data-available="{{ variant.available }}" data-inventory-quantity="{{ variant.inventory_quantity | default: 0 }}"
+          {% if variant == current_variant %}
+          selected
+          {% endif %}>
+          {{- variant.title -}}
+        </option>
+      {%- endfor -%}
+    </select>
+  {% endform %}
+</product-buy-buttons-root>
+
+{% comment %}
+  Inventory tracking on product page
+{% endcomment %}
+{%- comment -%}
+  <div  class="{% unless current_variant.available %} hide {% endunless %}">
+  {% if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue" %}
+
+  {%if current_variant.inventory_quantity < 10%}
+  Hurry, only {{ current_variant.inventory_quantity }} left!
+  {% endif %}
+  {% else %}
+  This product is available.
+  {% endif %}
+  </div>
+{%- endcomment -%}
+
+<script type="module">
+  import "{{ 'product-buy-buttons.js' | asset_url }}";
+</script>

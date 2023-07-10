@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 1,
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    },
+    "165883818079fe93e2": {
+      "type": "sleep_stories",
+      "blocks": {
+        "116eb1f9-2c6c-4821-8544-6fdd609e1c81": {
+          "type": "VideoBlog",
+          "settings": {
+            "iframe_vd": "https:\/\/youtu.be\/1oYvVDX8eN8"
+          }
+        },
+        "67679643-4cc2-4cbb-b836-a6d5c0d6d769": {
+          "type": "VideoBlog",
+          "settings": {
+            "iframe_vd": "https:\/\/www.youtube.com\/watch?v=20evunLzSgk"
+          }
+        },
+        "15ae2e26-b8fb-485c-a469-b29861ffd351": {
+          "type": "VideoBlog",
+          "settings": {
+            "iframe_vd": "https:\/\/youtu.be\/D0a0aNqTehM"
+          }
+        },
+        "6cbe82af-4682-4e00-855c-87f9b4e2dfe2": {
+          "type": "VideoBlog",
+          "settings": {
+            "iframe_vd": "https:\/\/youtu.be\/SUSSl5vO27k"
+          }
+        }
+      },
+      "block_order": [
+        "116eb1f9-2c6c-4821-8544-6fdd609e1c81",
+        "67679643-4cc2-4cbb-b836-a6d5c0d6d769",
+        "15ae2e26-b8fb-485c-a469-b29861ffd351",
+        "6cbe82af-4682-4e00-855c-87f9b4e2dfe2"
+      ],
+      "settings": {
+        "title": "SLEEP STORIES",
+        "bg_img": "shopify:\/\/shop_images\/Compare_136c7a66-b5f4-4083-ae0f-9a11cefaeb2c.jpg",
+        "mob_image": "shopify:\/\/shop_images\/Compare_1.jpg",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165883818079fe93e2"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "navigation": {
+      "type": "search--navigation",
+      "disabled": true,
+      "settings": {
+        "show-sort-button": true,
+        "show-refine-button": true,
+        "show-layout-buttons": true,
+        "show-sort-list": true,
+        "show-refine-list": true,
+        "swatches-enabled": false,
+        "show-search-link": true
+      }
+    },
+    "main": {
+      "type": "search--body",
+      "settings": {
+        "products-per-row--desktop": 3,
+        "products-per-row--mobile": "1",
+        "number-of-rows": 4
+      }
+    }
+  },
+  "order": [
+    "navigation",
+    "main"
+  ]
+}

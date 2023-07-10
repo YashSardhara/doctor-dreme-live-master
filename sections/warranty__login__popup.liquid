@@ -1,0 +1,500 @@
+<style>
+  .popup_open {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  /* Popup button styles */
+  .open-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  /* The popup form - hidden by default */
+  .login-popup {
+    display: none;
+    position: fixed;
+    z-index: 11 !important;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    /* overflow: auto; */
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  /* The popup content container */
+  .login-popup-content {
+    background-color: #fefefe;
+    margin: 5% auto 15%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* The popup header */
+  .login-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Close icon */
+  .close-icon {
+    width: 24px;
+    height: 24px;
+    fill: #999;
+    cursor: pointer;
+  }
+
+  /* Full-width login button */
+  .login-form .login-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  /* Floating label styles */
+  .floating-label {
+    position: relative;
+    margin-top: 20px;
+  }
+
+  .floating-label label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+  }
+
+  .floating-label input {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+  .floating-label input:focus {
+    outline: none;
+    border-bottom: 2px solid #4CAF50;
+  }
+
+  .floating-label input:focus + label,
+  .floating-label input:not(:placeholder-shown) + label {
+    top: -18px;
+    font-size: 14px;
+    color: #4CAF50;
+  }
+
+  .login-popup .login-popup-header {
+    display: block;
+  }
+
+  .login-popup .customer--root .customer--wrapper {
+    height: fit-content;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .login-popup .login_full {
+    padding: 0;
+  }
+
+  .login-popup .login_wrap_new {
+    width: 100%;
+    padding: 0;
+  }
+
+  .loginpopup__remember {
+    font-family: League Spartan, sans-serif !important;
+  }
+
+  .or__login {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .left-line,
+  .right-line {
+    height: 3px;
+    background-color: #d1d1d1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+  }
+
+  .left-line {
+    left: 0;
+  }
+
+  .right-line {
+    right: 0;
+  }
+
+  .text {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+    color: #303030;
+    background-color: #fff;
+    font-size: 20px;
+  }
+
+  .login-popup .signup_sec {
+    padding: 0 !important;
+    margin: 30px auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    left: 0;
+  }
+
+  .login-popup .h_buttons {
+    margin-bottom: 40px;
+  }
+
+  .close__popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  @media(max-width:1024px) {
+    .login-popup .signup_sec {
+      display: none;
+    }
+
+    /* .login-popup{
+    bottom: 0;
+    left: 0;
+    }
+
+    .login-popup-content {
+        position: relative; 
+    bottom: auto; 
+    margin-bottom: 0;
+    transform: translateY(100%);
+    height: fit-content;
+    left: 0;
+    width: 100vw;
+} */
+
+
+    .login-popup {
+      height: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .login-popup-content {
+      margin: 0 auto;
+      position: fixed;
+      top: auto;
+      bottom: 50px;
+      transform: translate(-50%, 0);
+      width: 100vw;
+    }
+    div#recover-password h1 {
+      font-size: 25px !important;
+    }
+    div#customer-login h1 {
+      font-size: 25px !important;
+    }
+    .h_facebook_button.h_facebook_center > span {
+      margin: 0 !important;
+    }
+    .h_google_button.h_google_center > p {
+      margin: 0 !important;
+    }
+  }
+
+ 
+</style>
+
+<!-- <button class="open-button" onclick="openForm()">Login</button> -->
+
+<div class="login-popup" id="myForm">
+  <div class="login-popup-content">
+    <div class="login-popup-header">
+      {%- liquid
+            assign reset_instructions_t = 'customer.login.reset_instructions' | t
+            assign title_t = 'customer.login.page_title' | t
+            assign email_t = 'customer.login.email' | t
+            assign password_t = 'customer.login.password' | t
+            assign forgot_password_t = 'customer.login.forgot_password' | t
+            assign sign_in_t = 'customer.login.sign_in' | t
+            assign new_account_t = 'customer.login.new_account' | t
+            assign reset_password_t = 'customer.login.reset_password' | t
+            assign guest_title_t = 'customer.login.guest_title' | t
+            assign guest_continue_t = 'customer.login.guest_continue' | t
+            assign submit_t = 'customer.login.submit' | t
+            assign cancel_t = 'customer.login.cancel' | t
+            -%}
+      <div class="login_full customer--root" data-section-id="{{ section.id }}">
+        {% render 'breadcrumbs' %}
+        <div class="customer--wrapper">
+          <div class="login_wrap_new">
+            <div class="close__popup">
+              <svg
+                class="close-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path d="M18.36 5.64l-1.41-1.41L12 10.59 7.05 5.64 5.64 7.05 10.59 12l-4.95 4.95 1.41 1.41L12 13.41l4.95 4.95 1.41-1.41L13.41 12z" />
+              </svg>
+            </div>
+            <div id="customer-login" class="customer--login">
+              <p
+                id="account-reset"
+                class="account--reset"
+                data-item="paragraph">
+                {{ reset_instructions_t }}
+              </p>
+              <h1 data-item="section-heading">
+                {{ title_t }}
+              </h1>
+
+              {% form 'customer_login' %}
+                <input
+                  type="hidden"
+                  name="checkout_url"
+                  value="/pages/warranty-registration">
+                {{ form.errors | default_errors }}
+
+
+                <input
+                  placeholder="Email ID"
+                  class="text"
+                  type="email"
+                  value=""
+                  name="customer[email]"
+                  id="customer_email"
+                  required />
+
+                {% if form.password_needed %}
+
+                  <input
+                    placeholder="Password"
+                    class="text"
+                    type="password"
+                    value=""
+                    name="customer[password]"
+                    id="customer_password"
+                    size="16"
+                    required />
+                  <div class="frm_sec2">
+                    <input id="rememberChkBox" type="checkbox">
+                    <label class="loginpopup__remember" for="rememberChkBox">Remember Me</label>
+                    <span class="account--forgot-password" data-item="block-link">
+                      <a href="#" onclick="showRecoverPasswordForm();return false;">{% comment %}{{ forgot_password_t }}{% endcomment %}
+                        Forgot password?
+                      </a>
+                    </span>
+                  </div>
+                {% endif %}
+
+                <div class="account--button-container">
+                  <div class="account--sign-in" data-item='button'>
+                    <button type="submit" value="{{ sign_in_t }}">
+                      {{ sign_in_t }}
+                    </button>
+                  </div>
+                </div>
+                <div class="or__login">
+                  <div class="left-line"></div>
+                  <div class="text">or Login with</div>
+                  <div class="right-line"></div>
+                </div>
+                <div class="signup_sec">
+                  <span class="not_regis">Not registered yet?</span>
+                  <a
+                    class="account--register"
+                    href="{{ routes.account_register_url }}"
+                    data-item="secondary-button">
+                    Create an Account
+                  </a>
+                </div>
+              {% endform %}
+            </div>
+
+
+            <div
+              class="account--recover-password"
+              id="recover-password"
+              style="display:none;">
+              <h1 data-item="section-heading">
+                {{ reset_password_t }}
+              </h1>
+              <p class="account--reset-instructions" data-item="paragraph">
+                {{ reset_instructions_t }}
+              </p>
+
+              {% form 'recover_customer_password' %}
+                {{ form.errors | default_errors }}
+
+                <label
+                  for="email"
+                  class="label"
+                  data-item="accent-text">
+                  {{ email_t }}
+                </label>
+                <input
+                  class="text"
+                  type="email"
+                  value=""
+                  size="30"
+                  name="email"
+                  id="recover-email"
+                  required />
+
+                <div class="account--password-buttons">
+                  <div class="account--submit" data-item='button'>
+                    <button type="submit" value="{{ submit_t }}">
+                      {{ submit_t }}
+                    </button>
+                  </div>
+                  <span data-item="block-link">
+                    <a
+                      class="account--cancel"
+                      href="#"
+                      onclick="hideRecoverPasswordForm();return false;">
+                      Cancel
+                    </a>
+                  </span>
+                  <!-- <span data-item="block-link">
+                  <a class="account--cancel" href="#" onclick="hideRecoverPasswordForm();return false;">
+                  Log in
+                  </a>
+                  </span> -->
+                </div>
+
+                {% if form.posted_successfully? or form.errors %}
+                  <script>
+                    window.location.hash = '#recover-successful';
+                  </script>
+                {% endif %}
+              {% endform %}
+            </div>
+
+            {% if shop.checkout.guest_login %}
+              <div id="guest" class="columns">
+                <h1 data-item="section-heading">{{ guest_title_t }}</h1>
+
+                {% form 'guest_login' %}
+                  <input
+                    class="button"
+                    type="submit"
+                    value="{{ guest_continue_t }}" />
+                {% endform %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  const body = $('body');
+
+/* Open the popup */
+  function openLoginForm() {
+    document.getElementById("myForm").style.display = "block";
+    body.addClass('popup_open');
+  }
+
+/* Close the popup */
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    body.removeClass('popup_open');
+  }
+
+/* Close the popup when clicking the cross icon */
+  document.querySelector('.close-icon').addEventListener('click', function() {
+    closeForm();
+  });
+
+/* Close the popup when clicking outside of it */
+  window.onclick = function(event) {
+    var loginPopup = document.getElementById('myForm');
+    if (event.target == loginPopup) {
+      closeForm();
+    }
+  }
+</script>
+<script>
+
+
+  $(function() {
+
+    if (localStorage.chkbox && localStorage.chkbox != '') {
+      $('#rememberChkBox').attr('checked', 'checked');
+      $('#customer_email').val(localStorage.username);
+      $('#customer_password').val(localStorage.pass);
+    } else { // alert("tes2");
+      $('#rememberChkBox').removeAttr('checked');
+      $('#customer_email').val('');
+      $('#customer_password').val('');
+    }
+
+    $('#rememberChkBox').click(function() {
+
+      if ($('#rememberChkBox').is(':checked')) { // save username and password
+        localStorage.username = $('#customer_email').val();
+        localStorage.pass = $('#customer_password').val();
+        localStorage.chkbox = $('#rememberChkBox').val();
+      } else {
+        localStorage.username = '';
+        localStorage.pass = '';
+        localStorage.chkbox = '';
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+  document.getElementById('recover-password').style.display = 'block';
+              document.getElementById('customer-login').style.display = 'none';
+          }
+  
+          function hideRecoverPasswordForm() {
+              document.getElementById('recover-password').style.display = 'none';
+              document.getElementById('customer-login').style.display = 'block';
+          }
+  
+          function showRecoverSuccess() {
+              document.getElementById('account-reset').style.display = 'block';
+          }
+  
+          if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+  
+          if (window.location.hash == '#recover-successful') { showRecoverSuccess() }</script>

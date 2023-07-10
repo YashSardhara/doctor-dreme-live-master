@@ -1,0 +1,119 @@
+{%- liquid
+  render 'cart', view: 'desktop'
+  render 'cart', view: 'mobile'
+-%}
+
+
+{% schema %}
+{
+"name": "Cart",
+"settings": []
+}
+{% endschema %}
+<script>
+  dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+  dataLayer.push({
+    event: "view_cart",
+    ecommerce: {
+      currency: "INR",
+      value: "<span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'>{{cart.total_price | money_without_currency }}</span></span></span></span>",
+      items: [
+        {
+          item_id: "{{ item.product.id }}", // product id
+          item_name: "{{ item.product.title }}", //product name
+          // affiliation: "", //A product affiliation to designate a supplying company or brick and mortar store location.
+          // coupon: "", //The coupon name/code associated with the item if applied
+          currency: "INR",
+          // discount: {{ discount.amount | money }}, //if any discount is applied
+          // index: 0, //The index/position of the item in a list
+          // item_brand: "", //The brand of the item
+          // item_category: "Living Room", //The category of the item
+          // item_category2: "Sofa",
+          // item_category3: "1 Seater Sofas",
+          // item_category4: "",
+          // item_category5: "",
+          // item_list_id: "related_products", //The ID of the list in which the item was presented to the user
+          // item_list_name: "Related Products", //The name of the list in which the item was presented to the user.
+          // item_variant: "Velvet", //The item variant or unique code or description for additional item details/options.
+          // location_id: "", //Dynamically pass the location_id  if available
+          price: "<span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'>{{cart.total_price | money_without_currency }}</span></span></span></span>, //The monetary price of the item, in units of the specified currency parameter
+      quantity: "{{ cart.item_count }}", //Item quantity
+          user_id: "{{ customer.id }}"//user id of logged in user
+        }
+      ]
+    }
+  });
+</script>
+<script>
+  dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+  dataLayer.push({
+    event: "remove_from_cart",
+    ecommerce: {
+      items: [
+        {
+          item_id: "{{ item.product.id }}", // product id
+          item_name: "{{ item.product.title }}", //product name
+          affiliation: "", //A product affiliation to designate a supplying company or brick and mortar store location.
+          coupon: "", //The coupon name/code associated with the item if applied
+          currency: "INR",
+          discount: {{ discount.amount | money }}, //if any discount is applied
+    index: 0, //The index/position of the item in a list
+    item_brand: "", //The brand of the item
+    item_category: "Living Room", //The category of the item
+    item_category2: "Sofa",
+    item_category3: "1 Seater Sofas",
+    item_category4: "",
+    item_category5: "",
+    item_list_id: "related_products", //The ID of the list in which the item was presented to the user
+    item_list_name: "Related Products", //The name of the list in which the item was presented to the user.
+    item_variant: "Velvet", //The item variant or unique code or description for additional item details/options.
+    location_id: "", //Dynamically pass the location_id  if available
+    price: <span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'>{{ cart.total_price | money_without_currency }}</span></span></span></span>, //The monetary price of the item, in units of the specified currency parameter
+    quantity: "{{ cart.item_count }}", //Item quantity
+    user_id: "{{ customer.id }}"//user id of logged in user
+  }
+    ]
+  }
+});
+</script>
+<script>
+  $('.add-to-cart)').on('click', function () {
+    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+    dataLayer.push({
+      event: "add_to_cart",
+      ecommerce: {
+        items: [
+          {
+            item_id: "{{ item.product.id }}", // product id
+            item_name: "{{ item.product.title }}", //product name
+            //affiliation: "", //A product affiliation to designate a supplying company or brick and mortar store location.
+            // coupon: "", //The coupon name/code associated with the item if applied
+            //currency: "INR",
+            // discount: {{ discount.amount | money }}, //if any discount is applied
+            //index: 0, //The index/position of the item in a list
+            //item_brand: "", //The brand of the item
+            //item_category: "Living Room", //The category of the item
+            //item_category2: "Sofa",
+            //item_category3: "1 Seater Sofas",
+            // item_category4: "",
+            // item_category5: "",
+            // item_list_id: "related_products", //The ID of the list in which the item was presented to the user
+            //item_list_name: "Related Products", //The name of the list in which the item was presented to the user.
+            // item_variant: "Velvet", //The item variant or unique code or description for additional item details/options.
+            // location_id: "", //Dynamically pass the location_id  if available
+            price: "<span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'><span id='revy-cart-subtotal-price'>{{cart.total_price | money_without_currency }}</span></span></span></span>", //The monetary price of the item, in units of the specified currency parameter
+            quantity: "{{ cart.item_count }}", //Item quantity
+            user_id: "{{ customer.id }}"//user id of logged in user
+          }
+        ]
+      }
+    });
+  });
+</script>
+<!-- Event snippet for Google Shopping App Add To Cart conversion page -->
+<script>
+  gtag('event', 'conversion', {
+    'send_to': 'AW-683569280/dQwsCMiWveYBEIDh-cUC',
+    'value': 0.0
+  });
+</script>

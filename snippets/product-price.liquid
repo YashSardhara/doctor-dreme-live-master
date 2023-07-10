@@ -1,0 +1,107 @@
+{%- liquid
+  assign tax_included_t = 'products.tax_included' | t
+
+  assign current_variant = product.selected_or_first_available_variant
+  assign compare_enabled = false
+  if current_variant.compare_at_price > current_variant.price
+    assign compare_enabled = true
+  endif
+-%}
+
+<product-price-root class="product-price--root" data-id="{{ id }}">
+  <div class="product-price--wrapper">
+
+
+    {%- if template == 'product' -%}
+    <div class="d_flex pdp_price_main">
+      <div class="pdp_price_compare">
+        <div class="product-price--compare" data-item='light-accent-text' {% unless compare_enabled %}
+          style="display:none;" {% else %} style="display:inline-block;" {% endunless %}>
+          MRP.
+          {% if compare_enabled %}
+          {{ current_variant.compare_at_price | money }}
+          {% endif %}
+        </div>
+
+        <span class="special-price fqbo_kavi">{{ current_variant.price | money_without_trailing_zeros }}</span>
+        <p class="remove-code">
+          {% comment %}
+        <p class="regular-price">Regular Price</p>
+        <span class="special-price">{{current_variant.price  | money_without_trailing_zeros }}</span>
+        {% endcomment %}
+        <p class="inclusive-taxes">Inclusive of all taxes</p>
+        </p>
+      </div>
+      <div class="d_flex pdp_price_div">
+<!--         <span class="sale_text">Monsoon Sale!
+        </span> -->
+        <div class="product-price--original" data-item='accent-text'>{{ current_variant.price | money }}
+        </div>
+        <span class="you_save d_flex">You Save
+          <b class="you_save_p">{{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}
+          </b>
+          <b
+            class="sale_banner_product">({{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%)</b>
+        </span>
+        <!-- <span class="sale_banner_product">{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}% OFF</span> -->
+      </div>
+    </div>
+    {%- else -%}
+    <div class="product-price--compare" data-item='light-accent-text' {% unless compare_enabled %} style="display:none;"
+      {% else %} style="display:inline-block;" {% endunless %}>
+      {% if compare_enabled %}
+      {{ current_variant.compare_at_price | money }}
+      {% endif %}
+    </div>
+    <p class="regular-price">
+      <b>Regular Price -</b>
+    </p>
+    <span class="special-price">{{ current_variant.price | money_without_trailing_zeros }}</span>
+    <p class="inclusive-taxes">Inclusive of all taxes</p>
+
+    <div class="product-price--original" data-item='accent-text'>
+      {{ current_variant.price | money }}
+    </div>
+
+    <div class="proffite">
+      <!-- <span class="profit_compare_price"> {{current_variant.compare_at_price | money_without_trailing_zeros}}</span>
+        <span class="profile_price">{{current_variant.price | money_without_trailing_zeros}}</span> -->
+      <span class="you_save">You Save
+        <b>{{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}</b>
+      </span>
+      <span
+        class="sale_banner_product">{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}%
+        OFF</span>
+      <!-- You Save {{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }} -->
+      <!-- <p class="sale sale_banner_product">{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}% OFF</p>  -->
+    </div>
+    {%- endif -%}
+
+  </div>
+
+  <div class="product-price--unit-container" data-item="small-text" {% if current_variant.unit_price_measurement %}
+    style="display:flex;" {% else %} style="display:none;" {% endif %}>
+    <span class="product-price--unit-price">
+      {{- current_variant.unit_price | money -}}
+    </span>/
+    {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+    <span class="product-price--reference-value">
+      {{- current_variant.unit_price_measurement.reference_value -}}
+    </span>
+    {%- endif -%}
+    <span class="product-price--reference-unit">
+      {{- current_variant.unit_price_measurement.reference_unit -}}
+    </span>
+  </div>
+  {% comment %}
+  {% if cart.taxes_included %}
+  <div class="product-price--tax" data-item="small-text">
+    {{ tax_included_t }}
+  </div>
+  {% endif %}
+  {% endcomment %}
+</product-price-root>
+
+<script type="module">
+  import "{{ 'product-price.js' | asset_url }}";
+</script>

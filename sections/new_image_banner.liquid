@@ -1,0 +1,61 @@
+{%-  if section.settings.desktop_img  != blank  or section.settings.moblie_img  -%}
+<div class="custom-text-section  {% if section.settings.chk_bottom_space == true %}comman_bottom_space{% endif %} ">
+    {%-  if section.settings.desktop_img  != blank  -%}
+    <a href="{{section.settings.img_url }}" class="desktop_img">
+        <img class="lazyload" data-sizes="auto" data-src="{{section.settings.desktop_img  | img_url: 'master'}}" alt="">
+    </a>
+    {%-  endif  -%}
+    
+    {%-  if section.settings.moblie_img == blank  -%}
+    <a href="{{section.settings.img_url }}" class="mobile_img">
+        <img class="lazyload" data-sizes="auto" data-src="{{section.settings.desktop_img  | img_url: 'master'}}" alt="">
+    </a>
+    {%-  else  -%}
+    <a href="{{section.settings.img_url }}" class="mobile_img">
+        <img class="lazyload" data-sizes="auto" data-src="{{section.settings.moblie_img | img_url: 'master' }}" alt="" class="mobile_img">
+    </a>
+    {%-  endif  -%}
+    {%- if section.settings.top_banner_bottom_text != blank %}
+    <p class="top_banner_bottom_text">{{section.settings.top_banner_bottom_text }}</p>
+    {%- endif -%}
+    
+</div>
+{%-  endif  -%}
+
+{%  schema  %}
+{
+    "name": "Created - Image banner",
+    "settings": [
+    {
+        "id": "desktop_img",
+        "type": "image_picker",
+        "label": "Desktop image"
+    },
+    {
+        "id": "moblie_img",
+        "type": "image_picker",
+        "label": "Mobile image"
+    },
+    {
+        "id": "img_url",
+        "type": "url",
+        "label": "Image url"
+    },
+    {
+        "id": "top_banner_bottom_text",
+        "type": "text",
+        "label": "Banner bottom text"
+    },
+    {
+        "type": "checkbox",
+        "id": "chk_bottom_space",
+        "label": "Check to add bottom space ",
+        "default": false
+    }
+    ],"presets": [
+    {
+        "name":"New image banner"
+    }
+    ]
+}
+{%  endschema  %}

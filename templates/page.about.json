@@ -1,0 +1,617 @@
+{
+  "sections": {
+    "16324732604d3e7054": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": true,
+        "image-height": 2,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "center",
+        "text-width": "medium",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image",
+        "overline": "About",
+        "title": "Our story",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.<\/p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 1,
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    },
+    "16324732989269ca2c": {
+      "type": "featured-text",
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "classname": "persona",
+        "overline": "",
+        "heading": "About Us",
+        "text": "<p>@home is the retail division of Nilkamal Limited, the world's largest manufacturer of moulded furniture & India's leading manufacturer of Material Handling Systems. Nilkamal has also made its mark in ready furniture and mattress verticals with a range of products now penetrating the deeper pockets of the Indian market. <br\/><br\/><\/p>"
+      }
+    },
+    "1653566500035196ae": {
+      "type": "text-columns",
+      "blocks": {
+        "16535664997cea4e0a-0": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_1.png",
+            "title": "Our Vision",
+            "description": "<p>usce facilisis nisl \n<br>vitae tortor varius, \n<br>in dictum ex ullamcorper.\n<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535664997cea4e0a-1": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_2.png",
+            "title": "Our Mission",
+            "description": "<p>Fusce facilisis nisl\n <br>vitae tortor varius, \n<br>in dictum ex ullamcorper.<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535664997cea4e0a-2": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_3.png",
+            "title": "Our Values",
+            "description": "<p>Fusce facilisis nisl \n<br>vitae tortor varius, \n<br>in dictum ex ullamcorper.<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535664997cea4e0a-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "show-image": true,
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        }
+      },
+      "block_order": [
+        "16535664997cea4e0a-0",
+        "16535664997cea4e0a-1",
+        "16535664997cea4e0a-2",
+        "16535664997cea4e0a-3"
+      ],
+      "settings": {
+        "background-color": "light",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 3,
+        "spacing-above": false,
+        "spacing-below": false,
+        "width": 3,
+        "image-width": 90,
+        "mobile-width": "1",
+        "text-alignment": "left",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "163247330191cc65e8": {
+      "type": "image-with-text",
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 2,
+        "spacing-above": true,
+        "spacing-below": true,
+        "image-height": 2,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "left",
+        "text-width": "small",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image personal_bt_space",
+        "image": "shopify:\/\/shop_images\/Layer_57.png",
+        "overline": "",
+        "title": "",
+        "description": "<p>‘@home’ is spread across the country with 19 large format retail stores with an average size of 16,000 sq.ft ‘@home’, is a perfect one-stop solution store for home planning with finest quality furniture, soft furnishings & home accessories that helps make life beautiful. The designs at ‘@home’ are contemporary yet practical, reflecting Indian tastes & requirements.  <\/p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1632473305029b8e81": {
+      "type": "image-with-text",
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 2,
+        "spacing-above": false,
+        "spacing-below": true,
+        "image-height": 2,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "right",
+        "text-width": "small",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image persona_image1",
+        "image": "shopify:\/\/shop_images\/Rectangle_733_copy.png",
+        "overline": "",
+        "title": "",
+        "description": "<p>‘@home’ offers you an unparalleled plethora of services. Each store has a skilled in-house team of designers to assist customers with interior planning solutions by means of proprietary 3-D imaging software at no additional cost. Professional guidance in buying the right products, loan options, convenient home delivery and installation are other value added services that @home offers<\/p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1632473398c42b6136": {
+      "type": "featured-video",
+      "disabled": true,
+      "settings": {
+        "video-url": "",
+        "full-width": false,
+        "background-color": "none",
+        "section-height": "regular",
+        "light-text": true,
+        "darken-video": true,
+        "heading": "Video",
+        "sub-heading": "Add a subheading here",
+        "button-text": "button",
+        "button-url": ""
+      }
+    },
+    "1653565248795193f8": {
+      "type": "service-list",
+      "disabled": true,
+      "blocks": {
+        "1653565248b57f6525-0": {
+          "type": "header",
+          "settings": {
+            "title": "Add header here"
+          }
+        },
+        "1653565248b57f6525-1": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653565248b57f6525-2": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653565248b57f6525-3": {
+          "type": "header",
+          "settings": {
+            "title": "Add header here"
+          }
+        },
+        "1653565248b57f6525-4": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653565248b57f6525-5": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1653565248b57f6525-0",
+        "1653565248b57f6525-1",
+        "1653565248b57f6525-2",
+        "1653565248b57f6525-3",
+        "1653565248b57f6525-4",
+        "1653565248b57f6525-5"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "section-title": "Add title here",
+        "show-description": true
+      }
+    },
+    "16535653171b01c598": {
+      "type": "text-columns",
+      "disabled": true,
+      "blocks": {
+        "165356531776bb7792-0": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/single.png",
+            "title": "",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "165356531776bb7792-1": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        },
+        "165356531776bb7792-2": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        },
+        "165356531776bb7792-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "show-image": true,
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        }
+      },
+      "block_order": [
+        "165356531776bb7792-0",
+        "165356531776bb7792-1",
+        "165356531776bb7792-2",
+        "165356531776bb7792-3"
+      ],
+      "settings": {
+        "background-color": "light",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 5,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 3,
+        "image-width": 60,
+        "mobile-width": "2",
+        "text-alignment": "center",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "16535654819e0b45b0": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": false,
+        "image-height": 3,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "center",
+        "text-width": "medium",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image",
+        "overline": "Overline text",
+        "title": "Image with text",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.<\/p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "16535654867e1d9ebe": {
+      "type": "grid-with-overlay",
+      "blocks": {
+        "1653565486624ced0d-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_16.png",
+            "wide": false,
+            "tall": false,
+            "retain-ratio": false,
+            "title": "home brings to you the\nlatest and the best,",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653565486624ced0d-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_16_copy.png",
+            "wide": false,
+            "tall": false,
+            "retain-ratio": false,
+            "title": "Recommends what\nsuits you best,",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653565486624ced0d-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_16a_copy.png",
+            "wide": false,
+            "tall": false,
+            "retain-ratio": false,
+            "title": "Displays, how it\nlooks best,",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653565486624ced0d-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "wide": false,
+            "tall": false,
+            "retain-ratio": false,
+            "title": "Grid image",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        }
+      },
+      "block_order": [
+        "1653565486624ced0d-0",
+        "1653565486624ced0d-1",
+        "1653565486624ced0d-2",
+        "1653565486624ced0d-3"
+      ],
+      "settings": {
+        "text-style": "light-with-overlay",
+        "background-color": "none",
+        "light-text": false,
+        "mobile-overlay": true,
+        "container-width": 6,
+        "spacing": true,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 3,
+        "mobile-width": "2",
+        "classname": "gridwithoverlay about-3box",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1653566237c6f32726": {
+      "type": "collapsible-tabs",
+      "disabled": true,
+      "blocks": {
+        "165356623743943129-0": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Collapsible tab",
+            "description": "<p>Use tabs to highlight unique features, <br\/>sizing information, <br\/>or other sales information.<\/p>",
+            "page-content": ""
+          }
+        },
+        "165356623743943129-1": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Collapsible tab",
+            "description": "<p>Use tabs to highlight unique features, <br\/>sizing information, <br\/>or other sales information.<\/p>",
+            "page-content": ""
+          }
+        },
+        "165356623743943129-2": {
+          "type": "collapsible-tab",
+          "settings": {
+            "heading": "Collapsible tab",
+            "description": "<p>Use tabs to highlight unique features, <br\/>sizing information, <br\/>or other sales information.<\/p>",
+            "page-content": ""
+          }
+        }
+      },
+      "block_order": [
+        "165356623743943129-0",
+        "165356623743943129-1",
+        "165356623743943129-2"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "heading": "Collapsible tabs",
+        "title-alignment": "left",
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "165356645637d3909e": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": false,
+        "image-height": 3,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "center",
+        "text-width": "medium",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image",
+        "overline": "Overline text",
+        "title": "Image with text",
+        "description": "<p>Combine imagery with text to create stand-out campaign sections, eye-catching promotions, information blocks and more.<\/p>",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1653570846144db473": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "classname": "persona",
+        "overline": "Overline text",
+        "heading": "Introduce your brand",
+        "text": "<p>Introduce your brand, products and vision statement and welcome customers to your store.<\/p>"
+      }
+    },
+    "16535709790e290a4c": {
+      "type": "text-columns",
+      "blocks": {
+        "16535709793da5ee47-0": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_4.png",
+            "title": "11+ Million",
+            "description": "<p>Happy Customers<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535709793da5ee47-1": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_5.png",
+            "title": "19 Metro",
+            "description": "<p>Cities<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535709793da5ee47-2": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "image": "shopify:\/\/shop_images\/Shape_6.png",
+            "title": "26 Equipped",
+            "description": "<p>Stores<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "16535709793da5ee47-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "show-image": true,
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        }
+      },
+      "block_order": [
+        "16535709793da5ee47-0",
+        "16535709793da5ee47-1",
+        "16535709793da5ee47-2",
+        "16535709793da5ee47-3"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 3,
+        "spacing-above": false,
+        "spacing-below": false,
+        "width": 3,
+        "image-width": 0,
+        "mobile-width": "1",
+        "text-alignment": "center",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1653571305e8b5177a": {
+      "type": "newsletter",
+      "settings": {
+        "background-color": "none",
+        "classname": "newsletter",
+        "light-text": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "heading": "New products, sweet savings — straight to your inbox.",
+        "newsletter--subheading": "",
+        "newsletter-des": "<h5>Experience Our Stores<\/h5><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.<\/p>",
+        "newsletter-viewbutton": "Explore All Experience Stores",
+        "newsletter-url": "https:\/\/www.at-home.co.in\/pages\/store-locator-new"
+      }
+    }
+  },
+  "order": [
+    "16324732604d3e7054",
+    "main",
+    "16324732989269ca2c",
+    "1653566500035196ae",
+    "163247330191cc65e8",
+    "1632473305029b8e81",
+    "1632473398c42b6136",
+    "1653565248795193f8",
+    "16535653171b01c598",
+    "16535654819e0b45b0",
+    "16535654867e1d9ebe",
+    "1653566237c6f32726",
+    "165356645637d3909e",
+    "1653570846144db473",
+    "16535709790e290a4c",
+    "1653571305e8b5177a"
+  ]
+}

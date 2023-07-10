@@ -1,0 +1,52 @@
+<section class="featured-collection customer_review">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+    <span class="d_flex heading_div slider_head">
+        {%- if section.settings.heading != blank -%}
+        <h2 class="featured-collections--heading heading_text" data-item="section-heading">
+            {{ section.settings.heading }}
+        </h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+        <p class="subheading_text">{{section.settings.subheading }}</p>
+        {%- endif -%}
+    </span>
+    {% endif %}
+    {% if section.settings.btn-text != blank %}
+    <p class="last_btn_s customer_review_btn"><a class="btn_see_all" href="{{ section.settings.button-url }}">{{section.settings.btn-text}}</a>
+    {% endif %}
+</section>
+{% schema %}
+{
+    "name": "customer_reviews_section",
+    "settings": [
+       {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading",
+    "default": "heading"
+    },
+    {
+    "type": "text",
+    "id": "subheading",
+    "label": "Sub Heading",
+    "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+    },
+    {
+    "type": "text",
+    "id": "btn-text",
+    "label": "Button text first",
+    "default": "button"
+    },
+        {
+    "type": "url",
+    "id": "button-url",
+    "label": "Button URL"
+    }
+    ],
+    "presets": [
+    {
+    "name": "Customer reviews section"
+        }
+    ]
+    }
+{% endschema %}

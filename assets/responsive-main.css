@@ -1,0 +1,228 @@
+body.template--index {
+    max-width: 100%;
+}
+
+.site-nav.list--inline {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.featured-collections--wrapper {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__16642671033c046c38 {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__1659093640e07f29f6 {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__165770505767f58a2b {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__165901342043a29daa {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__16593378013a198657 {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+/* Collection css */
+
+body.template--collection {
+    max-width: 100%;
+}
+
+.d_flex.plp_main {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+/* Product page */
+
+body.template--product {
+    max-width: 100%;
+}
+
+/* main#main-content {
+    max-width: 100%;
+    margin: 0px auto;
+} */
+
+/* Warrenty reg page */
+
+body.template--page.page--warranty-registration-doctor-dreams {
+    max-width: 100%;
+}
+
+body.template--page.page--about-us-doctor-dreams.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--contact-us.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--store-locator.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--snooze-zone.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--frequently-asked-questions.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--track-your-orders {
+    max-width: 100%;
+}
+
+body.template--customers--login.page--account {
+    max-width: 100%;
+}
+
+body.template--customers--register.page--create-account {
+    max-width: 100%;
+}
+
+body.template--page.page--mattress-size-guide {
+    max-width: 100%;
+}
+
+body.template--page.page--return-and-refund.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--terms-and-conditions-doctor-dreams.win-os {
+    max-width: 100%;
+}
+
+body.template--page.page--privacy-policy-doctor-dreams.win-os {
+    max-width: 100%;
+}
+
+div#shopify-section-template--16166661619888__main {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+.about_section {
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.details_section {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+.page--about-us-doctor-dreams .desk_img2 {
+    margin-top: -24px;
+}
+
+.page--about-us-doctor-dreams div#shopify-section-template--16166661193904__1632473398c42b6136 {
+    margin: -24px auto;
+}
+
+div#shopify-section-sleep_music {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-sleep_stories {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+.location-search {
+    position: initial !important;
+    width: auto !important;
+}
+
+body.template--page.page--mattress-size-guide.win-os main#main-content {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661095600__16578618010d61c97c {
+    background-image: url(https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Experience-Our-stores.jpg?v=1657805633);
+    background-size: cover;
+}
+
+span.d_flex.comman_space.new_newsletter_container {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+div#shopify-section-template--16166661226672__498b5e02-35ee-4d80-bf58-a2e803bbec08 {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+body.template--page.page--contact-us .contact--wrapper {
+    width: 50% !important;
+}
+
+#shopify-section-template--16166661193904__165769500286181e24 .image_text_container {
+  display: block !important;
+}
+
+.image-section.mega-list.mega-list-logo {
+  height: 100% !important;
+}
+
+body.template--page.page--warranty-amp-returns.win-os {
+    max-width: 100% !important;
+}
+
+div#shopify-section-termandcondition {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+.iwishProducts.product-collection.products-grid.row {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+body.template--.page--doctor-dreams.win-os {
+    max-width: 100%;
+}
+
+.iWishLoginNote {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+span.d_flex.heading_div.compare_head {
+    max-width: 1600px;
+}
+
+.d_flex.product_sticky_container.sticky_bottom {
+    max-width: 100% !important;
+}
+
+.menu_wrap {
+    justify-content: space-evenly !important;
+}
+
+.post_inner {
+    max-width: 1600px;
+    margin: 0px auto;
+}
+
+.post_inner h1{
+    text-align: center;
+}

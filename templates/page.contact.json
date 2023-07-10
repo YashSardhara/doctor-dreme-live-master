@@ -1,0 +1,264 @@
+{
+  "sections": {
+    "1632436597fbc1d0e4": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": true,
+        "image-height": 2,
+        "darken-image": true,
+        "parallax-enabled": false,
+        "text-position": "center",
+        "text-width": "medium",
+        "overlap": false,
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "classname": "persona-image",
+        "overline": "Contact us",
+        "title": "Get in touch",
+        "description": "",
+        "link-url": "",
+        "link-text": "",
+        "button-text": "button",
+        "button-url": ""
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "show-title": false,
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 1,
+        "spacing-above": false,
+        "spacing-below": true
+      }
+    },
+    "498b5e02-35ee-4d80-bf58-a2e803bbec08": {
+      "type": "text-columns-icons",
+      "blocks": {
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-0": {
+          "type": "SingaleBanner",
+          "settings": {
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/mail_064a9728-4dc2-41af-9856-3066c8931184.svg?v=1672990639",
+            "title": "Email US",
+            "link-url": "",
+            "link-text": "",
+            "link-text-p": "connect@doctordreams.com"
+          }
+        },
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-1": {
+          "type": "SingaleBanner",
+          "settings": {
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/message_962c89a0-b417-41b4-9b1a-0cc4cb0fecdf.svg?v=1672990639",
+            "title": "Chat with us",
+            "link-url": "",
+            "link-text": "Click here",
+            "link-text-p": "Initiate chat:"
+          }
+        },
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-2": {
+          "type": "SingaleBanner",
+          "settings": {
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/call_41524022-213b-424c-8701-e7a9a110c05f.svg?v=1672990639",
+            "title": "Call us",
+            "link-url": "",
+            "link-text": "1800-1111-2222",
+            "link-text-p": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-0",
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-1",
+        "template--16057389154480__498b5e02-35ee-4d80-bf58-a2e803bbec08-1672989753e6809af6-2"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "16324378141979f11c": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 1,
+        "spacing-above": false,
+        "spacing-below": false,
+        "classname": "persona",
+        "overline": "",
+        "heading": "Contact Us",
+        "text": ""
+      }
+    },
+    "165373714380183cdc": {
+      "type": "text-columns",
+      "disabled": true,
+      "blocks": {
+        "1653737143524f9cf2-0": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/mail_56896188-253c-4494-ab50-45981aefa039.svg?v=1672915997",
+            "title": "Email us",
+            "description": "<p><a href=\"\/\" title=\"\/\">connect@at-home.co.in<\/a><\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653737143524f9cf2-1": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/message_acd8d428-83d9-41b8-bae1-c5578b11824d.svg?v=1672915996",
+            "title": "Chat with us",
+            "description": "<p>Initiate chat:<a href=\"\/\" title=\"\/\"> Click here<\/a><\/p><p>10 am to 7.00 pm Monday to Saturday<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653737143524f9cf2-2": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0248\/7766\/2271\/files\/call_1a7d7a00-7ffd-4d7b-8b39-a8761a49b918.svg?v=1672915996",
+            "title": "Call Us",
+            "description": "<p><a href=\"18001211414\">1-800-121-1414<\/a><\/p><p>10 am to 7.00 pm Monday to Saturday<\/p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "1653737143524f9cf2-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "show-image": true,
+            "svg": "",
+            "title": "Add a title or tagline",
+            "description": "<p>Explain a set of product features, add illustrations, infographics, logo lists, or link to pages.<\/p>",
+            "link-url": "",
+            "link-text": "View more"
+          }
+        }
+      },
+      "block_order": [
+        "1653737143524f9cf2-0",
+        "1653737143524f9cf2-1",
+        "1653737143524f9cf2-2",
+        "1653737143524f9cf2-3"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 3,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 4,
+        "image-width": 0,
+        "mobile-width": "1",
+        "text-alignment": "center",
+        "heading": "Contact Us",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "1632180071f18cee62": {
+      "type": "contact",
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": false,
+        "spacing-below": true,
+        "heading": "Write to us",
+        "store-address": "842 Beech Street\nMountain View, CA 94041",
+        "store-hours": "<p>Monday - Friday<br\/>12pm - 8pm<br\/><br\/>Saturday - Sunday<br\/>12pm - 5pm<\/p>",
+        "show-social-sharing": false
+      }
+    },
+    "165373711612787818": {
+      "type": "service-list",
+      "disabled": true,
+      "blocks": {
+        "1653737116b16c278c-0": {
+          "type": "header",
+          "settings": {
+            "title": "Add header here"
+          }
+        },
+        "1653737116b16c278c-1": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653737116b16c278c-2": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653737116b16c278c-3": {
+          "type": "header",
+          "settings": {
+            "title": "Add header here"
+          }
+        },
+        "1653737116b16c278c-4": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        },
+        "1653737116b16c278c-5": {
+          "type": "item",
+          "settings": {
+            "title": "Add service title here",
+            "price": "$10",
+            "description": "<p>Add service description here<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1653737116b16c278c-0",
+        "1653737116b16c278c-1",
+        "1653737116b16c278c-2",
+        "1653737116b16c278c-3",
+        "1653737116b16c278c-4",
+        "1653737116b16c278c-5"
+      ],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "section-title": "Add title here",
+        "show-description": true
+      }
+    }
+  },
+  "order": [
+    "1632436597fbc1d0e4",
+    "main",
+    "498b5e02-35ee-4d80-bf58-a2e803bbec08",
+    "16324378141979f11c",
+    "165373714380183cdc",
+    "1632180071f18cee62",
+    "165373711612787818"
+  ]
+}

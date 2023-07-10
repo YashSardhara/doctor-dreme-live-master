@@ -1,0 +1,234 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.padding_left | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.padding_right | times: 0.75 | round: 0 }}px;
+    background: url('{{ section.settings.bg_img | img_url: '' }}') no-repeat center;
+  }
+
+  @media screen and (max-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+      background: url('{{ section.settings.mob_image | img_url: '' }}') no-repeat center;
+      background-size: cover;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  h2.center.title {
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 30px 0 0;
+  }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 20px 20px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .benifits_box {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0 0;
+    margin: auto 17px;
+  }
+
+  img.icon_benifit {
+    width: auto;
+    max-width: fit-content;
+  }
+
+  .icons #description {
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    width: 91%;
+    letter-spacing: 1px;
+  }
+
+  @media screen and (max-width:900px) {
+    h2.center.title {
+      text-align: left;
+      font-size: 25px;
+      padding: 0 5px;
+    }
+
+    .icons {
+      display: block;
+      padding: 0;
+      margin: 0;
+      width: 90%;
+    }
+
+    .benifits_box {
+      display: flex;
+      flex-direction: unset;
+      width: 100%;
+      margin: auto 5px;
+      padding: 20px 0;
+    }
+
+    .icons #description {
+      font-size: 15px;
+      text-align: left;
+      padding: 0 0 0 25px;
+      line-height: 20px;
+    }
+    img.icon_benifit {
+      width: 50px;
+      max-width: fit-content;
+      height: auto !important;
+    }
+
+  }
+</style>
+<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="section-{{ section.id }}-padding page-width">
+    {% unless section.settings.title == blank %}
+      <div class="center {% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}{% if section.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} title-wrapper--self-padded-tablet-down{% endif %} title-wrapper--no-top-margin">
+        <h2 class="center title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{
+        section.settings.title | escape }}</h2>
+
+
+      </div>
+    {% endunless %}
+    {%- comment -%}
+      <div class="icons">
+      {%- for block in section.blocks -%}
+      <div class="benifits_box">
+      <img class="icon_benifit" src="{{ block.settings.image | img_url: '' }}">
+      <span id="description">{{ block.settings.description | escape }}</span>
+      </div>
+      {%- endfor -%}
+      </div>
+    {%- endcomment -%}
+    <div class="icons">
+      <div class="benifits_box">
+        <img class="icon_benifit" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Consistently_restful.svg?v=1667384015" alt="Consistently restful">
+        <span id="description">Consistently restful and unintrrupted sleep throughout the night.</span>
+      </div>
+      <div class="benifits_box">
+        <img class="icon_benifit" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Optimised_temperature.svg?v=1667384015" alt="Optimised temprature">
+        <span id="description">Optimised temprature for your body to fall a sleep naturally.</span>
+      </div>
+      <div class="benifits_box">
+        <img class="icon_benifit" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Perfect_softness.svg?v=1667384015" alt="Perfect softness-to-support">
+        <span id="description">Perfect softness-to-support ratio for comfort and relaxation.</span>
+      </div>
+      <div class="benifits_box">
+        <img class="icon_benifit" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Relieves_body_aches.svg?v=1667384015" alt="Relieves body aches">
+        <span id="description">Relieves body aches, particularly in the neck and lower back.</span>
+      </div>
+      <div class="benifits_box">
+        <img class="icon_benifit" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Improved_breathability.svg?v=1667384015" alt="Improved breathability">
+        <span id="description">Improved breathability and airflow allow for a deeper sleep.</span>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Benifits_image_with_text",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Benifits",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Background image"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "mob_image",
+        "label": "Mobile_Image"
+      },
+      {
+        "type": "header",
+        "content": "Padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_left",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding left",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_right",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding right",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Brand",
+        "name": "Image_with_text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Benifits_image_with_text"
+      }
+    ]
+  }
+{% endschema %}

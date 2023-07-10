@@ -1,0 +1,123 @@
+<center><h1>EMI Calculator<span type="button" class="action_button" data-dismiss="modal">X</span></h1></center>
+<div class="emicharts">
+<table>
+	<tr>
+		<th>Bank Name</th>
+		<th class="center">3 Months</th>
+		<th class="center">6 Months</th>
+		<th class="center">9 Months</th>
+		<th class="center">12 Months</th>
+		<th class="center">18 Months</th>
+		<th class="center">24 Months</th>
+	</tr>
+	<tr>
+		<td>CITI Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>AMEX Bank</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">-</td>
+		<td align="right">-</td>
+	</tr>
+	<tr>
+		<td>HDFC Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 9 | money }}</td>
+        <td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>Axis Bank</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">-</td>
+		<td align="right">-</td>
+	</tr>
+	<tr>
+		<td>Kotak Bank</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 6 | money }}</td>
+        <td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">-</td>
+		<td align="right">-</td>
+	</tr>
+	<tr>
+		<td>ICICI Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>SBI Bank</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">-</td>
+		<td align="right">-</td>
+	</tr>
+	<tr>
+		<td>INDUSIND Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>HSBC Bank</td>
+		<td align="right">{{ variant.price | times: 112.5  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 112.5  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113.5  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113.5  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 113.5  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">-</td>
+	</tr>
+	<tr>
+		<td>RBL Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 18 | money }}</td>
+        <td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>STANC Bank</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 12 | money }}</td>
+        <td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+	<tr>
+		<td>YES Bank</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 3 | money }}</td>
+		<td align="right">{{ variant.price | times: 112  | divided_by: 100 | divided_by: 6 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 9 | money }}</td>
+		<td align="right">{{ variant.price | times: 113  | divided_by: 100 | divided_by: 12 | money }}</td>
+		<td align="right">{{ variant.price | times: 114  | divided_by: 100 | divided_by: 18 | money }}</td>
+		<td align="right">{{ variant.price | times: 115  | divided_by: 100 | divided_by: 24 | money }}</td>
+	</tr>
+</table>
+</div>
+<p><b>NOTE: The EMI table above is indicative for just this item. Actual amount payable will depend on your cart and will be shown at checkout.</b></p>

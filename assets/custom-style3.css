@@ -1,0 +1,1099 @@
+
+span.underline {
+    text-decoration: underline;
+}
+
+.article--item.test {
+	width: 48%;
+	float: left;
+	margin: 1%;
+}
+
+.col-sm-4 {
+	width: 40%;
+	float: left;
+}
+
+.col-sm-8 {
+	float: left;
+	width: 60%;
+}
+
+.col-sm-4 {
+	float: left;
+	width: 60%;
+}
+
+.product-recommendations--body {
+	width: 1390px;
+}
+
+.home-services .featured-grid--body--container .featured-grid--item .image--root img {
+	position: absolute !important;
+}
+
+/**************23june2022end***********************/
+
+.template--customers--register.page--create-account .shopify-section.section--footer,
+.template--customers--login.page--account .shopify-section.section--footer {
+	margin-top: 0px !important;
+}
+
+.template--customers--login.page--account .account--breadcrumb-container,
+.template--customers--register.page--create-account .account--breadcrumb-container,
+.page--franchise-enquiry .account--breadcrumb-container,
+.page--paypal-offer .account--breadcrumb-container,
+.page--track-my-order .account--breadcrumb-container,
+.page--about-us .account--breadcrumb-container,
+.page--get-in-touch .account--breadcrumb-container,
+.page--blog.customer-logged-in .account--breadcrumb-container {
+	padding-left: 15px !important;
+}
+
+.template--customers--login.page--account .login_full.customer--root .customer--wrapper {
+	width: 1200px;
+	max-width: 100%;
+	padding: 0;
+   margin: 20px auto;
+}
+
+/* .template--customers--register.page--create-account .account--button-container {
+	margin-bottom: 43px !important;
+} */
+
+.page--security-amp-privacy-policy-new .off-canvas--main-content {
+	min-height: 59vh;
+}
+
+/****.page--security-amp-privacy-policy-new .collapsible-tabs--root{padding:0px 48px;}*****/
+
+/**************23june2022end***********************/
+
+/*****************24june2022start****************/
+.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .account--breadcrumb-container {
+	padding-left: 0px !important;
+}
+
+.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--wrapper .article--content h2 {
+	display: inline !important;
+}
+
+/*****************24june2022end****************/
+
+/***************************28june2022start************************/
+
+/***************************28june2022end************************/
+
+.page--blog.customer-logged-in .blog--article-list2 .col-red-4 ul li:nth-child(2),
+.page--blog.customer-logged-in .blog--article-list2 .col-red-4 ul li:nth-child(4),
+.page--blog.customer-logged-in .blog--article-list2 .col-red-4 ul li:nth-child(6),
+.page--blog.customer-logged-in .blog--article-list2 .col-red-4 ul li:nth-child(8) {
+	display: none;
+}
+
+
+.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .rte ol,
+[data-item=rte-content] ol {
+	padding-left: 0px !important;
+}
+
+.template--article .article--root .custom-article .col-red-8 .article--header--info .article--info a {
+	margin-left: auto;
+	margin-right: 24px;
+}
+
+
+/********************************************Track order 28june 2022*********************************************/
+.page--track-my-order.customer-logged-in .breadcrumbs {
+	font-size: 13px;
+}
+
+.page--track-my-order.customer-logged-in .static-pages h1 {
+	font-family: 'Gotham' !important;
+	font-size: 40px !important;
+	border: none;
+}
+
+.page--track-my-order.customer-logged-in .col-gutter-200 {
+	padding-left: 0px !important;
+	background-color: red;
+}
+
+.page--track-my-order.customer-logged-in .col-gutter-200 {
+	padding-left: 0px !important;
+}
+
+.page--track-my-order.customer-logged-in .inputGroup.inline-radio {
+	background-color: aquamarine;
+}
+
+/*********************************Terms And Conditions start 29june2022***************************************/
+.page--terms-amp-conditions-new h1.template-page--heading {
+	font-size: 40px;
+	font-family: 'Gotham';
+	padding-bottom: 40px;
+	padding-top: 20px;
+}
+
+.page--terms-amp-conditions-new [data-section-id] {
+	padding: 0px 48px;
+}
+
+.page--terms-amp-conditions-new .template-page--root p a,
+.page--terms-amp-conditions-new .template-page--root ul li a {
+	font-size: 16px;
+	font-family: "Gotham";
+	color: #d51218;
+	line-height: 1.563;
+}
+
+.page--terms-amp-conditions-new .template-page--root {
+	font-size: 16px;
+}
+
+.page--blog.customer-logged-in .article--item .article--item--image {
+	display: block !important;
+}
+
+.page--blog .article--item .article--item--image {
+	display: block !important;
+}
+
+.page--blog #shopify-section-footer {
+	margin-top: 0px !important;
+}
+
+.mobile-icopm {
+	display: none;
+}
+
+.template--customers--register .sign_with_social {
+	width: 90% !important;
+}
+.customer-services.pdp-customer-services.col-sm-12.mobile1 {
+    display: none;
+}
+@media only screen and (max-width: 1024px) {
+.section--home-col-tab .wishlist-icon {
+    padding-right: 23px!important;
+}
+}
+@media only screen and (max-width: 767px) {
+  .customer-services.pdp-customer-services.col-sm-12.desktop1 {
+    display: none;
+}
+  .customer-services.pdp-customer-services.col-sm-12.mobile1 {
+    display: block;
+}
+
+
+	.footer--block.subscribe1 .footer--block--heading.se {
+		display: none;
+	}
+
+	.footer--block--heading.test {
+		float: left;
+		margin: 0px 17px 0px 3px;
+	}
+
+	.footer--sub--block.paragraph-2 p {
+		padding-bottom: 5px;
+		font-size: 14px;
+		padding-top: 15px;
+	}
+
+	.mobile-icopm {
+		margin: 12px 5px 7px 1px;
+	}
+}
+
+
+/*********************************Terms And Conditions end 29june2022***************************************/
+
+
+/**************23june2022***********************/
+
+@media only screen and (max-width: 480px) {
+	.frm_sec2 span.rem input[type=checkbox] {
+		margin: 5px 8px 0 0;
+	}
+
+	.footer--block.subscribe1 .footer--block--heading.se {
+		display: none;
+	}
+
+	.footer--block--heading.test {
+		float: left;
+		margin-right: 23px;
+	}
+
+	.page--quot-83-quot-500-ml-ceramic-mug-with-lid-white {
+		background-color: ;
+	}
+
+	.page--quot-83-quot-500-ml-ceramic-mug-with-lid-white .announcement--text {
+		padding: 2px 8px !important;
+	}
+
+	.page--quot-83-quot-500-ml-ceramic-mug-with-lid-white .announcement--text span {
+		font-size: 10px;
+	}
+
+	.page--quot-83-quot-500-ml-ceramic-mug-with-lid-white .mobile1 .bought_together_container.buy-it-now {
+		background-color: #f6f6f6;
+	}
+
+	.page--quot-83-quot-500-ml-ceramic-mug-with-lid-white .mobile1 .bought_together_container.buy-it-now img {
+		height: 100px;
+		width: 100px;
+		margin: 0px 16px;
+	}
+
+
+	/**************7-dining-table***********************/
+
+	.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .account--breadcrumb-container {
+		padding-left: 15px !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .custom-article {
+		display: block;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--root {
+		padding: 0px 15px !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .col-red-4,
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .col-red-8 {
+		width: 100% !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .one-whole.medium--one-half h2,
+	.page--blog .blog--root .blog--article-list2 .col-red-4 .grid__item.article-sidebar h2 {
+		font-size: 16px !important;
+		font-weight: 600 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .red-coll a,
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article-imgs a h6 {
+		font-size: 14px !important;
+		font-weight: 500 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article-imgs p {
+		font-weight: 400 !important;
+	}
+
+	/***.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience nav ol li:nth-child(3) {
+  display:none;
+} ***/
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--wrapper .article--image {
+		order: 3;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--info .article--timesince,
+	.article--info .article--author {
+		align-self: self-start;
+	}
+
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--info a {
+		align-self: self-end;
+		margin-top: -45px;
+		padding-right: 35px;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--header--info h1,
+	.page--blog.customer-logged-in h3.article--item--heading {
+		/* 		padding-right: 15px !important; */
+		font-size: 15px !important;
+		/* 		padding-left: 12px !important; */
+		font-weight: 500 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--header--info {
+		padding: 0 0 15px !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--image img {
+		padding-right: 42px;
+		padding-top: 20px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--content p:nth-child(1) span {
+		font-size: 15px !important;
+		font-weight: 500 !important;
+		margin: 0 0 30px 0px !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--content ol li h2 {
+		display: inline !important;
+		font-size: 16px !important;
+		font-weight: 500 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--content ol li h2 span {
+		font-weight: 500 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--root .custom-article .col-red-8 .article--content p span,
+	.page--blog.customer-logged-in .article--item div.article--item--excerpt {
+		font-size: 12px !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--wrapper [data-item=rte-content] ol li:before {
+		font-weight: 500 !important;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .article--wrapper .article--content {
+		padding: 0px 20px;
+	}
+
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience .template--article .article--root .custom-article .col-red-4 {
+		margin-top: 20px;
+	}
+
+	.template--article.page--top-7-dining-table-design-ideas-to-transform-your-dining-experience #shopify-section-footer {
+		clear: both;
+		margin-top: 10px;
+	}
+
+	/***************************24june2022start************************/
+	/*************************Privacy policy start***************/
+	.page--security-amp-privacy-policy-new .account--breadcrumb-container {
+		padding-left: 15px !important;
+		padding-right: 15px !important;
+		padding-top: 15px !important;
+		padding-bottom: 15px !important;
+	}
+
+	.page--security-amp-privacy-policy-new .account--breadcrumb-container .breadcrumbs,
+	.page--new-faqs .account--breadcrumb-container .breadcrumbs,
+	.page--franchise-enquiry .account--breadcrumb-container .breadcrumbs,
+	.page--paypal-offer .account--breadcrumb-container .breadcrumbs,
+	.page--track-my-order .account--breadcrumb-container .breadcrumbs,
+	.template--customers--login .account--breadcrumb-container .breadcrumbs,
+	.template--customers--register .account--breadcrumb-container .breadcrumbs,
+	.page--account.customer-logged-in .account--breadcrumb-container .breadcrumbs,
+	.page--about-us .account--breadcrumb-container .breadcrumbs,
+	.page--get-in-touch .account--breadcrumb-container .breadcrumbs,
+	.page--blog.customer-logged-in .account--breadcrumb-container .breadcrumbs,
+	.page--terms-amp-conditions-new .account--breadcrumb-container .breadcrumbs,
+	.page--blog .account--breadcrumb-container .breadcrumbs {
+		font-size: 14px;
+		padding: 0px 15px;
+	}
+
+	.page--security-amp-privacy-policy-new .announcement--wrapper span.announcement_text,
+	.page--new-faqs .announcement--wrapper span.announcement_text,
+	.page--franchise-enquiry .announcement--wrapper span.announcement_text,
+	.page--paypal-offer .announcement--wrapper span.announcement_text,
+	.page--track-my-order .announcement--wrapper span.announcement_text,
+	.template--customers--login .announcement--wrapper span.announcement_text,
+	.template--customers--register .announcement--wrapper span.announcement_text,
+	.page--account.customer-logged-in .announcement--wrapper span.announcement_text,
+	.page--about-us .announcement--wrapper span.announcement_text,
+	.page--get-in-touch .announcement--wrapper span.announcement_text,
+	.page--blog.customer-logged-in .announcement--wrapper span.announcement_text,
+	.page--terms-amp-conditions-new .announcement--wrapper span.announcement_text,
+	.page--blog .announcement--wrapper span.announcement_text {
+		font-size: 10px;
+	}
+
+
+	.page--security-amp-privacy-policy-new .top-head .announcement--text,
+	.page--new-faqs .top-head .announcement--text,
+	.page--franchise-enquiry .top-head .announcement--text,
+	.page--paypal-offer .top-head .announcement--text,
+	.page--track-my-order .top-head .announcement--text,
+	.template--customers--login .top-head .announcement--text,
+	.template--customers--register .top-head .announcement--text,
+	.page--account.customer-logged-in .top-head .announcement--text,
+	.page--about-us .top-head .announcement--text,
+	.page--get-in-touch .top-head .announcement--text,
+	.page--blog.customer-logged-in .top-head .announcement--text,
+	.page--terms-amp-conditions-new .top-head .announcement--text,
+	.page--blog .top-head .announcement--text {
+		padding: 0px 12px !important;
+	}
+
+
+	.page--security-amp-privacy-policy-new form.search input[type=text],
+	.page--new-faqs form.search input[type=text],
+	.page--franchise-enquiry form.search input[type=text],
+	.page--paypal-offer form.search input[type=text],
+	.page--track-my-order form.search input[type=text],
+	.template--customers--login form.search input[type=text],
+	.template--customers--register form.search input[type=text],
+	.page--account.customer-logged-in form.search input[type=text],
+	.page--about-us form.search input[type=text],
+	.page--get-in-touch form.search input[type=text],
+	.page--blog.customer-logged-in form.search input[type=text],
+	.page--terms-amp-conditions-new form.search input[type=text],
+	.page--blog form.search input[type=text] {
+		padding: 10px 20px;
+		height: 26px;
+		border-radius: 6px;
+		font-size: 12px;
+	}
+
+	.page--security-amp-privacy-policy-new form.search input[type=submit],
+	.page--new-faqs form.search input[type=submit],
+	.page--franchise-enquiry form.search input[type=submit],
+	.page--paypal-offer form.search input[type=submit],
+	.page--track-my-order form.search input[type=submit],
+	.template--customers--login form.search input[type=submit],
+	.template--customers--register form.search input[type=submit],
+	.page--account.customer-logged-in form.search input[type=submit],
+	.page--about-us form.search input[type=submit],
+	.page--get-in-touch form.search input[type=submit],
+	.page--blog.customer-logged-in form.search input[type=submit],
+	.page--terms-amp-conditions-new form.search input[type=submit],
+	.page--blog form.search input[type=submit] {
+		height: 12px;
+		width: 12px;
+	}
+
+	.page--security-amp-privacy-policy-new .header--container .headerTrendingSec,
+	.page--new-faqs .header--container .headerTrendingSec,
+	.page--franchise-enquiry .header--container .headerTrendingSec,
+	.page--paypal-offer .header--container .headerTrendingSec,
+	.page--track-my-order .header--container .headerTrendingSec,
+	.template--customers--login .header--container .headerTrendingSec,
+	.template--customers--register .header--container .headerTrendingSec,
+	.page--account.customer-logged-in .header--container .headerTrendingSec,
+	.page--about-us .header--container .headerTrendingSec,
+	.page--get-in-touch .header--container .headerTrendingSec,
+	.page--blog.customer-logged-in .header--container .headerTrendingSec,
+	.page--terms-amp-conditions-new .header--container .headerTrendingSec,
+	.page--blog .header--container .headerTrendingSec {
+		font-size: 8px;
+	}
+
+	.page--security-amp-privacy-policy-new .header--root,
+	.page--new-faqs .header--root,
+	.page--franchise-enquiry .header--root,
+	.page--paypal-offer .header--root,
+	.page--track-my-order .header--root,
+	.template--customers--login .header--root,
+	.template--customers--register .header--root,
+	.page--account.customer-logged-in .header--root,
+	.page--about-us .header--root,
+	.page--get-in-touch .header--root,
+	.page--blog.customer-logged-in .header--root,
+	.page--terms-amp-conditions-new .header--root,
+	.page--blog .header--root {
+		height: auto !important;
+		margin: 3px 0 5px;
+	}
+
+
+	.page--security-amp-privacy-policy-new .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--new-faqs .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--franchise-enquiry.page--franchise-enquiry .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--paypal-offer .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--track-my-order .header--right-side [data-off-canvas--open=left-sidebar],
+	.template--customers--login .header--right-side [data-off-canvas--open=left-sidebar],
+	.template--customers--register .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--account.customer-logged-in .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--about-us .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--get-in-touch .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--blog.customer-logged-in .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--terms-amp-conditions-new .header--right-side [data-off-canvas--open=left-sidebar],
+	.page--blog .header--right-side [data-off-canvas--open=left-sidebar] {
+		padding: 5px;
+	}
+
+
+	.page--security-amp-privacy-policy-new #shopify-section-collapsible-tabs_privacy .collapsible-tabs--wrapper::before,
+	.page--terms-amp-conditions-new h1.template-page--heading {
+		font-size: 20px;
+		padding-bottom: 30px;
+	}
+
+	.page--security-amp-privacy-policy-new .collapsible-tab--toggle {
+		padding: 16px 24px;
+		height: 40px;
+	}
+
+	.page--security-amp-privacy-policy-new .collapsible-tab--heading p {
+		font-size: 16px;
+	}
+
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(2),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(1) {
+		font-size: 14px;
+
+		padding-bottom: 10px;
+	}
+
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(1) {
+		padding-top: 20px;
+	}
+
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(3),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(8),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(5),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(9),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(10),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(12),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(1),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(2),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(6),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(7),
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(11) {
+		font-size: 12px;
+	}
+
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(5) strong,
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(9) strong,
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(12) strong,
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(1) strong,
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(4) strong,
+	.page--security-amp-privacy-policy-new #collapsible-tab-content p:nth-child(11) strong {
+		font-size: 14px;
+	}
+
+	.page--security-amp-privacy-policy-new .off-canvas--main-content {
+		min-height: 59vh;
+	}
+
+	.page--security-amp-privacy-policy-new #shopify-section-footer,
+	.page--new-faqs #shopify-section-footer {
+		margin-top: 0px;
+	}
+
+	/*************************Privacy policy end***************/
+	/*************************FAQ s start***************/
+	.page--new-faqs .featured-grid--body li a img {
+		display: inline-block;
+		width: 20px;
+	}
+
+	/**.page--new-faqs .featured-grid--body ul#tabs-nav li {
+    padding: 0 5.5px;
+  height: auto;}***/
+
+
+	.page--new-faqs .featured-grid--body .tabs:before {
+		padding: 10px 0px 10px;
+		font-size: 20px;
+	}
+
+	.page--new-faqs .collapsible-tab--wrapper .collapsible-tab--toggle label.collapsible-tab--heading {
+		font-size: 16px;
+	}
+
+	.page--new-faqs #collapsible-tab-content p:nth-child(1),
+	.page--new-faqs #collapsible-tab-content p:nth-child(2),
+	.page--new-faqs #collapsible-tab-content p:nth-child(3),
+	.page--new-faqs #collapsible-tab-content p:nth-child(3) a {
+		font-size: 12px;
+	}
+
+	/*************************FAQ s end**************/
+
+	/*************************Franchise Enquiry start***************/
+	.page--franchise-enquiry .row.bgcololr-contact-form {
+		display: block;
+		margin-top: 20px;
+	}
+
+
+	.page--franchise-enquiry .form_warehouse_image_desc {
+		display: block;
+	}
+
+	.page--franchise-enquiry .col-md-6,
+	.page--franchise-enquiry div#Get_in_Touch,
+	.page--franchise-enquiry .col-md-10,
+
+	.page--franchise-enquiry .col-md-7,
+	.page--franchise-enquiry .col-md-2 {
+		width: 100%;
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+
+	.page--franchise-enquiry .col-md-6 {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+
+
+	.page--franchise-enquiry h1.home_introduction_heading {
+		padding-left: 0px;
+		font-size: 20px;
+		padding-top: 20px;
+	}
+
+	.page--franchise-enquiry p.retail_division_paragraph {
+		font-size: 12.1px;
+	}
+
+	.page--franchise-enquiry h4.launched_the_franchisee {
+		padding-top: 15px;
+	}
+
+	.page--franchise-enquiry h1.Get_in_Touch_heading,
+	.page--franchise-enquiry h1.Affiliation_Benefits_heading,
+	.page--franchise-enquiry h1.Store_Requirements_heading,
+	.page--franchise-enquiry h1.home_introduction_heading {
+		font-size: 19px;
+		line-height: 1.5;
+		margin: 0 auto 15px;
+		padding-top: 20px;
+	}
+
+	.page--franchise-enquiry .bgcololr-contact-form #fran_form .form-group input {
+		border-radius: 5px;
+		margin: 0px auto 10px;
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.page--franchise-enquiry input,
+	.page--franchise-enquiry textarea {
+		height: 30px;
+		margin-bottom: 10px;
+	}
+
+	.page--franchise-enquiry .form-group select {
+		min-height: 30px;
+		margin: 0px auto 10px;
+		border-radius: 5px;
+		padding: 0px 25px;
+		width: 95%;
+		display: flex;
+	}
+
+	.page--franchise-enquiry .form-group input#contactFormFullName {
+		min-height: 30px;
+		margin: 0px auto 10px;
+		width: 90%;
+	}
+
+	.page--franchise-enquiry .form-radio-label p,
+	.page--franchise-enquiry .form-radio-label label {
+		font-size: 12px;
+		padding: 0px 10px;
+	}
+
+	.page--franchise-enquiry .form-radio-label label {
+		line-height: 1.5px;
+	}
+
+	.page--franchise-enquiry .form-group textarea {
+		height: 50px;
+		border-radius: 5px;
+		font-size: 12px;
+
+		margin: 0px 5px
+	}
+
+	.page--franchise-enquiry .form_warehouse_image_desc p.warehouse_para {
+		display: inline;
+	}
+
+	.page--franchise-enquiry img.franchise_bottom_banner {
+		margin-top: 15px;
+		padding-bottom: 25px;
+	}
+
+	/*************************Franchise Enquiry  end***************/
+
+	/***************************24june2022end************************/
+
+
+	/***************************25june2022start************************/
+	/*****************************Pay pal page start************************/
+	.page--paypal-offer .account--breadcrumb-container {
+		padding-left: 30px !important;
+	}
+
+
+	.page--paypal-offer .template-page--root.paypal-offer[data-section-id] {
+		padding: 16px 16px !important;
+	}
+
+	.page--paypal-offer .paypal-offer .template-page--root {
+		padding: 15px 20px 20px 20px !important;
+	}
+
+	.page--paypal-offer .template-page--heading {
+		text-align: center;
+		padding-bottom: 15px !important;
+	}
+
+	.page--paypal-offer h1.template-page--heading {
+		font-size: 20px !important;
+	}
+
+	.page--paypal-offer .template-page--root h2 {
+		font-size: 18px !important;
+		margin-top: 0px !important;
+	}
+
+	.page--paypal-offer ol li {
+		margin-bottom: 5px !important;
+		font-size: 12px !important;
+	}
+
+	.page--paypal-offer ol li,
+	.page--paypal-offer ul li {
+		margin-bottom: 0px !important;
+	}
+
+	.page--paypal-offer .footer--menu li:not(:last-child) {
+		padding-bottom: 0px !important;
+	}
+
+	/*****************************Pay pal page end************************/
+
+	/*****************************Track my order start************************/
+	.page--track-my-order .static-pages h1 {
+		padding: 0 0 10px 0 !important;
+		margin: 0px 0 10px 0 !important;
+		font-size: 20px !important;
+	}
+
+	.page--track-my-order .track-order-1 {
+		margin: 15px auto 15px !important;
+		padding: 15px;
+	}
+
+	.page--track-my-order iframe {
+		height: 500px !important
+	}
+
+	/*****************************Track my order end************************/
+
+	/*****************************Register page start***************************/
+	/* .template--customers--register .register_full {
+		background-image: none !important;
+	} */
+
+	/* .template--customers--register .customer--wrapper h1 {
+		text-align: center ;
+		font-size: 20px ;
+		padding-bottom: 15px;
+	} */
+
+	.template--customers--register #shopify-section-template--15684555899043__main .register_left {
+		padding-top: 0px !important
+	}
+
+	.template--customers--register .layout--main-content [data-section-id] {
+		padding: 0px 0px;
+	}
+
+	.template--customers--register .layout--main-content input {
+		height: 35px !important;
+	}
+
+	.template--customers--register #customer-register input {
+		border: 1px solid #d7d7d7 ;
+		background-color: #fff;
+		padding: 20px 13px 20px;
+		box-shadow: none !important;
+	}
+
+	.template--customers--register .register_full .account--button-container .account--create button {
+		font-size: 12px;
+		/* border-radius: 5px; */
+	}
+
+	.template--customers--register .register_wrap_inner button {
+		height: 35px;
+		display: flex;
+		align-items: center;
+	}
+
+	.template--customers--register.page--create-account .account--button-container {
+		margin-bottom: 20px !important;
+	}
+
+	.template--customers--register.page--create-account .footer--blocks {
+		padding: 25px 0 0 !important;
+	}
+
+	.template--customers--register.page--create-account .chat-icon {
+		display: none;
+	}
+
+	/*****************************Register page end***************************/
+
+	/***************************25june2022end************************/
+
+	/********************************27june start************************************/
+	/********************************customer acoount star************************************/
+
+
+	/****.customer-logged-in .account--orders-table td.money ul.amo-btn li a{line-height:0px!important;}***/
+
+	.customer-logged-in .account--orders-table td {
+		line-height: 1 !important;
+	}
+
+
+	/********************************customer acoount end************************************/
+
+	/*******************************About us start************************************/
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-1,
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-2,
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-3 {
+		padding: 0px 0px !important;
+	}
+
+
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-1 .image--root.img,
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-2 .image--root.img,
+	.page--about-us .shopify-section.home-services .featured-grid--item.box-3 .image--root.img {
+		height: 70% !important;
+		width: 70% !important;
+	}
+
+	/* 
+	.home-services .featured-grid--item:first-child .featured-grid--item--image {
+		width: 40px !important;
+	} */
+
+	.page--about-us .home-services .featured-grid--item--image {
+		width: 60px !important;
+	}
+
+	body.template--page.page--about-us {
+		padding: 0px !important;
+	}
+
+	.page--about-us #shopify-section-template--15684556030115__16324732989269ca2c .featured-text--wrapper h2 {
+		font-size: 20px !important;
+		padding-top: 0px !important;
+	}
+
+	.page--about-us #shopify-section-template--15684556030115__1653566500035196ae .featured-grid--item {
+		padding: 17px 17px !important;
+		margin: 0px 0 10px !important;
+	}
+
+	.page--about-us div#shopify-section-template--15684556030115__1653566500035196ae {
+		padding: 0px 5px 0px 5px !important;
+	}
+
+	.page--about-us #shopify-section-template--15684556030115__1653566500035196ae .featured-grid--item--description p {
+		font-size: 14px !important;
+	}
+
+	.page--about-us .persona-image {
+		width: 100%;
+		background: #f5f6f6;
+		padding: 0px 5px 0px !important;
+	}
+
+	.page--about-us .featured-content--text-container {
+		width: 100%;
+		text-align: left !important;
+	}
+
+	.page--about-us .persona-image .featured-content--description p {
+		text-align: left !important;
+		font-size: 12px !important;
+	}
+
+	.page--about-us .persona-image .featured-content--image {
+		min-height: auto !important;
+	}
+
+	.page--about-us .featured-grid--body--container[data-mobile-columns="2"] .featured-grid--item:nth-child(2n+1):last-child {
+		grid-column: 0 !important;
+		justify-self: center !important;
+		width: calc(100%-50%) !important;
+		display: flex !important;
+		height: auto !important;
+	}
+
+	.page--about-us .featured-grid--body .featured-grid--body--container {
+		padding: 0px 0px;
+		grid-column-gap: 30px;
+	}
+
+	.page--about-us .featured-grid--body .featured-grid--body--container h3 {
+		background-color: ;
+	}
+
+	.page--about-us .persona-image .featured-content--image img {
+		height: 100% !important;
+			}
+
+	.page--about-us .newsletter--inputs input {
+		line-height: 20px;
+		border: 1px solid #000000 !important;
+	}
+
+	.page--about-us #shopify-section-template--15684556030115__1653571305e8b5177a .newsletter--wrapper {
+		width: 100%;
+		max-height: 650px !important;
+	}
+
+	.page--about-us .chat-icon {
+		display: none;
+	}
+
+	.page--about-us .shopify-section.section--footer {
+		margin-top: 0px !important;
+	}
+
+	.page--about-us .newsletter--root.newsletter {
+		padding: 0px 0px !important;
+	}
+
+	.page--about-us .section--footer .footer--blocks {
+		padding-top: 30px !important;
+	}
+
+	/*******************************About us end************************************/
+
+
+	/*******************************contact us start************************************/
+
+	.page--get-in-touch .account--breadcrumb-container {
+		padding-bottom: 0px !important;
+	}
+
+	.page--get-in-touch .home-services featured-grid-root.featured-grid--root {
+		padding: 0px 15px 10px;
+	}
+
+	.page--get-in-touch #shopify-section-template--15684556062883__165373714380183cdc .featured-grid--header h2 {
+		font-size: 20px;
+	}
+
+	/********************************27june end************************************/
+
+	/********************************28june start************************************/
+	.page--get-in-touch .featured-grid--item--description p:nth-child(1) {
+		font-size: 12px !important;
+	}
+
+	.page--get-in-touch .featured-grid--item--text-container h3 {
+		font-size: 18px !important;
+	}
+
+	.page--get-in-touch .featured-grid--item--description p {
+		font-size: 10px !important;
+	}
+
+	.page--get-in-touch .featured-grid--item {
+		padding: 30px 30px 30px 10px;
+		margin: 10px 0;
+		text-align: left;
+	}
+
+	.page--get-in-touch #shopify-section-template--15684556062883__1632180071f18cee62 .contact--root {
+		background: transparent !important;
+	}
+
+	.page--get-in-touch #shopify-section-template--15684556062883__1632180071f18cee62 .contact--header h2 {
+		padding: 20px 0px;
+		font-size: 20px;
+	}
+
+	.page--get-in-touch .contact--form-details input {
+		height: 40px !important;
+	}
+
+	.page--get-in-touch select#contact_form_template--15684556062883__1632180071f18cee62-contact-sel {
+		background-size: 10px;
+		height: 40px;
+		padding: 0px 28px 0px 15px !important;
+	}
+
+	.page--get-in-touch #shopify-section-template--15684556062883__1632180071f18cee62 .contact--form-submit[data-item="button"]>* {
+		font-size: 12px !important;
+	}
+
+	.page--get-in-touch [data-item=button]>* {
+		height: 30px !important;
+	}
+
+	.page--get-in-touch .chat-icon {
+		display: none;
+	}
+
+	.page--get-in-touch #shopify-section-footer {
+		margin-top: 0px !important;
+	}
+
+	.page--get-in-touch footer.footer--root {
+		padding: 20px 20px;
+	}
+
+
+	/*******************************contact us end************************************/
+	/***************************Blog page start************************/
+
+	.page--terms-amp-conditions-new [data-section-id] {
+		padding: 0px 20px !important;
+	}
+
+	.page--blog .blog--root .blog--article-list .article--item.atricle-cutom .col-sm-4 .article--item-info {
+		margin-bottom: 0px !important;
+	}
+
+	.page--blog .blog--body .article--item h3.article--item--heading {
+		height: auto !important;
+		font-size: 20px !important;
+	}
+
+	.page--blog .blog--root .blog--article-list .article--item.atricle-cutom .col-sm-4 h3.article--item--heading {
+		margin-bottom: 0px !important;
+	}
+
+	.page--blog .blog--root .blog--article-list {
+		margin-bottom: 0px !important;
+	}
+
+	.page--blog .chat-icon {
+		display: none !important;
+	}
+
+	.page--blog .shopify-section.section--footer {
+		margin-top: 0px !important
+	}
+
+	.page--blog .blog--root .blog--article-list2 .col-red-4 {
+		margin-bottom: -45px !important;
+	}
+
+	.page--blog .footer--blocks {
+		padding: 20px !important;
+	}
+
+	.page--blog .article--item .article--item--image {
+		display: block !important;
+	}
+
+	.page--blog .blog--root .blog--article-list2 .col-red-8 .article--item.test {
+		height: auto !important;
+		width: 100% !important;
+	}
+
+	.page--blog .blog--body .article--item .article--item--excerpt {
+		font-size: 12px !important;
+		line-height: 18px !important;
+	}
+
+	.page--blog .blog--root .blog--article-list2 .col-red-4 .grid__item.article-sidebar .red-coll {
+		font-size: 14px !important;
+		font-weight: 500 !important;
+	}
+
+
+}

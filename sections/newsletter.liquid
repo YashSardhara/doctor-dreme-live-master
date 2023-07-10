@@ -1,0 +1,189 @@
+{%- liquid
+  assign email_placeholder_t = 'sections.newsletter.email_placeholder' | t
+  assign button_t = 'sections.newsletter.button' | t
+
+  assign bg_color = section.settings.background-color
+  assign form_id = 'newsletter--' | append: section.id
+  assign heading = section.settings.heading | escape
+  assign light_text = section.settings.light-text
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+  assign subheading = section.settings.newsletter--subheading
+
+  assign button_type = 'button'
+  if light_text
+    assign button_type = 'inverted-button'
+  endif
+-%}
+
+{% comment %} View {% endcomment %}
+<div
+  class="newsletter--root {{section.settings.classname}}"
+  data-section-id="{{ section.id }}"
+  data-background-color="{{ bg_color }}"
+  data-light-text="{{ light_text }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+>
+  <div class="newsletter--wrapper" data-container="block">
+    <div class="news_letter_inner">
+       <div class="news_left left_img"> <img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/{{section.settings.image}}" al="" title="" class="first-img"> 
+         <div class="left-desc">{{ section.settings.newsletter-des}}  
+           <div class="btn_c"><a href="{{ section.settings.newsletter-url }}">{{ section.settings.newsletter-viewbutton }}</a></div>
+         </div>
+       </div> 
+   <div class="news_right">
+    <div class="newsletter--body">
+
+        {% if heading != blank %}
+        <h2 class="newsletter--heading" data-item="section-heading">{{ heading }}</h2>
+      {% endif %}
+
+      {% if subheading != blank %}
+        <div class="newsletter--subheading" data-item="rte-content">
+          {{ subheading }}
+        </div>
+      {% endif %}
+     
+     <div class="new_discription">
+          Keep up with what we’re up to. Unsubscribe at any time. 
+     </div>
+
+      {% form 'customer', id: form_id, class: 'newsletter--form' %}
+        <div class="newsletter--inputs">
+          <input type="hidden" name="contact[tags]" value="newsletter"/>
+          <label for="newsletter-email" data-item="hidden-text">
+            {{ email_placeholder_t }}
+          </label>
+          <input
+            class="newsletter--email dd"
+            id="newsletter-email"
+            name="contact[email]"
+            type="email"
+            autocomplete="email"
+            placeholder="{{ email_placeholder_t }} ID"
+            required
+          />
+          <div data-item="{{ button_type }}">
+            <button type="submit" value="{{ button_t }}">
+           <!--   {{ button_t }} --> <img  src="https://cdn.shopify.com/s/files/1/0099/2867/1291/t/197/assets/arrow_red.png"/>
+            </button>
+          </div>
+        </div>
+
+        {% if form.errors %}
+          <p class="newsletter--failure">
+          {% for field in form.errors %}
+            {{ field }} {{ form.errors.messages[field] }}
+          {% endfor %}
+          </p>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <script>window.location.hash = '#feedback-bar--newsletter';</script>
+        {% endif %}
+
+        <div data-item="hidden-text">
+          {% comment %} remove the below line to display reCAPTCHA badge {% endcomment %}
+          {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+        </div>
+      {% endform %}
+      <img src="https://cdn.shopify.com/s/files/1/0099/2867/1291/files/new1.png?v=1653987806{{section.settings.image2}}" al="" title="" class="second-img"> 
+
+    </div>
+   </div> <!--Right section End -->
+   </div> <!--Inner section End -->
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "Light", "value": "light" },
+          { "label": "Dark", "value": "dark" },
+          { "label": "Accent", "value": "accent" }
+        ],
+        "default": "none"
+      },
+      {
+        "id": "classname",
+        "label": "Class Name",
+        "type": "text",
+        "default": "newsletter"
+      },
+      {
+        "id": "light-text",
+        "label": "Use light text color",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "newsletter--subheading",
+        "label": "Subheading",
+        "default": "<p>A short sentence describing what someone will receive by subscribing</p>"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the “accepts marketing” [customer list](/admin/customers?query=&accepts_marketing=1)"
+      },
+		{
+      "id": "image",
+      "label": "Fisrt Image",
+      "type": "image_picker"
+    },
+ {
+        "type": "text",
+        "id": "newsletter-des",
+        "label": "Descreption",
+"default": "<p>lorema</p>"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-viewbutton",
+        "label": "View Button",
+        "default": "View Button"
+      },
+  {
+        "type": "text",
+        "id": "newsletter-url",
+        "label": "View links",
+        "default": "View links"
+      },
+     {
+      "id": "image2",
+      "label": "second Image",
+      "type": "image_picker"
+    }
+    ],
+    "presets": [{
+      "name": "Newsletter"
+    }],
+    "blocks" : []
+  }
+{% endschema %}

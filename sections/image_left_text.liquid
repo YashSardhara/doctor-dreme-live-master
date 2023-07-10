@@ -1,0 +1,150 @@
+{{section.settings.banner_text_overlay}}
+<div class="bg_img">
+  <div class="image_text_container">
+    <div class="container_details">
+      <h1 class="text_overlay_head">{{section.settings.heading}}
+      </h1>
+      <div class="text_container_description">{{section.settings.text_area}}
+      </div>
+    </div>
+    <a href="{{ section.settings.url }}">
+      <img class="desk_img2" src="{{ section.settings.desk_image | img_url: ' ' }}">
+      <img class="mob_img2" src="{{ section.settings.mob_image | img_url: ' ' }}">
+    </a>
+  </div>
+</div>
+<style>
+  .image_text_container {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .container_details {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    padding: 0 16px;
+    text-align: left;
+    left: 10%;
+  }
+
+  .bg_img {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .desk_img2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mob_img2 {
+    display: none;
+  }
+  .text_container_description {
+    padding: 0;
+    width: 80%;
+    font-size: 18px;
+  }
+
+  @media only screen and (max-width:800px) {
+    .bg_img {
+      background-image: none;
+    }
+
+    .image_text_container {
+      flex-direction: column;
+      width: 100%;
+      margin: 0;
+    }
+
+    .container_details {
+      position: absolute;
+      width: 100%;
+      top: 30%;
+      transform: translateY(-50%);
+      margin: 0 auto;
+      text-align: left;
+      left: 0;
+    }
+    .desk_img2 {
+      display: none;
+    }
+
+    .mob_img2 {
+      display: block;
+      width: 100%;
+    }
+    .text_container_description {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  @media only screen and (min-width:801px) and(max-width:1150px) {
+    .bg_img {
+      position: relative;
+      width: 100%;
+      margin: 110px auto;
+    }
+    .container_details {
+      left: 8%;
+    }
+    .text_container_description {
+      padding: 0;
+      width: 98%;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "image_left_text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Type heading here",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "text_area",
+        "label": "paragraph"
+      },
+      {
+        "type": "image_picker",
+        "id": "desk_image",
+        "label": "Desktop_Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mob_image",
+        "label": "Mobile_Image"
+      }, {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      }, {
+        "type": "text",
+        "id": "button-text",
+        "label": "Button text",
+        "default": "button"
+      }, {
+        "type": "url",
+        "id": "button-url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "image_left_text",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}}

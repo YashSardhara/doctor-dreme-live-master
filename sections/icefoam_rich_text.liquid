@@ -1,0 +1,123 @@
+{{section.settings.ice_foam_rich_text}}
+
+
+{% if section.settings.ice_foam_heading != blank or section.settings.para-text != blank %}
+<span class="d_flex heading_div slider_head heading_icee">
+    {%- if section.settings.ice_foam_heading != blank -%}
+    <h2 class="featured-collections--heading heading_text heading_icefoam" data-item="section-heading">
+        {{ section.settings.ice_foam_heading }}
+    </h2>
+    {%- endif -%}
+    {%- if section.settings.para-text != blank -%}
+    <span class="subheading_text para-text">{{section.settings.para-text }}</span>
+    <!-- <span id="para-text"> {{section.settings.para-text}}</span> -->
+    {%- endif -%}
+</span>
+{% endif %}
+
+
+<style>
+    .heading_icefoam {
+        width: 100%;
+        text-align: center;
+    }
+
+    .para-text p {
+        margin: 0 auto;
+        font-size: 18px;
+        width: 78%;
+        padding: 20px 0 20px 0;
+        text-align: center;
+    }
+
+    .para-text {
+        padding: 0;
+    }
+
+    .heading_icee {
+        width: 90%;
+    }
+
+    @media screen and (max-width:800px) {
+
+        .heading_text.heading_icefoam {
+            text-align: left;
+            /* padding-left: 20px; */
+            width: 100%;
+
+        }
+
+        .main_heading {
+            text-align: left;
+            font-size: 25px;
+            padding: 10px 10px;
+        }
+
+        .para-text p {
+            font-size: 14px;
+            width: 100%;
+            letter-spacing: 0px;
+            line-height: 20px;
+            padding: 0;
+            text-align: left;
+        }
+
+        .heading_icee .para-text {
+            padding: 20px 0 0 0;
+            max-width: 100%;
+        }
+
+        .heading_icee {
+            margin: 0 0 0 20px;
+        }
+
+    }
+
+    @media only screen and (max-width: 900px) {
+        .heading_icee .para-text {
+            width: 100%;
+            max-width: 100%;
+            padding: 20px 0 0;
+        }
+
+    }
+</style>
+
+{% schema %}
+{
+"name": "icefoam_rich_text",
+"settings": [
+{
+"type": "text",
+"id": "ice_foam_heading",
+"default": "Type heading here",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "para-text",
+"label": "Description"
+},
+
+{
+"id": "overlap",
+"label": "Overlap text",
+"type": "checkbox",
+"default": false,
+"info": "Not applicable for centered or bottom left text"
+}
+],
+"presets" : [
+{
+"name": "icefoam_rich_text",
+"settings": {}
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

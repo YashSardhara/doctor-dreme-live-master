@@ -1,0 +1,132 @@
+<div class="home-slider-con">
+<div class="row">
+  <div class="column js">    
+	<div class="home-slider2">
+      {% for block in section.blocks %}
+      <a href=" {%- if block.settings.url != blank -%} {{ block.settings.url }}{%else%} # {% endif%} {{ block.settings.view }}">
+      {%- if block.settings.image != blank or block.settings.mo_image != blank -%}<div class="slide-home-img"><div class="desktop-view"><img src="{{ block.settings.image | image_url: width: '1700'   }}" alt="{{ block.settings.image.alt }}" /></div><div class="mobile-view"><img src="{{ block.settings.mo_image | image_url: width: '480'   }}" alt="{{ block.settings.mo_image.alt }}" /></div></div>{% endif %}
+      </a>
+      
+    
+       {%- if block.settings.title != blank -%}
+      <div class="slide-title">{{ block.settings.title }}</div>
+       {%endif%}
+       
+       {%- if block.settings.sub-heading != blank -%}
+     <div class="slide-sub-heading">{{ block.settings.sub-heading }}</div>
+       {%endif%}
+       
+       {%- if block.settings.home-caption != blank -%}
+     <div class="slide-home-caption">{{ block.settings.home-caption }}</div>
+       {%endif%}
+       
+       {%- if block.settings.view != blank -%}
+     <div class="slide-view"><a href=" {%- if block.settings.url != blank -%} {{ block.settings.url }}{%else%} # {% endif%} {{ block.settings.view }}"></a></div>
+       {%endif%}
+      {% endfor %}
+     </div>
+  <div class="ho-slider2-nav-con">
+    <div class="home-slider2-nav" >
+      
+      {% for block in section.blocks %}
+      
+      <div class="slide-home-nav desktop-view"><img src="{{ block.settings.image | img_url: '150px*150px' }}" alt="{{ block.settings.image.alt }}" /></div>
+      {% endfor %}
+      
+      {% comment%}  {% for media in product.media %}
+          {% assign img_url_full = media | img_url: 'master' %}
+         <img class="lazyautosizes lazyloaded" src="{{img_url_full}}" data-sizes="auto" data-widths="[295,394,590]" alt="{{media.alt}}" data-srcset="{{img_url_full}}">
+    	{% endfor %}{%endcomment%}
+    </div>
+    </div>
+</div>
+</div>
+</div>
+<style>
+ 
+.js .slider-single > div:nth-child(1n+2) { display: none }
+
+.js .slider-single.slick-initialized > div:nth-child(1n+2) { display: block }
+
+.slider-nav .slick-slide { cursor: pointer; }
+
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "home-slide-tem",
+"class": "section--home-tem",
+    "settings": [
+
+],
+"blocks": [
+    {
+      "type": "image",
+      "name": "Slide-image",
+      "settings": [
+        {
+          "id": "image",
+          "label": " Desktop Image",
+          "type": "image_picker"
+        },
+   		{
+          "id": "mo_image",
+          "label": "Mobile Image",
+          "type": "image_picker"
+        },
+		 {
+          "id": "title",
+          "label": "Title",
+          "type": "text"
+        },
+      {
+          "id": "sub-heading",
+          "label": "Sub Heading",
+          "type": "textarea"
+        },
+	   {
+          "id": "caption",
+          "label": "Slide Caption",
+          "type": "textarea"
+        },
+	   {
+          "id": "view",
+          "label": "View Text",
+          "type": "text"
+        },
+	   {
+          "id": "url",
+          "label": "view url",
+          "type": "text"
+        }
+	]
+	}
+],
+
+"presets": [{
+    "name": "home slider tem",
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      }
+    ]
+  }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

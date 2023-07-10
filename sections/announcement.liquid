@@ -1,0 +1,224 @@
+{%- liquid
+     assign bg_color = section.settings.background-color
+     assign enabled = section.settings.enabled
+     assign icon = section.settings.icon
+     assign light_text = section.settings.light-text
+     assign link = section.settings.link
+     assign text = section.settings.text
+     assign text2 = section.settings.text2
+     assign text3 = section.settings.text3
+
+     assign show_on_page = true
+     if section.settings.home-page-only and template != 'index'
+     assign show_on_page = false
+     endif
+
+     capture link_settings
+     echo settings.color--alternative
+     echo settings.color--accent
+     endcapture
+     -%}
+
+{% if enabled and show_on_page %}
+  <div class="announcement--root top-head" data-section-id="{{ section.id }}" data-section-type="announcement" data-background-color="{{ bg_color }}" data-light-text="{{ light_text }}" data-spacing="none">
+    {% if link != blank %}
+      <a class="announcement--link" href="{{ link }}">
+      {% endif %}
+
+      <div class="announcement--wrapper">
+        {% if icon %}
+          <div class="announcement--icon">
+            {{ icon | img_url: '50x50' | img_tag: icon.alt }}
+          </div>
+        {% endif %}
+        <div class="announcement--text d_flex" data-item="accent-text">
+         {% if text != blank %}
+            <a class="announcement_part1" >
+              <span class="announcement_text announcement_part1 desktop_text">
+                <div class="slider-container">
+                  <div class="image-container ">
+                    <div class="image-title">
+                      {{text}}
+                    </div>
+                <div class="image-title">
+                      <p>{{text2}}</p>
+                    </div>
+                    <div class="image-title">
+                      <p>{{text3}}</p>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </a>
+            <a href="https://doctordreams.com/collections/combo-offer" class="mobile_text_slider">
+              {%- comment -%}
+                <marquee scrolldelay="300" class="mobile_text announcement_text announcement_part1">
+                {{ text | escape }}
+                </marquee>
+              {%- endcomment -%}
+              <span class="announcement_text  mobile_text ">
+                <div class="slider-container ">
+                 <div class="image-container ">
+                    <div class="image-title">
+                      {{text}}
+                    </div>
+                    <div class="image-title">
+                      <p>{{text2}}</p>
+                    </div>
+                    <div class="image-title">
+                      <p>{{text3}}</p>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </a>
+          {% endif %}
+          <div class="d_flex top_bottom_center announcement_part2">
+            <ul class="home-top">
+              <li>
+                <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/warranty_e658c645-2b45-4476-977a-d90d5477557e.svg?v=1669203816" alt="warrenty">
+                <a href="https://doctordreams.com/pages/warranty-registration">Warranty  Registration</a>
+              </li>
+              <li>
+                  <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/store_locator.svg?v=1669203816" alt="store_locator">
+                <a href="https://doctordreams.com/pages/storelocator_new">Store Locator</a>
+              </li>
+            </ul>
+            <div class="announcement_right d_flex top_bottom_center" data-item="nav-text">
+              {% render 'login' %}
+              <!-- <a href="" class="for_mob"><img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/profile.svg?v=1658410422" alt="" >
+              <span class="label_mob">Login </span></a> -->
+
+             <!--  <div class="showMenu">
+                <a title="Live Chat" class="" href="#">
+                  <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/CS_icon.svg?v=1669203816" alt="live_chat">
+                  {%- comment -%} <svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" fill="none">
+                    <path d="M770.699 555.25L771.061 555.372C768.728 561.83 766.225 568.314 763.538 574.809L763.305 575.374L763.904 575.491C785.824 579.774 813.24 572.716 834.228 551.792C855.226 530.856 869.757 496.077 865.999 444.963C860.801 374.271 831.107 349.63 811.744 342.933C811.103 340.716 810.441 338.503 809.759 336.295C786.49 261.029 740.122 195 677.231 147.576C614.34 100.151 538.118 73.7375 459.376 72.0828C380.634 70.4281 303.37 93.6161 238.543 138.357C173.717 183.098 124.618 247.12 98.2098 321.343C95.7989 328.119 93.5883 334.949 91.5782 341.823C72.5719 346.538 39.1386 369.538 33.5927 444.963C28.0645 520.146 62.1141 559.972 98.0213 572.383C121.815 639.579 164.32 698.757 220.726 742.811C278.481 787.918 348.082 815.038 420.874 821.004C425.563 824.855 431.565 827.167 438.105 827.167C453.109 827.167 465.272 815.004 465.272 800C465.272 784.996 453.109 772.833 438.105 772.833C429.76 772.833 422.294 776.597 417.311 782.517C354.321 776.092 294.252 752.02 244.116 712.862C188.327 669.291 147.668 609.253 127.904 541.264C108.141 473.275 110.278 400.787 134.011 334.081C157.745 267.375 201.87 209.839 260.128 169.632C318.385 129.425 387.818 108.587 458.577 110.074C529.337 111.561 597.834 135.297 654.352 177.916C710.87 220.535 752.542 279.875 773.454 347.519C794.367 415.163 793.458 487.677 770.858 554.776L770.699 555.25Z" fill="white"/>
+                    <path d="M531.339 160.42C493.617 149.86 454.168 146.919 415.296 151.77C376.424 156.622 338.909 169.167 304.943 188.674C270.977 208.181 241.241 234.258 217.472 265.381C193.703 296.505 176.378 332.052 166.509 369.944C156.64 407.836 154.425 447.314 159.994 486.071L160.986 486.054C162.512 472.006 168.249 456.903 182.74 444.841C197.24 432.771 220.56 423.699 257.343 421.838C328.476 418.238 455.625 402.367 579.312 265.425C568.123 300.003 578.978 332.894 607.359 359.137C636.349 385.943 683.626 405.827 744.436 413.614L745.064 413.694L744.997 413.065C740.86 374.129 729.002 336.407 710.115 302.104C691.227 267.8 665.69 237.603 634.994 213.276C604.299 188.949 569.061 170.981 531.339 160.42Z" fill="white"/>
+                    <path d="M337.5 431.5C305.195 431.5 279 457.464 279 489.5C279 521.537 305.195 547.5 337.5 547.5C369.804 547.5 396 521.537 396 489.5C396 457.464 369.804 431.5 337.5 431.5Z" fill="white"/>
+                    <path d="M559.5 431.5C527.195 431.5 501 457.464 501 489.5C501 521.537 527.195 547.5 559.5 547.5C591.804 547.5 618 521.537 618 489.5C618 457.464 591.804 431.5 559.5 431.5Z" fill="white"/>
+                    <path d="M532.915 633.749L532.661 633.311L532.226 633.571L532.227 633.573C532.225 633.572 532.225 633.572 532.225 633.572L532.204 633.584L532.136 633.624C532.074 633.66 531.981 633.714 531.857 633.785C531.609 633.926 531.238 634.134 530.747 634.399C529.764 634.93 528.303 635.689 526.393 636.6C522.572 638.424 516.956 640.857 509.784 643.291C495.441 648.159 474.879 653.029 450.018 653.029C409.573 653.029 391.547 643.627 381.33 638.299L381.313 638.29L381.256 638.26C378.247 636.691 375.842 635.437 373.732 634.91L373.457 634.841L373.257 635.041C371.881 636.415 370.918 638.534 370.413 641.142C369.906 643.757 369.852 646.902 370.327 650.378C371.278 657.33 374.354 665.646 380.253 673.758C392.061 689.998 415.156 705.4 455.117 707.499L455.139 707.501L455.162 707.5C492.325 706.1 514.378 692.213 525.841 676.373C531.568 668.46 534.642 660.07 535.636 652.533C536.628 645.007 535.549 638.29 532.915 633.749Z" fill="white"/>
+                  </svg> {%- endcomment -%}
+                </a>
+                <div class="hideChatMenu">
+                  <div class="ChatMenuContainer">
+                    <div class="chatMenus">
+                      <a href="#" onclick="openChat()" class="userChatLink">Live Chat</a>
+                    </div>
+                    <div class="chatMenus">
+                      <a href="https://api.whatsapp.com/send?phone=918976706316&text=Hi" class="userChatLink" target="_blank">WhatsApp Chat
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div> -->
+
+              <a title="Cart" class='cart_icon' href="{{ routes.cart_url }}">
+                <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/my_cart_926aa379-619c-4637-acac-a77874ca3fe3.svg?v=1669203816" alt="my_cart">
+                <span class="label_mob">Bag</span>
+                  <span class="cart-link__bubble ">{{ cart.item_count }}  </span>
+              </a>
+              {% include 'iwish_v2' with 'iwishlink' %}
+              <a href="https://doctordreams.com/pages/track-your-orders" class="for_mob">
+  <img src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/location.svg?v=1658469237" alt="location">
+                <span class="label_mob">Track Order
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% if link != blank %}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Announcement bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Show announcement",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "home-page-only",
+        "label": "Home page only",
+        "default": true
+      },
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          {
+            "label": "None",
+            "value": "none"
+          }, {
+            "label": "Light",
+            "value": "light"
+          }, {
+            "label": "Dark",
+            "value": "dark"
+          }, {
+            "label": "Accent",
+            "value": "accent"
+          }
+        ],
+        "default": "dark"
+      },
+      {
+        "id": "light-text",
+        "label": "Use light text color",
+        "type": "checkbox",
+        "default": false
+      }, {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon image",
+        "info": "50 x 50px recommended"
+      }, {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Buy our Bed + Mattress combos starting Rs.11,499/-"
+      }, {
+        "type": "text",
+        "id": "text2",
+        "label": "Text2",
+        "default": "One day Delivery in bangalore available *except Sunday*"
+      }, {
+        "type": "text",
+        "id": "text3",
+        "label": "Text3",
+        "default": "Use code PD20 at checkout to get extra 20% off"
+      }, {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ]
+  }
+{% endschema %}
+<script>
+  $('.image-container').slick({
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 5500,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  });
+</script>

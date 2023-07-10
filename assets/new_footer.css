@@ -1,0 +1,352 @@
+body {
+  font-family: "League Spartan", sans-serif;
+}
+.footer--blocks {
+  max-width: 100% !important;
+}
+.footer_address {
+  list-style-type: none !important;
+}
+.footer_adresess .footer_detail,
+.footer_email,
+.footer_adresess .footer_time,
+.footer_block_head,
+.footer_block_heading span,
+.footer__menu:hover {
+  color: #023e88 !important;
+}
+.footer_adresess .footer_detail {
+  font-size: calc(16px + (18 - 16) * ((100vw - 280px) / (1600 - 280)));
+  font-weight: 500;
+  line-height: 1.6 !important;
+}
+.footer_email {
+  font-size: calc(16px + (16 - 16) * ((100vw - 280px) / (1600 - 280)));
+  font-weight: 400;
+  text-decoration: underline !important;
+}
+.footer_adresess .footer_time {
+  font-size: calc(14px + (16 - 14) * ((100vw - 280px) / (1600 - 280)));
+  font-weight: 400;
+}
+.footer_details {
+  line-height: normal !important;
+}
+.footer_adresess {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center;
+  padding: 0 0 20px 0 !important;
+}
+.footer_block_head {
+  font-size: calc(
+    16px + (20 - 16) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+  font-weight: 600 !important;
+  font-family: "League Spartan", sans-serif !important;
+}
+.footer__menu a {
+  font-size: calc(
+    15px + (18 - 15) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+  font-family: "League Spartan", sans-serif !important;
+}
+.footer_block_heading span {
+  font-size: calc(
+    20px + (30 - 20) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+  font-family: "League Spartan", sans-serif !important;
+  text-transform: capitalize !important;
+}
+.menu_wrap {
+  display: flex;
+  justify-content: center;
+  flex-basis: 42%;
+}
+.footer--about-text img {
+  margin: 0px 20px 0px 0px;
+}
+.footer_menu {
+  min-height: 210px;
+}
+.footer__rooot {
+  background: #f3f8ff !important;
+  padding: 0 4% !important;
+}
+.footer__block {
+  padding: 0 30px 15px 30px;
+}
+.footer__block.menu1-2,
+.footer__block.menu1-4 {
+  padding-bottom: 0;
+}
+.footer_about_text {
+  margin-top: 25px;
+}
+.payment_container {
+  padding: 32px 0;
+}
+.payment_contain {
+  display: flex;
+}
+.payment_contain a {
+  cursor: none;
+  pointer-events: none;
+}
+.payment_contain img {
+  width: 60px;
+  margin-right: 10px;
+}
+#footer-email {
+  height: 55px;
+  border-radius: 45px;
+  max-width: 100%;
+}
+.foot_form_container {
+  position: relative;
+}
+.foot_form_submit {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+.foot_form_submit button {
+  width: 132px;
+  height: 40px;
+  border-radius: 30px;
+  background: var(--bg_color2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(
+    14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+  text-transform: capitalize !important;
+  font-weight: 500;
+  font-family: var(--heading_new_f);
+}
+.foot_form_submit button:hover {
+  background: var(--bg_color2);
+}
+#footer-email::placeholder {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  font-size: calc(
+    14px + (18 - 14) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+}
+.privacy_container {
+  background: #02a8b8;
+}
+.policy_contain {
+  padding: 0 4%;
+  color: #f3f8ff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.left_policy {
+  width: 25%;
+}
+.center_policy {
+  width: 60%;
+  text-align: center;
+}
+.right_policy {
+  width: 15%;
+}
+.center_policy span::after,
+.populer_container a::after {
+  content: " | ";
+  padding: 0 6px;
+}
+.center_policy span:last-child::after,
+.populer_container a:last-child:after {
+  content: "";
+}
+.policy_contain p {
+  font-size: calc(
+    13px + (16 - 13) * ((100vw - 280px) / (1600 - 280))
+  ) !important;
+}
+.right_policy p {
+  text-align: end;
+}
+.footer_block_heading {
+  padding-bottom: 30px !important;
+}
+
+/* populer_categories section */
+.populer_categories,
+.foot_form_submit button:focus {
+  background: #033f88;
+}
+.populer_categories h1 {
+  text-align: left;
+}
+.populer_categories h1,
+.populer_categories p,
+.populer_categories a {
+  color: #f3f8ff;
+}
+.populer_container {
+  padding: 35px 4%;
+}
+.populer_container h1 {
+  font-size: calc(20px + (25 - 20) * ((100vw - 280px) / (1600 - 280)));
+  font-family: League Spartan, sans-serif !important;
+}
+.populer_container a {
+  font-size: calc(14px + (16 - 14) * ((100vw - 280px) / (1600 - 280)));
+  font-weight: 300;
+}
+.populer_container p {
+  margin-top: 15px;
+}
+/* .announcement_right , .privacy_mobile_container{
+    display: none !important;
+} */
+.privacy_mobile_container {
+  display: none !important;
+}
+.block__heading {
+  margin: 25px 0 0 0 !important;
+}
+.link__highlight:hover {
+  text-decoration: underline !important;
+  color: var(--bg_color2) !important;
+}
+
+@media screen and (max-width: 1199px) {
+  .footer__books {
+    padding: 30px 0 35px 0 !important;
+  }
+  .footer_about_text {
+    margin: 30px 0 30px 0 !important;
+  }
+  .footer_adresess {
+    padding: 0 0 30px 0 !important;
+  }
+  .footer_address .footer_adresess:last-child {
+    padding: 0 0 20px 0 !important;
+  }
+  .menu_wrap {
+    flex-basis: 100%;
+  }
+  .childmenu_wrap {
+    width: 50%;
+  }
+  .foot_head {
+    font-size: 20px !important;
+  }
+  .block__heading {
+    margin: 0 !important;
+  }
+  .footer_block_heading span,
+  .foot_head {
+    font-weight: 500 !important;
+  }
+  .footer__block {
+    padding: 0 !important;
+  }
+  .left_policy,
+  .center_policy {
+    width: 50%;
+  }
+  .right_policy {
+    width: 100%;
+  }
+  .right_policy p {
+    text-align: left;
+  }
+  #footer-email {
+    height: 53px;
+  }
+  .foot_form_submit button {
+    width: 104px;
+    height: 38px;
+  }
+  .privacy_container {
+    display: none;
+  }
+  .privacy_mobile_container,
+  .policy_mobile_contain span,
+  .footer--blocks {
+    display: block !important;
+  }
+  .privacy_mobile_container {
+    background: #02a8b8;
+  }
+  .left_mpolicy,
+  .center_mpolicy {
+    float: left;
+    width: 50%;
+  }
+  .right_mpolicy {
+    float: left;
+    width: 100%;
+  }
+  .policy_mobile_contain::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .policy_mobile_contain {
+    padding: 28px 27px 17px 27px;
+    color: #fff;
+  }
+  .policy_mobile_contain span {
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .left_mpolicy p,
+  .center_mpolicy p {
+    margin-bottom: 20px !important;
+    line-height: 1.6;
+  }
+  .right_mpolicy p {
+    font-weight: 300;
+    font-size: 13px;
+  }
+  .payment_container {
+    padding: 40px 0;
+  }
+  .footer_block_heading {
+    padding-bottom: 16px !important;
+    line-height: 25px !important;
+  }
+  .personal_order_info .address__order_info {
+    display: none;
+  }
+  .personal_order_info .account--orders,
+  .personal_order_info .address__order_info {
+    float: none;
+  }
+  .personal_order_info .account--orders {
+    width: 100%;
+  }
+  .order_list_row {
+    display: flex !important;
+    overflow-x: scroll;
+  }
+  .order_list_row td {
+    white-space: nowrap;
+    margin-right: 25px;
+  }
+  .order_list_row .order_img {
+    width: 80px;
+    display: flex;
+  }
+  .order_sku {
+    width: 51% !important;
+  }
+  .order__table {
+    padding: 0 5px !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer--block.footer__block.menu1-2 {
+    width: 100%;
+  }
+}

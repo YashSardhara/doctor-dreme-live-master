@@ -1,0 +1,47 @@
+{%- assign quantity_t = 'products.quantity' | t -%}
+
+<div class="qtydiv">
+  {%comment%}
+    <label for="Quantity" class="quantity-selector">Quantity</label>
+  {%endcomment%}
+  <div class="qtybox d_flex">
+    <span class="btnqty qtyminus icon icon-minus">-</span>
+    <input type="text" id="{{ id }}--quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" form="{{ id }}" readonly="">
+    <span class="btnqty qtyplus icon icon-plus">+</span>
+  </div>
+</div>
+<style>
+  .qtydiv label {
+    display: block;
+    margin-bottom: 12px;
+    letter-spacing: 2.8px;
+    color: #747a7b;
+  }
+  .qtydiv .btnqty {
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    font-size: 25px;
+    padding: 5px;
+  }
+  .qtydiv .btnqty.qtyminus {
+    margin-right: 8px;
+  }
+  .qtydiv .btnqty.qtyplus {
+    margin-left: 8px;
+  }
+  .qtydiv .quantity-input {
+    border: none;
+    border: none;
+    padding: 8px 5px;
+    text-align: center;
+    width: 50px;
+    outline: none;
+    display: inline-block;
+  }
+  .qtydiv {
+    display: inline-block;
+    padding-right: 15px;
+    padding-top: 10px;
+  }
+</style>

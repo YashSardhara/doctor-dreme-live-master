@@ -1,0 +1,121 @@
+{{section.settings.slider_effect_images}}
+<span class="d_flex heading_div slider_head">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="featured-collections--heading heading_text" data-item="section-heading">
+      {{ section.settings.heading }}
+    </h2>
+  {%- endif -%}
+  {%- if section.settings.subheading != blank -%}
+    <p class="subheading_text">{{section.settings.subheading }}
+    </p>
+  {%- endif -%}
+</span>
+<div class="shop_by_preference_container">
+  {%- for block in section.blocks -%}
+    {%- assign collection_desk = block.settings.image | img_url: 'master' -%}
+    {%- assign collection_mob = block.settings.image_mob | img_url: 'master' -%}
+    <div class="preference_box preference_slider_image {% if forloop.index == 1 %}firstBlock firstBlock_desk{% endif %}" style="background-image: url({{collection_desk}}); ">
+      <p class="top_head">{{block.settings.heading }}
+      </P>
+      <div class="collectin_product_container">
+        <h2>{{block.settings.title}}
+        </h2>
+        {%- assign collection = collections[block.settings.collection] -%}
+        <div class="product_container">
+          {% for product in collection.products limit:2 %}
+            <a class="product" href="{{ product.url | within: collection }}">
+              {% if product.featured_image != blank %}
+                <img class="lazyload" data-sizes="auto" data-src="{{product.featured_image | img_url :'master' }}" alt="">
+                <div class="product_content">
+                  <p>{{ product.title | escape | truncate: 50, '...' }}
+                  </p>
+                  <span class="card_body_btn shop_now_btn">Shop Now</span>
+                </div>
+              {% endif %}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+  {%- endfor -%}
+
+</div>
+{% schema %}
+  {
+    "name": "slider_effect_images",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      }, {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "add here..."
+      }, {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "SingaleBanner",
+        "name": " Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Banner Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mob",
+            "label": "Banner Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading of Slide",
+            "default": "heading"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }, {
+            "type": "text",
+            "id": "title",
+            "default": "Type heading here",
+            "label": "Heading"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "collection"
+          }, {
+            "type": "text",
+            "id": "button-text",
+            "label": "Button text",
+            "default": "button"
+          }, {
+            "type": "range",
+            "id": "products_per_slide",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "default": 2,
+            "label": "Product Per Slide"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "slider effect images",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

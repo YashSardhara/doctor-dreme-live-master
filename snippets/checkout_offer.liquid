@@ -1,0 +1,57 @@
+
+   <div class="cart--footer">   
+      <div class="cart--totals sub-total">
+          <div data-item="block-heading">Subtotal <span>({{ cart.item_count }}items)</span></div>
+          
+          <div class="cart--total--price" data-item="accent-text">
+            {{ cart.total_price | money_with_currency }}
+          </div>
+        </div>
+      <div class="cart--tax-info" data-item="paragraph">
+          {{ shipping_taxes_t }}
+        </div>
+
+      <div class="cart--totals">
+        {%- if cart.cart_level_discount_applications != blank -%}
+          <div class="cart--sub-total">
+            <div data-item="block-heading">
+              {{ subtotal_t }}
+            </div>
+            <div class="money" data-item="accent-text">
+              {{ cart.items_subtotal_price | money }}
+            </div>
+          </div>
+
+          <div class="cart--discounts">
+            <ul>
+              {%- for discount_application in cart.cart_level_discount_applications -%}
+                <li>
+                  <div data-item="accent-text">{{ discount_application.title }}</div>
+                  <span data-item="light-accent-text">
+                    –<span class="money">{{ discount_application.total_allocated_amount | money }}
+                    </span>
+                  </span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="cart--total">
+          <div data-item="block-heading">{{ total_t }} {% if view == 'drawer' %}<span>({{ cart.item_count }}items)</span>{% endif %}</div>
+          {% if view == 'drawer' %}
+          <div class="cart--total--price money drawer1" data-item="accent-text">
+            {{ cart.total_price | money_with_currency }}
+          </div>
+          {% else%}
+          <div class="cart--total--price money" data-item="accent-text">
+            {{ cart.total_price | money_with_currency }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="cart--tax-info" data-item="paragraph">
+          {{ shipping_taxes_t }}
+        </div>
+      </div>
+    </div>

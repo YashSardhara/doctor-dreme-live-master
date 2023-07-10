@@ -1,0 +1,524 @@
+ 
+//  page faq slider script start
+$('.faqs_slider').slick({
+  dots: false,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  arrows: true,
+  responsive: [
+    {
+      breakpoint: 1025,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false
+      }
+    }, {
+      breakpoint: 850,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        dots: false
+      }
+    }, {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1.5,
+        slidesToScroll: 2,
+        dots: false
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1.2,
+        slidesToScroll: 1,
+        dots: false
+      }
+    }
+  ]
+});
+// page faq slider script end
+$(".read").click(function(){
+  $(this).prev().toggle();
+  $(this).siblings('.dots').toggle();
+  if($(this).text()=='read more'){
+    $(this).text('read less');
+  }
+  else{
+    $(this).text('read more');
+  }
+});
+//  end collection page read more read less
+
+function  up_count(){
+  setTimeout(function() {
+    $.ajax({
+      type: 'GET',
+      url: 'https://doctordreams.com/cart.json',
+      dataType: 'json',
+      success: function(data) { 
+        var item_count = data.item_count;
+        $(".cart-link__bubble").text(item_count);
+      }
+    });
+  }, 1000);
+}
+
+function menuOverlay() {
+  var menu_width;
+  console.log('mobile menu button clicked');
+  console.log($('#SiteNav').width(),'width');
+ menu_width = (($( window ).width())-($('#SiteNav').width()));
+ $('.menu_close_btn').css('width',menu_width);
+ console.log(menu_width,'menu_width');
+};
+$(function () {
+
+  $(".sidebar-menu-list li a").each(function (index, value) {
+    var abc = $(this).text().trim();
+    var custom_text_over_head;
+    console.log(abc, "header menu text");
+    if (abc == "Hybrid Pocket Spring Mattress") {
+      custom_text_over_head = "New";
+    } else if (abc == "Max ICEFOAM Orthopaedic Mattress") {
+      custom_text_over_head = "Best Seller";
+    } else if (abc == "Lite Dual Comfort Mattress") {
+      custom_text_over_head = "Budget Friendly";
+    } else if (abc == "Plus Memory Foam Mattress") {
+      custom_text_over_head = "Firm Mattress";
+    } else if (abc == "Striker Metal Bed") {
+      custom_text_over_head = "Best Seller";
+    } else if (abc == "Striker Metal Bed White") {
+      custom_text_over_head = "Best Seller";
+    } else if (abc == "Fusion Bed With Storage") {
+      custom_text_over_head = "New Launch";
+    } else if (abc == "Matrix Smart Adjustable Bed") {
+      custom_text_over_head = "New Launch";
+    } else if (abc == "Smart Aroma Diffuser") {
+      custom_text_over_head = "New Launch";
+    } else if (abc == "Grande Wood and Metal Structure Bed") {
+      custom_text_over_head = "New Launch";
+    } else if (abc == "Premium Pure Cotton Fitted Bedsheet") {
+      custom_text_over_head = "New Launch";
+    } else if (abc == "Snuggle Pillow") {
+      custom_text_over_head = "Fiber and Foam Hybrid Adjustable";
+    } else if (abc == "Luxe Memory Foam Pillow") {
+      custom_text_over_head = "Memory Foam Adjustable";
+    } else if (abc == "Cloud Pillow") {
+      custom_text_over_head = "Microfiber Filled";
+    } else if (abc == "Cuddle Pillow") {
+      custom_text_over_head = "Shredded Gel Memory Foam Filling";
+    } else if (abc == "Bread Pillow") {
+      custom_text_over_head = "Fiber and Foam Hybrid Adjustable";
+    } else if (abc == "Velvette Upholstered Bed") {
+      custom_text_over_head = "New Launch";
+    }
+    console.log(custom_text_over_head);
+    $(this).next().text(custom_text_over_head);
+  });
+  // images 
+  $(".sidebar-menu-list li ").mouseover(function() { 
+    console.log($(this).children('.site-nav__link').text().trim());
+    // var abc = $(this).text();
+    var custom_text_over,img_scr_over ;
+    // abc = abc.split('|');
+    // abc = abc[0];
+    // abc = abc.trim();
+    abc = $(this).children('.site-nav__link').text().trim();
+    console.log(abc,'hover menu text');
+    $('.site-nav--has-dropdown').removeClass('image_parent');
+    var image_location = $(this).parents('.site-nav--has-dropdown').addClass('image_parent');
+    // var custom_text_location = $(this).parent().parent().parent().parent().find("#custom_text");
+   
+    if (abc == "Max ICEFOAM Orthopaedic Mattress"){
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Max_cool_mattress_closeup.jpg?v=1643798725";
+      custom_text_over = 'Microbial and Cooling function | ICEFOAM ';
+    }else if (abc == "Lite Dual Comfort Mattress") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Lite_dual_mattress_closeup.jpg?v=1643798725";
+      custom_text_over = 'Dual sided | long standing life';
+    }else if (abc == "Plus Memory Foam Mattress") {
+      console.log(abc,'Inside Plus Memory Foam Mattress');
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Plus_mattress_closeup.jpg?v=1643798725";
+      custom_text_over = 'Memory foam support | No partner disturbance';
+    }else if (abc == "Striker Metal Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/stricker_bed_blackcloseup.jpg?v=1643881570";
+      custom_text_over = 'Rust Resistant | optimal weight management';
+    }else if (abc == "Striker Metal Bed White") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/stricker_bed_white_closeup.jpg?v=1643881570"
+      custom_text_over = 'Rust Resistant | optimal weight management';
+    }else if (abc == "Acacia Solid Wooden Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/acacia_Megamenu-01.png?v=1650365582"
+      custom_text_over = 'Premium Quality Hardwood | Sturdy Construction';
+    }else if (abc == "Gel Infused Memory Foam Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Memory_contour.jpg?v=1644216841"
+      custom_text_over = 'Memory Foam | Antibacterial encasement';
+    }else if (abc == "Cloud Comforter") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Cloud_Comforter.jpg?v=1644217036"
+      custom_text_over = 'Microfiber Fabric | Temperature Regulation';
+    }else if (abc == "Weighted Blankets") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Weighted_Blankets.jpg?v=1644217035"
+      custom_text_over = 'Easy Maintenance | Pressure Therapy';
+    }else if (abc == "Mattress Tencel Protector") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Tencel_Mattress_Protector.jpg?v=1644217035"
+      custom_text_over = 'Water & Stain Resistance | Tencel Fabric';
+    }else if (abc == "Tencel Pillow Protector") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Tencel_Pillow_Protector_1.jpg?v=1644217035"
+      custom_text_over = 'Fabric Easy wash | Soft & Breathable Fabric';
+    }else if (abc == "Essential Oil Pillow Spray") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Essential_Oil_Pillow_Spray_970fcfdf-a9a1-4e8e-ab7a-d17dea2cdc66.jpg?v=1644218020"
+      custom_text_over = 'Paraben Free | Improves Sleep Quality | Calms Mind';
+    }else if (abc == "Aroma Diffuser Oil") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Aroma_Diffuser.jpg?v=1644233382"
+      custom_text_over = 'Essential Oil | Calms Mind | Improves Sleep Quality';
+    }else if (abc == "Eye Mask") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Eye_Mask.jpg?v=1644218020"
+      custom_text_over = '100% Natural | Aroma Infused Seeds | Improves Sleep Quality';
+    }else if (abc == "Bread Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Megamenu-01_b09a6d7d-ddd6-4bf1-adb1-3c84f6e51ab3.png?v=1646041937"
+      custom_text_over = '12 Microfibre Pockets | Gel-infused Memory Foam | Super soft Polyester Cover';
+    }else if (abc == "Mattress + Single Size Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Single.png?v=1644221931"
+      custom_text_over = 'Easy transport | Sturdy construction';
+    }else if (abc == "Mattress + Queen Size Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Queen.png?v=1644222096"
+      custom_text_over = 'Comfort for two | easy assembly';
+    }else if (abc == "Mattress + King Size Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/King.png?v=1644222096"
+      custom_text_over = 'All round support | premium minimal design';
+    }else if (abc == "Fusion Bed with Storage") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Fusion_bed_white_grey_closeup.jpg?v=1644388983"
+      custom_text_over = 'Termite- Resistant | Good Storage Space';     
+    }else if (abc == "Matrix Smart Adjustable Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Megamenu_1033aaa6-8ea8-4add-9812-c9d7153a8262.png?v=1644838981"
+      custom_text_over = 'One-touch adjustable bed | 5 comfort-enhancing presets';
+    }else if (abc == "Snuggle Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Megamenu-01.png?v=1646026373"
+      custom_text_over = 'Light Microfibre | Adjustable Foam | Anti-microbial Cover';
+    }else if (abc == "Luxe Memory foam Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Megamenu-01_957caaf8-fcee-49fc-bd0b-ae9ea7ca9f61.png?v=1646028950"
+      custom_text_over = 'Airy Gel Memory Foam | Soft Foam Pockets | Cool Tencel Cover';
+    }else if (abc == "Cloud Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/megamenu-01_0d3450dc-b51c-4abf-bcf9-d9934c73b50c.png?v=1646032765"
+      custom_text_over = 'Hypoallergenic Microfibre | Comfortable neck support | Super-Soft Polyester Cover';
+    }else if (abc == "Cuddle Pillow") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Megamenu-01_307832ff-db50-4ffe-ad8c-aa978d15d6f7.png?v=1646034065"
+      custom_text_over = 'Airy Shredded Memory Foam | Comfy Super Soft Foam | Soft Knitted Polyester Cover';
+    }else if (abc == "Smart Aroma Diffuser") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/megamenu-01_e726e4ab-0e9c-464b-a426-4a72ba86511c.png?v=1648547015"
+      custom_text_over = 'Aroma diffuser + humidifier | Bluetooth speaker + 10 light modes';
+    }else if (abc == "Grande Wood and Metal Structure Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Untitled-8-01.png?v=1650884976"
+      custom_text_over = 'Hybrid wood-metal structure | Sophisticated modern aesthetics | Lightweight and portable design';
+    }else if (abc == "Premium Pure Cotton Fitted Bedsheet") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Untitled-8-03.png?v=1650969918"
+      custom_text_over = '100% Super-Soft Cotton | TruGrip Elastic Fit | No Crease Technology';
+    }else if (abc == "Hybrid Pocket Spring Mattress") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/spring_mattress_closeup.jpg?v=1643798725"
+      custom_text_over = 'Zero Motion Transfer Technology | Anti Sagging Side Wall ';
+    }else if (abc == "Velvette Upholstered Bed") {
+      img_scr_over = "https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Velvet_Bed_Grey.jpg?v=1654675119"
+      custom_text_over = 'Ultra-Lightweight Structure | Elegant Modern Design ';
+    }
+    console.log(abc,'hover title');
+    console.log(img_scr_over,'img_scr_over');
+    // $('.image_parent .image-section .megamenu_img_section').css('border','1px solid red');
+    $('.image_parent .image-section .megamenu_img_section').attr('src',img_scr_over);
+    $('.image_parent .image-section .image_text').text(custom_text_over);
+  });
+  // mobile menu 
+  $( ".mobile_menu_div" ).click(function() {
+    menuOverlay();
+    $('#SiteNav').addClass('menutoggle_class');
+   $('.menu_close_btn').css('display','block');
+    $('.Mob_hideChatMenu').fadeToggle('slow');
+  });
+  $( ".menu_close_btn" ).click(function() {
+    $('#SiteNav').removeClass('menutoggle_class');
+    $('.menu_close_btn').css('display','none');
+   });
+ 
+});
+// fix header
+$(window).scroll(function(){
+  var sticky = $('.sticky_header'),
+      scroll = $(window).scrollTop();
+
+  if (scroll > 0) 
+  {
+    // sticky.addClass('fixed_padding');
+    $('#shopify-section-new-header').addClass('fixed_padding');
+    $('.site-nav__dropdown').addClass('mega_full');
+    // $('.layout--main-content').addClass('fix_content');
+  }
+  else{
+    // sticky.removeClass('fixed_padding');
+    $('#shopify-section-new-header').removeClass('fixed_padding');
+    $('.site-nav__dropdown').removeClass('mega_full');
+    // $('.layout--main-content').removeClass('fix_content');
+  }
+  var e = $(".pincode_div").height() + 30;
+  $(window).scrollTop() > e ?  ($(".product_sticky_container").addClass("sticky_bottom")) : ($(".product_sticky_container").removeClass("sticky_bottom"));
+ 
+});
+// end
+// redirect to pincode 
+$(".bottom_but_it_with").click(function () {
+  $("html, body").animate({
+    scrollTop: $(".pincode_div").offset().top - 425
+  }, 500);
+});
+// end
+var top_menu_height , newlettwe_title_width;
+// js to fetch width 
+$('.top_menu_list').removeClass('mobile_il_clicked');
+$('.site-nav__dropdown').removeClass('visible_menu_class');
+function myFunction(x) {
+  if (x.matches) { 
+    $('.top_menu_list').removeClass('mobile_il_clicked');
+    $('.site-nav__dropdown').removeClass('visible_menu_class');
+     $( ".top_menu_list").click(function() {
+      $('.top_menu_list svg').css('transform','rotate(270deg)');
+      $('.top_menu_list ').css('color','#000');
+      $('.top_menu_list').removeClass('mobile_il_clicked');
+      $('.site-nav__dropdown').removeClass('visible_menu_class');
+      $(this).addClass('mobile_il_clicked');
+      top_menu_height =   $(this).outerHeight();
+      top_menu_height = top_menu_height + 2;
+      console.log(top_menu_height,'top_menu_height');
+      $('.mobile_il_clicked .site-nav__dropdown').css('top',top_menu_height);
+      // $('.mobile_il_clicked .site-nav__dropdown').css('visibility','visible');
+      // $('.mobile_il_clicked .site-nav__dropdown').css('opacity','1');
+      // $('.mobile_il_clicked .site-nav__dropdown').css('height','fit-content');
+      // $('.mobile_il_clicked .site-nav__dropdown').css('height','fit-content');
+      $('.mobile_il_clicked .site-nav__dropdown').addClass('visible_menu_class');
+      // $('.visible_menu_class').pre().css('transform','rotate(359deg)');
+      $('.visible_menu_class').siblings('a').children('svg').css('transform','rotate(359deg)');
+      $('.visible_menu_class').parents('.top_menu_list').css('color','var(--bg_color1)');
+   
+      
+
+      if( $('.mobile_il_clicked .site-nav__dropdown').css('visibility') == 'visible'){
+        // $('.mobile_il_clicked .site-nav__dropdown').css('visibility','hidden');
+        // $('.mobile_il_clicked .site-nav__dropdown').css('opacity','0');
+        // $('.visible_menu_class').siblings('a').children('svg').css('transform','rotate(270deg)');
+        $('.visible_menu_class').siblings('a').children('svg').css('transform','rotate(270deg)');
+        $('.visible_menu_class').parents('.top_menu_list').css('color','#000');
+      
+        $('.mobile_il_clicked .site-nav__dropdown').removeClass('visible_menu_class');
+      
+       
+      
+      }
+    });
+    // mobile menu 
+  //   $(window).on("load resize orientationchange", function() {
+  //    resizeEntryHeight()
+  // })
+   }else{
+    $(".sub-menu-inner-page").on("mouseleave", function() {
+      $('.site-nav__dropdown').css('visibility','hidden');
+      $('.site-nav__dropdown').css('opacity','0');
+    });
+    
+    $(".top_menu_list").on("mouseenter", function() {
+      $(this).find(".site-nav__dropdown").css('visibility','visible');
+      $(this).find(".site-nav__dropdown").css('opacity','1');
+    })
+
+    // $(".top_menu_list" ).hover(function() {
+    //   $('.site-nav__dropdown').css('visibility','hidden');
+    //   $('.site-nav__dropdown').css('opacity','0');
+    //   $(this).find(".site-nav__dropdown").css('visibility','visible');
+    //   $(this).find(".site-nav__dropdown").css('opacity','1');
+    // });
+
+
+    $( ".top_menu_list" ).hover(
+      function() {
+        $('.site-nav__dropdown').css('visibility','hidden');
+        $('.site-nav__dropdown').css('opacity','0');
+        $(this).find(".site-nav__dropdown").css('visibility','visible');
+        $(this).find(".site-nav__dropdown").css('opacity','1');
+      }, function() {
+        $('.site-nav__dropdown').css('visibility','hidden');
+        $('.site-nav__dropdown').css('opacity','0');
+      }
+    );
+    
+   }
+}
+var x = window.matchMedia('(max-width: 1300px)')
+myFunction(x) 
+x.addListener(myFunction)
+
+// heading div
+
+// end heading div
+// new_prodcut grid slider 
+// $('.new_product_grid').slick({
+//   dots: true,
+//   infinite: true,
+//   speed: 300,
+//   slidesToShow: 3,
+//   slidesToScroll: 3
+  
+// });
+// end new_prodcut grid slider 
+
+// $(window).on("resize orientationchange", function() {
+//   var menu_width;
+//   console.log('mobile menu button clicked');
+//   console.log($('#SiteNav').width(),'width');
+//  menu_width = (($( window ).width())-($('#SiteNav').width()));
+// })
+
+$( window).resize(function() {
+  menuOverlay();
+});
+
+// ================= end header js =========================
+// $('#single_combo').addClass('combo_vis');
+// $('#single_combo_slider').css('display','block');
+//   $("#single_combo").click(function () {
+//     $('.combos_button').removeClass('combo_vis');
+//     $('.best_combo_slider').css('display','none');
+//       $(this).addClass('combo_vis');
+//       $('#single_combo_slider').css('display','block');
+//     });
+//     $("#queen_combo").click(function () {
+//       $('.combos_button').removeClass('combo_vis');
+//       $('.best_combo_slider').css('display','none');
+//       $(this).addClass('combo_vis');
+//      $('#queen_combo_slider').css('display','block');
+//     });
+//     $("#king_combo").click(function () {
+//       $('.combos_button').removeClass('combo_vis');
+//       $('.best_combo_slider').css('display','none');
+//       $(this).addClass('combo_vis');
+//      $('#king_combo_slider').css('display','block');
+//     });
+
+
+
+$(".combos_button").click(function () {
+  $('.combos_button').removeClass('combo_vis');
+  
+  $('.best_combo_slider').css('display','none');
+  $('.faq_info').css('display','none');
+  $('.best_combo_slider').slick("refresh");
+	 $(this).addClass('combo_vis');
+console.log($(this).attr('id'));
+var vis_slider = $(this).attr('id')
+vis_slider  = '#'+vis_slider +'_slider'
+console.log(vis_slider);
+$(vis_slider).css('display','block');
+  });
+
+
+
+$(".show_more").click(function () {
+console.log($(this).text().toLowerCase());
+console.log('click show more');
+$(this).hide();
+$('.show_less').show();
+$('.new_collection_grid').css('display','block');
+})
+
+$(".show_less").click(function () {
+  $(this).hide();
+  $('.show_more').show();
+  $('.new_collection_grid:nth-child(5)').css('display','none');
+  $('.new_collection_grid:nth-child(6)').css('display','none');
+  })
+
+  // faq
+
+  var acc = document.getElementsByClassName("accordion1");
+var i;
+// Open the first accordion
+  var firstAccordion = acc[0];
+  var firstPanel = firstAccordion.nextElementSibling;
+  firstAccordion.classList.add("active");
+  firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+     this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+// end faq
+  // Cross-browser way to get the computed height of a certain element. Credit to @CMS on StackOverflow (http://stackoverflow.com/a/2531934/7926565)
+//   function getStyle(el, styleProp) {
+//   var value, defaultView = (el.ownerDocument || document).defaultView;
+//   if (defaultView && defaultView.getComputedStyle) {
+//     styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+//     return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+//   } else if (el.currentStyle) { // IE
+//     styleProp = styleProp.replace(/\-(\w)/g, function(str, letter) {
+//       return letter.toUpperCase();
+//     });
+//     value = el.currentStyle[styleProp];
+//     if (/^\d+(em|pt|%|ex)?$/i.test(value)) { 
+//       return (function(value) {
+//         var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+//         el.runtimeStyle.left = el.currentStyle.left;
+//         el.style.left = value || 0;
+//         value = el.style.pixelLeft + "px";
+//         el.style.left = oldLeft;
+//         el.runtimeStyle.left = oldRsLeft;
+//         return value;
+//       })(value);
+//     }
+//     return value;
+//   }
+// }
+
+// faq_slider 
+$('.faqs_slider').slick({
+  dots: false,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  arrows: true,
+  responsive: [
+  {
+      breakpoint: 1024,
+      settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+      }
+  },
+  {
+      breakpoint: 850,
+      settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+      }
+  },
+  {
+      breakpoint: 600,
+      settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+      }
+  },
+  {
+      breakpoint: 480,
+      settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+      }
+  }
+  ]
+});

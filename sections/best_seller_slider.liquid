@@ -1,0 +1,174 @@
+<class="featured-collection">
+  {% if section.settings.heading != blank or section.settings.subheading != blank %}
+    <span class="d_flex heading_div slider_head">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="featured-collections--heading heading_text" data-item="section-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="subheading_text">{{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+    </span>
+  {% endif %}
+  {%- assign collection = collections[section.settings.collection] -%}
+  <div class="comman_maincontainer_spacing  best_seller_slider">
+    {% for product in collection.products limit: 6 %}
+      <div class="new_product_grid_body  new_card_body d_flex wishlist_mob_container">
+        {% if product.featured_image != blank %}
+          {%- comment -%}
+          <img class="wishlist_mob" src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Wishlist.png?v=1657882643">
+          {%- endcomment -%}
+          <div class="new_product_grid_image">
+            <a href="{{ product.url | within: collection }}"><img
+                class="lazyload"
+                data-sizes="auto"
+                data-src="{{product.featured_image | img_url :'master' }}"
+                alt=""></a>
+          </div>
+        {% endif %}
+
+        <span class="new_product_grid_info card_body_info">
+          <p class="card_body_title new_prodcut_grid_title d_flex">
+            <span class="span_title">
+              <a href="{{ product.url | within: collection }}">{{ product.title | escape | truncate: 50, '...' }}</a>
+            </span>
+            <span class="iWishAddColl iwishcheck"
+              data-variant="{{ product.variants.first.id }}"
+              data-product="{{ product.id }}"
+              data-pTitle="{{ product.title | escape }}">{%- comment -%}
+                <img class="wishlist_mob"
+                src="https://cdn.shopify.com/s/files/1/0248/7766/2271/files/Wishlist.png?v=1657882643">
+                {%- endcomment -%}
+            </span>
+          </p>
+          <span class="product_description">{{ product.metafields['product']['secondline'] | escape | truncate: 80
+ , '...' }}</span>
+          <!--           <p class="product_description">A classic study bed that comes with re-enforced metal,that adds studiness to style</p> -->
+          <span class="d_flex card_body_price_container">
+            <b class="card_body_price_text new_prodcut_grid_price d_flex">
+              {%- if product.first_available_variant.compare_at_price > product.first_available_variant.price -%}
+                <span>Monsoon Sale</span>
+                <span class="bold_price">{{ product.first_available_variant.price | money }}
+                </span>
+              {%- else -%}
+                <span></span>
+                <span class="bold_price">{{ product.first_available_variant.price | money }}
+                </span>
+              {%- endif -%}
+            </b>
+            {%- comment -%}
+            <span class="card_body_btn best_s_btn">Shop Now</span>
+            {%- endcomment -%}
+            <a class="card_body_btn best_s_btn" href="{{ product.url | within: collection }}">Shop Now</a>
+          </span>
+
+        </span>
+      </div>
+    {% else %}
+      {% for i in (1..6) %}
+        <a href="#" class="featured-collection-item">
+          {% capture current %}
+            {% cycle 1, 2, 3, 4, 5, 6 %}
+          {% endcapture %}
+          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+
+          <p>{{ 'homepage.onboarding.product_title' | t }}
+          </p>
+          <p>{{ 1999 | money }}
+          </p>
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+
+  <a class="btn_see_all last_btn_s" href="{{ product.url | within: collection }}">{{ section.settings.btn-text }}
+  </a>
+
+</section>
+{% schema %}
+  {
+    "name": "New Featured collection",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading",
+        "default": "duis accumsan eil gravida, vulputate est et, hendreit felis"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }, {
+        "type": "text",
+        "id": "btn-text",
+        "label": "Button text",
+        "default": "button"
+      }, {
+        "type": "url",
+        "id": "button-url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "New Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+<script>
+  $('.best_seller_slider').slick({
+    dots: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      }, {
+        breakpoint: 850,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false
+        }
+      }
+    ]
+  });
+</script>

@@ -1,0 +1,37 @@
+<div class="plpdesc_container">
+    <div class="container">
+        {%- if collection.metafields['collection']['plp_desc'] != blank %}
+        <div class="custom_desc_container">
+            {%- assign faetures_materials = collection.metafields['collection']['plp_desc'] | split: '||' -%}
+            {% for item in faetures_materials %}
+            {%- assign collection_data = item | split: '+' -%}
+            <h2 class="info_heading">{{collection_data | first}}</h2>
+            {{collection_data| last}}
+            {% endfor %}
+        </div>
+        {%- endif -%}
+        
+        <h2 class="plp_faqs">FAQS</h2>
+        {%- if collection.metafields['collection']['plp_faq'] != blank %}
+        <div class="custom_faq_container">
+            {%- assign faetures_materials = collection.metafields['collection']['plp_faq'] | split: '||' -%}
+            {% for item in faetures_materials %}
+            {%- assign collection_data = item | split: '+' -%}
+            <h2 class="info_heading">{{collection_data | first}}</h2>
+            <p class="info_desc">{{collection_data| last}}</p>
+            {% endfor %}
+        </div>
+        {%- endif -%}
+    </div>
+</div>
+
+{% schema %}
+{
+"name": "Created - info",
+"presets": [
+{
+"name":"New Collection info"
+}
+]
+}
+{% endschema %}

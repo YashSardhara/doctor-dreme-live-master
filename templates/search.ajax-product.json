@@ -1,0 +1,12 @@
+{
+  "layout": false,
+  "sections": {
+    "main": {
+      "type": "search-product",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

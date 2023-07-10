@@ -1,0 +1,1175 @@
+<div class="pdp-details topleftnrightbottomround">
+ 
+  <div class="description pd-content" itemprop="description">
+    {% comment %}
+    {{ product.description | split: '<!-- split -->' | first }}
+    {% endcomment %}
+<!--  Table Dimensions -->
+
+        {% assign KeyIngredients = product.metafields.Product %}
+    {% assign KeyIngredients =  KeyIngredients['Key Ingredients'] %}
+    {% if KeyIngredients != 0 and KeyIngredients != blank %}
+    <div class="pd-ingredients-showergel">
+      <h4>Key Ingredients</h4>
+      <ul>
+        {% assign KeyIngredients = KeyIngredients | split:'|'  %}
+        {% for i in KeyIngredients %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    <div class="pd-dimension-table">
+      <h4>Dimensions</h4>
+      <table>
+        <tbody>
+          {% if product.metafields.Product.Width != 0 and product.metafields.Product.Width != blank %}  
+          <tr>
+            <th>Width</th>
+            <td>{{ product.metafields.Product.Width }} mm ({{ product.metafields.Product.Width | divided_by: 25.4 | round  }}" Inch) </td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Depth != 0 and product.metafields.Product.Depth != blank %} 
+          <tr>
+            <th>Depth</th>
+            <td>{{ product.metafields.Product.Depth }} mm ({{ product.metafields.Product.Depth | divided_by: 25.4 | round  }}" Inch) </td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Height != 0 and product.metafields.Product.Height != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ product.metafields.Product.Height }} mm ({{ product.metafields.Product.Height | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Diameter != 0 and product.metafields.Product.Diameter != blank %}
+          <tr>
+            <th>Diameter</th>
+            <td>{{ product.metafields.Product.Diameter }} mm ({{ product.metafields.Product.Diameter | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          
+          
+          {% assign MattressSize = product.metafields.Product %}
+          {% assign MattressSize =  MattressSize['Mattress Size'] %}
+          {% if MattressSize != 0 and MattressSize != blank %}
+          <tr>
+            <th>Mattress Size</th>
+            <td>{{ MattressSize }}</td>
+          </tr>
+          {% endif %}
+          
+          
+          {% assign BackrestHeight = product.metafields.product %}
+          {% assign BackrestHeight =  BackrestHeight['Backrest Height'] %}
+          {% if BackrestHeight != 0 and BackrestHeight != blank %}
+          <tr>
+            <th>Backrest Height</th>
+            <td>{{ BackrestHeight }} mm ({{ BackrestHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          
+          {% assign Diameter = product.metafields.Product %}
+          {% assign Diameter =  Diameter['Diameter (mm)'] %}
+          {% if Diameter != 0 and Diameter!= blank %}
+          <tr>
+            <th>Diameter (mm)</th>
+            <td>{{ Diameter }} mm ({{ Diameter | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr> 
+          {% endif %}
+           
+                    
+          {% assign Breadth = product.metafields.Product %}
+          {% assign Breadth =  Breadth ['Breadth (mm)'] %}
+          {% if Breadth  != 0 and Breadth != blank %}
+          <tr>
+            <th>Breadth (mm)</th>
+            <td>{{ Breadth  }} mm ({{ Breadth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          
+          {% assign Length = product.metafields.Product %}
+          {% assign Length =  Length['Length (mm)'] %}
+          {% if Length != 0 and Length!= blank %}
+          <tr>
+            <th>Length (mm)</th>
+            <td>{{ Length }} mm ({{ Length | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr> 
+          {% endif %}
+          {% assign MirrorDimensions = product.metafields.Product %}
+          {% assign MirrorDimensions =  MirrorDimensions['Mirror Dimensions'] %}
+          {% if MirrorDimensions != 0 and MirrorDimensions != blank %}
+          <tr>
+            <th>Mirror Dimensions</th>
+            <td>{{ MirrorDimensions }}</td>
+          </tr>
+          {% endif %}
+          
+        </tbody>
+      </table>
+    </div>
+    {% if collection.handle == 'trolley-bag-set' or collection.handle == 'trolley-bag' or collection.handle == 'luggage' %}
+    <!--  small luggage dimension -->
+    {% assign smallbagwidth = product.metafields.Product %}
+    {% assign smallbagwidth =  smallbagwidth['Small Bag Width'] %}
+    {% assign smallbagdepth = product.metafields.Product %}
+    {% assign smallbagdepth =  smallbagdepth['Small Bag Depth'] %}
+    {% assign smallbagheight = product.metafields.Product %}
+    {% assign smallbagheight =  smallbagheight['Small Bag Height'] %}
+    {% if smallbagwidth != 0 or smallbagwidth != blank or smallbagdepth != 0 or smallbagdepth != blank or smallbagheight != 0 or smallbagheight != blank %}
+    <div class="pd-dimension-table">
+      <h4>Dimension (mm) (Small)</h4>
+      <table>
+        <tbody>
+          {% if smallbagwidth != 0 and smallbagwidth != blank %}
+          <tr>
+            <th>Small Bag Width</th>
+            <td>{{ smallbagwidth }} mm ({{ smallbagwidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if smallbagdepth != 0 and smallbagdepth != blank %}
+          <tr>
+            <th>Small Bag Depth</th>
+            <td>{{ smallbagdepth }} mm ({{ smallbagdepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if smallbagheight != 0 and smallbagheight != blank %}
+          <tr>
+            <th>Small Bag Height</th>
+            <td>{{ smallbagheight }} mm ({{ smallbagheight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    <!--  medium luggage dimension -->
+    
+    {% assign mediumbagwidth = product.metafields.Product %}
+    {% assign mediumbagwidth =  mediumbagwidth['Medium Bag Width'] %}
+    {% assign mediumbagdepth = product.metafields.Product %}
+    {% assign mediumbagdepth =  mediumbagdepth['Medium Bag Depth'] %}
+    {% assign mediumbagheight = product.metafields.Product %}
+    {% assign mediumbagheight =  mediumbagheight['Medium Bag Height'] %}
+    {% if mediumbagwidth != 0 or mediumbagwidth != blank or mediumbagheight != 0 or mediumbagheight != blank or mediumbagdepth != 0 or mediumbagdepth != blank %}
+    <div class="pd-dimension-table">
+      <h4>Dimension (mm) (Medium)</h4>
+      <table>
+        <tbody>
+          {% if  mediumbagwidth != 0 and mediumbagwidth != blank  %}
+          <tr>
+            <th>Medium Bag Width</th>
+            <td>{{ mediumbagwidth }} mm ({{ mediumbagwidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if mediumbagdepth != 0 and mediumbagdepth != blank  %}
+          <tr>
+            <th>Medium Bag Depth</th>
+            <td>{{ mediumbagdepth }} mm ({{ mediumbagdepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if mediumbagheight != 0 and mediumbagheight != blank %}
+          <tr>
+            <th>Medium Bag Height</th>
+            <td>{{ mediumbagheight }} mm ({{ mediumbagheight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% assign largebagwidth = product.metafields.Product %}
+    {% assign largebagwidth =  largebagwidth['Large Bag Width'] %}
+    {% assign largebagdepth = product.metafields.Product %}
+    {% assign largebagdepth =  largebagdepth['Large Bag Depth'] %}
+    {% assign largebagheight = product.metafields.Product %}
+    {% assign largebagheight =  largebagheight['Large Bag Height'] %}
+    {% if largebagwidth != 0 or largebagwidth != blank or largebagheight != 0 or largebagheight != blank or largebagdepth != 0 or largebagdepth != blank %}
+    <!--  large luggage dimension -->
+    <div class="pd-dimension-table">
+      <h4>Dimension (mm) (Large)</h4>
+      <table>
+        <tbody>
+          {% if largebagwidth != 0 and largebagwidth != blank %}
+          <tr>
+            <th>Large Bag Width</th>
+            <td>{{ largebagwidth }} mm ({{ largebagwidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if largebagdepth != 0 and largebagdepth != blank %}
+          <tr>
+            <th>Large Bag Depth</th>
+            <td>{{ largebagdepth }} mm ({{ largebagdepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% if largebagheight != 0 and largebagheight != blank %}
+          <tr>
+            <th>Large Bag Height</th>
+            <td>{{ largebagheight }} mm ({{ largebagheight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% endif %}
+<!--   Bed Dimension   -->
+    {% if BedWidth != 0 and BedWidth != blank or BedDepth != 0 and BedDepth != blank or BedHeight != 0 and BedHeight != blank or BedMattressSize != 0 and BedMattressSize != blank %}
+    <div class="pd-dimension-bed-table">
+      <h4>Dimension (mm)(Bed)</h4>
+      <table>
+        <tbody>
+          {% assign BedWidth = product.metafields.Product %}
+          {% assign BedWidth =  BedWidth['Bed Width'] %}
+          {% if BedWidth != 0 and BedWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ BedWidth }} mm ({{ BedWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign BedDepth = product.metafields.Product %}
+          {% assign BedDepth =  BedDepth['Bed Depth'] %}
+          {% if BedDepth != 0 and BedDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ BedDepth }} mm ({{ BedDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign BedHeight = product.metafields.Product %}
+          {% assign BedHeight =  BedHeight['Bed Height'] %}
+          {% if BedHeight != 0 and BedHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ BedHeight }} mm ({{ BedHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign BedMattressSize = product.metafields.Product %}
+          {% assign BedMattressSize =  BedMattressSize['Bed Mattress Size'] %}
+          {% if BedMattressSize != 0 and BedMattressSize != blank %}
+          <tr>
+            <th>Mattress Size</th>
+            <td>{{ BedMattressSize }} mm ({{ BedMattressSize | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+
+    </div>
+    {%endif%}
+     {% if DresserWidth != 0 and DresserWidth != blank or DresserDepth != 0 and DresserDepth != blank or DresserHeight != 0 and DresserHeight != blank %}
+<!--  Dresser Table Dimensions -->    
+    <div class="pd-dimension-dresser-table">
+      <h4>Dimension (mm)(Dresser)</h4>
+      <table>
+        <tbody>
+          {% assign DresserWidth = product.metafields.Product %}
+          {% assign DresserWidth =  DresserWidth['Dresser Width'] %}
+          {% if DresserWidth != 0 and DresserWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ DresserWidth }} mm ({{ DresserWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign DresserDepth = product.metafields.Product %}
+          {% assign DresserDepth =  DresserDepth['Dresser Depth'] %}
+          {% if DresserDepth != 0 and DresserDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ DresserDepth }} mm ({{ DresserDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign DresserHeight = product.metafields.Product %}
+          {% assign DresserHeight =  DresserHeight['Dresser Height'] %}
+          {% if DresserHeight != 0 and DresserHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ DresserHeight }} mm ({{ DresserHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {%endif%}
+    
+<!--  Night Stand Dimensions -->   
+     {% if NSWidth != 0 and NSWidth != blank or NSDepth != 0 and NSDepth != blank  or NSHeight != 0 and NSHeight != blank %}
+    <div class="pd-dimension-ns-table">
+      <h4>Dimension (mm)(Night Stand)</h4>
+      <table>
+        <tbody>
+          {% assign NSWidth = product.metafields.Product %}
+          {% assign NSWidth =  NSWidth['Night Stand Width'] %}
+          {% if NSWidth != 0 and NSWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ NSWidth }} mm ({{ NSWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign NSDepth = product.metafields.Product %}
+          {% assign NSDepth =  NSDepth['Night Stand Depth'] %}
+          {% if NSDepth != 0 and NSDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ NSDepth }} mm ({{ NSDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign NSHeight = product.metafields.Product %}
+          {% assign NSHeight =  NSHeight['Night Stand Height'] %}
+          {% if NSHeight != 0 and NSHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ NSHeight }} mm ({{ NSHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+<!--  Dinning Table Dimensions -->  
+    {% if TableWidth != 0 and TableWidth != blank or TableDepth != 0 and TableDepth != blank or TableHeight != 0 and TableHeight != blank %}
+    <div class="pd-dimension-dinning-table">
+      <h4>Dimension (mm)(Table)</h4>
+      <table>
+        <tbody>
+          {% assign TableWidth = product.metafields.Product %}
+          {% assign TableWidth =  TableWidth['Table Width'] %}
+          {% if TableWidth != 0 and TableWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ TableWidth }} mm ({{ TableWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableDepth = product.metafields.Product %}
+          {% assign TableDepth =  TableDepth['Table Depth'] %}
+          {% if TableDepth != 0 and TableDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ TableDepth }} mm ({{ TableDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableHeight = product.metafields.Product %}
+          {% assign TableHeight =  TableHeight['Table Height'] %}
+          {% if TableHeight != 0 and TableHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ TableHeight }} mm ({{ TableHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    <!--  Dinning Chare  Dimensions --> 
+    {% if ChairWidth != 0 and ChairWidth != blank or ChairDepth != 0 and ChairDepth != blank or ChairHeight != 0 and ChairHeight != blank or SeatingHeight != 0 and SeatingHeight != blank %}
+    <div class="pd-dimension-dinning-chair-table">
+      <h4>Dimension (mm)(Chair)</h4>
+      <table>
+        <tbody>
+          {% assign ChairWidth = product.metafields.Product %}
+          {% assign ChairWidth =  ChairWidth['Chair Width'] %}
+          {% if ChairWidth != 0 and ChairWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ ChairWidth }} mm ({{ ChairWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign ChairDepth = product.metafields.Product %}
+          {% assign ChairDepth =  ChairDepth['Chair Depth'] %}
+          {% if ChairDepth != 0 and ChairDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ ChairDepth }} mm ({{ ChairDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign ChairHeight = product.metafields.Product %}
+          {% assign ChairHeight =  ChairHeight['Chair Height'] %}
+          {% if ChairHeight != 0 and ChairHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ ChairHeight }} mm ({{ ChairHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign SeatingHeight = product.metafields.product %}
+          {% assign SeatingHeight =  SeatingHeight['Seating Height'] %}
+          {% if SeatingHeight != 0 and SeatingHeight != blank %}
+          <tr>
+            <th>Seating Height</th>
+            <td>{{ SeatingHeight }} mm ({{ SeatingHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    
+    {% if BenchDepth != 0 and BenchDepth != blank or BenchHeight != 0 and BenchHeight != blank or BenchWidth != 0 and BenchWidth != blank %}
+    <div class="pd-dimension-dinning-table">
+      <h4>Dimension (mm)(Bench)</h4>
+      <table>
+        <tbody>
+          {% assign BenchDepth = product.metafields.Product %}
+          {% assign BenchDepth =  BenchDepth['Bench Depth (mm)'] %}
+          {% if BenchDepth != 0 and BenchDepth != blank %}
+          <tr>
+            <th>Depth (mm)</th>
+            <td>{{ BenchDepth }} mm ({{ BenchDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          
+         
+          
+          {% assign BenchHeight = product.metafields.Product %}
+          {% assign BenchHeight =  BenchHeight['Bench Height (mm)'] %}
+          {% if BenchHeight != 0 and BenchHeight != blank %}
+          <tr>
+            <th>Height (mm)</th>
+            <td>{{ BenchHeight }} mm ({{ BenchHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          
+          {% assign BenchWidth = product.metafields.Product %}
+          {% assign BenchWidth =  BenchWidth['Bench Width (mm)'] %}
+          {% if BenchWidth != 0 and BenchWidth != blank %}
+          <tr>
+            <th>Width (mm)</th>
+            <td>{{ BenchWidth }} mm ({{ BenchWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {%endif%}
+   <!--  1 Seater Sofa  Dimensions --> 
+     {% if TableWidth != 0 and TableWidth != blank or TableDepth != 0 and TableDepth != blank or TableHeight != 0 and TableHeight != blank %}    
+    <div class="pd-dimension-1seater-sofa">
+      <h4>Dimension (mm)(1 Seater Sofa)</h4>
+      <table>
+        <tbody>
+          {% assign TableWidth = product.metafields.Product %}
+          {% assign TableWidth =  TableWidth['1 Seater Sofa Width'] %}
+          {% if TableWidth != 0 and TableWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ TableWidth }} mm ({{ TableWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableDepth = product.metafields.Product %}
+          {% assign TableDepth =  TableDepth['1 Seater Sofa Depth'] %}
+          {% if TableDepth != 0 and TableDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ TableDepth }} mm ({{ TableDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableHeight = product.metafields.Product %}
+          {% assign TableHeight =  TableHeight['1 Seater Sofa Height'] %}
+          {% if TableHeight != 0 and TableHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ TableHeight }} mm ({{ TableHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    
+<!--  2 Seater Sofa  Dimensions -->   
+    {% if TableWidth != 0 and TableWidth != blank or TableDepth != 0 and TableDepth != blank or TableHeight != 0 and TableHeight != blank %}
+    <div class="pd-dimension-2seater-sofa">
+      <h4>Dimension (mm)(2 Seater Sofa)</h4>
+      <table>
+        <tbody>
+          {% assign TableWidth = product.metafields.Product %}
+          {% assign TableWidth =  TableWidth['2 Seater Sofa Width'] %}
+          {% if TableWidth != 0 and TableWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ TableWidth }} mm ({{ TableWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableDepth = product.metafields.Product %}
+          {% assign TableDepth =  TableDepth['2 Seater Sofa Depth'] %}
+          {% if TableDepth != 0 and TableDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ TableDepth }} mm ({{ TableDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableHeight = product.metafields.Product %}
+          {% assign TableHeight =  TableHeight['2 Seater Sofa Height'] %}
+          {% if TableHeight != 0 and TableHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ TableHeight }} mm ({{ TableHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+<!--  1 Seater Sofa  Dimensions -->
+     {% if TableWidth != 0 and TableWidth != blank or TableDepth != 0 and TableDepth != blank or TableHeight != 0 and TableHeight != blank %}
+   
+    <div class="pd-dimension-3seater-sofa">
+      <h4>Dimension (mm)(3 Seater Sofa)</h4>
+      <table>
+        <tbody>
+          {% assign TableWidth = product.metafields.Product %}
+          {% assign TableWidth =  TableWidth['3 Seater Sofa Width'] %}
+          {% if TableWidth != 0 and TableWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ TableWidth }} mm ({{ TableWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableDepth = product.metafields.Product %}
+          {% assign TableDepth =  TableDepth['3 Seater Sofa Depth'] %}
+          {% if TableDepth != 0 and TableDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ TableDepth }} mm ({{ TableDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign TableHeight = product.metafields.Product %}
+          {% assign TableHeight =  TableHeight['3 Seater Sofa Height'] %}
+          {% if TableHeight != 0 and TableHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ TableHeight }} mm ({{ TableHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+<!--  Wardrobe Set Dimensions -->
+     {% if WardrobesetWidth != 0 and WardrobesetWidth != blank or WardrobesetDepth != 0 and WardrobesetDepth != blank or WardrobesetHeight != 0 and WardrobesetHeight != blank %}
+    <div class="pd-dimension-wardrobeset">
+      <h4>Dimension (mm)(Wardrobe Set)</h4>
+      <table>
+        <tbody>
+          {% assign WardrobesetWidth = product.metafields.Product %}
+          {% assign WardrobesetWidth =  WardrobesetWidth['Wardrobe Width'] %}
+          {% if WardrobesetWidth != 0 and WardrobesetWidth != blank %}
+          <tr>
+            <th>Width</th>
+            <td>{{ WardrobesetWidth }} mm ({{ WardrobesetWidth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign WardrobesetDepth = product.metafields.Product %}
+          {% assign WardrobesetDepth =  WardrobesetDepth['Wardrobe Depth'] %}
+          {% if WardrobesetDepth != 0 and WardrobesetDepth != blank %}
+          <tr>
+            <th>Depth</th>
+            <td>{{ WardrobesetDepth }} mm ({{ WardrobesetDepth | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+          {% assign WardrobesetHeight = product.metafields.Product %}
+          {% assign WardrobesetHeight =  WardrobesetHeight['Wardrobe Height'] %}
+          {% if WardrobesetHeight != 0 and WardrobesetHeight != blank %}
+          <tr>
+            <th>Height</th>
+            <td>{{ WardrobesetHeight }} mm ({{ WardrobesetHeight | divided_by: 25.4 | round  }}" Inch)</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif%}
+    
+    <div class="pd-material-table">
+      <h4>Material</h4>
+      <table>
+        <tbody>
+
+          {% if product.metafields.Product.Frame != 0 and product.metafields.Product.Frame != blank %}  
+          <tr>
+            <th>Frame</th>
+            <td>{{ product.metafields.Product.Frame }}</td>
+          </tr>
+          {% endif %}
+                    
+          {% if product.metafields.Product.Upholstery != 0 and product.metafields.Product.Upholstery != blank %}  
+          <tr>
+            <th>Upholstery</th>
+            <td>{{ product.metafields.Product.Upholstery }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Legs != 0 and product.metafields.Product.Legs != blank %}  
+          <tr>
+            <th>Legs</th>
+            <td>{{ product.metafields.Product.Legs }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Headboard != 0 and product.metafields.Product.Headboard != blank %}  
+          <tr>
+            <th>Headboard</th>
+            <td>{{ product.metafields.Product.Headboard }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Footboard != 0 and product.metafields.Product.Footboard != blank %}  
+          <tr>
+            <th>Footboard</th>
+            <td>{{ product.metafields.Product.Footboard }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Back != 0 and product.metafields.Product.Back != blank %}  
+          <tr>
+            <th>Back</th>
+            <td>{{ product.metafields.Product.Back }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Top != 0 and product.metafields.Product.Top != blank %}  
+          <tr>
+            <th>Top</th>
+            <td>{{ product.metafields.Product.Top }}</td>
+          </tr>
+          {% endif %}
+          {% assign PrimaryMaterial = product.metafields.product %}
+          {% if PrimaryMaterial['Primary Material'] != 0 and PrimaryMaterial['Primary Material'] != blank %}
+          <tr>
+            <th>Primary Material</th>
+            <td>{{ PrimaryMaterial['Primary Material'] }}</td>
+          </tr>
+          {% endif %}
+          {% assign SecondaryMaterial = product.metafields.product %}
+          {% if SecondaryMaterial['Secondary Material'] != 0 and SecondaryMaterial['Secondary Material'] != blank %}
+          <tr>
+            <th>Secondary Material</th>
+            <td>{{ SecondaryMaterial['Secondary Material'] }}</td>
+          </tr>
+          {% endif %} 
+                       
+                    
+          {% assign ShadeMaterial = product.metafields.Product %}
+          {% assign ShadeMaterial =  ShadeMaterial['Shade Material'] %}
+          {% if ShadeMaterial != 0 and ShadeMaterial != blank %}
+          <tr>
+            <th>Shade Material</th>
+            <td>{{ ShadeMaterial }}</td>
+          </tr>
+          {% endif %}
+          
+          
+          {% assign BaseMaterial = product.metafields.Product %}
+          {% assign BaseMaterial =  BaseMaterial['Base Material'] %}
+          {% if BaseMaterial != 0 and BaseMaterial != blank %}
+          <tr>
+            <th>Base Material</th>
+            <td>{{ BaseMaterial }}</td>
+          </tr>
+          {% endif %}
+            
+          {% assign TableMaterial = product.metafields.Product %}
+          {% assign TableMaterial =  TableMaterial['Table Material'] %}
+          {% if TableMaterial != 0 and TableMaterial != blank %}
+          <tr>
+            <th>Table Material</th>
+            <td>{{ TableMaterial }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign ChairMaterial = product.metafields.Product %}
+          {% assign ChairMaterial =  ChairMaterial['Chair Material'] %}
+          {% if ChairMaterial != 0 and ChairMaterial != blank %}
+          <tr>
+            <th>Chair Material</th>
+            <td>{{ ChairMaterial }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign TableLegs = product.metafields.Product %}
+          {% assign TableLegs =  TableLegs['Table Legs'] %}
+          {% if TableLegs != 0 and TableLegs != blank %}
+          <tr>
+            <th>Table Legs</th>
+            <td>{{ TableLegs }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign TableTop = product.metafields.Product %}
+          {% assign TableTop =  TableTop['Table Top'] %}
+          {% if TableTop != 0 and TableTop != blank %}
+          <tr>
+            <th>Table Top</th>
+            <td>{{ TableTop }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign FillingMaterial = product.metafields.Product %}
+          {% assign FillingMaterial =  FillingMaterial['Filling Material'] %}
+          {% if FillingMaterial != 0 and FillingMaterial != blank %}
+          <tr>
+            <th>Filling Material</th>
+            <td>{{ FillingMaterial }}</td>
+          </tr>
+          {% endif %}
+          
+        </tbody>
+      </table>
+
+    </div>
+    {% assign Productweight = product.metafields.Product %}
+    {% assign Productweight =  Productweight['Product weight'] %}
+    {% assign ProductWeight = product.metafields.Product %}
+    {% assign ProductWeight =  ProductWeight['Weight'] %}
+    {% assign ProductweightKgs = product.metafields.Product %}
+    {% assign ProductweightKgs =  ProductweightKgs['Product Weight Kgs'] %}
+    {% assign ProductweightGms = product.metafields.Product %}
+    {% assign ProductweightGms =  ProductweightGms['Product Weight Gms'] %}
+    {% if Productweight != 0 or Productweight != blank or ProductweightKgs != 0 or ProductweightKgs != blank or ProductweightGms != 0 or ProductweightGms != blank %}
+    <div class="pd-product-weight">
+      <h4> </h4>
+      <table>
+        <tbody>
+          {% if Productweight != 0 and Productweight != blank %}
+          <tr>
+            <th>Product Weight</th>
+            <td>{{ Productweight }} kg</td>
+          </tr>
+          {% endif %}
+          {% if ProductWeight != 0 and ProductWeight != blank %}
+          <tr>
+            <th>Product Weight</th>
+            <td>{{ ProductWeight }} kg</td>
+          </tr>
+          {% endif %}
+          {% if ProductweightKgs != 0 and ProductweightKgs != blank %}
+          <tr>
+            <th>Product Weight Kgs</th>
+            <td>{{ ProductweightKgs }} kg</td>
+          </tr>
+          {% endif %}
+          {% if ProductweightGms != 0 and ProductweightGms != blank %}
+          <tr>
+            <th>Product Weight Gms</th>
+            <td>{{ ProductweightGms }}</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% assign Features = product.metafields.Product.Features %}
+    {% if Features != 0 and Features != blank %}
+    <div class="pd-features-table">  
+      <h4>Features</h4>
+      <ul>
+        {% assign Features = Features | split:'|'  %}
+        {% for i in Features %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    {% assign Bed = product.metafields.Product.Bed %}
+    {% if Bed != 0 and Bed != blank %}
+      <div class="pd-features-bed">  
+        <h4>Bed</h4>
+        <ul>
+          {% assign Bed = Bed | split:'|'  %}
+          {% for i in Bed %}
+          <li>{{ i }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+  {% assign Dresser = product.metafields.Product.Dresser %}
+    {% if Dresser != 0 and Dresser != blank %}
+      <div class="pd-features-dresser">  
+        <h4>Dresser</h4>
+        <ul>
+          {% assign Dresser = Dresser | split:'|'  %}
+          {% for i in Dresser %}
+          <li>{{ i }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    
+  {% assign NightStands = product.metafields.Product %}
+    {% assign NightStands = NightStands['Night Stands'] %}
+    {% if NightStands != 0 and NightStands != blank %}
+      <div class="pd-features-nightstands">  
+        <h4>Night Stands</h4>
+        <ul>
+          {% assign NightStands = NightStands | split:'|'  %}
+          {% for i in NightStands %}
+          <li>{{ i }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    
+    {% assign PackageContent = product.metafields.product %}
+    {% assign PackageContent =  PackageContent['Package Contents'] %}
+    {% if PackageContent != 0 and PackageContent != blank %}
+    <div class="pd-package-table">
+      <h4>Package Contents</h4>
+      <ul>
+        {% assign PackageContent = PackageContent | split:'|'  %}
+        {% for i in PackageContent %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </div> 
+    {% endif %}
+    <div class="pd-otherinfo-table">
+
+      <h4>Other Info</h4>
+      <table>
+        <tbody>
+          
+          {% assign AssemblyRequired = product.metafields.product %}
+          {% assign AssemblyRequired =  AssemblyRequired['Assembly Required'] %}
+          {% if AssemblyRequired != 0 and AssemblyRequired != blank %}
+          <tr>
+            <th>Assembly</th>
+            <td>{{ AssemblyRequired }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Color != 0 and product.metafields.Product.Color != blank %}  
+          <tr>
+            <th>Color</th>
+            <td>{{ product.metafields.Product.Color }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Warranty != 0 and product.metafields.Product.Warranty != blank %} 
+          <tr>
+            <th>Warranty</th>
+            <td>{{ product.metafields.Product.Warranty }}</td>
+          </tr>
+          {% endif %}
+          
+          {% if product.metafields.Product['Weight Bearing Capacity'] != 0 and product.metafields.Product['Weight Bearing Capacity'] != blank %} 
+          <tr>
+            <th>Weight Bearing Capacity</th>
+            <td>{{ product.metafields.Product['Weight Bearing Capacity'] }}</td>
+          </tr>
+          {% endif %}
+          
+		  {% if product.metafields.Product.Style != 0 and product.metafields.Product.Style != blank %}  
+          <tr>
+            <th>Style</th>
+            <td>{{ product.metafields.Product.Style }}</td>
+          </tr>
+          {% endif %}	
+          {% assign SeatingCapacity = product.metafields.product %}
+          {% assign SeatingCapacity =  SeatingCapacity['Seating Capacity'] %}
+          {% if SeatingCapacity != 0 and SeatingCapacity != blank %}
+          <tr>
+            <th>Seating Capacity</th>
+            <td>{{ SeatingCapacity }}</td>
+          </tr>
+          {% endif %}
+          {% if product.metafields.Product.Model != 0 and product.metafields.Product.Model != blank %}
+          <tr>
+            <th>Model Series Name</th>
+            <td>{{ product.metafields.Product.Model }}</td>
+          </tr>
+          {% endif %}
+
+          {% if product.metafields.Product.Make != 0 and product.metafields.Product.Make != blank %}
+          <tr>
+            <th>Make</th>
+            <td>{{ product.metafields.Product.Make }}</td>
+          </tr>
+          {% endif %}
+
+          {% if product.metafields.Product.Finish != 0 and product.metafields.Product.Finish != blank %}
+          <tr>
+            <th>Finish</th>
+            <td>{{ product.metafields.Product.Finish }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign ThreadCount = product.metafields.product %}
+          {% assign ThreadCount =  ThreadCount['Thread Count'] %}
+          {% if ThreadCount != 0 and ThreadCount != blank %}
+          <tr>
+            <th>Thread Count</th>
+            <td>{{ ThreadCount }}</td>
+          </tr>
+          {% endif %}
+          
+          {% if product.metafields.Product.Fragrance != 0 and product.metafields.Product.Fragrance != blank %}
+          <tr>
+            <th>Fragrance</th>
+            <td>{{ product.metafields.Product.Fragrance }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign BulbIncluded = product.metafields.product %}
+          {% assign BulbIncluded= BulbIncluded  ['Bulb Included'] %}
+          {% if BulbIncluded != 0 and BulbIncluded != blank %}
+          <tr>
+            <th>Bulb Included</th>
+            <td>{{ BulbIncluded }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign BulbRecommended = product.metafields.product %}
+          {% assign BulbRecommended=  BulbRecommended['Bulb Recommended'] %}
+          {% if BulbRecommended != 0 and BulbRecommended != blank %}
+          <tr>
+            <th>Bulb Recommended</th>
+            <td>{{ BulbRecommended }}</td>
+          </tr>
+          {% endif %}
+          
+          
+          {% assign PaintingType = product.metafields.product %}
+          {% assign PaintingType=  PaintingType['Painting Type'] %}
+          {% if PaintingType != 0 and PaintingType != blank %}
+          <tr>
+            <th>Painting Type</th>
+            <td>{{ PaintingType }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign PhotoSize = product.metafields.product %}
+          {% assign PhotoSize=  PhotoSize['Photo Size'] %}
+          {% if PhotoSize != 0 and PhotoSize != blank %}
+          <tr>
+            <th>Photo Size</th>
+            <td>{{ PhotoSize }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign BedsheetType = product.metafields.product %}
+          {% assign BedsheetType=  BedsheetType['Bedsheet Type'] %}
+          {% if BedsheetType != 0 and BedsheetType != blank %}
+          <tr>
+            <th>Bedsheet Type</th>
+            <td>{{ BedsheetType }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign NumberofTable = product.metafields.product %}
+          {% assign NumberofTable=  NumberofTable['Number of Table'] %}
+          {% if NumberofTable != 0 and NumberofTable != blank %}
+          <tr>
+            <th>Number of Table</th>
+            <td>{{ NumberofTable }}</td>
+          </tr>
+          {% endif %}
+          
+           
+          {% assign NumberofChairs = product.metafields.product %}
+          {% assign NumberofChairs=  NumberofChairs['Number of Chairs'] %}
+          {% if NumberofChairs != 0 and NumberofChairs != blank %}
+          <tr>
+            <th>Number of Chairs</th>
+            <td>{{ NumberofChairs }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign NumberofBenches = product.metafields.product %}
+          {% assign NumberofBenches=  NumberofBenches['Number of Benches'] %}
+          {% if NumberofBenches != 0 and NumberofBenches != blank %}
+          <tr>
+            <th>Number of Benches</th>
+            <td>{{ NumberofBenches }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign UpholsteryIncluded = product.metafields.product %}
+          {% assign UpholsteryIncluded=  UpholsteryIncluded['Upholstery Included'] %}
+          {% if UpholsteryIncluded != 0 and UpholsteryIncluded != blank %}
+          <tr>
+            <th>Upholstery Included</th>
+            <td>{{ UpholsteryIncluded }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign UpholsteryColor = product.metafields.product %}
+          {% assign UpholsteryColor=  UpholsteryColor['Upholstery Color'] %}
+          {% if UpholsteryColor != 0 and UpholsteryColor  != blank %}
+          <tr>
+            <th>Upholstery Color</th>
+            <td>{{ UpholsteryColor }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign UpholsteryType = product.metafields.product %}
+          {% assign UpholsteryType =  UpholsteryIncluded['Upholstery Type'] %}
+          {% if UpholsteryType != 0 and UpholsteryIncluded != blank %}
+          <tr>
+            <th>Upholstery Type</th>
+            <td>{{ UpholsteryType }}</td>
+          </tr>
+          {% endif %}
+          
+          
+          {% assign TableShape = product.metafields.product %}
+          {% assign TableShape =  TableShape['Table Shape'] %}
+          {% if TableShape != 0 and TableShape != blank %}
+          <tr>
+            <th>Table Shape</th>
+            <td>{{ TableShape }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign NumberofOpenShelves = product.metafields.product %}
+          {% assign NumberofOpenShelves =  NumberofOpenShelves['Number of Open Shelves'] %}
+          {% if NumberofOpenShelves != 0 and NumberofOpenShelves != blank %}
+          <tr>
+            <th>Number of Open Shelves</th>
+            <td>{{ NumberofOpenShelves }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign NumberofClosedShelves = product.metafields.product %}
+          {% assign NumberofClosedShelves = NumberofClosedShelves['Number of Closed Shelves'] %}
+          {% if NumberofClosedShelves != 0 and NumberofClosedShelves != blank %}
+          <tr>
+            <th>Number of Closed Shelves</th>
+            <td>{{ NumberofClosedShelves }}</td>
+          </tr>
+          {% endif %}
+          
+          
+           {% assign MaximumTVSize  = product.metafields.product %}
+          {% assign MaximumTVSize  =  MaximumTVSize['Maximum TV Size (in)'] %}
+          {% if MaximumTVSize  != 0 and MaximumTVSize  != blank %}
+          <tr>
+            <th>Maximum TV Size (in)</th>
+            <td>{{ MaximumTVSize  }}</td>
+          </tr>
+          {% endif %}
+          
+          
+           {% assign LockProvided  = product.metafields.product %}
+          {% assign LockProvided  =  LockProvided ['Lock Provided'] %}
+          {% if LockProvided  != 0 and LockProvided  != blank %}
+          <tr>
+            <th>Lock Provided </th>
+            <td>{{ LockProvided  }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign AdjustableRacks  = product.metafields.product %}
+          {% assign AdjustableRacks  =  AdjustableRacks['Adjustable Racks'] %}
+          {% if AdjustableRacks  != 0 and AdjustableRacks  != blank %}
+          <tr>
+            <th>Adjustable Racks </th>
+            <td>{{ AdjustableRacks  }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign NumberofShoePairs  = product.metafields.product %}
+          {% assign NumberofShoePairs  =  NumberofShoePairs['Number of Shoe Pairs' ] %}
+          {% if NumberofShoePairs  != 0 and NumberofShoePairs  != blank %}
+          <tr>
+            <th>Number of Shoe Pairs </th>
+            <td>{{ NumberofShoePairs  }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign WheelsIncluded  = product.metafields.product %}
+          {% assign WheelsIncluded  =  WheelsIncluded['Wheels Included' ] %}
+          {% if WheelsIncluded  != 0 and WheelsIncluded  != blank %}
+          <tr>
+            <th>Wheels Included </th>
+            <td>{{ WheelsIncluded  }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign BushIncluded  = product.metafields.product %}
+          {% assign BushIncluded  = BushIncluded ['Bush Included' ] %}
+          {% if BushIncluded  != 0 and BushIncluded  != blank %}
+          <tr>
+            <th>Bush Included </th>
+            <td>{{ BushIncluded  }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign CPUCompartment  = product.metafields.product %}
+          {% assign CPUCompartment  =  CPUCompartment['CPU Compartment' ] %}
+          {% if CPUCompartment  != 0 and CPUCompartment  != blank %}
+          <tr>
+            <th>CPU Compartment </th>
+            <td>{{ CPUCompartment  }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign NumberofDrawers  = product.metafields.product %}
+          {% assign NumberofDrawers  =  NumberofDrawers['Number of Drawers' ] %}
+          {% if NumberofDrawers  != 0 and NumberofDrawers  != blank %}
+          <tr>
+            <th>Number of Drawers</th>
+            <td>{{ NumberofDrawers  }}</td>
+          </tr>
+          {% endif %}
+          
+           {% assign Capacity   = product.metafields.product %}
+          {% assign Capacity   =  Capacity ['Capacity (ml)' ] %}
+          {% if Capacity != 0 and Capacity   != blank %}
+          <tr>
+            <th>Capacity (ml)</th>
+            <td>{{ Capacity  }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign DoorType = product.metafields.Product %}
+          {% assign DoorType =  DoorType['Door Type'] %}
+          {% if DoorType != 0 and DoorType != blank %}
+          <tr>
+            <th>Door Type</th>
+            <td>{{ DoorType }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign NumberofShelves = product.metafields.Product %}
+          {% assign NumberofShelves =  NumberofShelves['Number of Shelves'] %}
+          {% if NumberofShelves != 0 and NumberofShelves != blank %}
+          <tr>
+            <th>Number of Shelves</th>
+            <td>{{ NumberofShelves }}</td>
+          </tr>
+          {% endif %}
+                              
+          {% assign MirrorIncluded = product.metafields.Product %}
+          {% assign MirrorIncluded =  MirrorIncluded['Mirror Included'] %}
+          {% if MirrorIncluded != 0 and MirrorIncluded != blank %}
+          <tr>
+            <th>Mirror Included</th>
+            <td>{{ MirrorIncluded }}</td>
+          </tr>
+          {% endif %}
+          
+          {% assign HolderandPlugType = product.metafields.Product %}
+          {% assign HolderandPlugType=  HolderandPlugType['Holder & Plug Type'] %}
+          {% if HolderandPlugType != 0 and HolderandPlugType != blank %}
+          <tr>
+            <th>Holder & Plug Type</th>
+            <td>{{ HolderandPlugType }}</td>
+          </tr>
+          {% endif %}
+         
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+{% comment %}
+<-- EMI BOX Popup -->
+{% endcomment %}
+  {% comment %}
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    Modal content
+    <div class="modal-content">
+      <div class="modal-body">
+<!--          <span type="button" class="action_button" data-dismiss="modal" style="float: right; margin: 0 -21px 9px 0">X</span> -->
+        {% include "emichart" %}
+      </div>
+    </div>
+  </div>
+</div>
+  {% endcomment %}

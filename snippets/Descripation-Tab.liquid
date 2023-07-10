@@ -1,0 +1,98 @@
+<div class="product-page--content" style=" padding-left: 0px !important;padding-right: 0px;">
+    
+	<ul class="product_tabs">
+		<li class="tab-link current" data-tab="tab-1">Description</li>
+	{%- comment -%}	<li class="tab-link" data-tab="tab-2">Details</li>{%- endcomment -%}
+		<li class="tab-link" data-tab="tab-3">Manufacturing Details</li>
+	</ul>
+
+	<div id="tab-1" class="product_tabs-content current">
+<div class="main__flex">
+      {% for variant in product.variants %}
+      {%- if variant.metafields['variant']['variant_dimension'] != blank -%}
+      <div class="container__flex_dime" {% unless variant.metafields['variant']['variant_dimension'] !=blank %}
+        style="display:none;" {% endunless %}>
+        <p class="primary_color pdp_b_space dimension_div">
+
+          <span class="variant_dimension primary_color" data-id={{variant.id}}><span class="onclik_dimention">Product
+              Dimension
+              :</span><br>
+            {{ variant.metafields['variant']['variant_dimension']}}</span>
+        </p>
+        </div>
+        {%- endif -%}
+        {% endfor %}
+
+        {% for variant in product.variants %}
+        {%- if variant.metafields['variant']['variant_weight'] != blank -%}
+        <div class="container__flex_weight" {% unless variant.metafields['variant']['variant_weight'] !=blank %}
+          style="display:none;" {% endunless %}>
+          <p class="primary_color pdp_b_space dimension_div_weight">
+
+            <span class="variant_weight primary_color" data-id={{variant.id}}><span class="onclik_dimention">Product
+                Weight
+                :</span><br>
+              {{ variant.metafields['variant']['variant_weight']}}</span>
+
+          </p>
+        </div>
+        {%- endif -%}
+        {% endfor %}
+      
+    </div>
+     {{ product.description }}		
+  </div>
+	{%- comment -%}
+  <div id="tab-2" class="product_tabs-content">
+      {%include 'product-Detail-Des'%}
+		
+  </div>
+  {%- endcomment -%}
+	{% if product.handle contains 'doctor-dreams-by-nilkamal-matrix-smart-recliner-bed' %}
+        <div id="tab-3" class="product_tabs-content">
+     <p><b>Marketer Name:</b> <br>
+                  Nilkamal Limited
+                  </p>
+                  <p><b>Marketer Address:</b> <br>
+                  Nilkamal House, Plot No.77/78, 14th Street, MIDC, Andheri (E), Mumbai- 400093.
+                  </p>
+                  <p><b>Country of Origin:</b> <br>
+                  Thiland
+                  </p>
+      
+        
+      </div>
+    {% elsif product.handle contains 'doctor-dreams-by-nilkamal-bluetooth-enabled-aroma-diffuser-with-humidifier-mdodrarhudfrwht' or product.handle contains 'doctor-dreams-pcm-white-double-duvet' or product.handle contains 'doctor-dreams-sleep-eye-mask'  %}
+        <div id="tab-3" class="product_tabs-content">
+     <p><b>Marketer Name:</b> <br>
+                  Nilkamal Limited
+                  </p>
+                  <p><b>Marketer Address:</b> <br>
+                  Nilkamal House, Plot No.77/78, 14th Street, MIDC, Andheri (E), Mumbai- 400093.
+                  </p>
+                  <p><b>Country of Origin:</b> <br>
+                  China
+                  </p>
+      
+        
+      </div>
+    {% else %}
+        <div id="tab-3" class="product_tabs-content">
+     <p><b>Manufacturer Name:</b> <br>
+                  Nilkamal Limited
+                  </p>
+                  <p><b>Manufacturer Address:</b> <br>
+                  Nilkamal House, Plot No.77/78, 14th Street, MIDC, Andheri (E), Mumbai- 400093.
+                  </p>
+                  <p><b>Country of Origin:</b> <br>
+                  India
+                  </p>
+      
+        
+      </div>
+     {% endif %}
+		</div>
+</div>
+ <script>
+  
+ </script>

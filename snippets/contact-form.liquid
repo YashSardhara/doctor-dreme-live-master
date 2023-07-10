@@ -1,0 +1,686 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div class="form_head_p">
+  <p class="l_para">Your Details</p>
+  <p class="mob_none">Already have an account?<a href="https://doctordreams.com/account/login"> Log in</a></p>
+</div>
+<div class="contact--container">
+  {% comment %} {%- if store_address != blank or store_hours != blank -%}
+  <div class="contact--left-column">
+    {% unless store_address == blank %}
+    <div class="contact--address">
+      <address class="contact--address-text" data-item="paragraph">
+        {{ store_address | newline_to_br }}
+      </address>
+
+      <div class="contact--address-link" data-item="block-link">
+        <a href="https://www.google.ca/maps/place/{{ store_address | url_encode }}" target="_blank" rel="noreferrer">
+          {{ open_maps_t }}
+        </a>
+      </div>
+    </div>
+    {% endunless %}
+
+    {% unless store_hours == blank %}
+    <div class="contact--hours" data-item="paragraph">
+      {{ store_hours }}
+    </div>
+    {% endunless %}
+  </div>
+  {%- endif -%}{%endcomment%}
+
+  <div class="contact--right-column">
+
+
+    <form id="__vtigerWebForm_6" name="Dr.Dreams_Contact_us_Webform"
+      action="https://nilkamalpeopleocityin.od2.vtiger.com/modules/Webforms/capture.php" method="post"
+      accept-charset="utf-8" enctype="multipart/form-data"><input type="hidden" name="__vtrftk"
+        value="sid:fc23d115e39228471d536f09b2e6e6e257805ac6,1620117336">
+      <div class="contact--form-details ">
+        <input type="hidden" name="publicid" value="c8d5e7b380103276da2687a550046ebd">
+        <input type="hidden" name="urlencodeenable" value="1">
+        <input type="hidden" name="name" value="Dr.Dreams_Contact_us_Webform">
+        <input type="hidden" name="__vtCurrency" value="1">
+
+        <label class="label-name"></label>
+        <input type="text" placeholder="Name*" id="contact_id" name="contact_id" autocomplete="off" validate="1"
+          data-valid-attr="name" class="input-form-contact" required>
+
+
+        <label class="label-email"></label>
+        <input type="email" placeholder="Email Id*" id="email" name="contact_id::Contacts::email" autocomplete="off"
+          validate="1" data-valid-attr="email" class="input-form-contact" required>
+
+
+      </div>
+
+      <p id='result'></p>
+      <div class="contact--form-details">
+
+        <label class="label-mobile_no"></label>
+        <input type="tel" id="mobile-no" placeholder="Mobile No*" name="cf_cases_wfphonenumber"
+          pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" class="input-form-contact"
+          required />
+        <label class="label-name label_new">Tell Us Your Query</label>
+        <select id="Category" name="cf_cases_wftype">
+          <option value="order">Select a type</option>
+          <option value="order">Order Related</option>
+          <option value="nonorder">Non-Order Related</option>
+          <option value="nilkamal">Athome service</option>
+        </select>
+      </div>
+
+      <!-- <div class="contact--form-details">
+                      <label class="label-name" id="subcategory"></label>
+                      <select id="SubCategory" name="cf_cases_wfsubtype">
+                         </select>
+                         <div id="SubSubCategory_Content"> SubSubCategory_Content </div>
+                      
+                     
+                      
+                      <label class="label-name" id="subsubcategory"></label>
+                      <select id="SubSubCategory" name="cf_cases_wfsubtypereason">
+                           </select>
+                    
+                   <input type="hidden" name="title" maxlength="255" data-label="" value="Web Form Case Creation" required="">
+                      <select name="casestatus" data-label="casestatus" required="" hidden="">
+						<option value="">Select Value</option>
+						<option value="New" selected=""> New </option>
+						<option value="Assigned"> Assigned </option>
+						<option value="Open"> Open </option>
+						<option value="Wait for customer"> Wait for customer </option>
+						<option value="Wait for 3rd party"> Wait for 3rd party </option>
+						<option value="Resolved"> Resolved </option>
+						<option value="Closed"> Closed </option>
+					</select>
+                      <select name="casepriority" data-label="casepriority" required="" hidden="">
+						<option value="">Select Value</option>
+						<option value="BURNING"> BURNING </option>
+						<option value="Urgent"> Urgent </option>
+						<option value="High"> High </option>
+						<option value="Medium"> Medium </option>
+						<option value="Low" selected=""> Low </option>
+						<option value="LAW"> LAW </option>
+					</select>
+                      </div>
+                      
+                     <div class="contact--form-details">
+                      <label class="label-name" id="order_id"></label>
+                         <input type="text" placeholder=" Order Id" id="Order_id" name="cf_cases_orderid" autocomplete="off" validate="1" data-valid-attr="name" class="input-form-contact" maxlength="30" onclick="product_related_query" required>
+                      </div>
+                                       -->
+      <div class="contact--form-details" id="detail_form">
+        <label for="myfile" class="uplod-file"></label>
+        <!-- <button class="btn_file">choose a file -->
+        <input  class="file_upload" type="file" name="cf_cases_uploadfile[]" id="filePHOTO" class="file_upload1" accept="image/*">
+          </div>
+          <p class="btn_line">(Maximum allowed file size is 5MB) </p>
+
+      <div class="contact--form-details" id="order-comment">
+        <label class="label-name"></label>
+        <textarea name="description" placeholder="Write Your Comments" required="" rows="9" cols="5"></textarea>
+      </div>
+      <select name="casechannel" data-label="casechannel" hidden="">
+        <option value="">Select Value</option>
+        <option value="Email"> Email </option>
+        <option value="Phone"> Phone </option>
+        <option value="Chat"> Chat </option>
+        <option value="Social"> Social </option>
+        <option value="Webform" selected=""> Webform </option>
+        <option value="Whatsapp"> Whatsapp </option>
+        <option value="Clickpost"> Clickpost </option>
+      </select>
+      <script src="https://www.google.com/recaptcha/api.js"></script>
+      <!-- <div class="contact--form-details">
+        <div class="g-recaptcha" data-sitekey="6LcmdSATAAAAAGWw734vGo0AXQwuxJS7RmDZA_Fe"></div>
+      </div> -->
+      <div class="contact--form-submit">
+                <!-- <p class="back_btn">Back</p> -->
+        <input type="submit" value="Submit" id="vtigerFormSubmitBtn_6" class="secondary-lg-button secondary-button">
+      </div>
+      <select name="cf_cases_brand" data-label="label:BRAND" required="" hidden="">
+        <option value="">Select Value</option>
+        <option value="NILKAMAL"> NILKAMAL </option>
+        <option value="DR DREAMS"> DR DREAMS </option>
+        <option value="AT HOME" selected=""> AT HOME </option>
+      </select>
+    </form>
+  </div>
+</div>
+
+<script
+  type="text/javascript">window.addEventListener("load", function () { var N = navigator.appName, ua = navigator.userAgent, tem; var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i); if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1]; M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"]; var browserName = M[0]; var form = document.getElementById("__vtigerWebForm_6"), inputs = form.elements; form.onsubmit = function () { document.getElementById("vtigerFormSubmitBtn_6").disabled = true; var required = [], att, val; var endDate; var startDate; var endDate1; for (var i = 0; i < inputs.length; i++) { att = inputs[i].getAttribute("required"); val = inputs[i].value; type = inputs[i].type; if (inputs[i].name == "birthday") { birthdayDate = new Date(inputs[i].value); todayDate = new Date(); todayDate.setHours(0, 0, 0, 0); birthdayDate.setHours(0, 0, 0, 0); if (birthdayDate >= todayDate) { alert("Date of Birth should be less than Today's Date."); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } if (inputs[i].name == "support_start_date" || inputs[i].name == "startdate") { startDate = inputs[i].value; } if (inputs[i].name == "support_end_date" || inputs[i].name == "targetenddate" || inputs[i].name == "enddate") { endDate = inputs[i].value; } if (inputs[i].name == "actualenddate") { endDate1 = inputs[i].value; } if (type == "email") { if (val != "") { var elemLabel = inputs[i].getAttribute("data-label"); var emailFilter = /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/; var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/; if (!emailFilter.test(val)) { alert("For " + elemLabel + " field please enter valid email address"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } else if (val.match(illegalChars)) { alert(elemLabel + " field contains illegal characters"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } } if (startDate) { if (typeof startDate !== "undefined") { if (endDate) { if (typeof endDate !== "undefined") { startDate = new Date(startDate); endDate = new Date(endDate); if (endDate < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } } if (endDate1) { if (typeof endDate1 !== "undefined") { startDate = new Date(startDate); endDate1 = new Date(endDate1); if (endDate1 < startDate) { alert("End Date should be greater than or equal to Start Date"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } } } } if (att != null) { if (val.replace(/^\s+|\s+$/g, "") == "") { required.push(inputs[i].getAttribute("label")); } } } if (required.length > 0) { alert("The following fields are required: " + required.join()); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } var numberTypeInputs = document.querySelectorAll("input[type=number]"); for (var i = 0; i < numberTypeInputs.length; i++) { val = numberTypeInputs[i].value; var elemLabel = numberTypeInputs[i].getAttribute("label"); if (val != "") { var intRegex = /^[+-]?\d+$/; if (!intRegex.test(val)) { alert("For " + elemLabel + " field please enter valid number"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } } var dateTypeInputs = document.querySelectorAll("input[type=date]"); for (var i = 0; i < dateTypeInputs.length; i++) { dateVal = dateTypeInputs[i].value; var elemLabel = dateTypeInputs[i].getAttribute("label"); if (dateVal != "") { var dateRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9]{1})-(0[1-9]|[1-2][0-9]|3[0-1]|[1-9]{1})$/; if (!dateRegex.test(dateVal)) { alert("For " + elemLabel + " field please enter valid date in required format"); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } } var inputElems = document.getElementsByTagName("input"); var totalFileSize = 0; for (var i = 0; i < inputElems.length; i++) { if (inputElems[i].type.toLowerCase() === "file") { var file = inputElems[i].files[0]; if (typeof file !== "undefined") { var totalFileSize = totalFileSize + file.size; } } } if (totalFileSize > 52428800) { alert("Maximum allowed file size including all files is 50MB."); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } var inputElem = document.querySelectorAll("input[type=file]"); var fileSize = 0; for (var i = 0; i < inputElem.length; i++) { if (inputElem[i].type.toLowerCase() === "file") { if (inputElem[i].hasAttribute("selectedTypeImage")) { var imageFile = inputElem[i].files[0]; var fileSize = imageFile.size; } } if (fileSize > 5242880) { alert("Maximum allowed image size is 5MB."); document.getElementById("vtigerFormSubmitBtn_6").disabled = false; return false; } } }; });</script>
+
+<script>
+  $(function () {
+    console.log("jQuery Active");
+  });
+  var order = [
+    { display: "Payment related", value: "payment_related" },
+    { display: "Track your order", value: "track_your_order" },
+    { display: "Return item", value: "return_item" },
+    { display: "Change Details", value: "change_details" }
+  ];
+  var nonorder = [
+    { display: "Various payment opition", value: "various_payment_opition" },
+    { display: "Offers and discount", value: "offer_and_discount" },
+    { display: "Website Related/Feedback", value: "website_related" },
+    { display: "Product Related Query", value: "product_related_query" }
+  ];
+  var nilkamal = [
+    { display: "Corporate sale/ Bulk Order", value: "Corporate_sale" },
+    { display: "Policies", value: "policies" },
+    { display: "Sell on Athome", value: "sell_on_doctor" },
+    { display: "Product Related Query", value: "product_related_query" }
+  ];
+  var payment_related = [
+    { display: "Refund Status", value: "refund_status" },
+    { display: "Order Not Confirmed", value: "Order Not Confirmed" }
+  ];
+  var return_item = [
+    { display: "Damaged Product", value: "Damaged Product" },
+    { display: "Defective Product", value: "Defective Product" },
+    { display: "Incomplete items / missing contents", value: "Incomplete items / missing contents" },
+    { display: "Incorrect Product", value: "Incorrect Product" },
+    { display: "Termite /Borer infection", value: "Termite /Borer infection" },
+    { display: "100 Nights Trial", value: "100 Nights Trial" }
+  ];
+  var change_details = [
+    { display: "Shipping address", value: "shipping_address" },
+    { display: "Billing address", value: "billing_address" },
+    { display: "Phone Number", value: "phone_number" },
+    { display: "Email Address", value: "email_address" }
+  ];
+  var defective_product = [
+    { display: "Defective Product", value: "defective_product" }
+  ];
+
+  // Code for Subcategory 
+  $("#Category").change(function () {
+    // Do something here.
+    var select_category = $("#Category option:selected").val();
+    $("#SubCategory").hide(); //To Hide cities
+    $("#SubCategory").empty(); //To reset cities
+    $("#SubCategory").show(); //To Show cities
+    $("#subcategory").show();
+    console.log("Category Changed", select_category);
+    switch (select_category) {
+      case "order":
+        SubCategory(order);
+        break;
+      case "nonorder":
+        SubCategory(nonorder);
+        break;
+      case "nilkamal":
+        SubCategory(nilkamal);
+        break;
+      default:
+        $("#SubCategory").hide();
+        $("#order_id").hide();
+        $("#Order_id").hide();
+        break;
+
+    }
+  });
+  // Generate Subcategory 
+  function SubCategory(arr) {
+    $("#SubCategory").append("<option>-------- Select --------</option>");
+    //           console.log()
+    $(arr).each(function (i) { //to list cities
+      $("#SubCategory").append("<option value=" + arr[i].value + ">" + arr[i].display + "</option>")
+
+    });
+    //           if(arr == '' || arr == '')
+  }
+
+  // Code for SubSubcategory 
+  $("#SubCategory").change(function () {
+    // Do something here.
+    var select_category = $("#SubCategory option:selected").val();
+    $("#SubSubCategory").hide(); //To Hide cities
+    $("#SubSubCategory").empty(); //To reset cities
+    $("#SubSubCategory").hide(); //To Show cities
+    $("#subsubcategory").hide();
+
+    console.log("Sub Category Changed", select_category);
+    switch (select_category) {
+      case "payment_related":
+        $("#order_id").show();
+        $("#Order_id").show();
+        SubSubCategory(payment_related);
+        break;
+      case "return_item":
+        $("#order_id").show();
+        $("#Order_id").show();
+        SubSubCategory(return_item);
+        break;
+      case "change_details":
+        $("#order_id").show();
+        $("#Order_id").show();
+        SubSubCategory(change_details);
+        break;
+      case "track_your_order":
+        $("#order_id").show();
+        $("#Order_id").show();
+        break;
+      default:
+        $("#Order_id").hide()
+        $("#order_id").hide();
+        break;
+    }
+  });
+  // Generate Subcategory 
+  function SubSubCategory(arr) {
+    $("#SubSubCategory").show(); //To Show cities
+    $("#subsubcategory").show();
+    $("#SubSubCategory").append("<option>-------- Select --------</option>");
+    $(arr).each(function (i) { //to list cities
+      $("#SubSubCategory").append("<option value=" + arr[i].value + ">" + arr[i].display + "</option>")
+    });
+
+
+  }
+  // Change event of Sub Sub Category to create content 
+  $("#SubCategory").change(function () {
+    var select_sub_category = $("#SubCategory option:selected").val();
+    $("#SubSubCategory_Content").show()
+    switch (select_sub_category) {
+      case "various_payment_opition":
+        $("#SubSubCategory_Content").html("Click <a href='https://doctordreams.com/pages/faqs'>here</a> for more details.")
+        break;
+      case "offer_and_discount":
+        $("#SubSubCategory_Content").html("Click <a href='https://doctordreams.com/'>here</a> for more details.")
+        break;
+      case "website_related":
+        $("#SubSubCategory_Content").html("We love making a difference to your homes! So do share your feedback with us so we can strive to serve you better.")
+        break;
+      case "product_related_query":
+        $("#SubSubCategory_Content").html("To know more about a product, you can click on the specific product which will take you to a product detail page. Scroll below the product Image for complete information about the item, specifications, terms, etc.")
+
+        break;
+      default:
+        $("#SubSubCategory_Content").hide()
+
+        break;
+    }
+  });
+
+
+</script>
+
+<script type="text/javascript">
+  window.addEventListener("load", function () {
+    var N = navigator.appName,
+      ua = navigator.userAgent,
+      tem;
+    var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
+    M = M ? [M[1], M[2]] : [N, navigator.appVersion, "-?"];
+    var browserName = M[0];
+    var form = document.getElementById("__vtigerWebForm_6"),
+      inputs = form.elements;
+    form.onsubmit = function () {
+      document.getElementById("vtigerFormSubmitBtn_6").disabled = true;
+      var required = [],
+        att, val;
+      var endDate;
+      var startDate;
+      var endDate1;
+      for (var i = 0; i < inputs.length; i++) {
+        att = inputs[i].getAttribute("required");
+        val = inputs[i].value;
+        type = inputs[i].type;
+        if (inputs[i].name == "birthday") {
+          birthdayDate = new Date(inputs[i].value);
+          todayDate = new Date();
+          todayDate.setHours(0, 0, 0, 0);
+          birthdayDate.setHours(0, 0, 0, 0);
+          if (birthdayDate >= todayDate) {
+            alert("Date of Birth should be less than Today's Date.");
+            document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+            return false;
+          }
+        }
+        if (inputs[i].name == "support_start_date" || inputs[i].name == "startdate") {
+          startDate = inputs[i].value;
+        }
+        if (inputs[i].name == "support_end_date" || inputs[i].name == "targetenddate" || inputs[i].name == "enddate") {
+          endDate = inputs[i].value;
+        }
+        if (inputs[i].name == "actualenddate") {
+          endDate1 = inputs[i].value;
+        }
+        if (type == "email") {
+          if (val != "") {
+            var elemLabel = inputs[i].getAttribute("data-label");
+            var emailFilter = /^[_/a-zA-Z0-9]+([!"#$%&()*+,./:;<=>?\^_`{|}~-]?[a-zA-Z0-9/_/-])*@[a-zA-Z0-9]+([\_\-\.]?[a-zA-Z0-9]+)*\.([\-\_]?[a-zA-Z0-9])+(\.?[a-zA-Z0-9]+)?$/;
+            var illegalChars = /[\(\)\<\>\,\;\:\"\[\]]/;
+            if (!emailFilter.test(val)) {
+              alert("For " + elemLabel + " field please enter valid email address");
+              document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+              return false;
+            } else if (val.match(illegalChars)) {
+              alert(elemLabel + " field contains illegal characters");
+              document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+              return false;
+            }
+          }
+        }
+        if (startDate) {
+          if (typeof startDate !== "undefined") {
+            if (endDate) {
+              if (typeof endDate !== "undefined") {
+                startDate = new Date(startDate);
+                endDate = new Date(endDate);
+                if (endDate < startDate) {
+                  alert("End Date should be greater than or equal to Start Date");
+                  document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+                  return false;
+                }
+              }
+            }
+            if (endDate1) {
+              if (typeof endDate1 !== "undefined") {
+                startDate = new Date(startDate);
+                endDate1 = new Date(endDate1);
+                if (endDate1 < startDate) {
+                  alert("End Date should be greater than or equal to Start Date");
+                  document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+                  return false;
+                }
+              }
+            }
+          }
+        }
+        if (att != null) {
+          if (val.replace(/^\s+|\s+$/g, "") == "") {
+            required.push(inputs[i].getAttribute("label"));
+          }
+        }
+      }
+      if (required.length > 0) {
+        alert("The following fields are required: " + required.join());
+        document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+        return false;
+      }
+      var numberTypeInputs = document.querySelectorAll("input[type=number]");
+      for (var i = 0; i < numberTypeInputs.length; i++) {
+        val = numberTypeInputs[i].value;
+        var elemLabel = numberTypeInputs[i].getAttribute("label");
+        if (val != "") {
+          var intRegex = /^[+-]?\d+$/;
+          if (!intRegex.test(val)) {
+            alert("For " + elemLabel + " field please enter valid number");
+            document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+            return false;
+          }
+        }
+      }
+      var dateTypeInputs = document.querySelectorAll("input[type=date]");
+      for (var i = 0; i < dateTypeInputs.length; i++) {
+        dateVal = dateTypeInputs[i].value;
+        var elemLabel = dateTypeInputs[i].getAttribute("label");
+        if (dateVal != "") {
+          var dateRegex = /^[1-9][0-9]{3}-(0[1-9]|1[0-2]|[1-9]{1})-(0[1-9]|[1-2][0-9]|3[0-1]|[1-9]{1})$/;
+          if (!dateRegex.test(dateVal)) {
+            alert("For " + elemLabel + " field please enter valid date in required format");
+            document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+            return false;
+          }
+        }
+      }
+      var inputElems = document.getElementsByTagName("input");
+      var totalFileSize = 0;
+      for (var i = 0; i < inputElems.length; i++) {
+        if (inputElems[i].type.toLowerCase() === "file") {
+          var file = inputElems[i].files[0];
+          if (typeof file !== "undefined") {
+            var totalFileSize = totalFileSize + file.size;
+          }
+        }
+      }
+      if (totalFileSize > 52428800) {
+        alert("Maximum allowed file size including all files is 50MB.");
+        document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+        return false;
+      }
+      var inputElem = document.querySelectorAll("input[type=file]");
+      var fileSize = 0;
+      for (var i = 0; i < inputElem.length; i++) {
+        if (inputElem[i].type.toLowerCase() === "file") {
+          if (inputElem[i].hasAttribute("selectedTypeImage")) {
+            var imageFile = inputElem[i].files[0];
+            var fileSize = imageFile.size;
+          }
+        }
+        if (fileSize > 5242880) {
+          alert("Maximum allowed image size is 5MB.");
+          document.getElementById("vtigerFormSubmitBtn_6").disabled = false;
+          return false;
+        }
+      }
+    };
+    var getParams = function (a) {
+      var e = {},
+        t = document.createElement('a');
+      t.href = a;
+      for (var r = t.search.substring(1).split('&'), l = 0; l < r.length; l++) {
+        var o = r[l].split('=');
+        if (o[0]) {
+          var c = decodeURIComponent(o[1]);
+          c && (e[o[0]] = c, c && localStorage.setItem(o[0], c))
+        }
+      }
+      return e
+    };
+    document.querySelectorAll('[data-type=storage]').forEach(a => {
+      if (a) {
+        var e = a.getAttribute('data-param'),
+          t = localStorage.getItem(e);
+        t && (a.value = t)
+      }
+    });
+    var allParameters = getParams(window.location.href);
+    Object.keys(allParameters).length > 0 && document.querySelectorAll('[data-type=url]').forEach(a => {
+      if (a) {
+        var e = a.getAttribute('data-param');
+        allParameters[e] && (a.value = allParameters[e])
+      }
+    })
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    var max_filsize = 5 * 1024 * 1024;
+    $("#filePHOTO").change(function () {
+      $("#file_error").html("");
+      $(".file_upload1").css("border-color", "#F0F0F0");
+      var file_size = $('#filePHOTO')[0].files[0].size;
+      console.log(max_filsize, "-==", file_size);
+      if (file_size > max_filsize) {
+        console.log(max_filsize, "true", file_size);
+        $(this).after("<p style='color:#FF0000'>File size is greater than 5mb</p>");
+        $(".file_upload1").css("border-color", "#FF0000");
+        return false;
+      }
+      return true;
+    });
+  });
+</script>
+
+<style>
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #000;
+    width: 100px;
+  }
+
+  #SubSubCategory,
+  #SubCategory,
+  #SubSubCategory_Content {
+    display: none;
+  }
+
+  div#SubSubCategory_Content {
+
+    border: 2px solid #3c3c9f;
+    background-color: #fff;
+    width: 35%;
+    padding: 13px 30px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 25px;
+    position: relative;
+  }
+
+  div#SubSubCategory_Content:before {
+    content: "";
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(241, 101, 33, 0);
+    border-right-color: #3c3c9f;
+    border-width: 10px;
+    margin-top: -11px;
+  }
+
+  div#SubSubCategory_Content:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #fff;
+    border-width: 7px;
+    margin-top: -8px;
+  }
+</style>
+
+
+
+{% comment %}
+
+{%- liquid
+assign contact_name_t = 'contact_page.name' | t
+assign contact_email_t = 'contact_page.email' | t
+assign contact_message_t = 'contact_page.message' | t
+assign contact_button_t = 'contact_page.button' | t
+assign open_maps_t = 'sections.map.open_in_maps' | t
+assign shopify_disclaimer_t = 'shopify.online_store.spam_detection.disclaimer_html' | t
+-%}
+
+<div class="contact--container">
+  {% comment %} {%- if store_address != blank or store_hours != blank -%}
+  <div class="contact--left-column">
+    {% unless store_address == blank %}
+    <div class="contact--address">
+      <address class="contact--address-text" data-item="paragraph">
+        {{ store_address | newline_to_br }}
+      </address>
+
+      <div class="contact--address-link" data-item="block-link">
+        <a href="https://www.google.ca/maps/place/{{ store_address | url_encode }}" target="_blank" rel="noreferrer">
+          {{ open_maps_t }}
+        </a>
+      </div>
+    </div>
+    {% endunless %}
+
+    {% unless store_hours == blank %}
+    <div class="contact--hours" data-item="paragraph">
+      {{ store_hours }}
+    </div>
+    {% endunless %}
+  </div>
+  {%- endif -%}{%endcomment%}
+
+  <div class="contact--right-column">
+    {% form 'contact', id: form_id %}
+    <div class="contact--form-details">
+      <label for="{{ form_id }}-contact-name" data-item="hidden-text">
+        {{ contact_name_t }}
+      </label>
+      <input class="{% if form.errors contains 'name' %}error{% endif %}" id="{{ form_id }}-contact-name" type="text"
+        name="contact[name]" value="{{ contact.fields.name }}" placeholder="Name*" autocomplete="name" {% if form.errors
+        contains 'name' %} aria-invalid="true" {% endif %} />
+
+      <label for="{{ form_id }}-contact-email" data-item="hidden-text">
+        {{ contact_email_t }}
+      </label>
+      <input class="{% if form.errors contains 'email' %}error{% endif %}" id="{{ form_id }}-contact-email" type="email"
+        name="contact[email]" value="{{ contact.fields.email }}" placeholder="Email Id*" autocomplete="email" {% if
+        form.errors contains 'email' %} aria-invalid="true" {% endif %} required />
+    </div>
+    <div class="contact--form-details">
+      <label for="{{ form_id }}-contact-name" data-item="hidden-text">
+        {% comment %}{{ contact_name_t }}{% endcomment %} Mobile No
+      </label>
+      <input class="{% if form.errors contains 'phone' %}error{% endif %}" id="{{ form_id }}-contact-phone" type="phone"
+        name="contact[phone]" value="{{ contact.fields.phone }}" placeholder="Mobile No*" autocomplete="" {% if
+        form.errors contains 'phone' %} aria-invalid="true" {% endif %} />
+      <label for="{{ form_id }}-contact-name" data-item="hidden-text">
+        {{ contact_name_t }}
+      </label>
+
+      <select class="{% if form.errors contains 'name' %}error{% endif %}" id="{{ form_id }}-contact-sel"
+        name="contact[request_type]" {% if form.errors contains 'name' %} aria-invalid="true" {% endif %}>
+        <option>Select Type*</option>
+        <option>lorem 1</option>
+        <option>lorem 2</option>
+        <option>lorem 3</option>
+        <option>lorem 4</option>
+      </select>
+
+    </div>
+    {%comment%} <div class="contact--form-details">
+      <label for="{{ form_id }}-contact-file">
+        Upload A file
+      </label>
+      <input class="{% if form.errors contains 'file' %}error{% endif %}" id="{{ form_id }}-contact-phone" type="file"
+        name="contact[file]" value="{{ contact.fields.file }}" placeholder="Upload" autocomplete="" {% if form.errors
+        contains 'phone' %} aria-invalid="true" {% endif %} />
+      <br>
+      <span>Max allowed file size is 5MB</span>
+    </div>{%endcomment%}
+
+    <label for="{{ form_id }}-contact-textarea" data-item="hidden-text">
+      {{ contact_message_t }}
+    </label>
+    <textarea class="{% if form.errors contains 'body' %}error{% endif %}" id="{{ form_id }}-contact-textarea" rows="5"
+      cols="60" name="contact[body]" placeholder="Your Comment*" required>{{ contact.fields.body }}</textarea>
+
+    <div class="contact--form-submit" data-item="{{ button_type }}">
+      <button type="submit" value="{{ contact_button_t }}">
+        Submit {%comment%}{{ contact_button_t }}{%endcomment%}
+      </button>
+    </div>
+
+    {%- if form.posted_successfully? or form.errors -%}
+    <script>window.location.hash = '#feedback-bar--contact-form';</script>
+    {%- endif -%}
+
+    <div data-item="hidden-text">
+      {% comment %} remove the below line to display reCAPTCHA badge {% endcomment %}
+      {{ shopify_disclaimer_t }}
+    </div>
+    {% endform %}
+
+    {% if show_social_sharing %}
+    <div class="contact--social">
+      {% render 'social-follow' %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endcomment %}

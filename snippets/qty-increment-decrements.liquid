@@ -1,0 +1,20 @@
+
+<div class="purchase-details__quantity product-quantity-box col-md-4 visible-mobile">
+        <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+        <div class="qty-btn">
+                <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+          {% if product.tags contains 'Min Quantity Two' %}      
+          <input type="text" min="2" max="{{ product.variants.first.inventory_quantity }}" size="2" class="quantity quantity-selector quantity-input" name="quantity" id="quantity" value="2" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+           <input type="hidden" value="2" class="min2p">
+           {% else %}     
+          <input type="text" min="1" max="{{ product.variants.first.inventory_quantity }}" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+            {% endif %}    
+          <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+        </div>
+</div>
+{% if product.tags contains 'Min Quantity Two' %}
+<div class="col-md-12">
+                            <p class="qtity-text">Minimum Order Quantity is 2.</p>
+</div>
+                           
+{% endif %}
